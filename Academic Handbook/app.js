@@ -288,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const programSelect = document.getElementById('planner-program-select');
         const addSemBtn = document.getElementById('btn-add-semester');
         const clearPlannerBtn = document.getElementById('btn-clear-planner');
+        const printPlannerBtn = document.getElementById('btn-print-planner');
 
         // Populate Programs dropdown
         programSelect.innerHTML = '<option value="">-- Choose FABE Program (Or Start Custom) --</option>';
@@ -345,6 +346,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 savePlannerState();
                 renderGPAPlanner();
             }
+        });
+
+        printPlannerBtn.addEventListener('click', () => {
+            window.print();
         });
 
         renderGPAPlanner();
