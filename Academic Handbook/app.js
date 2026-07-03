@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const diag = JSON.parse(savedDiagnosis);
                 dashRiskVal.textContent = diag.level.toUpperCase();
-                dashRiskDesc.textContent = `Score: ${diag.score}/17. Diagnosed: ${diag.date}`;
+                dashRiskDesc.textContent = `Score: ${diag.score}/${(diag.maxScore || 19.0).toFixed(1)}. Diagnosed: ${diag.date}`;
                 dashRiskVal.className = `stat-val ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
                 dashRiskDesc.className = `stat-desc ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
             } catch(e) {
@@ -896,7 +896,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         badge.innerHTML = `
             <span class="result-title">${riskLabel}</span>
-            <span class="result-score">Cumulative Risk Score: <strong>${result.score.toFixed(1)} / ${(result.maxScore || 17.0).toFixed(1)}</strong></span>
+            <span class="result-score">Cumulative Risk Score: <strong>${result.score.toFixed(1)} / ${(result.maxScore || 19.0).toFixed(1)}</strong></span>
         `;
 
         desc.innerHTML = `
