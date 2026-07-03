@@ -233,6 +233,16 @@ const HANDBOOK_DATA = {
                 { text: 'Stressed, sleeping poorly, or feeling exhausted at times', riskPoints: 1, feedback: 'Ensure you maintain regular sleep. Good rest is essential for creative design work.' },
                 { text: 'Extremely overwhelmed, depressed, or unable to focus on studies', riskPoints: 2, feedback: 'CRITICAL: Your mental health is top priority. We highly recommend visiting the University Counseling Centre.' }
             ]
+        },
+        {
+            id: 'q_itnl',
+            category: 'Inclusive Support',
+            text: 'Do you require special learning adjustments or alternative assessment formats (e.g. due to dyslexia, ADHD, physical or health conditions)?',
+            options: [
+                { text: 'No, I do not need special academic accommodations.', riskPoints: 0, feedback: 'Understood. Standard teaching and assessment rules apply.' },
+                { text: 'Yes, I need adjustments but have not requested them yet.', riskPoints: 1, feedback: 'Action Recommended: Review the KLUST iTnL Policy and apply for an Individualised Academic Plan (IAP) through the IEC Office.' },
+                { text: 'Yes, and I struggle with standard assessments like live juries or need extra exam time.', riskPoints: 2, feedback: 'Action Needed: Contact the IEC Office to trigger SOP 1 (IAP) and SOP 2 (Assessment Menu) so you can choose alternative presentation/exam formats.' }
+            ]
         }
     ],
 

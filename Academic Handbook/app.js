@@ -827,6 +827,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     detail: 'Academic stress is highly manageable when discussed with certified counselor support. Drop by block A or schedule an appointment.'
                 });
             }
+            if (q.id === 'q_itnl' && answerIdx > 0) {
+                recommendations.push({
+                    title: 'Apply for KLUST iTnL Academic Adjustments',
+                    detail: 'Since you indicated a documented learning difficulty, sensory/physical need, or struggle with standard assessments, you are highly encouraged to submit an official request to the Inclusive Education Committee (IEC) Office to establish your Individualised Academic Plan (IAP).'
+                });
+            }
         });
 
         // Determine risk level
@@ -845,10 +851,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        const maxScore = HANDBOOK_DATA.diagnosticQuestions.reduce((sum, q) => sum + Math.max(...q.options.map(o => o.riskPoints)), 0);
+
         const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         
         const result = {
             score: totalScore,
+            maxScore: maxScore,
             level: level,
             date: dateStr,
             feedbackItems: feedbackItems,
@@ -888,7 +897,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         badge.innerHTML = `
             <span class="result-title">${riskLabel}</span>
-            <span class="result-score">Cumulative Risk Score: <strong>${result.score.toFixed(1)} / 17.0</strong></span>
+            <span class="result-score">Cumulative Risk Score: <strong>${result.score.toFixed(1)} / ${(result.maxScore || 17.0).toFixed(1)}</strong></span>
         `;
 
         desc.innerHTML = `
