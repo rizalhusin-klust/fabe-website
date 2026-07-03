@@ -354,30 +354,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const program = HANDBOOK_DATA.programs.find(p => p.id === progId);
         if (!program) return;
 
-        // Group courses by approximate semesters (e.g. 5 courses per semester)
-        const coursesPerSem = 5;
-        const newSemesters = [];
+        // Group courses by their designated recommended semester from the academic roadmap
+        const semMap = {};
         
-        let currentSemIndex = 1;
-        let currentCourses = [];
-
-        program.courses.forEach((course, index) => {
-            currentCourses.push({
+        program.courses.forEach(course => {
+            const semNum = course.semester || 1;
+            if (!semMap[semNum]) {
+                semMap[semNum] = [];
+            }
+            semMap[semNum].push({
                 code: course.code,
                 name: course.name,
                 credits: course.credits,
                 grade: '--' // In progress/unplanned
             });
+        });
 
-            if (currentCourses.length === coursesPerSem || index === program.courses.length - 1) {
-                newSemesters.push({
-                    id: currentSemIndex,
-                    name: `Semester ${currentSemIndex}`,
-                    courses: [...currentCourses]
-                });
-                currentSemIndex++;
-                currentCourses = [];
-            }
+        const newSemesters = [];
+        Object.keys(semMap).sort((a, b) => a - b).forEach(semNum => {
+            newSemesters.push({
+                id: parseInt(semNum),
+                name: `Semester ${semNum} (Academic Roadmap)`,
+                courses: semMap[semNum]
+            });
         });
 
         plannerState = {
