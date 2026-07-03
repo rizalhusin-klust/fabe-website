@@ -77,6 +77,44 @@ const HANDBOOK_DATA = {
                 { code: 'BCM3103', name: 'Industrial Internship', credits: 8, category: 'Internship' },
                 { code: 'BCM3201', name: 'Strategic Management & Finance', credits: 3, category: 'General' }
             ]
+        },
+        {
+            id: 'arch-dip',
+            name: 'Diploma in Architecture',
+            creditsToGraduate: 90,
+            courses: [
+                { code: 'ARC1011', name: 'Design Studio I', credits: 5, category: 'Core Studio' },
+                { code: 'ARC1012', name: 'Architectural Graphics', credits: 3, category: 'Core Tech' },
+                { code: 'ARC1013', name: 'Introduction to Building Materials', credits: 3, category: 'Core Tech' },
+                { code: 'ARC1021', name: 'Design Studio II', credits: 5, category: 'Core Studio' },
+                { code: 'ARC1022', name: 'Building Construction I', credits: 3, category: 'Core Tech' },
+                { code: 'ARC1023', name: 'History of Architecture', credits: 3, category: 'General' },
+                { code: 'ARC2011', name: 'Design Studio III', credits: 6, category: 'Core Studio' },
+                { code: 'ARC2012', name: 'Building Services', credits: 3, category: 'Core Tech' },
+                { code: 'ARC2013', name: 'Computer-Aided Design (CAD)', credits: 3, category: 'Core Tech' },
+                { code: 'ARC2021', name: 'Design Studio IV', credits: 6, category: 'Core Studio' },
+                { code: 'ARC2022', name: 'Building Construction II', credits: 3, category: 'Core Tech' },
+                { code: 'ARC2023', name: 'Measured Drawing', credits: 4, category: 'Core Studio' }
+            ]
+        },
+        {
+            id: 'la-dip',
+            name: 'Diploma in Landscape Architecture',
+            creditsToGraduate: 90,
+            courses: [
+                { code: 'LAD1011', name: 'Landscape Design Studio I', credits: 5, category: 'Core Studio' },
+                { code: 'LAD1012', name: 'Landscape Graphic Communications', credits: 3, category: 'Core Tech' },
+                { code: 'LAD1013', name: 'Introduction to Horticulture', credits: 3, category: 'Core Tech' },
+                { code: 'LAD1021', name: 'Landscape Design Studio II', credits: 5, category: 'Core Studio' },
+                { code: 'LAD1022', name: 'Planting Design I', credits: 3, category: 'Core Tech' },
+                { code: 'LAD1023', name: 'Soil Science for Landscape', credits: 3, category: 'Core Tech' },
+                { code: 'LAD2011', name: 'Landscape Design Studio III', credits: 6, category: 'Core Studio' },
+                { code: 'LAD2012', name: 'Landscape Construction I', credits: 3, category: 'Core Tech' },
+                { code: 'LAD2013', name: 'Plant Materials', credits: 3, category: 'Core Tech' },
+                { code: 'LAD2021', name: 'Landscape Design Studio IV', credits: 6, category: 'Core Studio' },
+                { code: 'LAD2022', name: 'Landscape Computer Graphics', credits: 3, category: 'Core Tech' },
+                { code: 'LAD2023', name: 'History of Landscape Architecture', credits: 3, category: 'General' }
+            ]
         }
     ],
 
