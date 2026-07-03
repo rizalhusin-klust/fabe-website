@@ -162,6 +162,20 @@ const HANDBOOK_DATA = {
 4. **Trigger Mechanism (SOP 1):** To request an IAP, submit a formal request/appeal to the **IEC Office** with relevant professional medical or educational assessments.
 
 *(Note: If you need help with any of these procedures, any lecturer or staff member at the university will happily help and guide you!)*`
+        },
+        {
+            category: 'Inclusive Learning & Support',
+            question: 'How does the UDL framework benefit students with special learning needs (IAP/IEP)?',
+            tags: ['udl', 'iep', 'iap', 'learning needs', 'learning disability', 'accommodations', 'alternative assessment', 'benefits'],
+            answer: `The **Universal Design for Learning (UDL)** framework is built on the principle that "one size does not fit all." For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:
+1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.
+2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:
+   - Pre-recorded video walkthroughs or audio presentations.
+   - Private, 1-on-1 reviews with a panel instead of public juries.
+   - Written reports or interactive portfolios instead of oral presentations.
+3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.
+
+**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best.`
         }
     ],
 
