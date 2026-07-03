@@ -81,6 +81,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------------------
     function initDashboard() {
         updateDashboardMetrics();
+
+        const dashStartBtn = document.getElementById('dash-start-assessment-btn');
+        const dashViewBtn = document.getElementById('dash-view-results-btn');
+        const dashRetakeBtn = document.getElementById('dash-retake-assessment-btn');
+
+        if (dashStartBtn) {
+            dashStartBtn.addEventListener('click', () => {
+                document.querySelector('button[data-tab=diagnose]').click();
+                showIntroScreen();
+            });
+        }
+
+        if (dashViewBtn) {
+            dashViewBtn.addEventListener('click', () => {
+                document.querySelector('button[data-tab=diagnose]').click();
+                const saved = localStorage.getItem('fabe_survey_result');
+                if (saved) {
+                    showResultsScreen(JSON.parse(saved));
+                }
+            });
+        }
+
+        if (dashRetakeBtn) {
+            dashRetakeBtn.addEventListener('click', () => {
+                document.querySelector('button[data-tab=diagnose]').click();
+                startSurvey();
+            });
+        }
     }
 
     function updateDashboardMetrics() {
@@ -129,6 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const dashRiskDesc = document.getElementById('dash-risk-desc');
         const savedDiagnosis = localStorage.getItem('fabe_survey_result');
 
+        const dashStartBtn = document.getElementById('dash-start-assessment-btn');
+        const dashViewBtn = document.getElementById('dash-view-results-btn');
+        const dashRetakeBtn = document.getElementById('dash-retake-assessment-btn');
+
         if (savedDiagnosis) {
             try {
                 const diag = JSON.parse(savedDiagnosis);
@@ -136,15 +168,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 dashRiskDesc.textContent = `Score: ${diag.score}/${(diag.maxScore || 19.0).toFixed(1)}. Diagnosed: ${diag.date}`;
                 dashRiskVal.className = `stat-val ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
                 dashRiskDesc.className = `stat-desc ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
+                
+                if (dashStartBtn) dashStartBtn.style.display = 'none';
+                if (dashViewBtn) dashViewBtn.style.display = 'inline-flex';
+                if (dashRetakeBtn) dashRetakeBtn.style.display = 'inline-flex';
             } catch(e) {
                 dashRiskVal.textContent = 'NO DATA';
                 dashRiskDesc.textContent = 'Take the Risk Assessment survey.';
+                if (dashStartBtn) dashStartBtn.style.display = 'inline-flex';
+                if (dashViewBtn) dashViewBtn.style.display = 'none';
+                if (dashRetakeBtn) dashRetakeBtn.style.display = 'none';
             }
         } else {
             dashRiskVal.textContent = 'PENDING';
             dashRiskDesc.textContent = 'Take the Study Diagnostic Survey.';
             dashRiskVal.className = 'stat-val';
             dashRiskDesc.className = 'stat-desc';
+            
+            if (dashStartBtn) dashStartBtn.style.display = 'inline-flex';
+            if (dashViewBtn) dashViewBtn.style.display = 'none';
+            if (dashRetakeBtn) dashRetakeBtn.style.display = 'none';
         }
     }
 

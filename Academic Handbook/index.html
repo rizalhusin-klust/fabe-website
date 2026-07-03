@@ -102,9 +102,17 @@
                                 <span class="stat-val" id="dash-risk-val">PENDING</span>
                                 <span class="stat-desc" id="dash-risk-desc" style="margin-top: 0.5rem; line-height: 1.4;">Take the diagnostic questionnaire to evaluate your academic safety score.</span>
                             </div>
-                            <button class="btn btn-primary" onclick="document.querySelector('button[data-tab=diagnose]').click()" style="margin-top: 1rem; width: 100%; justify-content: center;">
-                                Start Assessment
-                            </button>
+                            <div class="dash-assessment-actions" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
+                                <button class="btn btn-primary" id="dash-start-assessment-btn" style="width: 100%; justify-content: center;">
+                                    Start Assessment
+                                </button>
+                                <button class="btn btn-secondary" id="dash-view-results-btn" style="width: 100%; justify-content: center; display: none;">
+                                    View Results
+                                </button>
+                                <button class="btn btn-accent" id="dash-retake-assessment-btn" style="width: 100%; justify-content: center; display: none;">
+                                    Retake Assessment
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
