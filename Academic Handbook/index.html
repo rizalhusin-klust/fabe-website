@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FABE Academic Handbook & Student Study Advisor</title>
+    <meta name="description" content="Interactive academic advisor, GPA planner, study risk diagnostic tool, and academic regulations explorer for FABE students.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <h2>FABE Student Portal</h2>
+                <p>Academic Handbook & Advisor</p>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <button class="active" data-tab="dashboard">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                            Advisor Dashboard
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button data-tab="search">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            Handbook Explorer
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button data-tab="planner">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                            GPA & Study Planner
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button data-tab="diagnose">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                            Study Diagnostics
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button data-tab="tree">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H7.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13h.01M12 17h.01M12 10a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+                            Troubleshooter
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div>Faculty of Architecture & Built Environment</div>
+                <div style="font-size: 0.7rem; opacity: 0.8;">Interactive Guide v1.0</div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="app-content">
+            
+            <!-- PANEL 1: DASHBOARD -->
+            <div class="panel-card" id="dashboard-panel">
+                <header class="panel-header">
+                    <h1 class="panel-title">Advisor Dashboard</h1>
+                    <p class="panel-subtitle">Monitor academic standing, check study risk ratings, and view custom study advisory paths.</p>
+                </header>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-main">
+                        <div class="info-box">
+                            <div class="info-box-text">
+                                <h4>Welcome to the FABE Student Study Advisor Portal!</h4>
+                                <p>This portal acts as your interactive academic companion. Use the sidebar to plan grades, search attendance and probation policies, or run a self-diagnosis checklist to spot study problems early.</p>
+                            </div>
+                            <img src="advisor_illustration.png" alt="Academic Advisor" class="info-box-img">
+                        </div>
+
+                        <div class="metric-row">
+                            <div class="stat-card">
+                                <span class="stat-label">Projected CGPA</span>
+                                <span class="stat-val" id="dash-cgpa-val">0.00</span>
+                                <span class="stat-desc" id="dash-standing-val">Good Standing (GS)</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-label">Credits Earned</span>
+                                <span class="stat-val" id="dash-credits-val">0 / 0</span>
+                                <span class="stat-desc">Passing grade: C- (1.67) or better</span>
+                            </div>
+                        </div>
+
+                        <div id="dash-advisor-advice">
+                            <!-- Injected dynamically based on CGPA status -->
+                        </div>
+                    </div>
+
+                    <div class="dashboard-side">
+                        <div class="stat-card" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%); min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(30, 64, 175, 0.15);">
+                            <div>
+                                <span class="stat-label">Academic Risk Status</span>
+                                <span class="stat-val" id="dash-risk-val">PENDING</span>
+                                <span class="stat-desc" id="dash-risk-desc" style="margin-top: 0.5rem; line-height: 1.4;">Take the diagnostic questionnaire to evaluate your academic safety score.</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="document.querySelector('button[data-tab=diagnose]').click()" style="margin-top: 1rem; width: 100%; justify-content: center;">
+                                Start Assessment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 2: HANDBOOK SEARCH -->
+            <div class="panel-card" id="search-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Handbook Explorer</h1>
+                    <p class="panel-subtitle">Search rules on attendance limits, repeats, graduation benchmarks, and deferment guidelines.</p>
+                </header>
+
+                <div class="search-wrapper">
+                    <div class="search-box-container">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <input type="text" class="search-input" id="faq-search-input" placeholder="Search regulations (e.g., 'attendance', 'probation', 'repeating')...">
+                    </div>
+
+                    <div class="faq-list" id="faq-list-container">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 3: GPA PLANNER -->
+            <div class="panel-card" id="planner-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">GPA & Study Planner</h1>
+                    <p class="panel-subtitle">Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.</p>
+                </header>
+
+                <div class="planner-layout">
+                    <!-- Setup and Import Row -->
+                    <div class="setup-card">
+                        <div class="form-group">
+                            <label for="planner-program-select">Load Syllabus Template</label>
+                            <select class="select-input" id="planner-program-select">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                        <div style="margin-left: auto; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" id="btn-clear-planner">Reset Planner</button>
+                            <button class="btn btn-primary" id="btn-add-semester">+ Add Semester</button>
+                        </div>
+                    </div>
+
+                    <!-- Planner Summary Cards -->
+                    <div class="metric-row">
+                        <div class="stat-card">
+                            <span class="stat-label">Projected CGPA</span>
+                            <span class="stat-val" id="planner-cgpa-val">0.00</span>
+                            <span class="stat-desc">Target CGPA needed: 2.00+</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Planned Credits</span>
+                            <span class="stat-val" id="planner-credits-val">0</span>
+                            <span class="stat-desc">Fails excluded from completed count</span>
+                        </div>
+                    </div>
+
+                    <div id="planner-alerts-container">
+                        <!-- Warnings injected dynamically -->
+                    </div>
+
+                    <!-- Semesters List -->
+                    <div class="semesters-container" id="semesters-container">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 4: STUDY DIAGNOSTIC -->
+            <div class="panel-card" id="diagnose-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Academic Study Diagnostic</h1>
+                    <p class="panel-subtitle">A self-assessment survey designed to highlight study obstacles and supply recovery tips.</p>
+                </header>
+
+                <!-- Screen 1: Intro -->
+                <div class="survey-screen" id="survey-intro">
+                    <div style="text-align: center; max-width: 600px; margin: 3rem auto;">
+                        <svg width="64" height="64" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-bottom: 1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Study Habits & Risk Assessment</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                            Answer 7 simple questions about your class attendance, submissions, time management, and study environment. We will analyze your inputs and generate a customized action plan with recommendations from the Academic Handbook.
+                        </p>
+                        <button class="btn btn-primary" id="btn-start-survey">Begin Assessment</button>
+                    </div>
+                </div>
+
+                <!-- Screen 2: Wizard -->
+                <div class="survey-screen" id="survey-wizard" style="display: none;">
+                    <div class="diagnostic-wizard">
+                        <div class="wizard-progress">
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="survey-progress-bar"></div>
+                            </div>
+                            <span class="progress-text" id="survey-progress-text">Question 1 of 7</span>
+                        </div>
+
+                        <div id="wizard-body">
+                            <!-- Question rendered dynamically -->
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn btn-secondary" id="btn-survey-prev" disabled>Back</button>
+                            <button class="btn btn-primary" id="btn-survey-next" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screen 3: Results -->
+                <div class="survey-screen" id="survey-results" style="display: none;">
+                    <div class="results-card">
+                        <div class="result-header-badge" id="result-badge">
+                            <!-- Risk label and score -->
+                        </div>
+                        
+                        <div id="result-standing-text" style="color: var(--text-secondary); line-height: 1.6;">
+                            <!-- Brief explanation -->
+                        </div>
+
+                        <div class="checklist-card" style="border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem;">
+                            <div class="checklist-title-area">
+                                <h4 style="font-family: var(--font-heading); color: var(--color-blue); font-size: 1.05rem;">Recommended Recovery Checklist</h4>
+                            </div>
+                            <ul class="steps-checklist" id="result-checklist" style="margin-top: 1rem;">
+                                <!-- Actions checklist list items -->
+                            </ul>
+                        </div>
+
+                        <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                            <button class="btn btn-secondary" id="btn-survey-restart">Retake Assessment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 5: TROUBLESHOOTER (DECISION TREE) -->
+            <div class="panel-card" id="tree-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Academic Troubleshooter</h1>
+                    <p class="panel-subtitle">Interactive decision tree guiding you to the right forms and rules for your current issues.</p>
+                </header>
+
+                <div class="tree-container">
+                    <div class="tree-bubble">
+                        <p class="tree-question" id="tree-node-text">What academic issue are you facing today?</p>
+                    </div>
+
+                    <div class="tree-choices" id="tree-node-choices">
+                        <!-- Choices buttons populated dynamically -->
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                    <button class="btn btn-secondary" id="btn-tree-restart">Restart Troubleshooter</button>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="handbook_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

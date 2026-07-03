@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FABE 30-Day Operational Planner & Dashboard</title>
+    <meta name="description" content="An interactive management dashboard for planning the next 30 days of the Faculty of Built Environment (FABE) WBS tasks.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <div class="header-title-area">
+                <h1>FABE 30-Day WBS Planner</h1>
+                <p>Interactive dashboard for operational planning, monitoring, and task realization. Today: <strong>3-Jul-2026</strong></p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="btn-export-csv" style="background: linear-gradient(135deg, var(--color-emerald) 0%, #047857 100%); border-color: #047857; color: white;">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Export Sheet Log (CSV)
+                </button>
+                <button class="btn btn-secondary" id="btn-export">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    Export/Import Plan
+                </button>
+                <button class="btn btn-secondary" style="color: var(--color-crimson); border-color: rgba(239,68,68,0.2);" id="btn-reset">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    Reset Data
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-label">Total Registered Tasks</span>
+                <div class="metric-value-wrapper">
+                    <span class="metric-value" id="stat-total-tasks">0</span>
+                    <span class="metric-trend trend-success">Active WBS</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">Active / In Progress</span>
+                <div class="metric-value-wrapper">
+                    <span class="metric-value" id="stat-active-tasks">0</span>
+                    <span class="metric-trend trend-warning">In Scope</span>
+                </div>
+            </div>
+            <div class="metric-card" style="border-color: rgba(239, 68, 68, 0.2);">
+                <span class="metric-label">Overdue Tasks</span>
+                <div class="metric-value-wrapper">
+                    <span class="metric-value" style="color: var(--color-crimson);" id="stat-overdue-tasks">0</span>
+                    <span class="metric-trend trend-alert">Needs Action</span>
+                </div>
+            </div>
+            <div class="metric-card" style="border-color: rgba(0, 242, 254, 0.2);">
+                <span class="metric-label">Overall Completion Rate</span>
+                <div class="metric-value-wrapper">
+                    <span class="metric-value" style="color: var(--color-cyan);" id="stat-avg-progress">0%</span>
+                    <span class="metric-trend trend-success">Faculty Avg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls & Filters Section -->
+        <section class="toolbar-section">
+            <div class="search-box">
+                <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" class="search-input" id="search-input" placeholder="Search tasks, categories, owners...">
+            </div>
+            
+            <div class="filter-group">
+                <select class="select-filter" id="filter-status">
+                    <option value="all">All Task Statuses</option>
+                    <option value="active">Active (In Progress / Not Started)</option>
+                    <option value="overdue">Overdue Tasks</option>
+                    <option value="urgent">Urgent (Due in 10 Days)</option>
+                    <option value="completed">Completed Tasks</option>
+                </select>
+                
+                <select class="select-filter" id="filter-thrust">
+                    <option value="all">All Strategic Thrusts</option>
+                    <!-- Populated dynamically via JS -->
+                </select>
+                
+                <select class="select-filter" id="filter-rasci">
+                    <option value="all">All RASCI Roles</option>
+                    <!-- Populated dynamically via JS -->
+                </select>
+            </div>
+
+            <button class="btn btn-primary" id="btn-add-task" style="background: linear-gradient(135deg, var(--color-blue) 0%, #1d4ed8 100%); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem;">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                + Add Task
+            </button>
+            
+            <div class="view-toggle">
+                <button class="toggle-btn" id="btn-view-timeline">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    Timeline View
+                </button>
+                <button class="toggle-btn active" id="btn-view-board">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                    Task Board
+                </button>
+            </div>
+        </section>
+
+        <!-- Main Workspace Panels -->
+        <main class="workspace-container">
+            <!-- Timeline Panel -->
+            <div class="workspace-panel" id="timeline-view-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">
+                            <svg width="18" height="18" fill="none" stroke="var(--color-cyan)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            Gantt Chart (30-Day Window: 3 July 2026 - 2 August 2026)
+                        </h2>
+                        <span class="panel-subtitle">Visualizes task schedules and progress. Click task name to open detail planners.</span>
+                    </div>
+                </div>
+                <div class="timeline-viewport">
+                    <div class="timeline-chart" id="timeline-chart">
+                        <!-- Rendered dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kanban Board Panel -->
+            <div class="workspace-panel" id="board-view-panel" style="display: none;">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">
+                            <svg width="18" height="18" fill="none" stroke="var(--color-cyan)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                            Operations Board
+                        </h2>
+                        <span class="panel-subtitle">Cards sorted by deadline urgencies. Click any card to details & suggestions checklist.</span>
+                    </div>
+                </div>
+                <div class="kanban-board">
+                    <!-- Overdue -->
+                    <div class="kanban-column">
+                        <div class="column-header" style="border-bottom-color: var(--color-crimson);">
+                            <span class="column-title" style="color: var(--color-crimson);">Overdue</span>
+                            <span class="column-badge" id="count-overdue">0</span>
+                        </div>
+                        <div class="task-cards-list" id="kanban-overdue"></div>
+                    </div>
+                    <!-- Today / Urgent -->
+                    <div class="kanban-column">
+                        <div class="column-header" style="border-bottom-color: var(--color-amber);">
+                            <span class="column-title" style="color: var(--color-amber);">Due &lt; 10 Days</span>
+                            <span class="column-badge" id="count-urgent">0</span>
+                        </div>
+                        <div class="task-cards-list" id="kanban-urgent"></div>
+                    </div>
+                    <!-- In Progress -->
+                    <div class="kanban-column">
+                        <div class="column-header" style="border-bottom-color: var(--color-cyan);">
+                            <span class="column-title" style="color: var(--color-cyan);">In Progress</span>
+                            <span class="column-badge" id="count-active">0</span>
+                        </div>
+                        <div class="task-cards-list" id="kanban-active"></div>
+                    </div>
+                    <!-- Future Scheduled -->
+                    <div class="kanban-column">
+                        <div class="column-header" style="border-bottom-color: var(--text-muted);">
+                            <span class="column-title">Scheduled</span>
+                            <span class="column-badge" id="count-upcoming">0</span>
+                        </div>
+                        <div class="task-cards-list" id="kanban-upcoming"></div>
+                    </div>
+                    <!-- Completed -->
+                    <div class="kanban-column">
+                        <div class="column-header" style="border-bottom-color: var(--color-emerald);">
+                            <span class="column-title" style="color: var(--color-emerald);">Completed</span>
+                            <span class="column-badge" id="count-completed">0</span>
+                        </div>
+                        <div class="task-cards-list" id="kanban-completed"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Side Details Panel Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside class="details-drawer" id="details-drawer">
+        <header class="drawer-header">
+            <div class="drawer-title-area">
+                <span class="task-category" style="align-self: flex-start;" id="detail-category">Academics</span>
+                <h3 class="drawer-title" id="drawer-task-name">Task Name</h3>
+            </div>
+            <button class="btn-close-drawer" id="btn-close-drawer">&times;</button>
+        </header>
+        <div class="drawer-content">
+            <!-- READ-ONLY MODE CONTAINER -->
+            <div id="drawer-view-mode">
+                <!-- Strategic Thrust -->
+                <div class="details-group" style="margin-bottom: 1.25rem;">
+                    <span class="details-label">Strategic Thrust</span>
+                    <div class="details-value badge" id="detail-thrust">Thrust</div>
+                </div>
+                
+                <!-- Metadata Grid -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                    <div class="details-group">
+                        <span class="details-label">RASCI Owner</span>
+                        <span class="details-value" id="detail-rasci">Dean</span>
+                    </div>
+                    <div class="details-group">
+                        <span class="details-label">Report To</span>
+                        <span class="details-value" id="detail-report-to">EMC</span>
+                    </div>
+                </div>
+
+                <div class="details-group" style="margin-bottom: 1.25rem;">
+                    <span class="details-label">Timeline Dates</span>
+                    <span class="details-value" id="detail-dates">1-Jul-2026 to 31-Jul-2026</span>
+                </div>
+
+                <!-- Issues / Actions taken -->
+                <div class="details-group" style="margin-bottom: 1.25rem;">
+                    <span class="details-label">Major Issues / Incidents</span>
+                    <span class="details-value" style="color: var(--color-amber); line-height: 1.4;" id="detail-issues">None</span>
+                </div>
+
+                <div class="details-group" style="margin-bottom: 1.5rem;">
+                    <span class="details-label">Actions Taken</span>
+                    <span class="details-value" style="line-height: 1.4;" id="detail-actions">None</span>
+                </div>
+
+                <!-- Action Button in View Mode -->
+                <div style="margin-bottom: 1.5rem;">
+                    <button class="btn btn-secondary" id="btn-edit-task" style="width: 100%; justify-content: center; border-radius: 6px; box-shadow: var(--shadow-sm);">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        Edit Task Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- EDIT MODE CONTAINER -->
+            <form id="drawer-edit-mode" style="display: none; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem;">
+                <!-- Task Name Edit -->
+                <div class="details-group">
+                    <label class="details-label" for="edit-task-name">Task Name</label>
+                    <input type="text" class="add-step-input" id="edit-task-name" required style="font-size: 0.9rem; padding: 0.6rem;">
+                </div>
+
+                <!-- Category & Strategic Thrust Edit -->
+                <div class="details-group">
+                    <label class="details-label" for="edit-category">Category</label>
+                    <select class="select-filter" id="edit-category" style="width: 100%; font-size: 0.85rem; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-primary);">
+                        <option value="Academics & Teaching">Academics & Teaching</option>
+                        <option value="Administrative & Faculty Development">Administrative & Faculty Development</option>
+                        <option value="Community & Industry Engagement">Community & Industry Engagement</option>
+                        <option value="Competition">Competition</option>
+                        <option value="Research & Development">Research & Development</option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                    <div class="details-group">
+                        <label class="details-label" for="edit-thrust">Strategic Thrust</label>
+                        <select class="select-filter" id="edit-thrust" style="width: 100%; font-size: 0.85rem; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-primary);">
+                            <option value="">None / Routine</option>
+                            <option value="Strategy Thrust 1: Academic Excellence and Curriculum Innovation">Strategy Thrust 1: Academic Excellence and Curriculum Innovation</option>
+                            <option value="Strategy Thrust 3: Digital Transformation, Smart Campus and ESG Commitment">Strategy Thrust 3: Digital Transformation, Smart Campus and ESG Commitment</option>
+                            <option value="Strategy Thrust 4: Internationalisation and Global Partnership">Strategy Thrust 4: Internationalisation and Global Partnership</option>
+                            <option value="Strategy Thrust 5: Building A Global Connected University">Strategy Thrust 5: Building A Global Connected University</option>
+                            <option value="Strategy Thrust 6: Financial Sustainability and Resource Optimisation">Strategy Thrust 6: Financial Sustainability and Resource Optimisation</option>
+                            <option value="Strategy Thrust 7: Enhancing Student Experience">Strategy Thrust 7: Enhancing Student Experience</option>
+                            <option value="Strategy Thrust 8: Industrial Engagement and Employability">Strategy Thrust 8: Industrial Engagement and Employability</option>
+                            <option value="Strategy Thrust 9: Talent Management Governance and Organisational Excellence">Strategy Thrust 9: Talent Management Governance and Organisational Excellence</option>
+                            <option value="ROUTINE">ROUTINE</option>
+                        </select>
+                    </div>
+                    <div class="details-group">
+                        <label class="details-label" for="edit-milestone">Milestone</label>
+                        <select class="select-filter" id="edit-milestone" style="width: 100%; font-size: 0.85rem; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-primary);">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- RASCI Owner Multi-Select -->
+                <div class="details-group">
+                    <label class="details-label">RASCI Owner (Select Multiple)</label>
+                    <div class="checkbox-group-grid" id="edit-rasci-container">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Report To Multi-Select -->
+                <div class="details-group">
+                    <label class="details-label">Report To (Select Multiple)</label>
+                    <div class="checkbox-group-grid" id="edit-report-to-container">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Dates Edit -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="details-group">
+                        <label class="details-label" for="edit-start-date">Start Date</label>
+                        <input type="date" class="add-step-input" id="edit-start-date" style="font-size: 0.9rem; padding: 0.6rem;">
+                    </div>
+                    <div class="details-group">
+                        <label class="details-label" for="edit-deadline">Deadline</label>
+                        <input type="date" class="add-step-input" id="edit-deadline" style="font-size: 0.9rem; padding: 0.6rem;">
+                    </div>
+                </div>
+
+                <!-- Issues & Actions Edit -->
+                <div class="details-group">
+                    <label class="details-label" for="edit-issues">Major Issues / Incidents</label>
+                    <textarea class="notes-textarea" id="edit-issues" placeholder="Specify any active risks or issues..." style="min-height: 60px; font-size: 0.85rem;"></textarea>
+                </div>
+
+                <div class="details-group">
+                    <label class="details-label" for="edit-actions">Action Taken</label>
+                    <textarea class="notes-textarea" id="edit-actions" placeholder="Specify corrective actions taken..." style="min-height: 60px; font-size: 0.85rem;"></textarea>
+                </div>
+
+                <!-- Progress & Status Edit -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="details-group">
+                        <label class="details-label" for="edit-progress">Progress %</label>
+                        <input type="number" class="add-step-input" id="edit-progress" min="0" max="100" style="font-size: 0.9rem; padding: 0.6rem;">
+                    </div>
+                    <div class="details-group">
+                        <label class="details-label" for="edit-status">Status</label>
+                        <select class="select-filter" id="edit-status" style="width: 100%; font-size: 0.85rem; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-primary);">
+                            <option value="Not Start">Not Start</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Milestone">Milestone</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Edit Mode Buttons -->
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                    <button type="submit" class="btn btn-primary" id="btn-save-task" style="flex: 1; justify-content: center; border-radius: 6px;">Save</button>
+                    <button type="button" class="btn btn-secondary" id="btn-cancel-edit" style="flex: 1; justify-content: center; border-radius: 6px; box-shadow: var(--shadow-sm);">Cancel</button>
+                </div>
+                
+                <div style="margin-top: 0.5rem;">
+                    <button type="button" class="btn btn-secondary" id="btn-delete-task" style="width: 100%; justify-content: center; color: var(--color-crimson); border-color: rgba(239,68,68,0.2); border-radius: 6px; box-shadow: var(--shadow-sm);">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        Delete Task
+                    </button>
+                </div>
+            </form>
+
+            <!-- Interactive Suggestions Checklist -->
+            <div class="suggestions-box" style="margin-bottom: 1.25rem;">
+                <div class="checklist-title-area">
+                    <span class="details-label">Realization Checklist</span>
+                    <span class="details-label" style="color: var(--color-cyan);" id="checklist-count">(0/0 steps)</span>
+                </div>
+                <ul class="steps-checklist" id="steps-checklist">
+                    <!-- Rendered dynamically -->
+                </ul>
+                <form class="add-step-form" id="add-step-form">
+                    <input type="text" class="add-step-input" id="add-step-input" placeholder="Add custom action item...">
+                    <button type="submit" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; border-radius: 4px; box-shadow: var(--shadow-sm);">+ Add</button>
+                </form>
+            </div>
+
+            <!-- Notes Editor -->
+            <div class="details-group" style="margin-bottom: 1.25rem;">
+                <span class="details-label">Custom Planning Notes</span>
+                <textarea class="notes-textarea" id="notes-area" placeholder="Enter custom notes or update actions taken..."></textarea>
+            </div>
+
+            <!-- Task Progress Indicator -->
+            <div class="details-group">
+                <span class="details-label">Task Progress</span>
+                <div class="task-progress-section" style="margin-top: 0.5rem;">
+                    <div class="progress-track" style="height: 6px;">
+                        <div class="progress-fill" id="detail-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-pct" style="font-size: 0.85rem;" id="detail-progress-pct">0%</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Import / Export Modal -->
+    <div class="modal" id="import-export-modal">
+        <div class="modal-header">
+            <h3 style="font-family: var(--font-heading);">Import / Export Planning Data</h3>
+            <button class="btn-close-drawer" id="btn-close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                Copy this JSON content to backup your planning changes, or paste a previously saved JSON state to load it into the dashboard.
+            </p>
+            <textarea class="json-textarea" id="json-data-area"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="btn-copy-json">Copy to Clipboard</button>
+            <button class="btn btn-secondary" id="btn-modal-cancel">Cancel</button>
+            <button class="btn btn-primary" id="btn-modal-import">Import JSON</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="wbs_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
