@@ -969,6 +969,56 @@ body {
     filter: brightness(1.05);
 }
 
+/* Wisdom Card & Advisory Disclaimer */
+.wisdom-card {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(109, 40, 217, 0.02) 100%);
+    border: 1px dashed rgba(30, 64, 175, 0.15);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+.wisdom-card:hover {
+    border-color: rgba(30, 64, 175, 0.3);
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.03) 0%, rgba(109, 40, 217, 0.03) 100%);
+}
+.wisdom-icon {
+    color: var(--color-blue);
+    background: rgba(30, 64, 175, 0.06);
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(30, 64, 175, 0.1);
+}
+.wisdom-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.wisdom-text {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-blue);
+    font-style: italic;
+    line-height: 1.4;
+}
+.wisdom-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+.wisdom-disclaimer strong {
+    color: var(--color-blue);
+    font-weight: 600;
+}
+
 /* Print Styles */
 @media print {
     body {
