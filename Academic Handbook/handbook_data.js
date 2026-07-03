@@ -150,6 +150,15 @@ const HANDBOOK_DATA = {
 3. Pass all core modules and University compulsory courses.
 4. Fulfill the industrial training (internship) duration.
 5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits).`
+        },
+        {
+            category: 'Inclusive Learning & Support',
+            question: 'What academic support is available if I have special learning needs or a disability?',
+            tags: ['disability', 'dyslexia', 'adhd', 'inclusive learning', 'extra time', 'accommodation', 'adjustment', 'support'],
+            answer: `The Faculty of Architecture and Built Environment is committed to **Inclusive Teaching and Learning**. We provide accommodations for students with documented learning difficulties (e.g. Dyslexia, ADHD, Autism), physical disabilities, or chronic health conditions:
+1. **Academic Adjustments:** Extra time in exams (typically 25%), separate quiet exam rooms, assistive technologies (screen readers), and lecture slides in advance.
+2. **Alternative Assessment Formats:** Under specific accommodations, students can propose alternative presentation formats for design studio reviews (e.g., recorded walkthroughs instead of public juries).
+3. **Application Process:** Contact the **University Student Support Office (SSO)** or your Academic Advisor. You will need to submit a recognized medical or psychoeducational assessment report to establish an **Academic Accommodation Plan (AAP)**.`
         }
     ],
 
@@ -233,7 +242,8 @@ const HANDBOOK_DATA = {
                 { text: "I failed a course or got a low grade", next: "failed_course" },
                 { text: "My attendance is low and I might get barred", next: "low_attendance" },
                 { text: "I am feeling extremely overwhelmed and want to postpone study", next: "postpone_defer" },
-                { text: "I have questions about Academic Probation and my credit limit", next: "probation_rules" }
+                { text: "I have questions about Academic Probation and my credit limit", next: "probation_rules" },
+                { text: "I need information on inclusive learning or special academic support", next: "inclusive_learning" }
             ]
         },
         failed_course: {
@@ -321,6 +331,25 @@ const HANDBOOK_DATA = {
         },
         probation_consecutive: {
             text: "Official Action: CRITICAL! Staying on probation for two consecutive semesters leads to **Academic Dismissal**. If dismissed, you must submit an official **Appeal Letter** to the Dean of Faculty within 14 days of results release, outlining your extenuating circumstances and commitment to improvement. If approved, you will be given a final semester to pull your CGPA above 2.00.",
+            options: [
+                { text: "Back to Start", next: "start" }
+            ]
+        },
+        inclusive_learning: {
+            text: "Do you have an officially recognized condition (e.g., Dyslexia, ADHD, physical or sensory impairment) and a medical/psychoeducational report?",
+            options: [
+                { text: "Yes, I have an official report or medical certificate", next: "inclusive_has_report" },
+                { text: "No, but I suspect I have a learning difficulty or need alternative study options", next: "inclusive_no_report" }
+            ]
+        },
+        inclusive_has_report: {
+            text: "Official Action: You are eligible to apply for an **Academic Accommodation Plan (AAP)**. \n\n*Action Steps:* \n1. Fill out the **Special Academic Support Request Form** (available at the Student Support Office). \n2. Attach your official assessment report (must be dated within the last 3-5 years). \n3. The Student Support Committee will draft your accommodation letter, which you should share with your course coordinators/lecturers at the start of the semester to secure accommodations like extra exam time or screen readers.",
+            options: [
+                { text: "Back to Start", next: "start" }
+            ]
+        },
+        inclusive_no_report: {
+            text: "Official Action: If you do not have an official report, you should first consult the **University Counseling and Wellbeing Centre**. They can provide initial screenings and refer you to registered educational psychologists. \n\n*Action Steps:* \n1. Speak to your Academic Advisor in confidence; they can help explain your situation to studio coordinators. \n2. Utilize generic university support services, such as peer tutoring, writing assistance clinics, and lecturer consultation hours.",
             options: [
                 { text: "Back to Start", next: "start" }
             ]
