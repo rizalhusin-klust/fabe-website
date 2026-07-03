@@ -347,20 +347,20 @@ const HANDBOOK_DATA = {
             ]
         },
         inclusive_learning: {
-            text: "Do you have an officially recognized condition (e.g., Dyslexia, ADHD, sensory or physical impairment) and wish to request accommodations under the KLUST iTnL Policy?",
+            text: "Do you have a medical or educational assessment report (e.g. for Dyslexia, ADHD, sensory or physical conditions) and wish to request academic accommodations?",
             options: [
                 { text: "Yes, I want to apply for an Individualised Academic Plan (IAP)", next: "inclusive_has_report" },
-                { text: "No, but I suspect I need adjustments or have questions about the UDL policy", next: "inclusive_no_report" }
+                { text: "No, but I suspect I need support or have questions about the policy", next: "inclusive_no_report" }
             ]
         },
         inclusive_has_report: {
-            text: "Official Procedure (SOP 1 & SOP 2): \n\n*Action Steps:* \n1. **SOP 1 (Trigger IAP):** Submit a formal request/appeal to the **Inclusive Education Committee (IEC) Office** requesting the preparation of an **Individualised Academic Plan (IAP)**. You will need to attach recognized medical or psychoeducational assessment reports. \n2. Once approved, the IEC Office drafts your confidential IAP specifying mandatory adjustments and distributes it to your lecturers. These mandates are **binding** and cannot be overridden by lecturers. \n3. **SOP 2 (Activate Assessment Menu):** If your IAP permits alternative assessments, submit an **Assessment Menu Declaration Form** to your lecturer at least **14 days (two weeks)** before the scheduled assessment to choose your format (e.g., pre-recorded media, private 1-on-1, or written submission). The 14-day notice is waived for sudden chronic condition flare-ups.",
+            text: "Follow these **3 Simple Steps** to register your accommodations: \n\n*Action Steps:* \n1. **Apply for IAP (SOP 1):** Submit a formal request to the **Inclusive Education Committee (IEC) Office** for an **Individualised Academic Plan (IAP)**. Attach your professional assessment report. \n2. **Confidential IAP Issued:** The IEC will issue a confidential IAP listing your mandatory study adjustments. This document is **binding**—your lecturers must comply with it. \n3. **Submit Assessment Choice (SOP 2):** Submit an **Assessment Menu Declaration Form** to your lecturer **14 days (2 weeks)** before your exams/reviews to choose your format (e.g. pre-recorded presentations or 1-on-1 reviews). *Note: The 14-day notice is waived for sudden medical flare-ups.*",
             options: [
                 { text: "Back to Start", next: "start" }
             ]
         },
         inclusive_no_report: {
-            text: "Official Procedure & UDL Options: \n\n*Action Steps:* \n1. **Get Evaluated:** Contact the **University Counseling and Wellbeing Centre** for initial screenings and a referral to educational psychologists. \n2. **Informal UDL Adjustments:** Talk to your Academic Advisor or Course Coordinators. Under UDL, departments are encouraged to offer flexible options (like slide handouts in advance or optional formats) to all learners without requiring a formal IAP. \n3. **Request Temporary Support:** Meet with the **IEC Office** to discuss temporary adjustments while your formal medical assessments are being processed.",
+            text: "No official report yet? Follow these **3 Simple Steps** to seek support: \n\n*Action Steps:* \n1. **Get Free Screening:** Contact the **University Counseling and Wellbeing Centre** for a free initial screening and a referral to registered psychologists. \n2. **Temporary Adjustments:** Meet with the **IEC Office** to request temporary support while you wait for your official medical assessment to be finalized. \n3. **Ask for UDL Flexibility:** Talk to your Academic Advisor or Course Coordinator. Under the **Universal Design for Learning (UDL)** policy, departments are encouraged to offer flexible learning options (like slides in advance or formatting choices) to all students.",
             options: [
                 { text: "Back to Start", next: "start" }
             ]
