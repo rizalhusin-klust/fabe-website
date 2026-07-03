@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Safe storage wrapper to prevent crashes in sandboxed iframes (e.g. Google Sites)
+    const SafeStorage = {
+        getItem(key) {
+            try {
+                return localStorage.getItem(key);
+            } catch (e) {
+                console.warn('Storage access denied, using memory fallback:', e);
+                return this._memoryStore[key] || null;
+            }
+        },
+        setItem(key, value) {
+            try {
+                localStorage.setItem(key, value);
+            } catch (e) {
+                console.warn('Storage access denied, using memory fallback:', e);
+                this._memoryStore[key] = value;
+            }
+        },
+        _memoryStore: {}
+    };
+
     // -------------------------------------------------------------------------
     // State Management
     // -------------------------------------------------------------------------
@@ -27,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTreeNode = 'start';
 
     // Load data from LocalStorage if it exists
-    if (localStorage.getItem('fabe_handbook_planner_state')) {
+    if (SafeStorage.getItem('fabe_handbook_planner_state')) {
         try {
-            plannerState = JSON.parse(localStorage.getItem('fabe_handbook_planner_state'));
+            plannerState = JSON.parse(SafeStorage.getItem('fabe_handbook_planner_state'));
         } catch (e) {
             console.error('Failed to parse planner state from storage', e);
         }
@@ -96,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dashViewBtn) {
             dashViewBtn.addEventListener('click', () => {
                 document.querySelector('button[data-tab=diagnose]').click();
-                const saved = localStorage.getItem('fabe_survey_result');
+                const saved = SafeStorage.getItem('fabe_survey_result');
                 if (saved) {
                     showResultsScreen(JSON.parse(saved));
                 }
@@ -155,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Diagnostic Risk Card
         const dashRiskVal = document.getElementById('dash-risk-val');
         const dashRiskDesc = document.getElementById('dash-risk-desc');
-        const savedDiagnosis = localStorage.getItem('fabe_survey_result');
+        const savedDiagnosis = SafeStorage.getItem('fabe_survey_result');
 
         const dashStartBtn = document.getElementById('dash-start-assessment-btn');
         const dashViewBtn = document.getElementById('dash-view-results-btn');
@@ -437,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function savePlannerState() {
-        localStorage.setItem('fabe_handbook_planner_state', JSON.stringify(plannerState));
+        SafeStorage.setItem('fabe_handbook_planner_state', JSON.stringify(plannerState));
         updateDashboardMetrics();
     }
 
@@ -716,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         restartBtn.addEventListener('click', startSurvey);
 
         // Check if there is an existing result, hide/show accordingly
-        const savedDiagnosis = localStorage.getItem('fabe_survey_result');
+        const savedDiagnosis = SafeStorage.getItem('fabe_survey_result');
         if (savedDiagnosis) {
             showResultsScreen(JSON.parse(savedDiagnosis));
         } else {
@@ -911,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
             recommendations: recommendations
         };
 
-        localStorage.setItem('fabe_survey_result', JSON.stringify(result));
+        SafeStorage.setItem('fabe_survey_result', JSON.stringify(result));
         showResultsScreen(result);
         updateDashboardMetrics();
     }
