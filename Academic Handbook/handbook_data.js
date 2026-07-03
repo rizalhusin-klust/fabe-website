@@ -153,12 +153,13 @@ const HANDBOOK_DATA = {
         },
         {
             category: 'Inclusive Learning & Support',
-            question: 'What academic support is available if I have special learning needs or a disability?',
-            tags: ['disability', 'dyslexia', 'adhd', 'inclusive learning', 'extra time', 'accommodation', 'adjustment', 'support'],
-            answer: `The Faculty of Architecture and Built Environment is committed to **Inclusive Teaching and Learning**. We provide accommodations for students with documented learning difficulties (e.g. Dyslexia, ADHD, Autism), physical disabilities, or chronic health conditions:
-1. **Academic Adjustments:** Extra time in exams (typically 25%), separate quiet exam rooms, assistive technologies (screen readers), and lecture slides in advance.
-2. **Alternative Assessment Formats:** Under specific accommodations, students can propose alternative presentation formats for design studio reviews (e.g., recorded walkthroughs instead of public juries).
-3. **Application Process:** Contact the **University Student Support Office (SSO)** or your Academic Advisor. You will need to submit a recognized medical or psychoeducational assessment report to establish an **Academic Accommodation Plan (AAP)**.`
+            question: 'What is the KLUST Inclusive Teaching, Learning, and Assessment (iTnL) Policy?',
+            tags: ['disability', 'dyslexia', 'adhd', 'inclusive learning', 'extra time', 'accommodation', 'adjustment', 'support', 'udl', 'iap', 'assessment menu'],
+            answer: `KLUST operates under the **Inclusive Teaching, Learning, and Assessment (iTnL) Policy** based on the **Universal Design for Learning (UDL)** framework. Key provisions include:
+1. **Individualised Academic Plan (IAP):** A confidential, binding document drafted by the **Inclusive Education Committee (IEC) Office** specifying mandatory adjustments. These mandates are legally binding and cannot be overridden by individual lecturers.
+2. **Assessment Menu (SOP 2):** Modules are encouraged to offer a choice of formats: live presentations, pre-recorded media, private 1-on-1 discussions, or written submissions.
+3. **Assessment Objectivity:** Grades must evaluate core academic competencies. Subjective markers (e.g. eye contact, vocal affect, or physical posture) shall NOT influence grading.
+4. **Trigger Mechanism (SOP 1):** To request an IAP, submit a formal request/appeal to the **IEC Office** with relevant professional medical or educational assessments.`
         }
     ],
 
@@ -336,20 +337,20 @@ const HANDBOOK_DATA = {
             ]
         },
         inclusive_learning: {
-            text: "Do you have an officially recognized condition (e.g., Dyslexia, ADHD, physical or sensory impairment) and a medical/psychoeducational report?",
+            text: "Do you have an officially recognized condition (e.g., Dyslexia, ADHD, sensory or physical impairment) and wish to request accommodations under the KLUST iTnL Policy?",
             options: [
-                { text: "Yes, I have an official report or medical certificate", next: "inclusive_has_report" },
-                { text: "No, but I suspect I have a learning difficulty or need alternative study options", next: "inclusive_no_report" }
+                { text: "Yes, I want to apply for an Individualised Academic Plan (IAP)", next: "inclusive_has_report" },
+                { text: "No, but I suspect I need adjustments or have questions about the UDL policy", next: "inclusive_no_report" }
             ]
         },
         inclusive_has_report: {
-            text: "Official Action: You are eligible to apply for an **Academic Accommodation Plan (AAP)**. \n\n*Action Steps:* \n1. Fill out the **Special Academic Support Request Form** (available at the Student Support Office). \n2. Attach your official assessment report (must be dated within the last 3-5 years). \n3. The Student Support Committee will draft your accommodation letter, which you should share with your course coordinators/lecturers at the start of the semester to secure accommodations like extra exam time or screen readers.",
+            text: "Official Procedure (SOP 1 & SOP 2): \n\n*Action Steps:* \n1. **SOP 1 (Trigger IAP):** Submit a formal request/appeal to the **Inclusive Education Committee (IEC) Office** requesting the preparation of an **Individualised Academic Plan (IAP)**. You will need to attach recognized medical or psychoeducational assessment reports. \n2. Once approved, the IEC Office drafts your confidential IAP specifying mandatory adjustments and distributes it to your lecturers. These mandates are **binding** and cannot be overridden by lecturers. \n3. **SOP 2 (Activate Assessment Menu):** If your IAP permits alternative assessments, submit an **Assessment Menu Declaration Form** to your lecturer at least **14 days (two weeks)** before the scheduled assessment to choose your format (e.g., pre-recorded media, private 1-on-1, or written submission). The 14-day notice is waived for sudden chronic condition flare-ups.",
             options: [
                 { text: "Back to Start", next: "start" }
             ]
         },
         inclusive_no_report: {
-            text: "Official Action: If you do not have an official report, you should first consult the **University Counseling and Wellbeing Centre**. They can provide initial screenings and refer you to registered educational psychologists. \n\n*Action Steps:* \n1. Speak to your Academic Advisor in confidence; they can help explain your situation to studio coordinators. \n2. Utilize generic university support services, such as peer tutoring, writing assistance clinics, and lecturer consultation hours.",
+            text: "Official Procedure & UDL Options: \n\n*Action Steps:* \n1. **Get Evaluated:** Contact the **University Counseling and Wellbeing Centre** for initial screenings and a referral to educational psychologists. \n2. **Informal UDL Adjustments:** Talk to your Academic Advisor or Course Coordinators. Under UDL, departments are encouraged to offer flexible options (like slide handouts in advance or optional formats) to all learners without requiring a formal IAP. \n3. **Request Temporary Support:** Meet with the **IEC Office** to discuss temporary adjustments while your formal medical assessments are being processed.",
             options: [
                 { text: "Back to Start", next: "start" }
             ]
