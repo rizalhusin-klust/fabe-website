@@ -1019,6 +1019,28 @@ body {
     font-weight: 600;
 }
 
+.curr-tab-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.curr-tab-btn.active {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: white;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+}
+.curr-tab-btn:hover:not(.active) {
+    border-color: var(--text-muted);
+    background: rgba(30, 64, 175, 0.04);
+}
+
 /* Print Styles */
 @media print {
     body {

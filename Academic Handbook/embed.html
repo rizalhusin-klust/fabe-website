@@ -1027,6 +1027,28 @@ body {
     font-weight: 600;
 }
 
+.curr-tab-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.curr-tab-btn.active {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: white;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+}
+.curr-tab-btn:hover:not(.active) {
+    border-color: var(--text-muted);
+    background: rgba(30, 64, 175, 0.04);
+}
+
 /* Print Styles */
 @media print {
     body {
@@ -1308,86 +1330,72 @@ body {
                     <p class="panel-subtitle">Understand the credit requirements, course classifications, and MPU categories at FABE.</p>
                 </header>
 
-                <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 2rem;">
                     <!-- Overview section -->
                     <div style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(109, 40, 217, 0.02) 100%); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
-                        <h3 style="font-family: var(--font-heading); color: var(--color-blue); margin-bottom: 0.75rem; font-size: 1.2rem;">Overview of FABE Syllabus</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-                            The curriculum structure at the Faculty of Architecture & Built Environment (FABE) is designed to integrate robust professional training with general studies. To qualify for graduation, students must satisfy credit allocations across four main components: <strong>Core Courses</strong>, <strong>Elective Courses</strong>, <strong>University Courses</strong>, and <strong>Mata Pelajaran Umum (MPU) General Studies</strong>.
-                        </p>
-                    </div>
-
-                    <!-- Grid of components -->
-                    <div class="curriculum-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-                        <!-- Component 1: Core -->
-                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="badge badge-success" style="font-size: 0.75rem; font-weight: 600;">Core (75% - 80%)</span>
-                            </div>
-                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Professional Core Courses</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                                Mandatory technical and professional subjects core to your program. In Architecture, this includes Design Studios, History, and Materials. In Quantity Surveying, it includes Measurement, Cost Planning, and Contract Administration.
-                            </p>
-                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
-                                📁 Diploma: 77 Credits | Degree: 99 Credits
-                            </span>
-                        </div>
-
-                        <!-- Component 2: Electives -->
-                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="badge badge-warning" style="font-size: 0.75rem; font-weight: 600;">Electives (5% - 8%)</span>
-                            </div>
-                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Program & Open Electives</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                                Specialized optional subjects that allow you to customize your learning pathway or acquire secondary competencies (such as advanced CAD software, construction law, or project management electives).
-                            </p>
-                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
-                                ⚙️ Minimum Requirement: 6 Credits
-                            </span>
-                        </div>
-
-                        <!-- Component 3: University -->
-                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span class="badge" style="font-size: 0.75rem; font-weight: 600; background: rgba(109, 40, 217, 0.08); color: var(--color-purple);">University (3% - 5%)</span>
-                            </div>
-                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Institutional Requirements</h4>
-                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                                Common language and skill courses required by KLUST for all students to foster critical thinking, language proficiency, and communication skills (e.g. English Proficiency and Technical Communication).
-                            </p>
-                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
-                                🎓 Diploma: 6 Credits | Degree: 3 Credits
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- MPU Categories details -->
-                    <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                            <span class="badge badge-danger" style="font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.5rem;">MPU General Studies (Malaysian MOHE Requirements)</span>
-                        </div>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
-                            The Mata Pelajaran Umum (MPU) courses are national general education requirements mandated by the Malaysian Ministry of Higher Education and MQA. They are structured into four distinct groups:
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">Curriculum Structure</h2>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                            Each academic program is composed of three main categories of subjects. Students must fulfill the credit requirements for all categories to be eligible for graduation.
                         </p>
                         
-                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
-                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-blue); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
-                                <strong style="font-size: 0.85rem; color: var(--color-blue);">Group U1: Appreciation of Philosophy & Governance (3 - 6 Credits)</strong>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Mandatory appreciation subjects covering governance, national identity, and ethics. (e.g., Penghayatan Etika dan Peradaban, TITAS, and Pengajian Malaysia).</p>
+                        <div class="curriculum-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                            <!-- Category 1 -->
+                            <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-blue); font-weight: 700;">1. Core Courses</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                                    These are compulsory major subjects that form the fundamental knowledge of your chosen field of study. The detailed list of core courses for each semester can be found in the <span style="font-weight: 600; color: var(--color-blue);">GPA & Study Planner</span> tab.
+                                </p>
                             </div>
-                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-emerald); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
-                                <strong style="font-size: 0.85rem; color: var(--color-emerald);">Group U2: Core Soft Skills (2 - 3 Credits)</strong>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Focuses on personal effectiveness, professional communications, and entrepreneurship. (e.g., Public Speaking, Writing Skills, and Entrepreneurship).</p>
+                            <!-- Category 2 -->
+                            <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-emerald); font-weight: 700;">2. MPU / University Subjects</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                                    These are compulsory subjects mandated by the Ministry of Higher Education Malaysia. All students must pass these subjects. The specific requirements and subject options for Diploma and Bachelor programs are detailed below on this page.
+                                </p>
                             </div>
-                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-amber); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
-                                <strong style="font-size: 0.85rem; color: var(--color-amber);">Group U3: Humanities & Cultural Appreciation (2 - 3 Credits)</strong>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Encourages social responsibility, general economics, and cultural awareness. (e.g., Malaysian Economy and Integrity & Anti-Corruption).</p>
+                            <!-- Category 3 -->
+                            <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-amber); font-weight: 700;">3. Elective Courses</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                                    These courses allow students to explore specific areas of interest within their broader field. Students can choose from a predefined list of subjects to meet the elective credit requirements.
+                                </p>
                             </div>
-                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-purple); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
-                                <strong style="font-size: 0.85rem; color: var(--color-purple);">Group U4: Practical Co-Curriculum (2 Credits)</strong>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Experiential community service, volunteerism, sports, or creative arts. (e.g., Co-Curriculum modules).</p>
-                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graduation Progress Section -->
+                    <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">Tracking Graduation Progress</h2>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                            To graduate, a student must successfully complete all required credits from the three subject categories. Select a program below to inspect its credit distribution.
+                        </p>
+
+                        <!-- Program Selectors -->
+                        <div class="program-selector-buttons" id="curr-program-selectors" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                            <!-- Rendered dynamically -->
+                        </div>
+
+                        <!-- Active Program Credit Card -->
+                        <div id="curr-credit-card-container">
+                            <!-- Rendered dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- MPU Details Section -->
+                    <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">MPU / University Subjects Details</h2>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                            The tables below show the required subjects and selection rules for each program level.
+                        </p>
+
+                        <!-- Student Category Selectors -->
+                        <div class="mpu-selector-buttons" id="curr-mpu-selectors" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                            <!-- Rendered dynamically -->
+                        </div>
+
+                        <!-- Active MPU Rules and Tables -->
+                        <div id="curr-mpu-tables-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Rendered dynamically -->
                         </div>
                     </div>
 
@@ -2049,6 +2057,146 @@ const HANDBOOK_DATA = {
                 { text: "Back to Start", next: "start" }
             ]
         }
+    },
+    curriculumCredits: [
+        {
+            program: 'Bachelor of Landscape Architecture',
+            total: 125,
+            core: 95,
+            mpu: 17,
+            elective: 13,
+            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+        },
+        {
+            program: 'Bachelor of Quantity Surveying (Hons)',
+            total: 123,
+            core: 97,
+            mpu: 14,
+            elective: 12,
+            detail: 'Compulsory subjects mandated by the Ministry of Higher Education.'
+        },
+        {
+            program: 'Bachelor of Science (Architectural Studies)',
+            total: 122,
+            core: 99,
+            mpu: 17,
+            elective: 6,
+            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+        },
+        {
+            program: 'Diploma in Architecture',
+            total: 94,
+            core: 77,
+            mpu: 17,
+            elective: 0,
+            detail: 'Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses.'
+        },
+        {
+            program: 'Master of Architecture',
+            total: 60,
+            core: 57,
+            mpu: 0,
+            elective: 3,
+            detail: 'No MPU or compulsory University subjects are required for this postgraduate program.'
+        }
+    ],
+    mpuRequirements: {
+        bachelor_int: {
+            title: 'Bachelor (International)',
+            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
+            categories: {
+                U1: [
+                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3 },
+                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3 },
+                    { code: 'MPU3143', name: 'Bahasa Melayu Komunikasi 2', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
+                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
+                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
+                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
+                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        bachelor_loc: {
+            title: 'Bachelor (Local)',
+            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
+            categories: {
+                U1: [
+                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory' },
+                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU3213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
+                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
+                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
+                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
+                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU3313', name: 'Pengajian Islam 2', credits: 3 },
+                    { code: 'MPU3323', name: 'Pendidikan Moral 2', credits: 3 },
+                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
+                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        diploma_int: {
+            title: 'Diploma (International)',
+            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
+            categories: {
+                U1: [
+                    { code: 'MPU2133', name: 'Bahasa Melayu Komunikasi 1', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
+                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        diploma_loc: {
+            title: 'Diploma (Local)',
+            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
+            categories: {
+                U1: [
+                    { code: 'MPU2183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory to choose only 1' },
+                    { code: 'MPU2193', name: 'Falsafah dan Isu Semasa', credits: 3 }
+                ],
+                U2: [
+                    { code: 'MPU2213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
+                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
+                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU2313', name: 'Pengajian Islam 1', credits: 3 },
+                    { code: 'MPU2323', name: 'Pendidikan Moral 1', credits: 3 },
+                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        }
     }
 };
 
@@ -2123,6 +2271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGPAPlanner();
     initDiagnosticSurvey();
     initDecisionTree();
+    initCurriculumComponents();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -3124,6 +3273,222 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         return html;
+    }
+
+    // -------------------------------------------------------------------------
+    // Curriculum Components Controller
+    // -------------------------------------------------------------------------
+    function initCurriculumComponents() {
+        const progContainer = document.getElementById('curr-program-selectors');
+        const creditContainer = document.getElementById('curr-credit-card-container');
+        const mpuContainer = document.getElementById('curr-mpu-selectors');
+        const mpuTablesContainer = document.getElementById('curr-mpu-tables-container');
+
+        if (!progContainer || !creditContainer || !mpuContainer || !mpuTablesContainer) return;
+
+        // 1. Render Graduation Credits selectors & details
+        const creditsData = HANDBOOK_DATA.curriculumCredits || [];
+        progContainer.innerHTML = '';
+        
+        creditsData.forEach((prog, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'curr-tab-btn';
+            if (index === 2) btn.classList.add('active'); // B.Sc. Arch active by default
+            btn.textContent = prog.program.replace('Bachelor of ', 'B. ').replace('Diploma in ', 'Dip. ').replace('Master of ', 'M. ');
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#curr-program-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProgramCredits(prog);
+            });
+            progContainer.appendChild(btn);
+        });
+
+        // Initial render for graduation credits
+        if (creditsData.length > 2) {
+            renderProgramCredits(creditsData[2]);
+        } else if (creditsData.length > 0) {
+            renderProgramCredits(creditsData[0]);
+        }
+
+        function renderProgramCredits(prog) {
+            const corePct = Math.round((prog.core / prog.total) * 100);
+            const mpuPct = Math.round((prog.mpu / prog.total) * 100);
+            const elecPct = Math.round((prog.elective / prog.total) * 100);
+
+            let electiveRow = '';
+            if (prog.elective > 0) {
+                electiveRow = `
+                    <tr class="hover-row">
+                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.elective}</strong></td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Courses chosen from a predefined list to explore specialized areas. Refer to the Programs page for available electives.</td>
+                    </tr>
+                `;
+            } else {
+                electiveRow = `
+                    <tr class="hover-row">
+                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="text-align: center; padding: 0.75rem 1rem;"><strong>0</strong></td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic; padding: 0.75rem 1rem;">No elective courses are required for this program.</td>
+                    </tr>
+                `;
+            }
+
+            creditContainer.innerHTML = `
+                <div class="stat-card" style="border-color: rgba(30, 64, 175, 0.15); background: var(--bg-primary); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; border-radius: 10px;">
+                    <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin-bottom: 0.35rem; margin-top: 0;">${prog.program}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">${prog.detail}</p>
+                    </div>
+
+                    <!-- Progress bars component -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Core Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">Core Courses</span>
+                                <span style="font-weight: 600; color: var(--color-blue);">${prog.core} / ${prog.total} Credits (${corePct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${corePct}%; height: 100%; background: var(--color-blue); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- MPU Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">MPU / University Subjects</span>
+                                <span style="font-weight: 600; color: var(--color-emerald);">${prog.mpu} / ${prog.total} Credits (${mpuPct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${mpuPct}%; height: 100%; background: var(--color-emerald); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Elective Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">Elective Courses</span>
+                                <span style="font-weight: 600; color: var(--color-amber);">${prog.elective} / ${prog.total} Credits (${elecPct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${elecPct}%; height: 100%; background: var(--color-amber); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Table -->
+                    <div style="overflow-x: auto;">
+                        <table class="checklist-table" style="width: 100%; border-collapse: collapse; min-width: 500px; margin: 0;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border-color); background: rgba(0,0,0,0.02);">
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 30%; font-weight: 600; color: var(--text-primary);">Subject Category</th>
+                                    <th style="text-align: center; padding: 0.75rem 1rem; width: 20%; font-weight: 600; color: var(--text-primary);">Required Credits</th>
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 50%; font-weight: 600; color: var(--text-primary);">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover-row">
+                                    <td style="padding: 0.75rem 1rem;"><strong>Core Courses</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.core}</strong></td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory major subjects that provide foundational knowledge. Refer to the GPA & Study Planner tab for a semester-by-semester breakdown.</td>
+                                </tr>
+                                <tr class="hover-row">
+                                    <td style="padding: 0.75rem 1rem;"><strong>MPU / University Subjects</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.mpu}</strong></td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory subjects mandated by the Ministry of Higher Education. See details below.</td>
+                                </tr>
+                                ${electiveRow}
+                                <tr style="background: rgba(30, 64, 175, 0.04); border-top: 2px solid var(--border-color);">
+                                    <td style="padding: 0.75rem 1rem;"><strong style="color: var(--color-blue);">Total for Graduation</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong style="color: var(--color-blue); font-size: 1.1rem;">${prog.total}</strong></td>
+                                    <td style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); padding: 0.75rem 1rem;">A student's progress is checked against this total.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. Render MPU selectors & details
+        const mpuData = HANDBOOK_DATA.mpuRequirements || {};
+        mpuContainer.innerHTML = '';
+
+        Object.entries(mpuData).forEach(([key, value], index) => {
+            const btn = document.createElement('button');
+            btn.className = 'curr-tab-btn';
+            if (key === 'bachelor_loc') btn.classList.add('active'); // Bachelor Local active by default
+            btn.textContent = value.title;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#curr-mpu-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMpuRequirements(value);
+            });
+            mpuContainer.appendChild(btn);
+        });
+
+        // Initial render for MPU requirements
+        if (mpuData['bachelor_loc']) {
+            renderMpuRequirements(mpuData['bachelor_loc']);
+        }
+
+        function renderMpuRequirements(req) {
+            let categoriesHtml = '';
+
+            for (const [catName, subjects] of Object.entries(req.categories)) {
+                let rows = '';
+                subjects.forEach(sub => {
+                    let nameCell = sub.name;
+                    if (sub.note) {
+                        nameCell += ` <span style="font-size: 0.7rem; font-weight: 600; color: #E4002B; background: rgba(228, 0, 43, 0.06); padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: 0.25rem; display: inline-block;">${sub.note}</span>`;
+                    }
+                    rows += `
+                        <tr class="hover-row" style="border-bottom: 1px solid var(--border-color);">
+                            <td style="font-family: monospace; font-weight: 600; color: var(--text-primary); font-size: 0.8rem; padding: 0.5rem 0.75rem; width: 25%;">${sub.code}</td>
+                            <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.5rem 0.75rem; width: 65%;">${nameCell}</td>
+                            <td style="text-align: center; font-weight: 600; color: var(--text-primary); font-size: 0.85rem; padding: 0.5rem 0.75rem; width: 10%;">${sub.credits}</td>
+                        </tr>
+                    `;
+                });
+
+                categoriesHtml += `
+                    <div class="stat-card" style="background: var(--bg-primary); border-color: var(--border-color); padding: 1.25rem; border-radius: 8px;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-blue); font-weight: 700; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; margin-top: 0;">
+                            Group ${catName}
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 0.15rem 0.4rem; border-radius: 4px;">${subjects.length} Subjects</span>
+                        </h4>
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; margin: 0;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color); font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Code</th>
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Subject Name</th>
+                                        <th style="text-align: center; padding-bottom: 0.5rem; padding-right: 0.75rem;">CR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rows}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            mpuTablesContainer.innerHTML = `
+                <div style="background: rgba(228, 0, 43, 0.03); border-left: 4px solid #E4002B; border-radius: 4px 8px 8px 4px; padding: 1rem; margin-bottom: 0.5rem;">
+                    <strong style="color: #E4002B; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 0.25rem; text-transform: uppercase;">Selection Rules:</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                        ${req.rule}
+                    </p>
+                </div>
+
+                <div class="mpu-categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                    ${categoriesHtml}
+                </div>
+            `;
+        }
     }
 });
 

@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGPAPlanner();
     initDiagnosticSurvey();
     initDecisionTree();
+    initCurriculumComponents();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -1064,5 +1065,221 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         return html;
+    }
+
+    // -------------------------------------------------------------------------
+    // Curriculum Components Controller
+    // -------------------------------------------------------------------------
+    function initCurriculumComponents() {
+        const progContainer = document.getElementById('curr-program-selectors');
+        const creditContainer = document.getElementById('curr-credit-card-container');
+        const mpuContainer = document.getElementById('curr-mpu-selectors');
+        const mpuTablesContainer = document.getElementById('curr-mpu-tables-container');
+
+        if (!progContainer || !creditContainer || !mpuContainer || !mpuTablesContainer) return;
+
+        // 1. Render Graduation Credits selectors & details
+        const creditsData = HANDBOOK_DATA.curriculumCredits || [];
+        progContainer.innerHTML = '';
+        
+        creditsData.forEach((prog, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'curr-tab-btn';
+            if (index === 2) btn.classList.add('active'); // B.Sc. Arch active by default
+            btn.textContent = prog.program.replace('Bachelor of ', 'B. ').replace('Diploma in ', 'Dip. ').replace('Master of ', 'M. ');
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#curr-program-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProgramCredits(prog);
+            });
+            progContainer.appendChild(btn);
+        });
+
+        // Initial render for graduation credits
+        if (creditsData.length > 2) {
+            renderProgramCredits(creditsData[2]);
+        } else if (creditsData.length > 0) {
+            renderProgramCredits(creditsData[0]);
+        }
+
+        function renderProgramCredits(prog) {
+            const corePct = Math.round((prog.core / prog.total) * 100);
+            const mpuPct = Math.round((prog.mpu / prog.total) * 100);
+            const elecPct = Math.round((prog.elective / prog.total) * 100);
+
+            let electiveRow = '';
+            if (prog.elective > 0) {
+                electiveRow = `
+                    <tr class="hover-row">
+                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.elective}</strong></td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Courses chosen from a predefined list to explore specialized areas. Refer to the Programs page for available electives.</td>
+                    </tr>
+                `;
+            } else {
+                electiveRow = `
+                    <tr class="hover-row">
+                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="text-align: center; padding: 0.75rem 1rem;"><strong>0</strong></td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic; padding: 0.75rem 1rem;">No elective courses are required for this program.</td>
+                    </tr>
+                `;
+            }
+
+            creditContainer.innerHTML = `
+                <div class="stat-card" style="border-color: rgba(30, 64, 175, 0.15); background: var(--bg-primary); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; border-radius: 10px;">
+                    <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin-bottom: 0.35rem; margin-top: 0;">${prog.program}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">${prog.detail}</p>
+                    </div>
+
+                    <!-- Progress bars component -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Core Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">Core Courses</span>
+                                <span style="font-weight: 600; color: var(--color-blue);">${prog.core} / ${prog.total} Credits (${corePct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${corePct}%; height: 100%; background: var(--color-blue); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- MPU Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">MPU / University Subjects</span>
+                                <span style="font-weight: 600; color: var(--color-emerald);">${prog.mpu} / ${prog.total} Credits (${mpuPct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${mpuPct}%; height: 100%; background: var(--color-emerald); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Elective Bar -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
+                                <span style="font-weight: 600; color: var(--text-primary);">Elective Courses</span>
+                                <span style="font-weight: 600; color: var(--color-amber);">${prog.elective} / ${prog.total} Credits (${elecPct}%)</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
+                                <div style="width: ${elecPct}%; height: 100%; background: var(--color-amber); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Table -->
+                    <div style="overflow-x: auto;">
+                        <table class="checklist-table" style="width: 100%; border-collapse: collapse; min-width: 500px; margin: 0;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border-color); background: rgba(0,0,0,0.02);">
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 30%; font-weight: 600; color: var(--text-primary);">Subject Category</th>
+                                    <th style="text-align: center; padding: 0.75rem 1rem; width: 20%; font-weight: 600; color: var(--text-primary);">Required Credits</th>
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 50%; font-weight: 600; color: var(--text-primary);">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover-row">
+                                    <td style="padding: 0.75rem 1rem;"><strong>Core Courses</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.core}</strong></td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory major subjects that provide foundational knowledge. Refer to the GPA & Study Planner tab for a semester-by-semester breakdown.</td>
+                                </tr>
+                                <tr class="hover-row">
+                                    <td style="padding: 0.75rem 1rem;"><strong>MPU / University Subjects</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.mpu}</strong></td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory subjects mandated by the Ministry of Higher Education. See details below.</td>
+                                </tr>
+                                ${electiveRow}
+                                <tr style="background: rgba(30, 64, 175, 0.04); border-top: 2px solid var(--border-color);">
+                                    <td style="padding: 0.75rem 1rem;"><strong style="color: var(--color-blue);">Total for Graduation</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem;"><strong style="color: var(--color-blue); font-size: 1.1rem;">${prog.total}</strong></td>
+                                    <td style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); padding: 0.75rem 1rem;">A student's progress is checked against this total.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. Render MPU selectors & details
+        const mpuData = HANDBOOK_DATA.mpuRequirements || {};
+        mpuContainer.innerHTML = '';
+
+        Object.entries(mpuData).forEach(([key, value], index) => {
+            const btn = document.createElement('button');
+            btn.className = 'curr-tab-btn';
+            if (key === 'bachelor_loc') btn.classList.add('active'); // Bachelor Local active by default
+            btn.textContent = value.title;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#curr-mpu-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMpuRequirements(value);
+            });
+            mpuContainer.appendChild(btn);
+        });
+
+        // Initial render for MPU requirements
+        if (mpuData['bachelor_loc']) {
+            renderMpuRequirements(mpuData['bachelor_loc']);
+        }
+
+        function renderMpuRequirements(req) {
+            let categoriesHtml = '';
+
+            for (const [catName, subjects] of Object.entries(req.categories)) {
+                let rows = '';
+                subjects.forEach(sub => {
+                    let nameCell = sub.name;
+                    if (sub.note) {
+                        nameCell += ` <span style="font-size: 0.7rem; font-weight: 600; color: #E4002B; background: rgba(228, 0, 43, 0.06); padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: 0.25rem; display: inline-block;">${sub.note}</span>`;
+                    }
+                    rows += `
+                        <tr class="hover-row" style="border-bottom: 1px solid var(--border-color);">
+                            <td style="font-family: monospace; font-weight: 600; color: var(--text-primary); font-size: 0.8rem; padding: 0.5rem 0.75rem; width: 25%;">${sub.code}</td>
+                            <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.5rem 0.75rem; width: 65%;">${nameCell}</td>
+                            <td style="text-align: center; font-weight: 600; color: var(--text-primary); font-size: 0.85rem; padding: 0.5rem 0.75rem; width: 10%;">${sub.credits}</td>
+                        </tr>
+                    `;
+                });
+
+                categoriesHtml += `
+                    <div class="stat-card" style="background: var(--bg-primary); border-color: var(--border-color); padding: 1.25rem; border-radius: 8px;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-blue); font-weight: 700; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; margin-top: 0;">
+                            Group ${catName}
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 0.15rem 0.4rem; border-radius: 4px;">${subjects.length} Subjects</span>
+                        </h4>
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; margin: 0;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color); font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Code</th>
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Subject Name</th>
+                                        <th style="text-align: center; padding-bottom: 0.5rem; padding-right: 0.75rem;">CR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rows}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            mpuTablesContainer.innerHTML = `
+                <div style="background: rgba(228, 0, 43, 0.03); border-left: 4px solid #E4002B; border-radius: 4px 8px 8px 4px; padding: 1rem; margin-bottom: 0.5rem;">
+                    <strong style="color: #E4002B; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 0.25rem; text-transform: uppercase;">Selection Rules:</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                        ${req.rule}
+                    </p>
+                </div>
+
+                <div class="mpu-categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                    ${categoriesHtml}
+                </div>
+            `;
+        }
     }
 });

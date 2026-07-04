@@ -478,6 +478,146 @@ const HANDBOOK_DATA = {
                 { text: "Back to Start", next: "start" }
             ]
         }
+    },
+    curriculumCredits: [
+        {
+            program: 'Bachelor of Landscape Architecture',
+            total: 125,
+            core: 95,
+            mpu: 17,
+            elective: 13,
+            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+        },
+        {
+            program: 'Bachelor of Quantity Surveying (Hons)',
+            total: 123,
+            core: 97,
+            mpu: 14,
+            elective: 12,
+            detail: 'Compulsory subjects mandated by the Ministry of Higher Education.'
+        },
+        {
+            program: 'Bachelor of Science (Architectural Studies)',
+            total: 122,
+            core: 99,
+            mpu: 17,
+            elective: 6,
+            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+        },
+        {
+            program: 'Diploma in Architecture',
+            total: 94,
+            core: 77,
+            mpu: 17,
+            elective: 0,
+            detail: 'Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses.'
+        },
+        {
+            program: 'Master of Architecture',
+            total: 60,
+            core: 57,
+            mpu: 0,
+            elective: 3,
+            detail: 'No MPU or compulsory University subjects are required for this postgraduate program.'
+        }
+    ],
+    mpuRequirements: {
+        bachelor_int: {
+            title: 'Bachelor (International)',
+            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
+            categories: {
+                U1: [
+                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3 },
+                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3 },
+                    { code: 'MPU3143', name: 'Bahasa Melayu Komunikasi 2', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
+                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
+                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
+                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
+                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        bachelor_loc: {
+            title: 'Bachelor (Local)',
+            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
+            categories: {
+                U1: [
+                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory' },
+                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU3213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
+                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
+                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
+                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
+                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU3313', name: 'Pengajian Islam 2', credits: 3 },
+                    { code: 'MPU3323', name: 'Pendidikan Moral 2', credits: 3 },
+                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
+                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        diploma_int: {
+            title: 'Diploma (International)',
+            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
+            categories: {
+                U1: [
+                    { code: 'MPU2133', name: 'Bahasa Melayu Komunikasi 1', credits: 3, note: 'Compulsory' }
+                ],
+                U2: [
+                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
+                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        },
+        diploma_loc: {
+            title: 'Diploma (Local)',
+            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
+            categories: {
+                U1: [
+                    { code: 'MPU2183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory to choose only 1' },
+                    { code: 'MPU2193', name: 'Falsafah dan Isu Semasa', credits: 3 }
+                ],
+                U2: [
+                    { code: 'MPU2213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
+                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
+                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
+                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                ],
+                U3: [
+                    { code: 'MPU2313', name: 'Pengajian Islam 1', credits: 3 },
+                    { code: 'MPU2323', name: 'Pendidikan Moral 1', credits: 3 },
+                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                ],
+                U4: [
+                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                ]
+            }
+        }
     }
 };
 
