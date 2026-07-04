@@ -1179,6 +1179,12 @@ body {
                         </button>
                     </li>
                     <li class="nav-item">
+                        <button data-tab="curriculum">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                            Curriculum Components
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <button data-tab="planner">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             GPA & Study Planner
@@ -1291,6 +1297,109 @@ body {
 
                     <div class="faq-list" id="faq-list-container">
                         <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 2.5: CURRICULUM COMPONENTS -->
+            <div class="panel-card" id="curriculum-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Curriculum Structure & Components</h1>
+                    <p class="panel-subtitle">Understand the credit requirements, course classifications, and MPU categories at FABE.</p>
+                </header>
+
+                <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Overview section -->
+                    <div style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(109, 40, 217, 0.02) 100%); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <h3 style="font-family: var(--font-heading); color: var(--color-blue); margin-bottom: 0.75rem; font-size: 1.2rem;">Overview of FABE Syllabus</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                            The curriculum structure at the Faculty of Architecture & Built Environment (FABE) is designed to integrate robust professional training with general studies. To qualify for graduation, students must satisfy credit allocations across four main components: <strong>Core Courses</strong>, <strong>Elective Courses</strong>, <strong>University Courses</strong>, and <strong>Mata Pelajaran Umum (MPU) General Studies</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Grid of components -->
+                    <div class="curriculum-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                        <!-- Component 1: Core -->
+                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span class="badge badge-success" style="font-size: 0.75rem; font-weight: 600;">Core (75% - 80%)</span>
+                            </div>
+                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Professional Core Courses</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                                Mandatory technical and professional subjects core to your program. In Architecture, this includes Design Studios, History, and Materials. In Quantity Surveying, it includes Measurement, Cost Planning, and Contract Administration.
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
+                                📁 Diploma: 77 Credits | Degree: 99 Credits
+                            </span>
+                        </div>
+
+                        <!-- Component 2: Electives -->
+                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span class="badge badge-warning" style="font-size: 0.75rem; font-weight: 600;">Electives (5% - 8%)</span>
+                            </div>
+                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Program & Open Electives</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                                Specialized optional subjects that allow you to customize your learning pathway or acquire secondary competencies (such as advanced CAD software, construction law, or project management electives).
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
+                                ⚙️ Minimum Requirement: 6 Credits
+                            </span>
+                        </div>
+
+                        <!-- Component 3: University -->
+                        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span class="badge" style="font-size: 0.75rem; font-weight: 600; background: rgba(109, 40, 217, 0.08); color: var(--color-purple);">University (3% - 5%)</span>
+                            </div>
+                            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-primary); margin-top: 0.25rem;">Institutional Requirements</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                                Common language and skill courses required by KLUST for all students to foster critical thinking, language proficiency, and communication skills (e.g. English Proficiency and Technical Communication).
+                            </p>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-blue); margin-top: auto; padding-top: 0.5rem;">
+                                🎓 Diploma: 6 Credits | Degree: 3 Credits
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- MPU Categories details -->
+                    <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span class="badge badge-danger" style="font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.5rem;">MPU General Studies (Malaysian MOHE Requirements)</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                            The Mata Pelajaran Umum (MPU) courses are national general education requirements mandated by the Malaysian Ministry of Higher Education and MQA. They are structured into four distinct groups:
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-blue); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
+                                <strong style="font-size: 0.85rem; color: var(--color-blue);">Group U1: Appreciation of Philosophy & Governance (3 - 6 Credits)</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Mandatory appreciation subjects covering governance, national identity, and ethics. (e.g., Penghayatan Etika dan Peradaban, TITAS, and Pengajian Malaysia).</p>
+                            </div>
+                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-emerald); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
+                                <strong style="font-size: 0.85rem; color: var(--color-emerald);">Group U2: Core Soft Skills (2 - 3 Credits)</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Focuses on personal effectiveness, professional communications, and entrepreneurship. (e.g., Public Speaking, Writing Skills, and Entrepreneurship).</p>
+                            </div>
+                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-amber); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
+                                <strong style="font-size: 0.85rem; color: var(--color-amber);">Group U3: Humanities & Cultural Appreciation (2 - 3 Credits)</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Encourages social responsibility, general economics, and cultural awareness. (e.g., Malaysian Economy and Integrity & Anti-Corruption).</p>
+                            </div>
+                            <div style="padding: 0.75rem; border-left: 3px solid var(--color-purple); background: var(--bg-primary); border-radius: 0 6px 6px 0;">
+                                <strong style="font-size: 0.85rem; color: var(--color-purple);">Group U4: Practical Co-Curriculum (2 Credits)</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">Experiential community service, volunteerism, sports, or creative arts. (e.g., Co-Curriculum modules).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advisory Wisdom Card -->
+                    <div class="wisdom-card">
+                        <div class="wisdom-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <div class="wisdom-content">
+                            <p class="wisdom-text">“Wisdom thrives in shared guidance.”</p>
+                            <p class="wisdom-disclaimer">This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href="https://klust.edu.my/current-students/klust-counselling-services/" target="_blank" style="color: var(--color-blue); font-weight: 600; text-decoration: underline;">University Counselling Services</a>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
