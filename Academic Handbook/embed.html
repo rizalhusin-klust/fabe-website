@@ -1630,164 +1630,1207 @@ const HANDBOOK_DATA = {
     
     programs: [
         {
-            id: 'arch-bsc',
-            name: 'Bachelor of Science (Architectural Studies)',
-            creditsToGraduate: 122,
-            courses: [
-                { code: 'ARCH 1111', name: 'Studio Design 1A', credits: 4, category: 'Core Studio', semester: 1 },
-                { code: 'ARCH 1100', name: 'Theory & Principles of Architecture Design', credits: 2, category: 'General', semester: 1 },
-                { code: 'ARCH 1210', name: 'Architectural Communications', credits: 2, category: 'Core Tech', semester: 1 },
-                { code: 'ARCH 1311', name: 'History of Architecture 1', credits: 2, category: 'General', semester: 1 },
-                { code: 'MPU 3113', name: 'Penghayatan Etika dan Peradaban (MPU U1)', credits: 3, category: 'MPU', semester: 1 },
-                { code: 'ARCH 1120', name: 'Studio Design 1B', credits: 6, category: 'Core Studio', semester: 2 },
-                { code: 'ARCH 1411', name: 'Building Construction I', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'ARCH 1431', name: 'Building Structure I', credits: 2, category: 'Core Tech', semester: 2 },
-                { code: 'ARCH 1421', name: 'Environmental Science I', credits: 2, category: 'Core Tech', semester: 2 },
-                { code: 'MPU 3123', name: 'Tamadun Islam dan Tamadun Asia (TITAS) (MPU U1)', credits: 3, category: 'MPU', semester: 2 },
-                { code: 'ARCH 1220', name: 'Computer Aided Design', credits: 2, category: 'Core Tech', semester: 3 },
-                { code: 'ARCH 1441', name: 'Building Services I', credits: 2, category: 'Core Tech', semester: 3 },
-                { code: 'ARCH 2130', name: 'Studio Design IIA', credits: 6, category: 'Core Studio', semester: 4 },
-                { code: 'ARCH 2240', name: 'Computer Animation', credits: 2, category: 'Core Tech', semester: 4 },
-                { code: 'ARCH 2321', name: 'History of Architecture 2', credits: 2, category: 'General', semester: 4 },
-                { code: 'ARCH 2330', name: 'Theory of Architecture', credits: 2, category: 'General', semester: 4 },
-                { code: 'MPU 3222', name: 'Public Speaking / Creative Writing (MPU U2)', credits: 2, category: 'MPU', semester: 4 },
-                { code: 'ARCH 2140', name: 'Studio Design IIB', credits: 6, category: 'Core Studio', semester: 5 },
-                { code: 'ARCH 2433', name: 'Building Structure II', credits: 2, category: 'Core Tech', semester: 5 },
-                { code: 'ARCH 2423', name: 'Environmental Science II', credits: 2, category: 'Core Tech', semester: 5 },
-                { code: 'ARCH 2413', name: 'Building Construction II', credits: 3, category: 'Core Tech', semester: 5 },
-                { code: 'ARCH 2443', name: 'Building Services II', credits: 2, category: 'Core Tech', semester: 5 },
-                { code: 'MPU 3312', name: 'Malaysian Economy / Integrity & Anti-Corruption (MPU U3)', credits: 2, category: 'MPU', semester: 5 },
-                { code: 'ARCH 2230', name: 'Measured Drawing & Report', credits: 4, category: 'Core Studio', semester: 6 },
-                { code: 'ARCH 3150', name: 'Studio Design IIIA', credits: 6, category: 'Core Studio', semester: 7 },
-                { code: 'ARCH 3260', name: 'Building Study & Report', credits: 3, category: 'Research', semester: 7 },
-                { code: 'ARCH 3250', name: 'Construction Drawing', credits: 4, category: 'Core Tech', semester: 7 },
-                { code: 'ARCH 3461', name: 'Landscape Architecture', credits: 3, category: 'Core Tech', semester: 7 },
-                { code: 'MPU 3412', name: 'Co-Curriculum (Sports / Community Service) (MPU U4)', credits: 2, category: 'MPU', semester: 7 },
-                { code: 'ARCH 3160', name: 'Studio Design IIIB (CDP)', credits: 6, category: 'Core Studio', semester: 8 },
-                { code: 'ARCH 3520', name: 'Professional Studies', credits: 3, category: 'General', semester: 8 },
-                { code: 'ARCH 3810', name: 'Industrial Training', credits: 3, category: 'Internship', semester: 8 }
+            "id": "arch-bsc",
+            "name": "Bachelor of Science (Architectural Studies)",
+            "creditsToGraduate": 122,
+            "courses": [
+                {
+                    "code": "ARCH 1211",
+                    "name": "Architectural Communication",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "MPU 3113",
+                    "name": "Penghayatan Etika dan Peradaban (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 1
+                },
+                {
+                    "code": "MPU 3123",
+                    "name": "Tamadun Islam dan Tamadun Asia (TITAS) (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 1
+                },
+                {
+                    "code": "ARCH 1311",
+                    "name": "History of Architecture I",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "UGCS 1001",
+                    "name": "Introduction to Sustainable Infrastructure & Technology",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "ARCH 1111",
+                    "name": "Studio Design IA",
+                    "credits": 4,
+                    "category": "Core Studio",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1100",
+                    "name": "Theory and Principle of",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1220",
+                    "name": "Computer Aided Design",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "MPU 3222",
+                    "name": "Public Speaking / Creative Writing (MPU U2)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1120",
+                    "name": "Studio Design IB",
+                    "credits": 6,
+                    "category": "Core Studio",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 2240",
+                    "name": "Computer Animation",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 1422",
+                    "name": "Environmental Science",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 1411",
+                    "name": "Building Construction I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 2231",
+                    "name": "Measured Drawing & Report",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 2413",
+                    "name": "Building Construction II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 2321",
+                    "name": "History of Architecture II",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 3260",
+                    "name": "Building Study & Report",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 2424",
+                    "name": "Environmental Science",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 2130",
+                    "name": "Studio Design IIA",
+                    "credits": 6,
+                    "category": "Core Studio",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2330",
+                    "name": "Theory of Architecture",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "MPU 3412",
+                    "name": "Co-Curriculum (Sports / Community Service) (MPU U4)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2440",
+                    "name": "Building Services",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2140",
+                    "name": "Studio Design IIB",
+                    "credits": 6,
+                    "category": "Core Studio",
+                    "semester": 6
+                },
+                {
+                    "code": "MPU 3312",
+                    "name": "Malaysian Economy / Integrity & Anti-Corruption (MPU U3)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 2431",
+                    "name": "Building Structure",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 2444",
+                    "name": "Building Services",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 3810",
+                    "name": "Industry Training",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3251",
+                    "name": "Construction Drawing",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3461",
+                    "name": "Landscape Architecture",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3240",
+                    "name": "Introduction to BIM",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3150",
+                    "name": "Studio Design IIIA",
+                    "credits": 6,
+                    "category": "Core Studio",
+                    "semester": 8
+                },
+                {
+                    "code": "ARCH 3520",
+                    "name": "Professional Studies",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "ARCH 3430",
+                    "name": "Building Structure",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "ARCH 3160",
+                    "name": "Studio Design IIIB",
+                    "credits": 6,
+                    "category": "Core Studio",
+                    "semester": 9
+                },
+                {
+                    "code": "ARCH 3415",
+                    "name": "Building Construction III",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 9
+                },
+                {
+                    "code": "ARCH 3420",
+                    "name": "Technical Report Writing",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 9
+                }
             ]
         },
         {
-            id: 'qs-b',
-            name: 'Bachelor of Quantity Surveying (Hons)',
-            creditsToGraduate: 123,
-            courses: [
-                { code: 'BQS 102', name: 'Materials I', credits: 2, category: 'Core Tech', semester: 1 },
-                { code: 'BQS 103', name: 'Construction Technology I', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'BQS 104', name: 'Measurement I', credits: 4, category: 'Core Tech', semester: 1 },
-                { code: 'MPU 3113', name: 'Penghayatan Etika dan Peradaban (MPU U1)', credits: 3, category: 'MPU', semester: 1 },
-                { code: 'BQS 105', name: 'Measurement II', credits: 4, category: 'Core Tech', semester: 2 },
-                { code: 'BQS 106', name: 'Construction Law I', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'BQS 107', name: 'Building Services I', credits: 2, category: 'Core Tech', semester: 2 },
-                { code: 'BQS 108', name: 'Construction Technology II', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'MPU 3123', name: 'Tamadun Islam dan Tamadun Asia (TITAS) (MPU U1)', credits: 3, category: 'MPU', semester: 2 },
-                { code: 'BQS 201', name: 'Measurement III', credits: 4, category: 'Core Tech', semester: 3 },
-                { code: 'BQS 203', name: 'Construction Technology III', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'BQS 204', name: 'Building Services II', credits: 2, category: 'Core Tech', semester: 4 },
-                { code: 'BQS 205', name: 'Materials II', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'BQS 206', name: 'Construction Economics and Finance', credits: 3, category: 'General', semester: 4 },
-                { code: 'BQS 207', name: 'Measurement IV', credits: 4, category: 'Core Tech', semester: 4 },
-                { code: 'BQS 208', name: 'Quantity Surveying Practice I', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'MPU 3222', name: 'Public Speaking / Creative Writing (MPU U2)', credits: 2, category: 'MPU', semester: 4 },
-                { code: 'BQS 210', name: 'Tendering and Estimating', credits: 4, category: 'Core Tech', semester: 5 },
-                { code: 'BQS 211', name: 'Project Management I', credits: 3, category: 'Core Tech', semester: 5 },
-                { code: 'BQS 212', name: 'Quantity Surveying Practice II', credits: 3, category: 'Core Tech', semester: 5 },
-                { code: 'BQS 301', name: 'Measurement V', credits: 4, category: 'Core Tech', semester: 5 },
-                { code: 'MPU 3312', name: 'Malaysian Economy / Integrity & Anti-Corruption (MPU U3)', credits: 2, category: 'MPU', semester: 5 },
-                { code: 'BQS 302', name: 'Thesis I', credits: 3, category: 'Research', semester: 6 },
-                { code: 'BQS 209', name: 'Construction Technology IV', credits: 3, category: 'Core Tech', semester: 6 },
-                { code: 'BQS 304', name: 'Project Management II', credits: 3, category: 'Core Tech', semester: 7 },
-                { code: 'BQS 305', name: 'Industrial Training/Project', credits: 9, category: 'Internship', semester: 7 },
-                { code: 'MPU 3412', name: 'Co-Curriculum (Sports / Community Service) (MPU U4)', credits: 2, category: 'MPU', semester: 7 },
-                { code: 'BQS 303', name: 'Integrated Project', credits: 3, category: 'Core Tech', semester: 8 },
-                { code: 'BQS 306', name: 'Thesis II', credits: 6, category: 'Research', semester: 8 },
-                { code: 'BQS 307', name: 'Risk Management', credits: 3, category: 'Core Tech', semester: 8 },
-                { code: 'BQS 308', name: 'Financial Management', credits: 3, category: 'Core Tech', semester: 8 },
-                { code: 'BQS 309', name: 'Management of Large Construction', credits: 3, category: 'Core Tech', semester: 8 },
-                { code: 'BQS 310', name: 'Management of Equipment and Plant', credits: 3, category: 'Core Tech', semester: 8 }
+            "id": "qs-b",
+            "name": "Bachelor of Quantity Surveying (Hons)",
+            "creditsToGraduate": 123,
+            "courses": [
+                {
+                    "code": "QSV 1501",
+                    "name": "Construction Law I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "QSV 1401",
+                    "name": "Material I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "QSV 2503",
+                    "name": "Quantity Surveying Practice I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "QSV 1301",
+                    "name": "Building Services I",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "STAT 2000",
+                    "name": "Quantitative Methods And Statistics",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 1
+                },
+                {
+                    "code": "MGMT 1011",
+                    "name": "Principles Of Management",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 2
+                },
+                {
+                    "code": "QSV 1101",
+                    "name": "Surveying And Fieldwork",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "MPU 3113",
+                    "name": "Penghayatan Etika dan Peradaban (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 2
+                },
+                {
+                    "code": "QSV 1201",
+                    "name": "Measurement I",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "UGCS 1001",
+                    "name": "Introduction to Sustainable Infrastructure & Technology",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "QSV 1202",
+                    "name": "Measurement II",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "MPU 3113",
+                    "name": "Penghayatan Etika dan Peradaban (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 3
+                },
+                {
+                    "code": "QSV 1403",
+                    "name": "Construction Technology I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "QSV 1404",
+                    "name": "Construction Technology II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "QSV 2502",
+                    "name": "Construction Law And Contract II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "QSV 2402",
+                    "name": "Material II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "QSV 3504",
+                    "name": "Quantity Surveying Practice II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "QSV 2302",
+                    "name": "Building Services II",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "QSV 2603",
+                    "name": "Project Management I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "QSV 2203",
+                    "name": "Measurement III",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "MPU 3222",
+                    "name": "Public Speaking / Creative Writing (MPU U2)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 5
+                },
+                {
+                    "code": "QSV 2405",
+                    "name": "Construction Technology III",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "QSV 2602",
+                    "name": "Tendering And Estimating",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "QSV 2601",
+                    "name": "Construction Economics And Finance",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "QSV 2204",
+                    "name": "Measurement IV",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "QSV 2901",
+                    "name": "Thesis I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "QSV 2406",
+                    "name": "Construction Technology IV",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "LANG 2125",
+                    "name": "Technical Report Writing",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 6
+                },
+                {
+                    "code": "MPU 3312",
+                    "name": "Malaysian Economy / Integrity & Anti-Corruption (MPU U3)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 7
+                },
+                {
+                    "code": "QSV 3205",
+                    "name": "Measurement V",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "QSV 3606",
+                    "name": "Elective Core I",
+                    "credits": 3,
+                    "category": "Elective",
+                    "semester": 8
+                },
+                {
+                    "code": "QSV 3902",
+                    "name": "Thesis II",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "QSV 3802",
+                    "name": "Integrated Project",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "QSV 3604",
+                    "name": "Project Management II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "QSV 3801",
+                    "name": "Industrial Training",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 9
+                },
+                {
+                    "code": "MPU 3412",
+                    "name": "Co-Curriculum (Sports / Community Service) (MPU U4)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 9
+                },
+                {
+                    "code": "QSV 3607",
+                    "name": "Elective Core II",
+                    "credits": 3,
+                    "category": "Elective",
+                    "semester": 9
+                }
             ]
         },
         {
-            id: 'cm-b',
-            name: 'Bachelor of Construction Management (Hons)',
-            creditsToGraduate: 120,
-            courses: [
-                { code: 'BCM 101', name: 'Construction Tech & Materials', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'BCM 102', name: 'Principles of Management', credits: 3, category: 'General', semester: 1 },
-                { code: 'BCM 103', name: 'Structural Mechanics', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'MPU 3113', name: 'Penghayatan Etika dan Peradaban (MPU U1)', credits: 3, category: 'MPU', semester: 1 },
-                { code: 'BCM 104', name: 'Building Services & Systems', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'BCM 105', name: 'Construction Measurement', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'MPU 3123', name: 'Tamadun Islam dan Tamadun Asia (TITAS) (MPU U1)', credits: 3, category: 'MPU', semester: 2 },
-                { code: 'BCM 201', name: 'Project Planning & Scheduling', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'BCM 202', name: 'Site Management & Safety', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'BCM 203', name: 'Construction Law', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'BCM 204', name: 'Cost Estimation & Budgeting', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'BCM 205', name: 'Quality Management in Construction', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'MPU 3222', name: 'Public Speaking / Creative Writing (MPU U2)', credits: 2, category: 'MPU', semester: 4 },
-                { code: 'BCM 301', name: 'Project Management Seminar', credits: 3, category: 'General', semester: 5 },
-                { code: 'BCM 302', name: 'Research Project / Thesis', credits: 6, category: 'Research', semester: 5 },
-                { code: 'BCM 303', name: 'Industrial Internship', credits: 8, category: 'Internship', semester: 5 },
-                { code: 'MPU 3312', name: 'Malaysian Economy / Integrity & Anti-Corruption (MPU U3)', credits: 2, category: 'MPU', semester: 5 },
-                { code: 'BCM 304', name: 'Strategic Management & Finance', credits: 3, category: 'General', semester: 6 },
-                { code: 'MPU 3412', name: 'Co-Curriculum (Sports / Community Service) (MPU U4)', credits: 2, category: 'MPU', semester: 6 }
+            "id": "cm-b",
+            "name": "Bachelor of Technology (Hons) in Construction Management",
+            "creditsToGraduate": 120,
+            "courses": [
+                {
+                    "code": "CONS 1311",
+                    "name": "Environmental Engineering",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "CONS 1503",
+                    "name": "Building Services I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "MPU 3113",
+                    "name": "Penghayatan Etika dan Peradaban (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 1
+                },
+                {
+                    "code": "MATH 1030",
+                    "name": "Basic Technical Mathematics",
+                    "credits": 2,
+                    "category": "General",
+                    "semester": 2
+                },
+                {
+                    "code": "CSC 1006",
+                    "name": "Basic Office Application",
+                    "credits": 2,
+                    "category": "General",
+                    "semester": 2
+                },
+                {
+                    "code": "CONS 1116",
+                    "name": "Introduction to Structures",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "CONS 1219",
+                    "name": "Surveying and Fieldwork",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "CONS 1407",
+                    "name": "Materials I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "MPU 3113",
+                    "name": "Penghayatan Etika dan Peradaban (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 2
+                },
+                {
+                    "code": "CONS 1312",
+                    "name": "Environmental Management",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "CONS 1409",
+                    "name": "Construction Technology I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "CONS 1410",
+                    "name": "Construction Graphic & Drawing",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "CONS 1408",
+                    "name": "Materials II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "CONS 2504",
+                    "name": "Building Services II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "MPU 3223 (U2)",
+                    "name": "Basic Entrepreneurship",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 3
+                },
+                {
+                    "code": "CONS 2411",
+                    "name": "Construction Technology II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "CONS 2704",
+                    "name": "Measurement and Documentation I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "CONS 2605",
+                    "name": "Construction Law",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "STAT 2000",
+                    "name": "Quantitative Methods and Statistics",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 5
+                },
+                {
+                    "code": "CONS 2706",
+                    "name": "Measurement and Documentation II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "CONS 2412",
+                    "name": "Construction Technology III",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "CONS 2705",
+                    "name": "Construction Cost Estimates",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "CONS 2606",
+                    "name": "Contract & Procurement Management",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "MPU (U3)",
+                    "name": "University Subject",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 5
+                },
+                {
+                    "code": "CONS 2707",
+                    "name": "Construction Economics & Finance",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "CONS 3413",
+                    "name": "Construction Technology IV",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "CONS 3414",
+                    "name": "Construction Management I",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "CONS 3913",
+                    "name": "Thesis I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "LANG 2126",
+                    "name": "English For Project Management",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 6
+                },
+                {
+                    "code": "CONS 2604",
+                    "name": "Construction Safety & Health",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "CONS 2313",
+                    "name": "Green Technology and Sustainable Development",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "CONS 341x",
+                    "name": "Elective I",
+                    "credits": 3,
+                    "category": "Elective",
+                    "semester": 7
+                },
+                {
+                    "code": "CONS 3914",
+                    "name": "Thesis II",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "CONS 3415",
+                    "name": "Construction Management II",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "CONS 3420",
+                    "name": "Construction Technology V",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "CONS 3818",
+                    "name": "Integrated Project",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "CONS 341x",
+                    "name": "Elective II",
+                    "credits": 3,
+                    "category": "Elective",
+                    "semester": 8
+                },
+                {
+                    "code": "MPU (U4)",
+                    "name": "University Subject",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 8
+                },
+                {
+                    "code": "CONS 3814",
+                    "name": "Industrial Training",
+                    "credits": 8,
+                    "category": "Core Professional",
+                    "semester": 9
+                }
             ]
         },
         {
-            id: 'arch-dip',
-            name: 'Diploma in Architecture',
-            creditsToGraduate: 94,
-            courses: [
-                { code: 'ARCH 1220D', name: 'Technical Drawing I', credits: 2, category: 'Core Tech', semester: 1 },
-                { code: 'ARCH 1110D', name: 'Basic Design', credits: 6, category: 'Core Studio', semester: 1 },
-                { code: 'ARCH 1210D', name: 'Graphic Communication', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'ARCH 1310D', name: 'Introduction to Built Environment', credits: 2, category: 'Core Tech', semester: 1 },
-                { code: 'MPU 2163', name: 'Pengajian Malaysia 2 (MPU U1)', credits: 3, category: 'MPU', semester: 1 },
-                { code: 'ARCH 1230D', name: 'Technical Drawing II', credits: 2, category: 'Core Tech', semester: 2 },
-                { code: 'ARCH 1120D', name: 'Architectural Design I', credits: 6, category: 'Core Studio', semester: 2 },
-                { code: 'ARCH 1410D', name: 'Structure Design', credits: 2, category: 'Core Tech', semester: 2 },
-                { code: 'ARCH 1330D', name: 'Introduction to History of Eastern Architecture', credits: 3, category: 'General', semester: 2 },
-                { code: 'MPU 2222', name: 'Public Speaking / Writing Skills (MPU U2)', credits: 2, category: 'MPU', semester: 2 },
-                { code: 'ARCH 2250D', name: 'Computer Aided Design (CAD) I', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'ARCH 2470D', name: 'Introduction to Surveying', credits: 2, category: 'Core Tech', semester: 3 },
-                { code: 'ARCH 2130D', name: 'Architectural Design II', credits: 6, category: 'Core Studio', semester: 4 },
-                { code: 'ARCH 2430D', name: 'Building Construction I', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'ARCH 2420D', name: 'Building Services', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'ARCH 2460D', name: 'Environmental Design', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'MPU 2312', name: 'Malaysian Economy / Comparative Religion (MPU U3)', credits: 2, category: 'MPU', semester: 4 },
-                { code: 'ARCH 2140D', name: 'Architectural Design III', credits: 6, category: 'Core Studio', semester: 5 },
-                { code: 'ARCH 2240D', name: 'Construction Drawing', credits: 4, category: 'Core Tech', semester: 5 },
-                { code: 'ARCH 2440D', name: 'Building Construction II', credits: 3, category: 'Core Tech', semester: 5 },
-                { code: 'ARCH 2340D', name: 'History of Architecture 2 (Western Architecture)', credits: 3, category: 'General', semester: 5 },
-                { code: 'MPU 2412', name: 'Co-Curriculum (Sports / Drama) (MPU U4)', credits: 2, category: 'MPU', semester: 5 },
-                { code: 'ARCH 3350D', name: 'Measured Drawing', credits: 3, category: 'Core Studio', semester: 6 },
-                { code: 'ARCH 3150D', name: 'Architectural Design IV', credits: 6, category: 'Core Studio', semester: 7 },
-                { code: 'ARCH 3260D', name: 'Computer Aided Design (CAD) II', credits: 3, category: 'Core Tech', semester: 7 },
-                { code: 'ARCH 3450D', name: 'Building Construction III', credits: 3, category: 'Core Tech', semester: 7 }
+            "id": "arch-dip",
+            "name": "Diploma in Architecture",
+            "creditsToGraduate": 94,
+            "courses": [
+                {
+                    "code": "ARCH 1310D",
+                    "name": "Introduction to Built Environment",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "LANG 1130D",
+                    "name": "Technical English I",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 1
+                },
+                {
+                    "code": "MPU 2163",
+                    "name": "Pengajian Malaysia 2 (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 1
+                },
+                {
+                    "code": "ARCH 1110D",
+                    "name": "Basic Design",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1210D",
+                    "name": "Graphic Communication",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1220D",
+                    "name": "Technical Drawing I",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1330D",
+                    "name": "Introduction to History of Eastern Architecture",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 2340D",
+                    "name": "Introduction to History of Western Architecture",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "ARCH 1260D",
+                    "name": "Architectural Design: Single Function",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 1230D",
+                    "name": "Technical Drawing II",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 1410D",
+                    "name": "Structure Design",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "MPU 2222",
+                    "name": "Public Speaking / Writing Skills (MPU U2)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 3
+                },
+                {
+                    "code": "MPU 2312",
+                    "name": "Malaysian Economy / Comparative Religion (MPU U3)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 3
+                },
+                {
+                    "code": "ARCH 2230D",
+                    "name": "CAD Essentials",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "LANG 1131D",
+                    "name": "Technical English II",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 4
+                },
+                {
+                    "code": "ARCH 2160D",
+                    "name": "Architectural Design: Compact Living",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 3230D",
+                    "name": "Advanced CAD",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2450D",
+                    "name": "Construction Technology: Timber & Steel",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2480D",
+                    "name": "Environmental Design & Technology",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "ARCH 2260D",
+                    "name": "Architectural Design: Retail Buildings",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 2240D",
+                    "name": "Construction Drawing",
+                    "credits": 4,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 2420D",
+                    "name": "Building Services",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "MPU 2412",
+                    "name": "Co-Curriculum (Sports / Drama) (MPU U4)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 6
+                },
+                {
+                    "code": "ARCH 3240D",
+                    "name": "Introduction to BIM",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3350D",
+                    "name": "Measured Drawing",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "ARCH 3160D",
+                    "name": "Architectural Design: Public Buildings",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "ARCH 3460D",
+                    "name": "Construction Technology: Concrete & Masonry",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                }
             ]
         },
         {
-            id: 'la-dip',
-            name: 'Diploma in Landscape Architecture',
-            creditsToGraduate: 90,
-            courses: [
-                { code: 'LAD 101', name: 'Landscape Design Studio I', credits: 5, category: 'Core Studio', semester: 1 },
-                { code: 'LAD 102', name: 'Landscape Graphic Communications', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'LAD 103', name: 'Introduction to Horticulture', credits: 3, category: 'Core Tech', semester: 1 },
-                { code: 'MPU 2163', name: 'Pengajian Malaysia 2 (MPU U1)', credits: 3, category: 'MPU', semester: 1 },
-                { code: 'LAD 104', name: 'Landscape Design Studio II', credits: 5, category: 'Core Studio', semester: 2 },
-                { code: 'LAD 105', name: 'Planting Design I', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'LAD 106', name: 'Soil Science for Landscape', credits: 3, category: 'Core Tech', semester: 2 },
-                { code: 'MPU 2222', name: 'Public Speaking / Writing Skills (MPU U2)', credits: 2, category: 'MPU', semester: 2 },
-                { code: 'LAD 201', name: 'Landscape Design Studio III', credits: 6, category: 'Core Studio', semester: 3 },
-                { code: 'LAD 202', name: 'Landscape Construction I', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'LAD 203', name: 'Plant Materials', credits: 3, category: 'Core Tech', semester: 3 },
-                { code: 'LAD 204', name: 'Landscape Design Studio IV', credits: 6, category: 'Core Studio', semester: 4 },
-                { code: 'LAD 205', name: 'Landscape Computer Graphics', credits: 3, category: 'Core Tech', semester: 4 },
-                { code: 'LAD 206', name: 'History of Landscape Architecture', credits: 3, category: 'General', semester: 4 },
-                { code: 'MPU 2312', name: 'Malaysian Economy / Comparative Religion (MPU U3)', credits: 2, category: 'MPU', semester: 4 },
-                { code: 'MPU 2412', name: 'Co-Curriculum (Sports / Drama) (MPU U4)', credits: 2, category: 'MPU', semester: 5 }
+            "id": "la-dip",
+            "name": "Diploma in Landscape Architecture",
+            "creditsToGraduate": 92,
+            "courses": [
+                {
+                    "code": "LAND 1110D",
+                    "name": "Basic Landscape Design I",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "LAND 2251D",
+                    "name": "Oral Presentation",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "LAND 1211D",
+                    "name": "Graphic Communication",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "LAND 1310D",
+                    "name": "Introduction to Landscape Architecture",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 1
+                },
+                {
+                    "code": "LANG 1130D",
+                    "name": "Technical English I",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 2
+                },
+                {
+                    "code": "LAND 1120D",
+                    "name": "Basic Landscape Design II",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "LAND 2130D",
+                    "name": "Landscape Design I",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "LAND 1411D",
+                    "name": "Plant Material I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 2
+                },
+                {
+                    "code": "MPU 2163",
+                    "name": "Pengajian Malaysia 2 (MPU U1)",
+                    "credits": 3,
+                    "category": "MPU",
+                    "semester": 3
+                },
+                {
+                    "code": "LAND 1421D",
+                    "name": "Landscape Construction I",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "LAND 1221D",
+                    "name": "Technical Drawing I",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "LAND 1222D",
+                    "name": "Technical Drawing II",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 3
+                },
+                {
+                    "code": "LAND 2412D",
+                    "name": "Plant Material II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "LAND 1422D",
+                    "name": "Landscape Construction II",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 4
+                },
+                {
+                    "code": "LANG 1131D",
+                    "name": "Technical English II",
+                    "credits": 3,
+                    "category": "General",
+                    "semester": 4
+                },
+                {
+                    "code": "MPU 2222",
+                    "name": "Public Speaking / Writing Skills (MPU U2)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 4
+                },
+                {
+                    "code": "LAND 2140D",
+                    "name": "Landscape Design II",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "LAND 2231D",
+                    "name": "CAD I",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "LAND 2320D",
+                    "name": "History of Landscape Architecture",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "LAND 2150D",
+                    "name": "Landscape Design III",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 5
+                },
+                {
+                    "code": "LAND 2423D",
+                    "name": "Landscape Construction III",
+                    "credits": 2,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "LAND 3232D",
+                    "name": "CAD II",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "LAND 2241D",
+                    "name": "Computer Graphic",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 6
+                },
+                {
+                    "code": "MPU 2312",
+                    "name": "Malaysian Economy / Comparative Religion (MPU U3)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 6
+                },
+                {
+                    "code": "LAND 3160D",
+                    "name": "Landscape Design IV",
+                    "credits": 6,
+                    "category": "Core Professional",
+                    "semester": 7
+                },
+                {
+                    "code": "LAND 3810D",
+                    "name": "Industrial Training",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                },
+                {
+                    "code": "MPU 2412",
+                    "name": "Co-Curriculum (Sports / Drama) (MPU U4)",
+                    "credits": 2,
+                    "category": "MPU",
+                    "semester": 8
+                },
+                {
+                    "code": "LAND 3510D",
+                    "name": "Horticulture & Nursery Management",
+                    "credits": 3,
+                    "category": "Core Professional",
+                    "semester": 8
+                }
             ]
         }
     ],
