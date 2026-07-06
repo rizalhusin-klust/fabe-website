@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDiagnosticSurvey();
     initDecisionTree();
     initCurriculumComponents();
+    initLecturerDirectory();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -1280,6 +1281,124 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${categoriesHtml}
                 </div>
             `;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Lecturer Directory Controller
+    // -------------------------------------------------------------------------
+    function initLecturerDirectory() {
+        const searchInput = document.getElementById('lecturer-search-input');
+        const deptFilter = document.getElementById('lecturer-program-filter');
+        const gridContainer = document.getElementById('lecturers-grid-container');
+
+        if (!gridContainer) return;
+
+        const staff = HANDBOOK_DATA.staffProfiles || [];
+
+        // Attach listeners
+        if (searchInput) searchInput.addEventListener('input', updateFilters);
+        if (deptFilter) deptFilter.addEventListener('change', updateFilters);
+
+        // Initial render
+        renderDirectory(staff);
+
+        function updateFilters() {
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const dept = deptFilter ? deptFilter.value : 'all';
+
+            const filtered = staff.filter(member => {
+                const matchQuery = member.name.toLowerCase().includes(query) || 
+                                   member.qualification.toLowerCase().includes(query) ||
+                                   (member.specialization && member.specialization.toLowerCase().includes(query)) ||
+                                   member.position.toLowerCase().includes(query);
+                
+                const matchDept = dept === 'all' || member.department === dept;
+
+                return matchQuery && matchDept;
+            });
+
+            renderDirectory(filtered);
+        }
+
+        function getInitialsAvatar(name) {
+            // Strip titles to get clean name parts
+            const cleanName = name.replace(/^(Ts|Ar|Sr|Dr\.|Assoc\.\s*Prof\s*)\s+/i, '').trim();
+            const parts = cleanName.split(' ');
+            let initials = '';
+            if (parts.length > 0 && parts[0]) initials += parts[0][0];
+            if (parts.length > 1 && parts[1]) initials += parts[1][0];
+            initials = initials.toUpperCase();
+
+            // Hash code for unique gradient background
+            let hash = 0;
+            for (let i = 0; i < cleanName.length; i++) {
+                hash = cleanName.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            
+            const hue1 = Math.abs(hash % 360);
+            const hue2 = (hue1 + 45) % 360;
+            const grad = `linear-gradient(135deg, hsl(${hue1}, 70%, 50%) 0%, hsl(${hue2}, 70%, 40%) 100%)`;
+            
+            return `
+                <div class="lecturer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: ${grad}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem; font-family: var(--font-heading); box-shadow: 0 4px 8px rgba(0,0,0,0.08); border: 2px solid white; flex-shrink: 0;">
+                    ${initials}
+                </div>
+            `;
+        }
+
+        function renderDirectory(list) {
+            gridContainer.innerHTML = '';
+
+            if (list.length === 0) {
+                gridContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin: 0 auto 1rem auto; opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.109A11.978 11.978 0 0112.25 18c-.896-.083-1.78-.21-2.65-.378M12 18.25c-.896-.083-1.78-.21-2.65-.378m-2.65-.378a9.33 9.33 0 01-2.625-.372 9.337 9.337 0 01-4.121-.952 4.125 4.125 0 017.533-2.493M16.5 10.5a3 3 0 11-6 0 3 3 0 016 0zM6.75 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM4.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"/></svg>
+                        <p style="margin: 0; font-size: 0.95rem; font-weight: 500;">No lecturers found matching your filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(member => {
+                const avatar = getInitialsAvatar(member.name);
+                const card = document.createElement('div');
+                card.className = 'lecturer-card-wrapper';
+                
+                card.innerHTML = `
+                    <div class="stat-card" style="background: var(--bg-primary); border-color: var(--border-color); padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 10px; height: 100%; transition: all 0.2s ease; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            ${avatar}
+                            <div>
+                                <h3 style="font-family: var(--font-heading); font-size: 1rem; color: var(--text-primary); font-weight: 700; margin: 0; line-height: 1.3;">${member.name}</h3>
+                                <p style="font-size: 0.75rem; color: var(--color-blue); font-weight: 600; margin: 0.15rem 0 0 0; line-height: 1.2;">${member.position}</p>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: auto;">
+                            <div>
+                                <strong>Qualification:</strong> 
+                                <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.qualification}</span>
+                            </div>
+                            ${member.specialization ? `
+                            <div>
+                                <strong>Specialization:</strong> 
+                                <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.specialization}</span>
+                            </div>` : ''}
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.15rem;">
+                                <div><strong>Office:</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
+                                <div><strong>Ext:</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
+                            </div>
+                            <div style="margin-top: 0.15rem;">
+                                <strong>Email:</strong> 
+                                <a href="mailto:${member.email}" style="color: var(--color-blue); text-decoration: underline; font-family: monospace; display: block; margin-top: 0.1rem; font-size: 0.75rem; word-break: break-all;">${member.email}</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                gridContainer.appendChild(card);
+            });
         }
     }
 });

@@ -37,6 +37,12 @@
                         </button>
                     </li>
                     <li class="nav-item">
+                        <button data-tab="lecturers">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            Lecturer Directory
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <button data-tab="planner">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             GPA & Study Planner
@@ -238,6 +244,36 @@
                             <p class="wisdom-text">“Wisdom thrives in shared guidance.”</p>
                             <p class="wisdom-disclaimer">This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href="https://klust.edu.my/current-students/klust-counselling-services/" target="_blank" style="color: var(--color-blue); font-weight: 600; text-decoration: underline;">University Counselling Services</a>.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 2.7: LECTURER DIRECTORY -->
+            <div class="panel-card" id="lecturers-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Lecturer Directory</h1>
+                    <p class="panel-subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
+                </header>
+
+                <div class="lecturers-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Search and filters -->
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div class="search-box-container" style="flex: 2; min-width: 250px; position: relative;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 1.25rem; height: 1.25rem; color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" class="search-input" id="lecturer-search-input" placeholder="Search lecturers (e.g. name, specialization, program)..." style="padding-left: 3rem; width: 100%;">
+                        </div>
+                        <select class="select-input" id="lecturer-program-filter" style="flex: 1; min-width: 180px;">
+                            <option value="all">All Departments / Roles</option>
+                            <option value="architecture">Architecture</option>
+                            <option value="quantity-surveying">Quantity Surveying</option>
+                            <option value="landscape-architecture">Landscape Architecture</option>
+                            <option value="management">Management & Others</option>
+                        </select>
+                    </div>
+
+                    <!-- Directory Grid -->
+                    <div class="lecturer-grid" id="lecturers-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+                        <!-- Rendered dynamically -->
                     </div>
                 </div>
             </div>

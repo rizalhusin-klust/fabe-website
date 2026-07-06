@@ -618,7 +618,262 @@ const HANDBOOK_DATA = {
                 ]
             }
         }
-    }
+    },
+    staffProfiles: [
+        {
+            name: "Ar Mohd Rizal Zakaria",
+            qualification: "LAM Part III, Bach. Of Architecture & Diploma Architecture, ITM",
+            position: "Head of Program - Master of Architecture, Senior Lecturer",
+            room: "B102",
+            ext: "540",
+            email: "rizal.zack@klust.edu.my",
+            staffId: "IEN 00738",
+            specialization: "Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Ts Idris Bin Taib",
+            qualification: "Bsc. Housing Building and Planning, USM. B. Architecture, USM. MBA, UiTM.",
+            position: "Senior Lecturer",
+            room: "B118",
+            ext: "899",
+            email: "idristaib@klust.edu.my",
+            staffId: "IEN 00563",
+            specialization: "The Adaptive Reuse of Historical Building: Fire Safety Provisions for Museum Heritage and Conservation.",
+            department: "architecture"
+        },
+        {
+            name: "Ts Mohd Shafiq Bin Ramlan",
+            qualification: "Master of Science In Construction Engineering (UiTM), Bach of Eng. (Hons) Civil Eng. (UiTM)",
+            position: "Head Of Program – BTCM & BREM, Senior Lecturer",
+            room: "B105",
+            ext: "787",
+            email: "syafiq@klust.edu.my",
+            staffId: "IEN 01238",
+            specialization: "Construction Management, Quantity Surveying",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Zairila Juria Binti Zainal Abidin",
+            qualification: "M. Sc. In Urban and Regional Planning (USM), B. SC. (Hon) in Architectural Studies (IIUM)",
+            position: "HOP DAR, Senior Lecturer",
+            room: "B114",
+            ext: "548",
+            email: "zairila@klust.edu.my",
+            staffId: "IEN 00919",
+            specialization: "Urban Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Nur Azwanie Bt Nordin",
+            qualification: "Master of Science in Heritage & Conservation Management, Bachelor in Landscape Architecture",
+            position: "HOP – BLA & DLA, Senior Lecturer",
+            room: "B104",
+            ext: "846",
+            email: "azwanie@klust.edu.my",
+            staffId: "IEN 00999",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Aminah Binti Mohamed Bakhari",
+            qualification: "Master in Business Administration (Construction Business) 2008 UIA, Bachelor of Quantity Surveying (Hons) UiTM 2003",
+            position: "Head of Program, BQS and DQS, Senior Lecturer",
+            room: "B119",
+            ext: "846",
+            email: "aminah@klust.edu.my",
+            staffId: "IEN 01297",
+            specialization: "Construction Contract, Measurement of Building Works",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Mazlina Binti Abdul Manan",
+            qualification: "Master in Science FACILITIES MANAGEMENT (UiTM), Degree in Civil Engineering (UTM), Diploma in Civil Engineering (UTM)",
+            position: "Senior Lecturer",
+            room: "B 122",
+            ext: "785",
+            email: "mazlina@klust.edu.my",
+            staffId: "IEN 00825",
+            specialization: "CIVIL ENGINEERING, BUILDING CONSTRUCTION, TECHNOLOGY AND BUILDING STRUCTURE",
+            department: "management"
+        },
+        {
+            name: "Sr Sharifah Huda Syed Mohd, PQS",
+            qualification: "Msc in Project Management, Bac. Of Quantity Surveying (Hons)",
+            position: "Senior Lecturer",
+            room: "B126",
+            ext: "548",
+            email: "sharifah@klust.edu.my",
+            staffId: "IEN 00757",
+            specialization: "Quantity Surveying",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Ahmad Muna'iem Ahmad Fauzi",
+            qualification: "Degree in Architecture – Part 2",
+            position: "Senior Lecturer",
+            room: "B116",
+            ext: "593",
+            email: "munaiem@klust.edu.my",
+            staffId: "IEN 00817",
+            specialization: "Architecture Design, Housing planning and Design Conceptual, Islamic Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Siti Noraini Ahmad",
+            qualification: "BSc (Hon) Architecture; M. Environment",
+            position: "Senior Lecturer",
+            room: "B108",
+            ext: "780",
+            email: "sitinoraini@klust.edu.my",
+            staffId: "IEN00446",
+            specialization: "Sustainable Design, Environmental Impact Assessment",
+            department: "architecture"
+        },
+        {
+            name: "Noraqidah Binti Mohamad",
+            qualification: "Master of Science (Tourism Planning) UTM, Bac. In Landscape Architecture (UTM)",
+            position: "Senior Lecturer",
+            room: "B106",
+            ext: "782",
+            email: "noraqidah@klust.edu.my",
+            staffId: "IEN 00697",
+            specialization: "Sustainable Landscape Design",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Assoc. Prof Ar Mohd Hayazi bin Agusi",
+            qualification: "Master Sc. Heritage Conservation & Management, B. Arch (Hons), B.A (Hons) Arch, LAM Part III",
+            position: "Senior Lecturer",
+            room: "B101",
+            ext: "NA",
+            email: "hayazi@klust.edu.my",
+            staffId: "IEN 00918",
+            specialization: "Urban Architecture and Conservation Heritage",
+            department: "architecture"
+        },
+        {
+            name: "Dr. 'Adil Farizal bin Md Rashid",
+            qualification: "Bsc. Architecture UIA, 2003, Bsc. Housing USM, 2008 (Master in Housing), PHD IUKL",
+            position: "Senior Lecturer",
+            room: "B123",
+            ext: "754",
+            email: "adil@klust.edu.my",
+            staffId: "IEN 00503",
+            specialization: "Housing Design, 3D Architectural Visualization and Animation",
+            department: "architecture"
+        },
+        {
+            name: "Azrin Bin Abu Seman",
+            qualification: "MSc. In Urban Development & Mgmt (UiTM)",
+            position: "Senior Lecturer",
+            room: "B109",
+            ext: "776",
+            email: "azrin@klust.edu.my",
+            staffId: "IEN 00983",
+            specialization: "Architecture Design, Urban Design, Urban Development and Management, Computer Aided Design and Architectural Drafting",
+            department: "architecture"
+        },
+        {
+            name: "Nur Balqis binti Ahmad Safawi",
+            qualification: "Master in Built Environment, Bach. Science in Architecture, UIA",
+            position: "Senior Lecturer",
+            room: "B115",
+            ext: "1532",
+            email: "balqis@klust.edu.my",
+            staffId: "IEN 00926",
+            specialization: "Universal Design",
+            department: "architecture"
+        },
+        {
+            name: "Siti Hajar bt Mat Haril",
+            qualification: "B.Arch (HONS), UiTM, Dip. Arch, UTM",
+            position: "Senior Lecturer",
+            room: "B115",
+            ext: "1532",
+            email: "shajar.mharil@klust.edu.my",
+            staffId: "IEN 01123",
+            specialization: "Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Sr Nur Khairul Faizah bt Mustafa",
+            qualification: "MSc. in Construction Management, Bach. of Building Surveying (Hons)",
+            position: "Senior Lecturer",
+            room: "B110",
+            ext: "787",
+            email: "nurkhairul@klust.edu.my",
+            staffId: "IEN00361",
+            specialization: "Building Performance, Maintenance Management",
+            department: "management"
+        },
+        {
+            name: "Nordianti Abd Rahim",
+            qualification: "Dip in Arch (UiTM, Perak), Bachelor in Landscape Architecture (UiTM, Shah Alam), Msc In Heritage and Conservation Management (UiTM, Shah Alam)",
+            position: "Senior Lecturer",
+            room: "B108",
+            ext: "764",
+            email: "nordianti@klust.edu.my",
+            staffId: "IEN 00896",
+            specialization: "Landscape Architecture and Heritage Conservation Management",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Mohd Basir bin Abdul Razak",
+            qualification: "Master of Science in Heritage and Conservation Management, Bachelor of Landscape Architecture",
+            position: "Senior Lecturer",
+            room: "B117",
+            ext: "592",
+            email: "basirrazak@klust.edu.my",
+            staffId: "IEN 00864",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Siti Najwa bt Sheikh Yahya",
+            qualification: "MA Development & Emergency (Architecture), Oxford Brookes, UK",
+            position: "Senior Lecturer",
+            room: "B123",
+            ext: "547",
+            email: "sitinajwa@klust.edu.my",
+            staffId: "IEN 00901",
+            specialization: "Architecture & Post-Disaster Reconstruction",
+            department: "architecture"
+        },
+        {
+            name: "Mohd Suhail bin Ahmad Sahimi",
+            qualification: "Master in Landscape Architecture",
+            position: "Senior Lecturer",
+            room: "B116",
+            ext: "547",
+            email: "suhail@klust.edu.my",
+            staffId: "IEN 01199",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Ar Mohd Kamal Bin Abdullah",
+            qualification: "LAM Part 3",
+            position: "Lecturer",
+            room: "B102",
+            ext: "754",
+            email: "mohdkamal@klust.edu.my",
+            staffId: "IEN 01289",
+            specialization: "Urban Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Sr. Fazleemardyana bin Omar, CQS",
+            qualification: "Registered as Consultant QS (BQSM), Bac. QS, UiTM 2008",
+            position: "Lecturer",
+            room: "B105",
+            ext: "764",
+            email: "fazleemardyana@klust.edu.my",
+            staffId: "IEN 01295",
+            specialization: "Measurement, Construction Contract",
+            department: "quantity-surveying"
+        }
+    ]
 };
 
 if (typeof module !== 'undefined' && module.exports) {

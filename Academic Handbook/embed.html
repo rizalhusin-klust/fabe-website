@@ -1207,6 +1207,12 @@ body {
                         </button>
                     </li>
                     <li class="nav-item">
+                        <button data-tab="lecturers">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            Lecturer Directory
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <button data-tab="planner">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             GPA & Study Planner
@@ -1408,6 +1414,36 @@ body {
                             <p class="wisdom-text">“Wisdom thrives in shared guidance.”</p>
                             <p class="wisdom-disclaimer">This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href="https://klust.edu.my/current-students/klust-counselling-services/" target="_blank" style="color: var(--color-blue); font-weight: 600; text-decoration: underline;">University Counselling Services</a>.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 2.7: LECTURER DIRECTORY -->
+            <div class="panel-card" id="lecturers-panel" style="display: none;">
+                <header class="panel-header">
+                    <h1 class="panel-title">Lecturer Directory</h1>
+                    <p class="panel-subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
+                </header>
+
+                <div class="lecturers-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Search and filters -->
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div class="search-box-container" style="flex: 2; min-width: 250px; position: relative;">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 1.25rem; height: 1.25rem; color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" class="search-input" id="lecturer-search-input" placeholder="Search lecturers (e.g. name, specialization, program)..." style="padding-left: 3rem; width: 100%;">
+                        </div>
+                        <select class="select-input" id="lecturer-program-filter" style="flex: 1; min-width: 180px;">
+                            <option value="all">All Departments / Roles</option>
+                            <option value="architecture">Architecture</option>
+                            <option value="quantity-surveying">Quantity Surveying</option>
+                            <option value="landscape-architecture">Landscape Architecture</option>
+                            <option value="management">Management & Others</option>
+                        </select>
+                    </div>
+
+                    <!-- Directory Grid -->
+                    <div class="lecturer-grid" id="lecturers-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+                        <!-- Rendered dynamically -->
                     </div>
                 </div>
             </div>
@@ -2197,7 +2233,262 @@ const HANDBOOK_DATA = {
                 ]
             }
         }
-    }
+    },
+    staffProfiles: [
+        {
+            name: "Ar Mohd Rizal Zakaria",
+            qualification: "LAM Part III, Bach. Of Architecture & Diploma Architecture, ITM",
+            position: "Head of Program - Master of Architecture, Senior Lecturer",
+            room: "B102",
+            ext: "540",
+            email: "rizal.zack@klust.edu.my",
+            staffId: "IEN 00738",
+            specialization: "Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Ts Idris Bin Taib",
+            qualification: "Bsc. Housing Building and Planning, USM. B. Architecture, USM. MBA, UiTM.",
+            position: "Senior Lecturer",
+            room: "B118",
+            ext: "899",
+            email: "idristaib@klust.edu.my",
+            staffId: "IEN 00563",
+            specialization: "The Adaptive Reuse of Historical Building: Fire Safety Provisions for Museum Heritage and Conservation.",
+            department: "architecture"
+        },
+        {
+            name: "Ts Mohd Shafiq Bin Ramlan",
+            qualification: "Master of Science In Construction Engineering (UiTM), Bach of Eng. (Hons) Civil Eng. (UiTM)",
+            position: "Head Of Program – BTCM & BREM, Senior Lecturer",
+            room: "B105",
+            ext: "787",
+            email: "syafiq@klust.edu.my",
+            staffId: "IEN 01238",
+            specialization: "Construction Management, Quantity Surveying",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Zairila Juria Binti Zainal Abidin",
+            qualification: "M. Sc. In Urban and Regional Planning (USM), B. SC. (Hon) in Architectural Studies (IIUM)",
+            position: "HOP DAR, Senior Lecturer",
+            room: "B114",
+            ext: "548",
+            email: "zairila@klust.edu.my",
+            staffId: "IEN 00919",
+            specialization: "Urban Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Nur Azwanie Bt Nordin",
+            qualification: "Master of Science in Heritage & Conservation Management, Bachelor in Landscape Architecture",
+            position: "HOP – BLA & DLA, Senior Lecturer",
+            room: "B104",
+            ext: "846",
+            email: "azwanie@klust.edu.my",
+            staffId: "IEN 00999",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Aminah Binti Mohamed Bakhari",
+            qualification: "Master in Business Administration (Construction Business) 2008 UIA, Bachelor of Quantity Surveying (Hons) UiTM 2003",
+            position: "Head of Program, BQS and DQS, Senior Lecturer",
+            room: "B119",
+            ext: "846",
+            email: "aminah@klust.edu.my",
+            staffId: "IEN 01297",
+            specialization: "Construction Contract, Measurement of Building Works",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Mazlina Binti Abdul Manan",
+            qualification: "Master in Science FACILITIES MANAGEMENT (UiTM), Degree in Civil Engineering (UTM), Diploma in Civil Engineering (UTM)",
+            position: "Senior Lecturer",
+            room: "B 122",
+            ext: "785",
+            email: "mazlina@klust.edu.my",
+            staffId: "IEN 00825",
+            specialization: "CIVIL ENGINEERING, BUILDING CONSTRUCTION, TECHNOLOGY AND BUILDING STRUCTURE",
+            department: "management"
+        },
+        {
+            name: "Sr Sharifah Huda Syed Mohd, PQS",
+            qualification: "Msc in Project Management, Bac. Of Quantity Surveying (Hons)",
+            position: "Senior Lecturer",
+            room: "B126",
+            ext: "548",
+            email: "sharifah@klust.edu.my",
+            staffId: "IEN 00757",
+            specialization: "Quantity Surveying",
+            department: "quantity-surveying"
+        },
+        {
+            name: "Ahmad Muna'iem Ahmad Fauzi",
+            qualification: "Degree in Architecture – Part 2",
+            position: "Senior Lecturer",
+            room: "B116",
+            ext: "593",
+            email: "munaiem@klust.edu.my",
+            staffId: "IEN 00817",
+            specialization: "Architecture Design, Housing planning and Design Conceptual, Islamic Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Siti Noraini Ahmad",
+            qualification: "BSc (Hon) Architecture; M. Environment",
+            position: "Senior Lecturer",
+            room: "B108",
+            ext: "780",
+            email: "sitinoraini@klust.edu.my",
+            staffId: "IEN00446",
+            specialization: "Sustainable Design, Environmental Impact Assessment",
+            department: "architecture"
+        },
+        {
+            name: "Noraqidah Binti Mohamad",
+            qualification: "Master of Science (Tourism Planning) UTM, Bac. In Landscape Architecture (UTM)",
+            position: "Senior Lecturer",
+            room: "B106",
+            ext: "782",
+            email: "noraqidah@klust.edu.my",
+            staffId: "IEN 00697",
+            specialization: "Sustainable Landscape Design",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Assoc. Prof Ar Mohd Hayazi bin Agusi",
+            qualification: "Master Sc. Heritage Conservation & Management, B. Arch (Hons), B.A (Hons) Arch, LAM Part III",
+            position: "Senior Lecturer",
+            room: "B101",
+            ext: "NA",
+            email: "hayazi@klust.edu.my",
+            staffId: "IEN 00918",
+            specialization: "Urban Architecture and Conservation Heritage",
+            department: "architecture"
+        },
+        {
+            name: "Dr. 'Adil Farizal bin Md Rashid",
+            qualification: "Bsc. Architecture UIA, 2003, Bsc. Housing USM, 2008 (Master in Housing), PHD IUKL",
+            position: "Senior Lecturer",
+            room: "B123",
+            ext: "754",
+            email: "adil@klust.edu.my",
+            staffId: "IEN 00503",
+            specialization: "Housing Design, 3D Architectural Visualization and Animation",
+            department: "architecture"
+        },
+        {
+            name: "Azrin Bin Abu Seman",
+            qualification: "MSc. In Urban Development & Mgmt (UiTM)",
+            position: "Senior Lecturer",
+            room: "B109",
+            ext: "776",
+            email: "azrin@klust.edu.my",
+            staffId: "IEN 00983",
+            specialization: "Architecture Design, Urban Design, Urban Development and Management, Computer Aided Design and Architectural Drafting",
+            department: "architecture"
+        },
+        {
+            name: "Nur Balqis binti Ahmad Safawi",
+            qualification: "Master in Built Environment, Bach. Science in Architecture, UIA",
+            position: "Senior Lecturer",
+            room: "B115",
+            ext: "1532",
+            email: "balqis@klust.edu.my",
+            staffId: "IEN 00926",
+            specialization: "Universal Design",
+            department: "architecture"
+        },
+        {
+            name: "Siti Hajar bt Mat Haril",
+            qualification: "B.Arch (HONS), UiTM, Dip. Arch, UTM",
+            position: "Senior Lecturer",
+            room: "B115",
+            ext: "1532",
+            email: "shajar.mharil@klust.edu.my",
+            staffId: "IEN 01123",
+            specialization: "Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Sr Nur Khairul Faizah bt Mustafa",
+            qualification: "MSc. in Construction Management, Bach. of Building Surveying (Hons)",
+            position: "Senior Lecturer",
+            room: "B110",
+            ext: "787",
+            email: "nurkhairul@klust.edu.my",
+            staffId: "IEN00361",
+            specialization: "Building Performance, Maintenance Management",
+            department: "management"
+        },
+        {
+            name: "Nordianti Abd Rahim",
+            qualification: "Dip in Arch (UiTM, Perak), Bachelor in Landscape Architecture (UiTM, Shah Alam), Msc In Heritage and Conservation Management (UiTM, Shah Alam)",
+            position: "Senior Lecturer",
+            room: "B108",
+            ext: "764",
+            email: "nordianti@klust.edu.my",
+            staffId: "IEN 00896",
+            specialization: "Landscape Architecture and Heritage Conservation Management",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Mohd Basir bin Abdul Razak",
+            qualification: "Master of Science in Heritage and Conservation Management, Bachelor of Landscape Architecture",
+            position: "Senior Lecturer",
+            room: "B117",
+            ext: "592",
+            email: "basirrazak@klust.edu.my",
+            staffId: "IEN 00864",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Siti Najwa bt Sheikh Yahya",
+            qualification: "MA Development & Emergency (Architecture), Oxford Brookes, UK",
+            position: "Senior Lecturer",
+            room: "B123",
+            ext: "547",
+            email: "sitinajwa@klust.edu.my",
+            staffId: "IEN 00901",
+            specialization: "Architecture & Post-Disaster Reconstruction",
+            department: "architecture"
+        },
+        {
+            name: "Mohd Suhail bin Ahmad Sahimi",
+            qualification: "Master in Landscape Architecture",
+            position: "Senior Lecturer",
+            room: "B116",
+            ext: "547",
+            email: "suhail@klust.edu.my",
+            staffId: "IEN 01199",
+            specialization: "Landscape Architecture",
+            department: "landscape-architecture"
+        },
+        {
+            name: "Ar Mohd Kamal Bin Abdullah",
+            qualification: "LAM Part 3",
+            position: "Lecturer",
+            room: "B102",
+            ext: "754",
+            email: "mohdkamal@klust.edu.my",
+            staffId: "IEN 01289",
+            specialization: "Urban Architecture",
+            department: "architecture"
+        },
+        {
+            name: "Sr. Fazleemardyana bin Omar, CQS",
+            qualification: "Registered as Consultant QS (BQSM), Bac. QS, UiTM 2008",
+            position: "Lecturer",
+            room: "B105",
+            ext: "764",
+            email: "fazleemardyana@klust.edu.my",
+            staffId: "IEN 01295",
+            specialization: "Measurement, Construction Contract",
+            department: "quantity-surveying"
+        }
+    ]
 };
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -2272,6 +2563,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDiagnosticSurvey();
     initDecisionTree();
     initCurriculumComponents();
+    initLecturerDirectory();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -3488,6 +3780,124 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${categoriesHtml}
                 </div>
             `;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Lecturer Directory Controller
+    // -------------------------------------------------------------------------
+    function initLecturerDirectory() {
+        const searchInput = document.getElementById('lecturer-search-input');
+        const deptFilter = document.getElementById('lecturer-program-filter');
+        const gridContainer = document.getElementById('lecturers-grid-container');
+
+        if (!gridContainer) return;
+
+        const staff = HANDBOOK_DATA.staffProfiles || [];
+
+        // Attach listeners
+        if (searchInput) searchInput.addEventListener('input', updateFilters);
+        if (deptFilter) deptFilter.addEventListener('change', updateFilters);
+
+        // Initial render
+        renderDirectory(staff);
+
+        function updateFilters() {
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const dept = deptFilter ? deptFilter.value : 'all';
+
+            const filtered = staff.filter(member => {
+                const matchQuery = member.name.toLowerCase().includes(query) || 
+                                   member.qualification.toLowerCase().includes(query) ||
+                                   (member.specialization && member.specialization.toLowerCase().includes(query)) ||
+                                   member.position.toLowerCase().includes(query);
+                
+                const matchDept = dept === 'all' || member.department === dept;
+
+                return matchQuery && matchDept;
+            });
+
+            renderDirectory(filtered);
+        }
+
+        function getInitialsAvatar(name) {
+            // Strip titles to get clean name parts
+            const cleanName = name.replace(/^(Ts|Ar|Sr|Dr\.|Assoc\.\s*Prof\s*)\s+/i, '').trim();
+            const parts = cleanName.split(' ');
+            let initials = '';
+            if (parts.length > 0 && parts[0]) initials += parts[0][0];
+            if (parts.length > 1 && parts[1]) initials += parts[1][0];
+            initials = initials.toUpperCase();
+
+            // Hash code for unique gradient background
+            let hash = 0;
+            for (let i = 0; i < cleanName.length; i++) {
+                hash = cleanName.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            
+            const hue1 = Math.abs(hash % 360);
+            const hue2 = (hue1 + 45) % 360;
+            const grad = `linear-gradient(135deg, hsl(${hue1}, 70%, 50%) 0%, hsl(${hue2}, 70%, 40%) 100%)`;
+            
+            return `
+                <div class="lecturer-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: ${grad}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem; font-family: var(--font-heading); box-shadow: 0 4px 8px rgba(0,0,0,0.08); border: 2px solid white; flex-shrink: 0;">
+                    ${initials}
+                </div>
+            `;
+        }
+
+        function renderDirectory(list) {
+            gridContainer.innerHTML = '';
+
+            if (list.length === 0) {
+                gridContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin: 0 auto 1rem auto; opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.109A11.978 11.978 0 0112.25 18c-.896-.083-1.78-.21-2.65-.378M12 18.25c-.896-.083-1.78-.21-2.65-.378m-2.65-.378a9.33 9.33 0 01-2.625-.372 9.337 9.337 0 01-4.121-.952 4.125 4.125 0 017.533-2.493M16.5 10.5a3 3 0 11-6 0 3 3 0 016 0zM6.75 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM4.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"/></svg>
+                        <p style="margin: 0; font-size: 0.95rem; font-weight: 500;">No lecturers found matching your filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(member => {
+                const avatar = getInitialsAvatar(member.name);
+                const card = document.createElement('div');
+                card.className = 'lecturer-card-wrapper';
+                
+                card.innerHTML = `
+                    <div class="stat-card" style="background: var(--bg-primary); border-color: var(--border-color); padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 10px; height: 100%; transition: all 0.2s ease; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            ${avatar}
+                            <div>
+                                <h3 style="font-family: var(--font-heading); font-size: 1rem; color: var(--text-primary); font-weight: 700; margin: 0; line-height: 1.3;">${member.name}</h3>
+                                <p style="font-size: 0.75rem; color: var(--color-blue); font-weight: 600; margin: 0.15rem 0 0 0; line-height: 1.2;">${member.position}</p>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: auto;">
+                            <div>
+                                <strong>Qualification:</strong> 
+                                <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.qualification}</span>
+                            </div>
+                            ${member.specialization ? `
+                            <div>
+                                <strong>Specialization:</strong> 
+                                <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.specialization}</span>
+                            </div>` : ''}
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.15rem;">
+                                <div><strong>Office:</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
+                                <div><strong>Ext:</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
+                            </div>
+                            <div style="margin-top: 0.15rem;">
+                                <strong>Email:</strong> 
+                                <a href="mailto:${member.email}" style="color: var(--color-blue); text-decoration: underline; font-family: monospace; display: block; margin-top: 0.1rem; font-size: 0.75rem; word-break: break-all;">${member.email}</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                gridContainer.appendChild(card);
+            });
         }
     }
 });
