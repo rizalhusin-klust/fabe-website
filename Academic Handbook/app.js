@@ -1410,15 +1410,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = SafeStorage.getItem('fabe_handbook_lang') || 'en';
 
     function initLanguageToggle() {
-        const langBtn = document.getElementById('btn-lang-toggle');
-        
-        if (langBtn) {
-            langBtn.addEventListener('click', () => {
+        // Delegate click event to capture clicks on button, icon, or text spans
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('#btn-lang-toggle');
+            if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
                 currentLang = currentLang === 'en' ? 'zh' : 'en';
                 SafeStorage.setItem('fabe_handbook_lang', currentLang);
                 applyLanguage();
-            });
-        }
+            }
+        });
 
         applyLanguage();
     }
@@ -1450,6 +1452,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.setAttribute('placeholder', dict[key]);
             }
         });
-    }
 
+        // Re-render all active panels dynamically
+        const searchInput = document.getElementById('faq-search-input');
+        if (typeof renderFAQs === 'function' && searchInput) {
+            renderFAQs(searchInput.value || '');
+        }
+
+        if (typeof initLecturerDirectory === 'function') {
+            initLecturerDirectory();
+        }
+
+        if (typeof renderDashboardAdvice === 'function') {
+            renderDashboardAdvice();
+        }
+    }
 });

@@ -1622,175 +1622,218 @@ body {
     <!-- Scripts -->
     <script>
 const HANDBOOK_DATA = {
-    translations: {
+    "translations": {
         "en": {
-                "portal_title": "FABE Student Portal",
-                "portal_subtitle": "Academic Handbook & Advisor",
-                "nav_dashboard": "Advisor Dashboard",
-                "nav_search": "Handbook Explorer",
-                "nav_curriculum": "Curriculum Components",
-                "nav_lecturers": "Lecturer Directory",
-                "nav_planner": "GPA & Study Planner",
-                "nav_diagnose": "Study Diagnostics",
-                "nav_tree": "Troubleshooter",
-                "dash_title": "Academic Advisor Dashboard",
-                "dash_subtitle": "Interactive operational monitoring, academic progress tracking, and student risk management.",
-                "stat_total_registered": "Total Registered Students",
-                "stat_good_standing": "Good Standing (CGPA >= 2.0)",
-                "stat_probation": "Academic Probation (CGPA < 2.0)",
-                "stat_completion": "Handbook Completion Rate",
-                "status_card_title": "Diagnostic Assessment Status",
-                "status_card_sub": "Self-assessment progress and risk profile",
-                "btn_start_assessment": "Start Assessment",
-                "btn_view_results": "View Results",
-                "btn_retake_assessment": "Retake Assessment",
-                "search_title": "Academic Handbook Explorer",
-                "search_subtitle": "Search official academic regulations, policies, and inclusive learning support.",
-                "search_placeholder": "Search rules, attendance policy, probation, fail repeats, iTnL...",
-                "filter_all_cats": "All Categories",
-                "faq_no_results": "No matching rules or FAQs found.",
-                "curriculum_title": "Curriculum Components",
-                "curriculum_subtitle": "Overview of FABE program structures, credit distributions, and MPU requirement pillars.",
-                "curriculum_pillars_title": "Syllabus Structure & Pillars",
-                "curriculum_mpu_title": "Compulsory General Studies (MPU)",
-                "curriculum_total_req": "Total Graduation Requirement",
-                "lecturer_title": "Lecturer Directory",
-                "lecturer_subtitle": "Find contact information, qualifications, and areas of specialization for FABE staff.",
-                "lecturer_search_placeholder": "Search lecturers (e.g. name, specialization, program)...",
-                "dept_all": "All Departments / Roles",
-                "dept_arch": "Architecture",
-                "dept_qs": "Quantity Surveying",
-                "dept_la": "Landscape Architecture",
-                "dept_mgmt": "Management & Others",
-                "lbl_qualification": "Qualification:",
-                "lbl_specialization": "Specialization:",
-                "lbl_office": "Office:",
-                "lbl_ext": "Ext:",
-                "lbl_email": "Email:",
-                "lecturer_no_results": "No lecturers found matching your filters.",
-                "planner_title": "GPA & Study Planner",
-                "planner_subtitle": "Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.",
-                "planner_load_label": "Load Syllabus Template",
-                "planner_reset_btn": "Reset Planner",
-                "planner_print_btn": "Print Plan",
-                "planner_add_sem_btn": "+ Add Semester",
-                "planner_add_course_btn": "+ Add Course",
-                "planner_cgpa": "Cumulative CGPA",
-                "planner_earned_credits": "Earned Credits",
-                "planner_sem_gpa": "Semester GPA",
-                "planner_sem_credits": "Semester Credits",
-                "planner_col_code": "Course Code",
-                "planner_col_name": "Course Name",
-                "planner_col_credits": "Credits",
-                "planner_col_grade": "Grade",
-                "planner_col_points": "Points",
-                "planner_col_action": "Action",
-                "diagnose_title": "Study Diagnostics Wizard",
-                "diagnose_subtitle": "Answer an 8-step questionnaire to evaluate your study risks and generate recovery checklists.",
-                "diag_risk_low": "LOW RISK",
-                "diag_risk_mod": "MODERATE RISK",
-                "diag_risk_high": "HIGH RISK",
-                "diag_risk_crit": "CRITICAL RISK",
-                "diag_recommendations": "Personalized Recovery Checklist",
-                "tree_title": "Academic Troubleshooter",
-                "tree_subtitle": "Interactive decision tree for common student scenarios, probation recovery, and iTnL accommodations.",
-                "tree_select_prompt": "Select your current academic situation or concern below:",
-                "wisdom_quote": "Wisdom thrives in shared guidance.",
-                "wisdom_sub": "This handbook provides general guidance based on official regulations. For personalized support, consult your Academic Advisor or ",
-                "counselling_link": "KLUST University Counselling Services"
+            "portal_title": "FABE Student Portal",
+            "portal_subtitle": "Academic Handbook & Advisor",
+            "nav_dashboard": "Advisor Dashboard",
+            "nav_search": "Handbook Explorer",
+            "nav_curriculum": "Curriculum Components",
+            "nav_lecturers": "Lecturer Directory",
+            "nav_planner": "GPA & Study Planner",
+            "nav_diagnose": "Study Diagnostics",
+            "nav_tree": "Troubleshooter",
+            "dash_title": "Academic Advisor Dashboard",
+            "dash_subtitle": "Interactive operational monitoring, academic progress tracking, and student risk management.",
+            "stat_total_registered": "Total Registered Students",
+            "stat_good_standing": "Good Standing (CGPA >= 2.0)",
+            "stat_probation": "Academic Probation (CGPA < 2.0)",
+            "stat_completion": "Handbook Completion Rate",
+            "status_card_title": "Diagnostic Assessment Status",
+            "status_card_sub": "Self-assessment progress and risk profile",
+            "btn_start_assessment": "Start Assessment",
+            "btn_view_results": "View Results",
+            "btn_retake_assessment": "Retake Assessment",
+            "search_title": "Academic Handbook Explorer",
+            "search_subtitle": "Search official academic regulations, policies, and inclusive learning support.",
+            "search_placeholder": "Search rules, attendance policy, probation, fail repeats, iTnL...",
+            "filter_all_cats": "All Categories",
+            "faq_no_results": "No matching rules or FAQs found.",
+            "curriculum_title": "Curriculum Components",
+            "curriculum_subtitle": "Overview of FABE program structures, credit distributions, and MPU requirement pillars.",
+            "curriculum_pillars_title": "Syllabus Structure & Pillars",
+            "curriculum_mpu_title": "Compulsory General Studies (MPU)",
+            "curriculum_total_req": "Total Graduation Requirement",
+            "lecturer_title": "Lecturer Directory",
+            "lecturer_subtitle": "Find contact information, qualifications, and areas of specialization for FABE staff.",
+            "lecturer_search_placeholder": "Search lecturers (e.g. name, specialization, program)...",
+            "dept_all": "All Departments / Roles",
+            "dept_arch": "Architecture",
+            "dept_qs": "Quantity Surveying",
+            "dept_la": "Landscape Architecture",
+            "dept_mgmt": "Management & Others",
+            "lbl_qualification": "Qualification:",
+            "lbl_specialization": "Specialization:",
+            "lbl_office": "Office:",
+            "lbl_ext": "Ext:",
+            "lbl_email": "Email:",
+            "lecturer_no_results": "No lecturers found matching your filters.",
+            "planner_title": "GPA & Study Planner",
+            "planner_subtitle": "Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.",
+            "planner_load_label": "Load Syllabus Template",
+            "planner_reset_btn": "Reset Planner",
+            "planner_print_btn": "Print Plan",
+            "planner_add_sem_btn": "+ Add Semester",
+            "planner_add_course_btn": "+ Add Course",
+            "planner_cgpa": "Cumulative CGPA",
+            "planner_earned_credits": "Earned Credits",
+            "planner_sem_gpa": "Semester GPA",
+            "planner_sem_credits": "Semester Credits",
+            "planner_col_code": "Course Code",
+            "planner_col_name": "Course Name",
+            "planner_col_credits": "Credits",
+            "planner_col_grade": "Grade",
+            "planner_col_points": "Points",
+            "planner_col_action": "Action",
+            "diagnose_title": "Study Diagnostics Wizard",
+            "diagnose_subtitle": "Answer an 8-step questionnaire to evaluate your study risks and generate recovery checklists.",
+            "diag_risk_low": "LOW RISK",
+            "diag_risk_mod": "MODERATE RISK",
+            "diag_risk_high": "HIGH RISK",
+            "diag_risk_crit": "CRITICAL RISK",
+            "diag_recommendations": "Personalized Recovery Checklist",
+            "tree_title": "Academic Troubleshooter",
+            "tree_subtitle": "Interactive decision tree for common student scenarios, probation recovery, and iTnL accommodations.",
+            "tree_select_prompt": "Select your current academic situation or concern below:",
+            "wisdom_quote": "Wisdom thrives in shared guidance.",
+            "wisdom_sub": "This handbook provides general guidance based on official regulations. For personalized support, consult your Academic Advisor or ",
+            "counselling_link": "KLUST University Counselling Services"
         },
         "zh": {
-                "portal_title": "FABE 学生学术门户",
-                "portal_subtitle": "学术手册与导师指南",
-                "nav_dashboard": "导师仪表板",
-                "nav_search": "手册规章探索",
-                "nav_curriculum": "课程组成结构",
-                "nav_lecturers": "讲师与教职员名录",
-                "nav_planner": "GPA 与 学习规划器",
-                "nav_diagnose": "学业诊断评估",
-                "nav_tree": "问题排查决策树",
-                "dash_title": "学术导师仪表板",
-                "dash_subtitle": "交互式日常监控、学术进度跟踪与学生风险管理。",
-                "stat_total_registered": "已注册学生总数",
-                "stat_good_standing": "成绩良好 (CGPA >= 2.0)",
-                "stat_probation": "学术警告 (CGPA < 2.0)",
-                "stat_completion": "手册阅读完成率",
-                "status_card_title": "学业诊断评估状态",
-                "status_card_sub": "自我评估进度与风险画像",
-                "btn_start_assessment": "开始诊断评估",
-                "btn_view_results": "查看诊断结果",
-                "btn_retake_assessment": "重新诊断评估",
-                "search_title": "学术手册规章探索",
-                "search_subtitle": "搜索官方学术规章、考试政策及包容性学习支持 (iTnL)。",
-                "search_placeholder": "搜索规章、考勤政策、学术警告、重修、iTnL包容性学习...",
-                "filter_all_cats": "所有分类",
-                "faq_no_results": "未找到匹配的规章或常见问题。",
-                "curriculum_title": "课程组成结构",
-                "curriculum_subtitle": "FABE 课程结构、学分分配及 MPU 通识课程四大支柱概述。",
-                "curriculum_pillars_title": "课程体系与四大支柱",
-                "curriculum_mpu_title": "必修通识课程 (MPU)",
-                "curriculum_total_req": "毕业总学分要求",
-                "lecturer_title": "讲师与教职员名录",
-                "lecturer_subtitle": "查找 FABE 讲师联系方式、学术资历及专业研究领域。",
-                "lecturer_search_placeholder": "搜索讲师（例如：姓名、专业领域、课程）...",
-                "dept_all": "所有部门 / 职位",
-                "dept_arch": "建筑学系",
-                "dept_qs": "工料测量系",
-                "dept_la": "景观建筑学系",
-                "dept_mgmt": "管理与其它",
-                "lbl_qualification": "学历资历:",
-                "lbl_specialization": "研究领域:",
-                "lbl_office": "办公室:",
-                "lbl_ext": "分机:",
-                "lbl_email": "电子邮箱:",
-                "lecturer_no_results": "未找到符合筛选条件的讲师。",
-                "planner_title": "GPA 与 学习规划器",
-                "planner_subtitle": "导入课程大纲路径，记录当前学期成绩并模拟计算累积 CGPA。",
-                "planner_load_label": "加载课程大纲模板",
-                "planner_reset_btn": "重置规划器",
-                "planner_print_btn": "打印规划方案",
-                "planner_add_sem_btn": "+ 添加学期",
-                "planner_add_course_btn": "+ 添加课程",
-                "planner_cgpa": "累积 CGPA",
-                "planner_earned_credits": "已获得学分",
-                "planner_sem_gpa": "学期 GPA",
-                "planner_sem_credits": "学期学分",
-                "planner_col_code": "课程代码",
-                "planner_col_name": "课程名称",
-                "planner_col_credits": "学分",
-                "planner_col_grade": "成绩等级",
-                "planner_col_points": "绩点",
-                "planner_col_action": "操作",
-                "diagnose_title": "学业诊断评估向导",
-                "diagnose_subtitle": "回答 8 步式评估问卷，诊断学习瓶颈并生成个人改善清单。",
-                "diag_risk_low": "低风险",
-                "diag_risk_mod": "中度风险",
-                "diag_risk_high": "高风险",
-                "diag_risk_crit": "极高风险",
-                "diag_recommendations": "个性化学业改善清单",
-                "tree_title": "学术问题排查器",
-                "tree_subtitle": "针对常见学业困难、警告恢复及 iTnL 学习调整的交互式决策树。",
-                "tree_select_prompt": "请在下方选择您当前的学术状况或疑问：",
-                "wisdom_quote": "智慧在共同指引中茁壮成长。",
-                "wisdom_sub": "本手册基于官方规章提供常规指引。如需个性化学术支持，请咨询您的学术导师或联系 ",
-                "counselling_link": "KLUST 大学心理咨询服务中心"
+            "portal_title": "FABE 学生学术门户",
+            "portal_subtitle": "学术手册与导师指南",
+            "nav_dashboard": "导师仪表板",
+            "nav_search": "手册规章探索",
+            "nav_curriculum": "课程组成结构",
+            "nav_lecturers": "讲师与教职员名录",
+            "nav_planner": "GPA 与 学习规划器",
+            "nav_diagnose": "学业诊断评估",
+            "nav_tree": "问题排查决策树",
+            "dash_title": "学术导师仪表板",
+            "dash_subtitle": "交互式日常监控、学术进度跟踪与学生风险管理。",
+            "stat_total_registered": "已注册学生总数",
+            "stat_good_standing": "成绩良好 (CGPA >= 2.0)",
+            "stat_probation": "学术警告 (CGPA < 2.0)",
+            "stat_completion": "手册阅读完成率",
+            "status_card_title": "学业诊断评估状态",
+            "status_card_sub": "自我评估进度与风险画像",
+            "btn_start_assessment": "开始诊断评估",
+            "btn_view_results": "查看诊断结果",
+            "btn_retake_assessment": "重新诊断评估",
+            "search_title": "学术手册规章探索",
+            "search_subtitle": "搜索官方学术规章、考试政策及包容性学习支持 (iTnL)。",
+            "search_placeholder": "搜索规章、考勤政策、学术警告、重修、iTnL包容性学习...",
+            "filter_all_cats": "所有分类",
+            "faq_no_results": "未找到匹配的规章或常见问题。",
+            "curriculum_title": "课程组成结构",
+            "curriculum_subtitle": "FABE 课程结构、学分分配及 MPU 通识课程四大支柱概述。",
+            "curriculum_pillars_title": "课程体系与四大支柱",
+            "curriculum_mpu_title": "必修通识课程 (MPU)",
+            "curriculum_total_req": "毕业总学分要求",
+            "lecturer_title": "讲师与教职员名录",
+            "lecturer_subtitle": "查找 FABE 讲师联系方式、学术资历及专业研究领域。",
+            "lecturer_search_placeholder": "搜索讲师（例如：姓名、专业领域、课程）...",
+            "dept_all": "所有部门 / 职位",
+            "dept_arch": "建筑学系",
+            "dept_qs": "工料测量系",
+            "dept_la": "景观建筑学系",
+            "dept_mgmt": "管理与其它",
+            "lbl_qualification": "学历资历:",
+            "lbl_specialization": "研究领域:",
+            "lbl_office": "办公室:",
+            "lbl_ext": "分机:",
+            "lbl_email": "电子邮箱:",
+            "lecturer_no_results": "未找到符合筛选条件的讲师。",
+            "planner_title": "GPA 与 学习规划器",
+            "planner_subtitle": "导入课程大纲路径，记录当前学期成绩并模拟计算累积 CGPA。",
+            "planner_load_label": "加载课程大纲模板",
+            "planner_reset_btn": "重置规划器",
+            "planner_print_btn": "打印规划方案",
+            "planner_add_sem_btn": "+ 添加学期",
+            "planner_add_course_btn": "+ 添加课程",
+            "planner_cgpa": "累积 CGPA",
+            "planner_earned_credits": "已获得学分",
+            "planner_sem_gpa": "学期 GPA",
+            "planner_sem_credits": "学期学分",
+            "planner_col_code": "课程代码",
+            "planner_col_name": "课程名称",
+            "planner_col_credits": "学分",
+            "planner_col_grade": "成绩等级",
+            "planner_col_points": "绩点",
+            "planner_col_action": "操作",
+            "diagnose_title": "学业诊断评估向导",
+            "diagnose_subtitle": "回答 8 步式评估问卷，诊断学习瓶颈并生成个人改善清单。",
+            "diag_risk_low": "低风险",
+            "diag_risk_mod": "中度风险",
+            "diag_risk_high": "高风险",
+            "diag_risk_crit": "极高风险",
+            "diag_recommendations": "个性化学业改善清单",
+            "tree_title": "学术问题排查器",
+            "tree_subtitle": "针对常见学业困难、警告恢复及 iTnL 学习调整的交互式决策树。",
+            "tree_select_prompt": "请在下方选择您当前的学术状况或疑问：",
+            "wisdom_quote": "智慧在共同指引中茁壮成长。",
+            "wisdom_sub": "本手册基于官方规章提供常规指引。如需个性化学术支持，请咨询您的学术导师或联系 ",
+            "counselling_link": "KLUST 大学心理咨询服务中心"
         }
-},
-    gradeScale: [
-        { grade: 'A', points: 4.00, desc: 'Excellent' },
-        { grade: 'A-', points: 3.67, desc: 'Very Good' },
-        { grade: 'B+', points: 3.33, desc: 'Good' },
-        { grade: 'B', points: 3.00, desc: 'Satisfactory' },
-        { grade: 'B-', points: 2.67, desc: 'Pass' },
-        { grade: 'C+', points: 2.33, desc: 'Pass' },
-        { grade: 'C', points: 2.00, desc: 'Pass' },
-        { grade: 'C-', points: 1.67, desc: 'Conditional Pass / Fail' },
-        { grade: 'D+', points: 1.33, desc: 'Fail' },
-        { grade: 'D', points: 1.00, desc: 'Fail' },
-        { grade: 'F', points: 0.00, desc: 'Fail' }
+    },
+    "gradeScale": [
+        {
+            "grade": "A",
+            "points": 4,
+            "desc": "Excellent"
+        },
+        {
+            "grade": "A-",
+            "points": 3.67,
+            "desc": "Very Good"
+        },
+        {
+            "grade": "B+",
+            "points": 3.33,
+            "desc": "Good"
+        },
+        {
+            "grade": "B",
+            "points": 3,
+            "desc": "Satisfactory"
+        },
+        {
+            "grade": "B-",
+            "points": 2.67,
+            "desc": "Pass"
+        },
+        {
+            "grade": "C+",
+            "points": 2.33,
+            "desc": "Pass"
+        },
+        {
+            "grade": "C",
+            "points": 2,
+            "desc": "Pass"
+        },
+        {
+            "grade": "C-",
+            "points": 1.67,
+            "desc": "Conditional Pass / Fail"
+        },
+        {
+            "grade": "D+",
+            "points": 1.33,
+            "desc": "Fail"
+        },
+        {
+            "grade": "D",
+            "points": 1,
+            "desc": "Fail"
+        },
+        {
+            "grade": "F",
+            "points": 0,
+            "desc": "Fail"
+        }
     ],
-    
-    programs: [
+    "programs": [
         {
             "id": "arch-bsc",
             "name": "Bachelor of Science (Architectural Studies)",
@@ -2996,702 +3039,1122 @@ const HANDBOOK_DATA = {
             ]
         }
     ],
-
-    handbookRules: {
-        academicStanding: [
-            { name: 'Good Standing (GS)', range: 'CGPA ≥ 2.00', status: 'normal', desc: 'You are in good academic standing. You can register for a full course load (12 - 18 credits).' },
-            { name: 'Academic Probation (AP)', range: '1.50 ≤ CGPA < 2.00', status: 'warning', desc: 'Warning status. You are placed on probation. You are limited to a maximum of 12 credits next semester. You must meet with your Academic Advisor to plan your recovery.' },
-            { name: 'Academic Dismissal (AD)', range: 'CGPA < 1.50 OR consecutive AP', status: 'danger', desc: 'Critical status. A student who obtains a CGPA below 1.50, or remains on Academic Probation for two consecutive semesters, is subject to academic dismissal. You must appeal to the Board of Studies to continue.' }
+    "handbookRules": {
+        "academicStanding": [
+            {
+                "name": "Good Standing (GS)",
+                "range": "CGPA ≥ 2.00",
+                "status": "normal",
+                "desc": "You are in good academic standing. You can register for a full course load (12 - 18 credits)."
+            },
+            {
+                "name": "Academic Probation (AP)",
+                "range": "1.50 ≤ CGPA < 2.00",
+                "status": "warning",
+                "desc": "Warning status. You are placed on probation. You are limited to a maximum of 12 credits next semester. You must meet with your Academic Advisor to plan your recovery."
+            },
+            {
+                "name": "Academic Dismissal (AD)",
+                "range": "CGPA < 1.50 OR consecutive AP",
+                "status": "danger",
+                "desc": "Critical status. A student who obtains a CGPA below 1.50, or remains on Academic Probation for two consecutive semesters, is subject to academic dismissal. You must appeal to the Board of Studies to continue."
+            }
         ],
-        attendance: {
-            requirement: '80%',
-            penalty: 'If your attendance in a course falls below 80% without a valid medical certificate or official justification, you will be barred from sitting for the final exam or final review of that course. This results in an automatic Grade F (Fail) for the course.'
+        "attendance": {
+            "requirement": "80%",
+            "penalty": "If your attendance in a course falls below 80% without a valid medical certificate or official justification, you will be barred from sitting for the final exam or final review of that course. This results in an automatic Grade F (Fail) for the course."
         },
-        creditLimits: {
-            normalMin: 12,
-            normalMax: 18,
-            probationMax: 12,
-            specialMin: 9
+        "creditLimits": {
+            "normalMin": 12,
+            "normalMax": 18,
+            "probationMax": 12,
+            "specialMin": 9
         }
     },
-
-    faqs: [
+    "faqs": [
         {
-            category: 'Academic Performance',
-            question: 'What is the minimum CGPA to stay in Good Standing?',
-            tags: ['gpa', 'cgpa', 'probation', 'dismissal', 'failing'],
-            answer: `You must maintain a Cumulative Grade Point Average (**CGPA**) of **2.00** or higher to remain in Good Standing. If it falls below 2.00, you are placed on Academic Probation.`
+            "category": "Academic Performance",
+            "question": "What is the minimum CGPA to stay in Good Standing?",
+            "tags": [
+                "gpa",
+                "cgpa",
+                "probation",
+                "dismissal",
+                "failing"
+            ],
+            "answer": "You must maintain a Cumulative Grade Point Average (**CGPA**) of **2.00** or higher to remain in Good Standing. If it falls below 2.00, you are placed on Academic Probation.",
+            "question_zh": "保持良好学术成绩的最低 CGPA 是多少？",
+            "answer_zh": "您必须保持累积平均绩点 (**CGPA**) 达 **2.00** 或以上才能保持良好学术成绩。如果降至 2.00 以下，您将被列入学术警告 (Academic Probation)。"
         },
         {
-            category: 'Academic Performance',
-            question: 'What happens if my CGPA falls below 2.00?',
-            tags: ['probation', 'ap', 'credit limit', 'failing', 'advice'],
-            answer: `If your CGPA falls below 2.00, you will be placed on **Academic Probation (AP)**. This means:
-1. You are restricted to a maximum of **12 credits** in the following semester to help you focus.
-2. You must consult your Academic Advisor to prepare a study plan.
-3. If you remain on probation for two consecutive semesters, or if your CGPA falls below 1.50, you face **Academic Dismissal**.`
+            "category": "Academic Performance",
+            "question": "What happens if my CGPA falls below 2.00?",
+            "tags": [
+                "probation",
+                "ap",
+                "credit limit",
+                "failing",
+                "advice"
+            ],
+            "answer": "If your CGPA falls below 2.00, you will be placed on **Academic Probation (AP)**. This means:\n1. You are restricted to a maximum of **12 credits** in the following semester to help you focus.\n2. You must consult your Academic Advisor to prepare a study plan.\n3. If you remain on probation for two consecutive semesters, or if your CGPA falls below 1.50, you face **Academic Dismissal**.",
+            "question_zh": "What happens if my CGPA falls below 2.00?",
+            "answer_zh": "If your CGPA falls below 2.00, you will be placed on **Academic Probation (AP)**. This means:\n1. You are restricted to a maximum of **12 credits** in the following semester to help you focus.\n2. You must consult your Academic Advisor to prepare a study plan.\n3. If you remain on probation for two consecutive semesters, or if your CGPA falls below 1.50, you face **Academic Dismissal**."
         },
         {
-            category: 'Attendance Policy',
-            question: 'What is the attendance requirement and what happens if I miss class?',
-            tags: ['attendance', 'barred', 'absence', 'f', 'medical certificate', 'mc'],
-            answer: `The university enforces a strict **80% minimum attendance** policy. 
-- If you miss more than 20% of classes without a valid Medical Certificate (MC) or approval letter, you will be **barred** from the final exam/portfolio review.
-- Being barred results in an automatic **Grade F (Fail)** for that course.`
+            "category": "Attendance Policy",
+            "question": "What is the attendance requirement and what happens if I miss class?",
+            "tags": [
+                "attendance",
+                "barred",
+                "absence",
+                "f",
+                "medical certificate",
+                "mc"
+            ],
+            "answer": "The university enforces a strict **80% minimum attendance** policy. \n- If you miss more than 20% of classes without a valid Medical Certificate (MC) or approval letter, you will be **barred** from the final exam/portfolio review.\n- Being barred results in an automatic **Grade F (Fail)** for that course.",
+            "question_zh": "What is the attendance requirement and what happens if I miss class?",
+            "answer_zh": "The university enforces a strict **80% minimum attendance** policy. \n- If you miss more than 20% of classes without a valid Medical Certificate (MC) or approval letter, you will be **barred** from the final exam/portfolio review.\n- Being barred results in an automatic **Grade F (Fail)** for that course."
         },
         {
-            category: 'Course Management',
-            question: 'Can I repeat a course to improve my grade?',
-            tags: ['repeat', 'grade replacement', 'failing', 'c-', 'd', 'f'],
-            answer: `Yes, you can repeat courses to improve your CGPA:
-- For courses with **Grade C- or lower**, you can retake the course.
-- The **new grade** will replace the old grade in the CGPA calculation (though both remain on the transcript).
-- Repeating core design studio courses is highly recommended immediately if failed, as they are pre-requisites for subsequent semesters.`
+            "category": "Course Management",
+            "question": "Can I repeat a course to improve my grade?",
+            "tags": [
+                "repeat",
+                "grade replacement",
+                "failing",
+                "c-",
+                "d",
+                "f"
+            ],
+            "answer": "Yes, you can repeat courses to improve your CGPA:\n- For courses with **Grade C- or lower**, you can retake the course.\n- The **new grade** will replace the old grade in the CGPA calculation (though both remain on the transcript).\n- Repeating core design studio courses is highly recommended immediately if failed, as they are pre-requisites for subsequent semesters.",
+            "question_zh": "Can I repeat a course to improve my grade?",
+            "answer_zh": "Yes, you can repeat courses to improve your CGPA:\n- For courses with **Grade C- or lower**, you can retake the course.\n- The **new grade** will replace the old grade in the CGPA calculation (though both remain on the transcript).\n- Repeating core design studio courses is highly recommended immediately if failed, as they are pre-requisites for subsequent semesters."
         },
         {
-            category: 'Deferment of Study',
-            question: 'How do I apply for a Deferment (taking a semester break)?',
-            tags: ['deferment', 'break', 'postpone', 'health', 'finance', 'form'],
-            answer: `If you need to postpone your studies due to health, financial, or personal issues:
-1. You must apply for **Official Deferment** through the Faculty Office before Week 8 of the semester.
-2. Deferment due to medical reasons requires a certified hospital letter and does not count towards your maximum study duration.
-3. Unapproved absences (failing to register or attend without deferring) can lead to termination of student status.`
+            "category": "Deferment of Study",
+            "question": "How do I apply for a Deferment (taking a semester break)?",
+            "tags": [
+                "deferment",
+                "break",
+                "postpone",
+                "health",
+                "finance",
+                "form"
+            ],
+            "answer": "If you need to postpone your studies due to health, financial, or personal issues:\n1. You must apply for **Official Deferment** through the Faculty Office before Week 8 of the semester.\n2. Deferment due to medical reasons requires a certified hospital letter and does not count towards your maximum study duration.\n3. Unapproved absences (failing to register or attend without deferring) can lead to termination of student status.",
+            "question_zh": "How do I apply for a Deferment (taking a semester break)?",
+            "answer_zh": "If you need to postpone your studies due to health, financial, or personal issues:\n1. You must apply for **Official Deferment** through the Faculty Office before Week 8 of the semester.\n2. Deferment due to medical reasons requires a certified hospital letter and does not count towards your maximum study duration.\n3. Unapproved absences (failing to register or attend without deferring) can lead to termination of student status."
         },
         {
-            category: 'Graduation Requirements',
-            question: 'What are the graduation requirements for FABE?',
-            tags: ['graduation', 'requirements', 'credits', 'cgpa', 'muet'],
-            answer: `To graduate from the Faculty of Architecture and Built Environment, you must:
-1. Complete the total credit hours required for your program (typically **120 - 125 credits**).
-2. Achieve a minimum final **CGPA of 2.00**.
-3. Pass all core modules and University compulsory courses.
-4. Fulfill the industrial training (internship) duration.
-5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits).`
+            "category": "Graduation Requirements",
+            "question": "What are the graduation requirements for FABE?",
+            "tags": [
+                "graduation",
+                "requirements",
+                "credits",
+                "cgpa",
+                "muet"
+            ],
+            "answer": "To graduate from the Faculty of Architecture and Built Environment, you must:\n1. Complete the total credit hours required for your program (typically **120 - 125 credits**).\n2. Achieve a minimum final **CGPA of 2.00**.\n3. Pass all core modules and University compulsory courses.\n4. Fulfill the industrial training (internship) duration.\n5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits).",
+            "question_zh": "What are the graduation requirements for FABE?",
+            "answer_zh": "To graduate from the Faculty of Architecture and Built Environment, you must:\n1. Complete the total credit hours required for your program (typically **120 - 125 credits**).\n2. Achieve a minimum final **CGPA of 2.00**.\n3. Pass all core modules and University compulsory courses.\n4. Fulfill the industrial training (internship) duration.\n5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits)."
         },
         {
-            category: 'Inclusive Learning & Support',
-            question: 'What is the KLUST Inclusive Teaching, Learning, and Assessment (iTnL) Policy?',
-            tags: ['disability', 'dyslexia', 'adhd', 'inclusive learning', 'extra time', 'accommodation', 'adjustment', 'support', 'udl', 'iap', 'assessment menu'],
-            answer: `KLUST operates under the **Inclusive Teaching, Learning, and Assessment (iTnL) Policy** based on the **Universal Design for Learning (UDL)** framework. Key provisions include:
-1. **Individualised Academic Plan (IAP):** A confidential, binding document drafted by the **Inclusive Education Committee (IEC) Office** specifying mandatory adjustments. These mandates are legally binding and cannot be overridden by individual lecturers.
-2. **Assessment Menu (SOP 2):** Modules are encouraged to offer a choice of formats: live presentations, pre-recorded media, private 1-on-1 discussions, or written submissions.
-3. **Assessment Objectivity:** Grades must evaluate core academic competencies. Subjective markers (e.g. eye contact, vocal affect, or physical posture) shall NOT influence grading.
-4. **Trigger Mechanism (SOP 1):** To request an IAP, submit a formal request/appeal to the **IEC Office** with relevant professional medical or educational assessments.
-
-*(Note: If you need help with any of these procedures, any lecturer or staff member at the university will happily help and guide you!)*`
+            "category": "Inclusive Learning & Support",
+            "question": "What is the KLUST Inclusive Teaching, Learning, and Assessment (iTnL) Policy?",
+            "tags": [
+                "disability",
+                "dyslexia",
+                "adhd",
+                "inclusive learning",
+                "extra time",
+                "accommodation",
+                "adjustment",
+                "support",
+                "udl",
+                "iap",
+                "assessment menu"
+            ],
+            "answer": "KLUST operates under the **Inclusive Teaching, Learning, and Assessment (iTnL) Policy** based on the **Universal Design for Learning (UDL)** framework. Key provisions include:\n1. **Individualised Academic Plan (IAP):** A confidential, binding document drafted by the **Inclusive Education Committee (IEC) Office** specifying mandatory adjustments. These mandates are legally binding and cannot be overridden by individual lecturers.\n2. **Assessment Menu (SOP 2):** Modules are encouraged to offer a choice of formats: live presentations, pre-recorded media, private 1-on-1 discussions, or written submissions.\n3. **Assessment Objectivity:** Grades must evaluate core academic competencies. Subjective markers (e.g. eye contact, vocal affect, or physical posture) shall NOT influence grading.\n4. **Trigger Mechanism (SOP 1):** To request an IAP, submit a formal request/appeal to the **IEC Office** with relevant professional medical or educational assessments.\n\n*(Note: If you need help with any of these procedures, any lecturer or staff member at the university will happily help and guide you!)*",
+            "question_zh": "什么是包容性教学与学习 (iTnL / UDL) 支持？",
+            "answer_zh": "KLUST FABE 提供包容性学习支持（通用学习设计 UDL 和个体化学术计划 IAP）。有健康、身体或学习特殊需求的学生可申请延长考试时间、替代评估或辅助学习工具。"
         },
         {
-            category: 'Inclusive Learning & Support',
-            question: 'How does the UDL framework benefit students with special learning needs (IAP/IEP)?',
-            tags: ['udl', 'iep', 'iap', 'learning needs', 'learning disability', 'accommodations', 'alternative assessment', 'benefits'],
-            answer: `The **Universal Design for Learning (UDL)** framework is built on the principle that "one size does not fit all." For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:
-1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.
-2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:
-   - Pre-recorded video walkthroughs or audio presentations.
-   - Private, 1-on-1 reviews with a panel instead of public juries.
-   - Written reports or interactive portfolios instead of oral presentations.
-3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.
-
-**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best.`
+            "category": "Inclusive Learning & Support",
+            "question": "How does the UDL framework benefit students with special learning needs (IAP/IEP)?",
+            "tags": [
+                "udl",
+                "iep",
+                "iap",
+                "learning needs",
+                "learning disability",
+                "accommodations",
+                "alternative assessment",
+                "benefits"
+            ],
+            "answer": "The **Universal Design for Learning (UDL)** framework is built on the principle that \"one size does not fit all.\" For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:\n1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.\n2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:\n   - Pre-recorded video walkthroughs or audio presentations.\n   - Private, 1-on-1 reviews with a panel instead of public juries.\n   - Written reports or interactive portfolios instead of oral presentations.\n3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.\n\n**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best.",
+            "question_zh": "How does the UDL framework benefit students with special learning needs (IAP/IEP)?",
+            "answer_zh": "The **Universal Design for Learning (UDL)** framework is built on the principle that \"one size does not fit all.\" For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:\n1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.\n2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:\n   - Pre-recorded video walkthroughs or audio presentations.\n   - Private, 1-on-1 reviews with a panel instead of public juries.\n   - Written reports or interactive portfolios instead of oral presentations.\n3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.\n\n**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best."
         }
     ],
-
-    diagnosticQuestions: [
+    "diagnosticQuestions": [
         {
-            id: 'q_attendance',
-            category: 'Attendance',
-            text: 'How frequently have you attended your lectures and studio sessions this semester?',
-            options: [
-                { text: 'I have attended almost every class (95% - 100%)', riskPoints: 0, feedback: 'Great attendance habits!' },
-                { text: 'I have missed a few classes, but sit around (80% - 94%)', riskPoints: 1, feedback: 'Close to the borderline. Make sure not to miss any more classes.' },
-                { text: 'I have missed many classes and am likely below the 80% mark', riskPoints: 3, feedback: 'CRITICAL: You are at risk of being barred from final exams/reviews, which means an automatic Grade F.' }
+            "id": "q_attendance",
+            "category": "Attendance",
+            "text": "How frequently have you attended your lectures and studio sessions this semester?",
+            "options": [
+                {
+                    "text": "I have attended almost every class (95% - 100%)",
+                    "riskPoints": 0,
+                    "feedback": "Great attendance habits!",
+                    "text_zh": "我参加了几乎所有课程 (95% - 100%)",
+                    "feedback_zh": "出勤习惯非常好！"
+                },
+                {
+                    "text": "I have missed a few classes, but sit around (80% - 94%)",
+                    "riskPoints": 1,
+                    "feedback": "Close to the borderline. Make sure not to miss any more classes.",
+                    "text_zh": "我缺了几节课，但出勤率在 80% - 94% 左右",
+                    "feedback_zh": "接近临界线，请确保不再缺课。"
+                },
+                {
+                    "text": "I have missed many classes and am likely below the 80% mark",
+                    "riskPoints": 3,
+                    "feedback": "CRITICAL: You are at risk of being barred from final exams/reviews, which means an automatic Grade F.",
+                    "text_zh": "我缺了很多课，出勤率可能低于 80%",
+                    "feedback_zh": "警告：您面临被取消期末考试/审查资格的风险，这意味着直接记 F 级。"
+                }
+            ],
+            "text_zh": "您本学期参加讲座和设计工作室课程的频率如何？"
+        },
+        {
+            "id": "q_coursework",
+            "category": "Academics",
+            "text": "Are you submitting your assignments, studio projects, and coursework on time?",
+            "options": [
+                {
+                    "text": "Yes, always on time and complete",
+                    "riskPoints": 0,
+                    "feedback": "Excellent submission record."
+                },
+                {
+                    "text": "I sometimes submit late or miss minor assignments",
+                    "riskPoints": 1.5,
+                    "feedback": "Late submissions cost grade points due to penalties. Plan assignments early."
+                },
+                {
+                    "text": "I have missed major submissions or studio reviews",
+                    "riskPoints": 3,
+                    "feedback": "CRITICAL: Missing major assignments or reviews makes passing the course mathematically unlikely."
+                }
             ]
         },
         {
-            id: 'q_coursework',
-            category: 'Academics',
-            text: 'Are you submitting your assignments, studio projects, and coursework on time?',
-            options: [
-                { text: 'Yes, always on time and complete', riskPoints: 0, feedback: 'Excellent submission record.' },
-                { text: 'I sometimes submit late or miss minor assignments', riskPoints: 1.5, feedback: 'Late submissions cost grade points due to penalties. Plan assignments early.' },
-                { text: 'I have missed major submissions or studio reviews', riskPoints: 3, feedback: 'CRITICAL: Missing major assignments or reviews makes passing the course mathematically unlikely.' }
+            "id": "q_study_hours",
+            "category": "Study Habits",
+            "text": "How many hours per week do you spend on self-study and studio work outside of classes?",
+            "options": [
+                {
+                    "text": "More than 15 hours per week",
+                    "riskPoints": 0,
+                    "feedback": "Good self-study schedule."
+                },
+                {
+                    "text": "Between 5 to 14 hours per week",
+                    "riskPoints": 1,
+                    "feedback": "Adequate, but professional design/technical programs usually require more time."
+                },
+                {
+                    "text": "Less than 5 hours per week",
+                    "riskPoints": 2,
+                    "feedback": "Warning: Very low study time. You may fall behind in complex technical/studio modules."
+                }
             ]
         },
         {
-            id: 'q_study_hours',
-            category: 'Study Habits',
-            text: 'How many hours per week do you spend on self-study and studio work outside of classes?',
-            options: [
-                { text: 'More than 15 hours per week', riskPoints: 0, feedback: 'Good self-study schedule.' },
-                { text: 'Between 5 to 14 hours per week', riskPoints: 1, feedback: 'Adequate, but professional design/technical programs usually require more time.' },
-                { text: 'Less than 5 hours per week', riskPoints: 2, feedback: 'Warning: Very low study time. You may fall behind in complex technical/studio modules.' }
+            "id": "q_advisor",
+            "category": "Support",
+            "text": "Have you met or communicated with your Academic Advisor this semester?",
+            "options": [
+                {
+                    "text": "Yes, we discuss my progress regularly",
+                    "riskPoints": 0,
+                    "feedback": "Awesome. Active advisory relations keep you on track."
+                },
+                {
+                    "text": "No, but I know who they are",
+                    "riskPoints": 1,
+                    "feedback": "Consider dropping in during office hours to check in."
+                },
+                {
+                    "text": "No, I do not know who my Academic Advisor is",
+                    "riskPoints": 2,
+                    "feedback": "Action Needed: Every student has an assigned advisor. Contact the faculty office to find yours."
+                }
             ]
         },
         {
-            id: 'q_advisor',
-            category: 'Support',
-            text: 'Have you met or communicated with your Academic Advisor this semester?',
-            options: [
-                { text: 'Yes, we discuss my progress regularly', riskPoints: 0, feedback: 'Awesome. Active advisory relations keep you on track.' },
-                { text: 'No, but I know who they are', riskPoints: 1, feedback: 'Consider dropping in during office hours to check in.' },
-                { text: 'No, I do not know who my Academic Advisor is', riskPoints: 2, feedback: 'Action Needed: Every student has an assigned advisor. Contact the faculty office to find yours.' }
+            "id": "q_understanding",
+            "category": "Academics",
+            "text": "Do you feel comfortable with the difficulty of your current modules?",
+            "options": [
+                {
+                    "text": "I understand most topics and feel confident",
+                    "riskPoints": 0,
+                    "feedback": "Excellent progress."
+                },
+                {
+                    "text": "I struggle with some complex topics but manage to get by",
+                    "riskPoints": 1,
+                    "feedback": "Consider joining study groups or consulting lecturers for tricky areas."
+                },
+                {
+                    "text": "I am completely lost in one or more core courses",
+                    "riskPoints": 2.5,
+                    "feedback": "Seek immediate help! Utilize lecturer consultation hours or peer tutoring."
+                }
             ]
         },
         {
-            id: 'q_understanding',
-            category: 'Academics',
-            text: 'Do you feel comfortable with the difficulty of your current modules?',
-            options: [
-                { text: 'I understand most topics and feel confident', riskPoints: 0, feedback: 'Excellent progress.' },
-                { text: 'I struggle with some complex topics but manage to get by', riskPoints: 1, feedback: 'Consider joining study groups or consulting lecturers for tricky areas.' },
-                { text: 'I am completely lost in one or more core courses', riskPoints: 2.5, feedback: 'Seek immediate help! Utilize lecturer consultation hours or peer tutoring.' }
+            "id": "q_extracurricular",
+            "category": "Time Management",
+            "text": "Do you have heavy external commitments (part-time job, student club leadership, family duties)?",
+            "options": [
+                {
+                    "text": "None or very light commitments (easy to balance)",
+                    "riskPoints": 0,
+                    "feedback": "Good balance."
+                },
+                {
+                    "text": "Moderate commitments, sometimes causing stress or late sleep",
+                    "riskPoints": 1,
+                    "feedback": "Ensure you allocate blocked hours for study and prioritize rest."
+                },
+                {
+                    "text": "Heavy commitments that regularly conflict with my classes or study time",
+                    "riskPoints": 2.5,
+                    "feedback": "Risk of academic fatigue. Consider reducing part-time work hours or deferring leadership roles to save your grades."
+                }
             ]
         },
         {
-            id: 'q_extracurricular',
-            category: 'Time Management',
-            text: 'Do you have heavy external commitments (part-time job, student club leadership, family duties)?',
-            options: [
-                { text: 'None or very light commitments (easy to balance)', riskPoints: 0, feedback: 'Good balance.' },
-                { text: 'Moderate commitments, sometimes causing stress or late sleep', riskPoints: 1, feedback: 'Ensure you allocate blocked hours for study and prioritize rest.' },
-                { text: 'Heavy commitments that regularly conflict with my classes or study time', riskPoints: 2.5, feedback: 'Risk of academic fatigue. Consider reducing part-time work hours or deferring leadership roles to save your grades.' }
+            "id": "q_wellbeing",
+            "category": "Personal",
+            "text": "How would you describe your mental wellbeing, stress, or sleep levels lately?",
+            "options": [
+                {
+                    "text": "Healthy sleep and manageable stress levels",
+                    "riskPoints": 0,
+                    "feedback": "Keep maintaining your health."
+                },
+                {
+                    "text": "Stressed, sleeping poorly, or feeling exhausted at times",
+                    "riskPoints": 1,
+                    "feedback": "Ensure you maintain regular sleep. Good rest is essential for creative design work."
+                },
+                {
+                    "text": "Extremely overwhelmed, depressed, or unable to focus on studies",
+                    "riskPoints": 2,
+                    "feedback": "CRITICAL: Your mental health is top priority. We highly recommend visiting the University Counseling Centre."
+                }
             ]
         },
         {
-            id: 'q_wellbeing',
-            category: 'Personal',
-            text: 'How would you describe your mental wellbeing, stress, or sleep levels lately?',
-            options: [
-                { text: 'Healthy sleep and manageable stress levels', riskPoints: 0, feedback: 'Keep maintaining your health.' },
-                { text: 'Stressed, sleeping poorly, or feeling exhausted at times', riskPoints: 1, feedback: 'Ensure you maintain regular sleep. Good rest is essential for creative design work.' },
-                { text: 'Extremely overwhelmed, depressed, or unable to focus on studies', riskPoints: 2, feedback: 'CRITICAL: Your mental health is top priority. We highly recommend visiting the University Counseling Centre.' }
-            ]
-        },
-        {
-            id: 'q_itnl',
-            category: 'Inclusive Support',
-            text: 'Do you require special learning adjustments or alternative assessment formats (e.g. due to dyslexia, ADHD, physical or health conditions)?',
-            options: [
-                { text: 'No, I do not need special academic accommodations.', riskPoints: 0, feedback: 'Understood. Standard teaching and assessment rules apply.' },
-                { text: 'Yes, I need adjustments but have not requested them yet.', riskPoints: 1, feedback: 'Action Recommended: Review the KLUST iTnL Policy and apply for an Individualised Academic Plan (IAP) through the IEC Office.' },
-                { text: 'Yes, and I struggle with standard assessments like live juries or need extra exam time.', riskPoints: 2, feedback: 'Action Needed: Contact the IEC Office to trigger SOP 1 (IAP) and SOP 2 (Assessment Menu) so you can choose alternative presentation/exam formats.' }
+            "id": "q_itnl",
+            "category": "Inclusive Support",
+            "text": "Do you require special learning adjustments or alternative assessment formats (e.g. due to dyslexia, ADHD, physical or health conditions)?",
+            "options": [
+                {
+                    "text": "No, I do not need special academic accommodations.",
+                    "riskPoints": 0,
+                    "feedback": "Understood. Standard teaching and assessment rules apply."
+                },
+                {
+                    "text": "Yes, I need adjustments but have not requested them yet.",
+                    "riskPoints": 1,
+                    "feedback": "Action Recommended: Review the KLUST iTnL Policy and apply for an Individualised Academic Plan (IAP) through the IEC Office."
+                },
+                {
+                    "text": "Yes, and I struggle with standard assessments like live juries or need extra exam time.",
+                    "riskPoints": 2,
+                    "feedback": "Action Needed: Contact the IEC Office to trigger SOP 1 (IAP) and SOP 2 (Assessment Menu) so you can choose alternative presentation/exam formats."
+                }
             ]
         }
     ],
-
-    decisionTree: {
-        start: {
-            text: "What academic issue are you facing today?",
-            options: [
-                { text: "I failed a course or got a low grade", next: "failed_course" },
-                { text: "My attendance is low and I might get barred", next: "low_attendance" },
-                { text: "I am feeling extremely overwhelmed and want to postpone study", next: "postpone_defer" },
-                { text: "I have questions about Academic Probation and my credit limit", next: "probation_rules" },
-                { text: "I need information on inclusive learning or special academic support", next: "inclusive_learning" }
+    "decisionTree": {
+        "start": {
+            "text": "What academic issue are you facing today?",
+            "options": [
+                {
+                    "text": "I failed a course or got a low grade",
+                    "next": "failed_course",
+                    "text_zh": "我的 CGPA 低于 2.00 (处于学术警告状态)"
+                },
+                {
+                    "text": "My attendance is low and I might get barred",
+                    "next": "low_attendance",
+                    "text_zh": "我因缺课面临出勤率警告 (低于 80%)"
+                },
+                {
+                    "text": "I am feeling extremely overwhelmed and want to postpone study",
+                    "next": "postpone_defer",
+                    "text_zh": "我有一门必修课程不及格 (记 F 级)"
+                },
+                {
+                    "text": "I have questions about Academic Probation and my credit limit",
+                    "next": "probation_rules",
+                    "text_zh": "我需要申请包容性教学与学习 (iTnL) 调整"
+                },
+                {
+                    "text": "I need information on inclusive learning or special academic support",
+                    "next": "inclusive_learning"
+                }
+            ],
+            "text_zh": "请选择您当前的学术状况或疑问："
+        },
+        "failed_course": {
+            "text": "Is the failed course a Core Module (like Design Studio, Building Construction, Measurement) or an Elective/General module?",
+            "options": [
+                {
+                    "text": "It is a Core Module / Design Studio",
+                    "next": "failed_core"
+                },
+                {
+                    "text": "It is an Elective / General Education module",
+                    "next": "failed_elective"
+                }
             ]
         },
-        failed_course: {
-            text: "Is the failed course a Core Module (like Design Studio, Building Construction, Measurement) or an Elective/General module?",
-            options: [
-                { text: "It is a Core Module / Design Studio", next: "failed_core" },
-                { text: "It is an Elective / General Education module", next: "failed_elective" }
+        "failed_core": {
+            "text": "Core modules are mandatory and often pre-requisites for other courses. You MUST repeat the course. How low was your grade?",
+            "options": [
+                {
+                    "text": "F, D, or D+ (Strict Fail)",
+                    "next": "failed_core_strict"
+                },
+                {
+                    "text": "C-, C, or C+ (Conditional Pass / Low Grade)",
+                    "next": "failed_core_pass"
+                }
             ]
         },
-        failed_core: {
-            text: "Core modules are mandatory and often pre-requisites for other courses. You MUST repeat the course. How low was your grade?",
-            options: [
-                { text: "F, D, or D+ (Strict Fail)", next: "failed_core_strict" },
-                { text: "C-, C, or C+ (Conditional Pass / Low Grade)", next: "failed_core_pass" }
+        "failed_core_strict": {
+            "text": "Official Action: Since you failed, you cannot register for the next level module (e.g. Design Studio II requires Design Studio I). You must register to retake this course in the next semester it is offered. \n\n*Action Steps:* \n1. Do not register for the advanced sequential modules.\n2. Add the repeated course to your study schedule.\n3. Meet your advisor to check if this delays your graduation.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        failed_core_strict: {
-            text: "Official Action: Since you failed, you cannot register for the next level module (e.g. Design Studio II requires Design Studio I). You must register to retake this course in the next semester it is offered. \n\n*Action Steps:* \n1. Do not register for the advanced sequential modules.\n2. Add the repeated course to your study schedule.\n3. Meet your advisor to check if this delays your graduation.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "failed_core_pass": {
+            "text": "Official Action: You passed the course, but a low grade pulls down your CGPA. If your CGPA is above 2.00, you can proceed. If it dragged your CGPA below 2.00, repeating is highly recommended to replace the grade and recover your standing.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        failed_core_pass: {
-            text: "Official Action: You passed the course, but a low grade pulls down your CGPA. If your CGPA is above 2.00, you can proceed. If it dragged your CGPA below 2.00, repeating is highly recommended to replace the grade and recover your standing.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "failed_elective": {
+            "text": "Official Action: For general electives, you can either: \n1. Retake the exact same course next semester to replace the grade. \n2. Register for a different elective course to fulfill credit requirements (but the original failed grade remains in your CGPA calculation).",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        failed_elective: {
-            text: "Official Action: For general electives, you can either: \n1. Retake the exact same course next semester to replace the grade. \n2. Register for a different elective course to fulfill credit requirements (but the original failed grade remains in your CGPA calculation).",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "low_attendance": {
+            "text": "Do you have valid documentation (e.g. a government hospital Medical Certificate, or an official letter representing the university in a competition/sports)?",
+            "options": [
+                {
+                    "text": "Yes, I have official documentation / medical certificates",
+                    "next": "attendance_has_mc"
+                },
+                {
+                    "text": "No, I missed class due to personal reasons/oversleeping",
+                    "next": "attendance_no_mc"
+                }
             ]
         },
-        low_attendance: {
-            text: "Do you have valid documentation (e.g. a government hospital Medical Certificate, or an official letter representing the university in a competition/sports)?",
-            options: [
-                { text: "Yes, I have official documentation / medical certificates", next: "attendance_has_mc" },
-                { text: "No, I missed class due to personal reasons/oversleeping", next: "attendance_no_mc" }
+        "attendance_has_mc": {
+            "text": "Official Action: You must submit your medical certificate or letter to the Faculty Office or directly to your Course Coordinator within **48 hours** of returning to class. The lecturer will excuse your absence, preventing it from counting towards the 20% barred limit.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        attendance_has_mc: {
-            text: "Official Action: You must submit your medical certificate or letter to the Faculty Office or directly to your Course Coordinator within **48 hours** of returning to class. The lecturer will excuse your absence, preventing it from counting towards the 20% barred limit.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "attendance_no_mc": {
+            "text": "Official Action: Unexcused absences cannot be erased. Immediately talk to your lecturer, apologize, and show commitment. Ask if you can submit make-up work to show attendance/engagement. If your attendance is strictly below 80% at Week 12, check with the Faculty if you should **Withdraw (W)** from the course before final exams to avoid an F grade.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        attendance_no_mc: {
-            text: "Official Action: Unexcused absences cannot be erased. Immediately talk to your lecturer, apologize, and show commitment. Ask if you can submit make-up work to show attendance/engagement. If your attendance is strictly below 80% at Week 12, check with the Faculty if you should **Withdraw (W)** from the course before final exams to avoid an F grade.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "postpone_defer": {
+            "text": "To defer (take a semester off), you must apply officially. What is the main reason for your postponement?",
+            "options": [
+                {
+                    "text": "Medical grounds / Health issues",
+                    "next": "defer_medical"
+                },
+                {
+                    "text": "Financial difficulties or personal issues",
+                    "next": "defer_personal"
+                }
             ]
         },
-        postpone_defer: {
-            text: "To defer (take a semester off), you must apply officially. What is the main reason for your postponement?",
-            options: [
-                { text: "Medical grounds / Health issues", next: "defer_medical" },
-                { text: "Financial difficulties or personal issues", next: "defer_personal" }
+        "defer_medical": {
+            "text": "Official Action: Apply for **Medical Deferment**. Submit a deferment form along with a certified hospital doctor's report. Medical deferments are normally approved easily and **do not count** towards your maximum allowed study semesters. Fees paid may also be deferred.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        defer_medical: {
-            text: "Official Action: Apply for **Medical Deferment**. Submit a deferment form along with a certified hospital doctor's report. Medical deferments are normally approved easily and **do not count** towards your maximum allowed study semesters. Fees paid may also be deferred.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "defer_personal": {
+            "text": "Official Action: Apply for **Academic Deferment** before Week 8 of the semester. Note that deferment for personal reasons will count towards your maximum semesters to complete the degree. Be sure to check with the finance office regarding fee refund/transfer rules.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        defer_personal: {
-            text: "Official Action: Apply for **Academic Deferment** before Week 8 of the semester. Note that deferment for personal reasons will count towards your maximum semesters to complete the degree. Be sure to check with the finance office regarding fee refund/transfer rules.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "probation_rules": {
+            "text": "Is this your first semester on Academic Probation, or is it consecutive (second semester in a row)?",
+            "options": [
+                {
+                    "text": "This is my first semester on probation",
+                    "next": "probation_first"
+                },
+                {
+                    "text": "This is my second consecutive semester on probation",
+                    "next": "probation_consecutive"
+                }
             ]
         },
-        probation_rules: {
-            text: "Is this your first semester on Academic Probation, or is it consecutive (second semester in a row)?",
-            options: [
-                { text: "This is my first semester on probation", next: "probation_first" },
-                { text: "This is my second consecutive semester on probation", next: "probation_consecutive" }
+        "probation_first": {
+            "text": "Official Action: Do not panic, but take action. \n1. Your credit registration for next semester is capped at **12 credits** (approx. 3-4 courses).\n2. Focus on retaking failed modules to replace poor grades.\n3. Make a mandatory appointment with your academic advisor to clear your study plan.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        probation_first: {
-            text: "Official Action: Do not panic, but take action. \n1. Your credit registration for next semester is capped at **12 credits** (approx. 3-4 courses).\n2. Focus on retaking failed modules to replace poor grades.\n3. Make a mandatory appointment with your academic advisor to clear your study plan.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "probation_consecutive": {
+            "text": "Official Action: CRITICAL! Staying on probation for two consecutive semesters leads to **Academic Dismissal**. If dismissed, you must submit an official **Appeal Letter** to the Dean of Faculty within 14 days of results release, outlining your extenuating circumstances and commitment to improvement. If approved, you will be given a final semester to pull your CGPA above 2.00.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        probation_consecutive: {
-            text: "Official Action: CRITICAL! Staying on probation for two consecutive semesters leads to **Academic Dismissal**. If dismissed, you must submit an official **Appeal Letter** to the Dean of Faculty within 14 days of results release, outlining your extenuating circumstances and commitment to improvement. If approved, you will be given a final semester to pull your CGPA above 2.00.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "inclusive_learning": {
+            "text": "Do you have a medical or educational assessment report (e.g. for Dyslexia, ADHD, sensory or physical conditions) and wish to request academic accommodations?",
+            "options": [
+                {
+                    "text": "Yes, I want to apply for an Individualised Academic Plan (IAP)",
+                    "next": "inclusive_has_report"
+                },
+                {
+                    "text": "No, but I suspect I need support or have questions about the policy",
+                    "next": "inclusive_no_report"
+                }
             ]
         },
-        inclusive_learning: {
-            text: "Do you have a medical or educational assessment report (e.g. for Dyslexia, ADHD, sensory or physical conditions) and wish to request academic accommodations?",
-            options: [
-                { text: "Yes, I want to apply for an Individualised Academic Plan (IAP)", next: "inclusive_has_report" },
-                { text: "No, but I suspect I need support or have questions about the policy", next: "inclusive_no_report" }
+        "inclusive_has_report": {
+            "text": "Follow these **3 Simple Steps** to register your accommodations: \n\n*Action Steps:* \n1. **Apply for IAP (SOP 1):** Submit a formal request to the **Inclusive Education Committee (IEC) Office** for an **Individualised Academic Plan (IAP)**. Attach your professional assessment report. \n2. **Confidential IAP Issued:** The IEC will issue a confidential IAP listing your mandatory study adjustments. This document is **binding**—your lecturers must comply with it. \n3. **Submit Assessment Choice (SOP 2):** Submit an **Assessment Menu Declaration Form** to your lecturer **14 days (2 weeks)** before your exams/reviews to choose your format (e.g. pre-recorded presentations or 1-on-1 reviews). *Note: The 14-day notice is waived for sudden medical flare-ups.* \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         },
-        inclusive_has_report: {
-            text: "Follow these **3 Simple Steps** to register your accommodations: \n\n*Action Steps:* \n1. **Apply for IAP (SOP 1):** Submit a formal request to the **Inclusive Education Committee (IEC) Office** for an **Individualised Academic Plan (IAP)**. Attach your professional assessment report. \n2. **Confidential IAP Issued:** The IEC will issue a confidential IAP listing your mandatory study adjustments. This document is **binding**—your lecturers must comply with it. \n3. **Submit Assessment Choice (SOP 2):** Submit an **Assessment Menu Declaration Form** to your lecturer **14 days (2 weeks)** before your exams/reviews to choose your format (e.g. pre-recorded presentations or 1-on-1 reviews). *Note: The 14-day notice is waived for sudden medical flare-ups.* \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
-            options: [
-                { text: "Back to Start", next: "start" }
-            ]
-        },
-        inclusive_no_report: {
-            text: "No official report yet? Follow these **3 Simple Steps** to seek support: \n\n*Action Steps:* \n1. **Get Free Screening:** Contact the **University Counseling and Wellbeing Centre** for a free initial screening and a referral to registered psychologists. \n2. **Temporary Adjustments:** Meet with the **IEC Office** to request temporary support while you wait for your official medical assessment to be finalized. \n3. **Ask for UDL Flexibility:** Talk to your Academic Advisor or Course Coordinator. Under the **Universal Design for Learning (UDL)** policy, departments are encouraged to offer flexible learning options (like slides in advance or formatting choices) to all students. \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
-            options: [
-                { text: "Back to Start", next: "start" }
+        "inclusive_no_report": {
+            "text": "No official report yet? Follow these **3 Simple Steps** to seek support: \n\n*Action Steps:* \n1. **Get Free Screening:** Contact the **University Counseling and Wellbeing Centre** for a free initial screening and a referral to registered psychologists. \n2. **Temporary Adjustments:** Meet with the **IEC Office** to request temporary support while you wait for your official medical assessment to be finalized. \n3. **Ask for UDL Flexibility:** Talk to your Academic Advisor or Course Coordinator. Under the **Universal Design for Learning (UDL)** policy, departments are encouraged to offer flexible learning options (like slides in advance or formatting choices) to all students. \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
+            "options": [
+                {
+                    "text": "Back to Start",
+                    "next": "start"
+                }
             ]
         }
     },
-    curriculumCredits: [
+    "curriculumCredits": [
         {
-            program: 'Bachelor of Landscape Architecture',
-            total: 125,
-            core: 95,
-            mpu: 17,
-            elective: 13,
-            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+            "program": "Bachelor of Landscape Architecture",
+            "total": 125,
+            "core": 95,
+            "mpu": 17,
+            "elective": 13,
+            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307)."
         },
         {
-            program: 'Bachelor of Quantity Surveying (Hons)',
-            total: 123,
-            core: 97,
-            mpu: 14,
-            elective: 12,
-            detail: 'Compulsory subjects mandated by the Ministry of Higher Education.'
+            "program": "Bachelor of Quantity Surveying (Hons)",
+            "total": 123,
+            "core": 97,
+            "mpu": 14,
+            "elective": 12,
+            "detail": "Compulsory subjects mandated by the Ministry of Higher Education."
         },
         {
-            program: 'Bachelor of Science (Architectural Studies)',
-            total: 122,
-            core: 99,
-            mpu: 17,
-            elective: 6,
-            detail: 'Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).'
+            "program": "Bachelor of Science (Architectural Studies)",
+            "total": 122,
+            "core": 99,
+            "mpu": 17,
+            "elective": 6,
+            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307)."
         },
         {
-            program: 'Diploma in Architecture',
-            total: 94,
-            core: 77,
-            mpu: 17,
-            elective: 0,
-            detail: 'Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses.'
+            "program": "Diploma in Architecture",
+            "total": 94,
+            "core": 77,
+            "mpu": 17,
+            "elective": 0,
+            "detail": "Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses."
         },
         {
-            program: 'Master of Architecture',
-            total: 60,
-            core: 57,
-            mpu: 0,
-            elective: 3,
-            detail: 'No MPU or compulsory University subjects are required for this postgraduate program.'
+            "program": "Master of Architecture",
+            "total": 60,
+            "core": 57,
+            "mpu": 0,
+            "elective": 3,
+            "detail": "No MPU or compulsory University subjects are required for this postgraduate program."
         }
     ],
-    mpuRequirements: {
-        bachelor_int: {
-            title: 'Bachelor (International)',
-            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
-            categories: {
-                U1: [
-                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3 },
-                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3 },
-                    { code: 'MPU3143', name: 'Bahasa Melayu Komunikasi 2', credits: 3, note: 'Compulsory' }
+    "mpuRequirements": {
+        "bachelor_int": {
+            "title": "Bachelor (International)",
+            "rule": "Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.",
+            "categories": {
+                "U1": [
+                    {
+                        "code": "MPU3183",
+                        "name": "Penghayatan Etika dan Peradaban",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3193",
+                        "name": "Falsafah dan Isu Semasa",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3143",
+                        "name": "Bahasa Melayu Komunikasi 2",
+                        "credits": 3,
+                        "note": "Compulsory"
+                    }
                 ],
-                U2: [
-                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
-                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
-                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
-                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
-                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                "U2": [
+                    {
+                        "code": "MPU3223",
+                        "name": "Basic Entrepreneurship",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3253",
+                        "name": "Personal Financial Planning",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3263",
+                        "name": "Office Application",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3273",
+                        "name": "Professional Communication",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3283",
+                        "name": "Small Group Communication",
+                        "credits": 3
+                    }
                 ],
-                U3: [
-                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
-                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                "U3": [
+                    {
+                        "code": "MPU3343",
+                        "name": "Nutrition and Public Health",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3353",
+                        "name": "The Constitution of Malaysia",
+                        "credits": 3
+                    }
                 ],
-                U4: [
-                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                "U4": [
+                    {
+                        "code": "MPU3492",
+                        "name": "Integrity and Anti-Corruption",
+                        "credits": 2,
+                        "note": "Compulsory"
+                    }
                 ]
             }
         },
-        bachelor_loc: {
-            title: 'Bachelor (Local)',
-            rule: 'Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.',
-            categories: {
-                U1: [
-                    { code: 'MPU3183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory' },
-                    { code: 'MPU3193', name: 'Falsafah dan Isu Semasa', credits: 3, note: 'Compulsory' }
+        "bachelor_loc": {
+            "title": "Bachelor (Local)",
+            "rule": "Students to take TWO (2) subjects from category U1 and ONLY ONE (1) subject from each category of U2, U3 and U4.",
+            "categories": {
+                "U1": [
+                    {
+                        "code": "MPU3183",
+                        "name": "Penghayatan Etika dan Peradaban",
+                        "credits": 3,
+                        "note": "Compulsory"
+                    },
+                    {
+                        "code": "MPU3193",
+                        "name": "Falsafah dan Isu Semasa",
+                        "credits": 3,
+                        "note": "Compulsory"
+                    }
                 ],
-                U2: [
-                    { code: 'MPU3213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
-                    { code: 'MPU3223', name: 'Basic Entrepreneurship', credits: 3 },
-                    { code: 'MPU3253', name: 'Personal Financial Planning', credits: 3 },
-                    { code: 'MPU3263', name: 'Office Application', credits: 3 },
-                    { code: 'MPU3273', name: 'Professional Communication', credits: 3 },
-                    { code: 'MPU3283', name: 'Small Group Communication', credits: 3 }
+                "U2": [
+                    {
+                        "code": "MPU3213",
+                        "name": "Bahasa Kebangsaan A",
+                        "credits": 3,
+                        "note": "Compulsory if SPM has no credit in BM"
+                    },
+                    {
+                        "code": "MPU3223",
+                        "name": "Basic Entrepreneurship",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3253",
+                        "name": "Personal Financial Planning",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3263",
+                        "name": "Office Application",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3273",
+                        "name": "Professional Communication",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3283",
+                        "name": "Small Group Communication",
+                        "credits": 3
+                    }
                 ],
-                U3: [
-                    { code: 'MPU3313', name: 'Pengajian Islam 2', credits: 3 },
-                    { code: 'MPU3323', name: 'Pendidikan Moral 2', credits: 3 },
-                    { code: 'MPU3343', name: 'Nutrition and Public Health', credits: 3 },
-                    { code: 'MPU3353', name: 'The Constitution of Malaysia', credits: 3 }
+                "U3": [
+                    {
+                        "code": "MPU3313",
+                        "name": "Pengajian Islam 2",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3323",
+                        "name": "Pendidikan Moral 2",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3343",
+                        "name": "Nutrition and Public Health",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU3353",
+                        "name": "The Constitution of Malaysia",
+                        "credits": 3
+                    }
                 ],
-                U4: [
-                    { code: 'MPU3492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                "U4": [
+                    {
+                        "code": "MPU3492",
+                        "name": "Integrity and Anti-Corruption",
+                        "credits": 2,
+                        "note": "Compulsory"
+                    }
                 ]
             }
         },
-        diploma_int: {
-            title: 'Diploma (International)',
-            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
-            categories: {
-                U1: [
-                    { code: 'MPU2133', name: 'Bahasa Melayu Komunikasi 1', credits: 3, note: 'Compulsory' }
+        "diploma_int": {
+            "title": "Diploma (International)",
+            "rule": "Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).",
+            "categories": {
+                "U1": [
+                    {
+                        "code": "MPU2133",
+                        "name": "Bahasa Melayu Komunikasi 1",
+                        "credits": 3,
+                        "note": "Compulsory"
+                    }
                 ],
-                U2: [
-                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
-                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
-                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                "U2": [
+                    {
+                        "code": "MPU2223",
+                        "name": "Basic Entrepreneurship",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2233",
+                        "name": "Professional Correspondence",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2243",
+                        "name": "Intercultural Communication",
+                        "credits": 3
+                    }
                 ],
-                U3: [
-                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                "U3": [
+                    {
+                        "code": "MPU2333",
+                        "name": "Drug Abuse and Society",
+                        "credits": 3
+                    }
                 ],
-                U4: [
-                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                "U4": [
+                    {
+                        "code": "MPU2492",
+                        "name": "Integrity and Anti-Corruption",
+                        "credits": 2,
+                        "note": "Compulsory"
+                    }
                 ]
             }
         },
-        diploma_loc: {
-            title: 'Diploma (Local)',
-            rule: 'Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).',
-            categories: {
-                U1: [
-                    { code: 'MPU2183', name: 'Penghayatan Etika dan Peradaban', credits: 3, note: 'Compulsory to choose only 1' },
-                    { code: 'MPU2193', name: 'Falsafah dan Isu Semasa', credits: 3 }
+        "diploma_loc": {
+            "title": "Diploma (Local)",
+            "rule": "Students to take ONLY ONE (1) subject from each category (U1, U2, U3 and U4).",
+            "categories": {
+                "U1": [
+                    {
+                        "code": "MPU2183",
+                        "name": "Penghayatan Etika dan Peradaban",
+                        "credits": 3,
+                        "note": "Compulsory to choose only 1"
+                    },
+                    {
+                        "code": "MPU2193",
+                        "name": "Falsafah dan Isu Semasa",
+                        "credits": 3
+                    }
                 ],
-                U2: [
-                    { code: 'MPU2213', name: 'Bahasa Kebangsaan A', credits: 3, note: 'Compulsory if SPM has no credit in BM' },
-                    { code: 'MPU2223', name: 'Basic Entrepreneurship', credits: 3 },
-                    { code: 'MPU2233', name: 'Professional Correspondence', credits: 3 },
-                    { code: 'MPU2243', name: 'Intercultural Communication', credits: 3 }
+                "U2": [
+                    {
+                        "code": "MPU2213",
+                        "name": "Bahasa Kebangsaan A",
+                        "credits": 3,
+                        "note": "Compulsory if SPM has no credit in BM"
+                    },
+                    {
+                        "code": "MPU2223",
+                        "name": "Basic Entrepreneurship",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2233",
+                        "name": "Professional Correspondence",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2243",
+                        "name": "Intercultural Communication",
+                        "credits": 3
+                    }
                 ],
-                U3: [
-                    { code: 'MPU2313', name: 'Pengajian Islam 1', credits: 3 },
-                    { code: 'MPU2323', name: 'Pendidikan Moral 1', credits: 3 },
-                    { code: 'MPU2333', name: 'Drug Abuse and Society', credits: 3 }
+                "U3": [
+                    {
+                        "code": "MPU2313",
+                        "name": "Pengajian Islam 1",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2323",
+                        "name": "Pendidikan Moral 1",
+                        "credits": 3
+                    },
+                    {
+                        "code": "MPU2333",
+                        "name": "Drug Abuse and Society",
+                        "credits": 3
+                    }
                 ],
-                U4: [
-                    { code: 'MPU2492', name: 'Integrity and Anti-Corruption', credits: 2, note: 'Compulsory' }
+                "U4": [
+                    {
+                        "code": "MPU2492",
+                        "name": "Integrity and Anti-Corruption",
+                        "credits": 2,
+                        "note": "Compulsory"
+                    }
                 ]
             }
         }
     },
-    staffProfiles: [
+    "staffProfiles": [
         {
-            name: "Ar Mohd Rizal Zakaria",
-            qualification: "LAM Part III, Bach. Of Architecture & Diploma Architecture, ITM",
-            position: "Head of Program - Master of Architecture, Senior Lecturer",
-            room: "B102",
-            ext: "540",
-            email: "rizal.zack@klust.edu.my",
-            staffId: "IEN 00738",
-            specialization: "Architecture",
-            department: "architecture"
+            "name": "Ar Mohd Rizal Zakaria",
+            "qualification": "LAM Part III, Bach. Of Architecture & Diploma Architecture, ITM",
+            "position": "Head of Program - Master of Architecture, Senior Lecturer",
+            "room": "B102",
+            "ext": "540",
+            "email": "rizal.zack@klust.edu.my",
+            "staffId": "IEN 00738",
+            "specialization": "Architecture",
+            "department": "architecture"
         },
         {
-            name: "Ts Idris Bin Taib",
-            qualification: "Bsc. Housing Building and Planning, USM. B. Architecture, USM. MBA, UiTM.",
-            position: "Senior Lecturer",
-            room: "B118",
-            ext: "899",
-            email: "idristaib@klust.edu.my",
-            staffId: "IEN 00563",
-            specialization: "The Adaptive Reuse of Historical Building: Fire Safety Provisions for Museum Heritage and Conservation.",
-            department: "architecture"
+            "name": "Ts Idris Bin Taib",
+            "qualification": "Bsc. Housing Building and Planning, USM. B. Architecture, USM. MBA, UiTM.",
+            "position": "Senior Lecturer",
+            "room": "B118",
+            "ext": "899",
+            "email": "idristaib@klust.edu.my",
+            "staffId": "IEN 00563",
+            "specialization": "The Adaptive Reuse of Historical Building: Fire Safety Provisions for Museum Heritage and Conservation.",
+            "department": "architecture"
         },
         {
-            name: "Ts Mohd Shafiq Bin Ramlan",
-            qualification: "Master of Science In Construction Engineering (UiTM), Bach of Eng. (Hons) Civil Eng. (UiTM)",
-            position: "Head Of Program – BTCM & BREM, Senior Lecturer",
-            room: "B105",
-            ext: "787",
-            email: "syafiq@klust.edu.my",
-            staffId: "IEN 01238",
-            specialization: "Construction Management, Quantity Surveying",
-            department: "quantity-surveying"
+            "name": "Ts Mohd Shafiq Bin Ramlan",
+            "qualification": "Master of Science In Construction Engineering (UiTM), Bach of Eng. (Hons) Civil Eng. (UiTM)",
+            "position": "Head Of Program – BTCM & BREM, Senior Lecturer",
+            "room": "B105",
+            "ext": "787",
+            "email": "syafiq@klust.edu.my",
+            "staffId": "IEN 01238",
+            "specialization": "Construction Management, Quantity Surveying",
+            "department": "quantity-surveying"
         },
         {
-            name: "Zairila Juria Binti Zainal Abidin",
-            qualification: "M. Sc. In Urban and Regional Planning (USM), B. SC. (Hon) in Architectural Studies (IIUM)",
-            position: "HOP DAR, Senior Lecturer",
-            room: "B114",
-            ext: "548",
-            email: "zairila@klust.edu.my",
-            staffId: "IEN 00919",
-            specialization: "Urban Architecture",
-            department: "architecture"
+            "name": "Zairila Juria Binti Zainal Abidin",
+            "qualification": "M. Sc. In Urban and Regional Planning (USM), B. SC. (Hon) in Architectural Studies (IIUM)",
+            "position": "HOP DAR, Senior Lecturer",
+            "room": "B114",
+            "ext": "548",
+            "email": "zairila@klust.edu.my",
+            "staffId": "IEN 00919",
+            "specialization": "Urban Architecture",
+            "department": "architecture"
         },
         {
-            name: "Nur Azwanie Bt Nordin",
-            qualification: "Master of Science in Heritage & Conservation Management, Bachelor in Landscape Architecture",
-            position: "HOP – BLA & DLA, Senior Lecturer",
-            room: "B104",
-            ext: "846",
-            email: "azwanie@klust.edu.my",
-            staffId: "IEN 00999",
-            specialization: "Landscape Architecture",
-            department: "landscape-architecture"
+            "name": "Nur Azwanie Bt Nordin",
+            "qualification": "Master of Science in Heritage & Conservation Management, Bachelor in Landscape Architecture",
+            "position": "HOP – BLA & DLA, Senior Lecturer",
+            "room": "B104",
+            "ext": "846",
+            "email": "azwanie@klust.edu.my",
+            "staffId": "IEN 00999",
+            "specialization": "Landscape Architecture",
+            "department": "landscape-architecture"
         },
         {
-            name: "Aminah Binti Mohamed Bakhari",
-            qualification: "Master in Business Administration (Construction Business) 2008 UIA, Bachelor of Quantity Surveying (Hons) UiTM 2003",
-            position: "Head of Program, BQS and DQS, Senior Lecturer",
-            room: "B119",
-            ext: "846",
-            email: "aminah@klust.edu.my",
-            staffId: "IEN 01297",
-            specialization: "Construction Contract, Measurement of Building Works",
-            department: "quantity-surveying"
+            "name": "Aminah Binti Mohamed Bakhari",
+            "qualification": "Master in Business Administration (Construction Business) 2008 UIA, Bachelor of Quantity Surveying (Hons) UiTM 2003",
+            "position": "Head of Program, BQS and DQS, Senior Lecturer",
+            "room": "B119",
+            "ext": "846",
+            "email": "aminah@klust.edu.my",
+            "staffId": "IEN 01297",
+            "specialization": "Construction Contract, Measurement of Building Works",
+            "department": "quantity-surveying"
         },
         {
-            name: "Mazlina Binti Abdul Manan",
-            qualification: "Master in Science FACILITIES MANAGEMENT (UiTM), Degree in Civil Engineering (UTM), Diploma in Civil Engineering (UTM)",
-            position: "Senior Lecturer",
-            room: "B 122",
-            ext: "785",
-            email: "mazlina@klust.edu.my",
-            staffId: "IEN 00825",
-            specialization: "CIVIL ENGINEERING, BUILDING CONSTRUCTION, TECHNOLOGY AND BUILDING STRUCTURE",
-            department: "management"
+            "name": "Mazlina Binti Abdul Manan",
+            "qualification": "Master in Science FACILITIES MANAGEMENT (UiTM), Degree in Civil Engineering (UTM), Diploma in Civil Engineering (UTM)",
+            "position": "Senior Lecturer",
+            "room": "B 122",
+            "ext": "785",
+            "email": "mazlina@klust.edu.my",
+            "staffId": "IEN 00825",
+            "specialization": "CIVIL ENGINEERING, BUILDING CONSTRUCTION, TECHNOLOGY AND BUILDING STRUCTURE",
+            "department": "management"
         },
         {
-            name: "Sr Sharifah Huda Syed Mohd, PQS",
-            qualification: "Msc in Project Management, Bac. Of Quantity Surveying (Hons)",
-            position: "Senior Lecturer",
-            room: "B126",
-            ext: "548",
-            email: "sharifah@klust.edu.my",
-            staffId: "IEN 00757",
-            specialization: "Quantity Surveying",
-            department: "quantity-surveying"
+            "name": "Sr Sharifah Huda Syed Mohd, PQS",
+            "qualification": "Msc in Project Management, Bac. Of Quantity Surveying (Hons)",
+            "position": "Senior Lecturer",
+            "room": "B126",
+            "ext": "548",
+            "email": "sharifah@klust.edu.my",
+            "staffId": "IEN 00757",
+            "specialization": "Quantity Surveying",
+            "department": "quantity-surveying"
         },
         {
-            name: "Ahmad Muna'iem Ahmad Fauzi",
-            qualification: "Degree in Architecture – Part 2",
-            position: "Senior Lecturer",
-            room: "B116",
-            ext: "593",
-            email: "munaiem@klust.edu.my",
-            staffId: "IEN 00817",
-            specialization: "Architecture Design, Housing planning and Design Conceptual, Islamic Architecture",
-            department: "architecture"
+            "name": "Ahmad Muna'iem Ahmad Fauzi",
+            "qualification": "Degree in Architecture – Part 2",
+            "position": "Senior Lecturer",
+            "room": "B116",
+            "ext": "593",
+            "email": "munaiem@klust.edu.my",
+            "staffId": "IEN 00817",
+            "specialization": "Architecture Design, Housing planning and Design Conceptual, Islamic Architecture",
+            "department": "architecture"
         },
         {
-            name: "Siti Noraini Ahmad",
-            qualification: "BSc (Hon) Architecture; M. Environment",
-            position: "Senior Lecturer",
-            room: "B108",
-            ext: "780",
-            email: "sitinoraini@klust.edu.my",
-            staffId: "IEN00446",
-            specialization: "Sustainable Design, Environmental Impact Assessment",
-            department: "architecture"
+            "name": "Siti Noraini Ahmad",
+            "qualification": "BSc (Hon) Architecture; M. Environment",
+            "position": "Senior Lecturer",
+            "room": "B108",
+            "ext": "780",
+            "email": "sitinoraini@klust.edu.my",
+            "staffId": "IEN00446",
+            "specialization": "Sustainable Design, Environmental Impact Assessment",
+            "department": "architecture"
         },
         {
-            name: "Noraqidah Binti Mohamad",
-            qualification: "Master of Science (Tourism Planning) UTM, Bac. In Landscape Architecture (UTM)",
-            position: "Senior Lecturer",
-            room: "B106",
-            ext: "782",
-            email: "noraqidah@klust.edu.my",
-            staffId: "IEN 00697",
-            specialization: "Sustainable Landscape Design",
-            department: "landscape-architecture"
+            "name": "Noraqidah Binti Mohamad",
+            "qualification": "Master of Science (Tourism Planning) UTM, Bac. In Landscape Architecture (UTM)",
+            "position": "Senior Lecturer",
+            "room": "B106",
+            "ext": "782",
+            "email": "noraqidah@klust.edu.my",
+            "staffId": "IEN 00697",
+            "specialization": "Sustainable Landscape Design",
+            "department": "landscape-architecture"
         },
         {
-            name: "Assoc. Prof Ar Mohd Hayazi bin Agusi",
-            qualification: "Master Sc. Heritage Conservation & Management, B. Arch (Hons), B.A (Hons) Arch, LAM Part III",
-            position: "Senior Lecturer",
-            room: "B101",
-            ext: "NA",
-            email: "hayazi@klust.edu.my",
-            staffId: "IEN 00918",
-            specialization: "Urban Architecture and Conservation Heritage",
-            department: "architecture"
+            "name": "Assoc. Prof Ar Mohd Hayazi bin Agusi",
+            "qualification": "Master Sc. Heritage Conservation & Management, B. Arch (Hons), B.A (Hons) Arch, LAM Part III",
+            "position": "Senior Lecturer",
+            "room": "B101",
+            "ext": "NA",
+            "email": "hayazi@klust.edu.my",
+            "staffId": "IEN 00918",
+            "specialization": "Urban Architecture and Conservation Heritage",
+            "department": "architecture"
         },
         {
-            name: "Dr. 'Adil Farizal bin Md Rashid",
-            qualification: "Bsc. Architecture UIA, 2003, Bsc. Housing USM, 2008 (Master in Housing), PHD IUKL",
-            position: "Senior Lecturer",
-            room: "B123",
-            ext: "754",
-            email: "adil@klust.edu.my",
-            staffId: "IEN 00503",
-            specialization: "Housing Design, 3D Architectural Visualization and Animation",
-            department: "architecture"
+            "name": "Dr. 'Adil Farizal bin Md Rashid",
+            "qualification": "Bsc. Architecture UIA, 2003, Bsc. Housing USM, 2008 (Master in Housing), PHD IUKL",
+            "position": "Senior Lecturer",
+            "room": "B123",
+            "ext": "754",
+            "email": "adil@klust.edu.my",
+            "staffId": "IEN 00503",
+            "specialization": "Housing Design, 3D Architectural Visualization and Animation",
+            "department": "architecture"
         },
         {
-            name: "Azrin Bin Abu Seman",
-            qualification: "MSc. In Urban Development & Mgmt (UiTM)",
-            position: "Senior Lecturer",
-            room: "B109",
-            ext: "776",
-            email: "azrin@klust.edu.my",
-            staffId: "IEN 00983",
-            specialization: "Architecture Design, Urban Design, Urban Development and Management, Computer Aided Design and Architectural Drafting",
-            department: "architecture"
+            "name": "Azrin Bin Abu Seman",
+            "qualification": "MSc. In Urban Development & Mgmt (UiTM)",
+            "position": "Senior Lecturer",
+            "room": "B109",
+            "ext": "776",
+            "email": "azrin@klust.edu.my",
+            "staffId": "IEN 00983",
+            "specialization": "Architecture Design, Urban Design, Urban Development and Management, Computer Aided Design and Architectural Drafting",
+            "department": "architecture"
         },
         {
-            name: "Nur Balqis binti Ahmad Safawi",
-            qualification: "Master in Built Environment, Bach. Science in Architecture, UIA",
-            position: "Senior Lecturer",
-            room: "B115",
-            ext: "1532",
-            email: "balqis@klust.edu.my",
-            staffId: "IEN 00926",
-            specialization: "Universal Design",
-            department: "architecture"
+            "name": "Nur Balqis binti Ahmad Safawi",
+            "qualification": "Master in Built Environment, Bach. Science in Architecture, UIA",
+            "position": "Senior Lecturer",
+            "room": "B115",
+            "ext": "1532",
+            "email": "balqis@klust.edu.my",
+            "staffId": "IEN 00926",
+            "specialization": "Universal Design",
+            "department": "architecture"
         },
         {
-            name: "Siti Hajar bt Mat Haril",
-            qualification: "B.Arch (HONS), UiTM, Dip. Arch, UTM",
-            position: "Senior Lecturer",
-            room: "B115",
-            ext: "1532",
-            email: "shajar.mharil@klust.edu.my",
-            staffId: "IEN 01123",
-            specialization: "Architecture",
-            department: "architecture"
+            "name": "Siti Hajar bt Mat Haril",
+            "qualification": "B.Arch (HONS), UiTM, Dip. Arch, UTM",
+            "position": "Senior Lecturer",
+            "room": "B115",
+            "ext": "1532",
+            "email": "shajar.mharil@klust.edu.my",
+            "staffId": "IEN 01123",
+            "specialization": "Architecture",
+            "department": "architecture"
         },
         {
-            name: "Sr Nur Khairul Faizah bt Mustafa",
-            qualification: "MSc. in Construction Management, Bach. of Building Surveying (Hons)",
-            position: "Senior Lecturer",
-            room: "B110",
-            ext: "787",
-            email: "nurkhairul@klust.edu.my",
-            staffId: "IEN00361",
-            specialization: "Building Performance, Maintenance Management",
-            department: "management"
+            "name": "Sr Nur Khairul Faizah bt Mustafa",
+            "qualification": "MSc. in Construction Management, Bach. of Building Surveying (Hons)",
+            "position": "Senior Lecturer",
+            "room": "B110",
+            "ext": "787",
+            "email": "nurkhairul@klust.edu.my",
+            "staffId": "IEN00361",
+            "specialization": "Building Performance, Maintenance Management",
+            "department": "management"
         },
         {
-            name: "Nordianti Abd Rahim",
-            qualification: "Dip in Arch (UiTM, Perak), Bachelor in Landscape Architecture (UiTM, Shah Alam), Msc In Heritage and Conservation Management (UiTM, Shah Alam)",
-            position: "Senior Lecturer",
-            room: "B108",
-            ext: "764",
-            email: "nordianti@klust.edu.my",
-            staffId: "IEN 00896",
-            specialization: "Landscape Architecture and Heritage Conservation Management",
-            department: "landscape-architecture"
+            "name": "Nordianti Abd Rahim",
+            "qualification": "Dip in Arch (UiTM, Perak), Bachelor in Landscape Architecture (UiTM, Shah Alam), Msc In Heritage and Conservation Management (UiTM, Shah Alam)",
+            "position": "Senior Lecturer",
+            "room": "B108",
+            "ext": "764",
+            "email": "nordianti@klust.edu.my",
+            "staffId": "IEN 00896",
+            "specialization": "Landscape Architecture and Heritage Conservation Management",
+            "department": "landscape-architecture"
         },
         {
-            name: "Mohd Basir bin Abdul Razak",
-            qualification: "Master of Science in Heritage and Conservation Management, Bachelor of Landscape Architecture",
-            position: "Senior Lecturer",
-            room: "B117",
-            ext: "592",
-            email: "basirrazak@klust.edu.my",
-            staffId: "IEN 00864",
-            specialization: "Landscape Architecture",
-            department: "landscape-architecture"
+            "name": "Mohd Basir bin Abdul Razak",
+            "qualification": "Master of Science in Heritage and Conservation Management, Bachelor of Landscape Architecture",
+            "position": "Senior Lecturer",
+            "room": "B117",
+            "ext": "592",
+            "email": "basirrazak@klust.edu.my",
+            "staffId": "IEN 00864",
+            "specialization": "Landscape Architecture",
+            "department": "landscape-architecture"
         },
         {
-            name: "Siti Najwa bt Sheikh Yahya",
-            qualification: "MA Development & Emergency (Architecture), Oxford Brookes, UK",
-            position: "Senior Lecturer",
-            room: "B123",
-            ext: "547",
-            email: "sitinajwa@klust.edu.my",
-            staffId: "IEN 00901",
-            specialization: "Architecture & Post-Disaster Reconstruction",
-            department: "architecture"
+            "name": "Siti Najwa bt Sheikh Yahya",
+            "qualification": "MA Development & Emergency (Architecture), Oxford Brookes, UK",
+            "position": "Senior Lecturer",
+            "room": "B123",
+            "ext": "547",
+            "email": "sitinajwa@klust.edu.my",
+            "staffId": "IEN 00901",
+            "specialization": "Architecture & Post-Disaster Reconstruction",
+            "department": "architecture"
         },
         {
-            name: "Mohd Suhail bin Ahmad Sahimi",
-            qualification: "Master in Landscape Architecture",
-            position: "Senior Lecturer",
-            room: "B116",
-            ext: "547",
-            email: "suhail@klust.edu.my",
-            staffId: "IEN 01199",
-            specialization: "Landscape Architecture",
-            department: "landscape-architecture"
+            "name": "Mohd Suhail bin Ahmad Sahimi",
+            "qualification": "Master in Landscape Architecture",
+            "position": "Senior Lecturer",
+            "room": "B116",
+            "ext": "547",
+            "email": "suhail@klust.edu.my",
+            "staffId": "IEN 01199",
+            "specialization": "Landscape Architecture",
+            "department": "landscape-architecture"
         },
         {
-            name: "Ar Mohd Kamal Bin Abdullah",
-            qualification: "LAM Part 3",
-            position: "Lecturer",
-            room: "B102",
-            ext: "754",
-            email: "mohdkamal@klust.edu.my",
-            staffId: "IEN 01289",
-            specialization: "Urban Architecture",
-            department: "architecture"
+            "name": "Ar Mohd Kamal Bin Abdullah",
+            "qualification": "LAM Part 3",
+            "position": "Lecturer",
+            "room": "B102",
+            "ext": "754",
+            "email": "mohdkamal@klust.edu.my",
+            "staffId": "IEN 01289",
+            "specialization": "Urban Architecture",
+            "department": "architecture"
         },
         {
-            name: "Sr. Fazleemardyana bin Omar, CQS",
-            qualification: "Registered as Consultant QS (BQSM), Bac. QS, UiTM 2008",
-            position: "Lecturer",
-            room: "B105",
-            ext: "764",
-            email: "fazleemardyana@klust.edu.my",
-            staffId: "IEN 01295",
-            specialization: "Measurement, Construction Contract",
-            department: "quantity-surveying"
+            "name": "Sr. Fazleemardyana bin Omar, CQS",
+            "qualification": "Registered as Consultant QS (BQSM), Bac. QS, UiTM 2008",
+            "position": "Lecturer",
+            "room": "B105",
+            "ext": "764",
+            "email": "fazleemardyana@klust.edu.my",
+            "staffId": "IEN 01295",
+            "specialization": "Measurement, Construction Contract",
+            "department": "quantity-surveying"
         }
     ]
 };
@@ -5114,15 +5577,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = SafeStorage.getItem('fabe_handbook_lang') || 'en';
 
     function initLanguageToggle() {
-        const langBtn = document.getElementById('btn-lang-toggle');
-        
-        if (langBtn) {
-            langBtn.addEventListener('click', () => {
+        // Delegate click event to capture clicks on button, icon, or text spans
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('#btn-lang-toggle');
+            if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
                 currentLang = currentLang === 'en' ? 'zh' : 'en';
                 SafeStorage.setItem('fabe_handbook_lang', currentLang);
                 applyLanguage();
-            });
-        }
+            }
+        });
 
         applyLanguage();
     }
@@ -5154,8 +5619,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.setAttribute('placeholder', dict[key]);
             }
         });
-    }
 
+        // Re-render all active panels dynamically
+        const searchInput = document.getElementById('faq-search-input');
+        if (typeof renderFAQs === 'function' && searchInput) {
+            renderFAQs(searchInput.value || '');
+        }
+
+        if (typeof initLecturerDirectory === 'function') {
+            initLecturerDirectory();
+        }
+
+        if (typeof renderDashboardAdvice === 'function') {
+            renderDashboardAdvice();
+        }
+    }
 });
 </script>
 </body>
