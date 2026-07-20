@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDecisionTree();
     initCurriculumComponents();
     initLecturerDirectory();
+    initLanguageToggle();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -1401,4 +1402,54 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+
+    // -------------------------------------------------------------------------
+    // Language Controller (EN / 中文 Toggle)
+    // -------------------------------------------------------------------------
+    let currentLang = SafeStorage.getItem('fabe_handbook_lang') || 'en';
+
+    function initLanguageToggle() {
+        const langBtn = document.getElementById('btn-lang-toggle');
+        
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'zh' : 'en';
+                SafeStorage.setItem('fabe_handbook_lang', currentLang);
+                applyLanguage();
+            });
+        }
+
+        applyLanguage();
+    }
+
+    function applyLanguage() {
+        const langLabel = document.getElementById('lang-toggle-label');
+        if (langLabel) {
+            if (currentLang === 'zh') {
+                langLabel.innerHTML = `<span style="opacity: 0.6;">EN</span> / <strong style="color: var(--color-blue);">中文</strong>`;
+            } else {
+                langLabel.innerHTML = `<strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span>`;
+            }
+        }
+
+        const dict = (HANDBOOK_DATA.translations && HANDBOOK_DATA.translations[currentLang]) ? HANDBOOK_DATA.translations[currentLang] : {};
+
+        // Update static data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) {
+                el.innerHTML = dict[key];
+            }
+        });
+
+        // Update static data-i18n-placeholder elements
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dict[key]) {
+                el.setAttribute('placeholder', dict[key]);
+            }
+        });
+    }
+
 });

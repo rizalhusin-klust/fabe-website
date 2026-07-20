@@ -12,8 +12,16 @@
         <!-- Sidebar Navigation -->
         <aside class="app-sidebar">
             <div class="sidebar-header">
-                <h2>FABE Student Portal</h2>
-                <p>Academic Handbook & Advisor</p>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
+                    <div>
+                        <h2 data-i18n="portal_title">FABE Student Portal</h2>
+                        <p data-i18n="portal_subtitle">Academic Handbook & Advisor</p>
+                    </div>
+                    <button id="btn-lang-toggle" class="btn btn-secondary" style="padding: 0.3rem 0.55rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; display: flex; align-items: center; gap: 0.35rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; margin-top: 2px;" title="Switch Language / 切换语言">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                        <span id="lang-toggle-label"><strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span></span>
+                    </button>
+                </div>
             </div>
             
             <nav>
@@ -21,43 +29,43 @@
                     <li class="nav-item">
                         <button class="active" data-tab="dashboard">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                            Advisor Dashboard
+                            <span data-i18n="nav_dashboard">Advisor Dashboard</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="search">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                            Handbook Explorer
+                            <span data-i18n="nav_search">Handbook Explorer</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="curriculum">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                            Curriculum Components
+                            <span data-i18n="nav_curriculum">Curriculum Components</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="lecturers">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                            Lecturer Directory
+                            <span data-i18n="nav_lecturers">Lecturer Directory</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="planner">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                            GPA & Study Planner
+                            <span data-i18n="nav_planner">GPA & Study Planner</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="diagnose">
-                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                            Study Diagnostics
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            <span data-i18n="nav_diagnose">Study Diagnostics</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="tree">
-                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H7.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13h.01M12 17h.01M12 10a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
-                            Troubleshooter
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span data-i18n="nav_tree">Troubleshooter</span>
                         </button>
                     </li>
                 </ul>
@@ -75,8 +83,8 @@
             <!-- PANEL 1: DASHBOARD -->
             <div class="panel-card" id="dashboard-panel">
                 <header class="panel-header">
-                    <h1 class="panel-title">Advisor Dashboard</h1>
-                    <p class="panel-subtitle">Monitor academic standing, check study risk ratings, and view custom study advisory paths.</p>
+                    <h1 class="panel-title" data-i18n="dash_title">Advisor Dashboard</h1>
+                    <p class="panel-subtitle" data-i18n="dash_subtitle">Monitor academic standing, check study risk ratings, and view custom study advisory paths.</p>
                 </header>
 
                 <div class="dashboard-grid">
@@ -143,8 +151,8 @@
             <!-- PANEL 2: HANDBOOK SEARCH -->
             <div class="panel-card" id="search-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Handbook Explorer</h1>
-                    <p class="panel-subtitle">Search rules on attendance limits, repeats, graduation benchmarks, and deferment guidelines.</p>
+                    <h1 class="panel-title" data-i18n="search_title">Academic Handbook Explorer</h1>
+                    <p class="panel-subtitle" data-i18n="search_subtitle">Search official academic regulations, policies, and inclusive learning support.</p>
                 </header>
 
                 <div class="search-wrapper">
@@ -162,8 +170,8 @@
             <!-- PANEL 2.5: CURRICULUM COMPONENTS -->
             <div class="panel-card" id="curriculum-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Curriculum Structure & Components</h1>
-                    <p class="panel-subtitle">Understand the credit requirements, course classifications, and MPU categories at FABE.</p>
+                    <h1 class="panel-title" data-i18n="curriculum_title">Curriculum Components</h1>
+                    <p class="panel-subtitle" data-i18n="curriculum_subtitle">Overview of FABE program structures, credit distributions, and MPU requirement pillars.</p>
                 </header>
 
                 <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 2rem;">
@@ -251,8 +259,8 @@
             <!-- PANEL 2.7: LECTURER DIRECTORY -->
             <div class="panel-card" id="lecturers-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Lecturer Directory</h1>
-                    <p class="panel-subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
+                    <h1 class="panel-title" data-i18n="lecturer_title">Lecturer Directory</h1>
+                    <p class="panel-subtitle" data-i18n="lecturer_subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
                 </header>
 
                 <div class="lecturers-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
@@ -281,8 +289,8 @@
             <!-- PANEL 3: GPA PLANNER -->
             <div class="panel-card" id="planner-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">GPA & Study Planner</h1>
-                    <p class="panel-subtitle">Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.</p>
+                    <h1 class="panel-title" data-i18n="planner_title">GPA & Study Planner</h1>
+                    <p class="panel-subtitle" data-i18n="planner_subtitle">Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.</p>
                 </header>
 
                 <div class="planner-layout">
@@ -342,8 +350,8 @@
             <!-- PANEL 4: STUDY DIAGNOSTIC -->
             <div class="panel-card" id="diagnose-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Academic Study Diagnostic</h1>
-                    <p class="panel-subtitle">A self-assessment survey designed to highlight study obstacles and supply recovery tips.</p>
+                    <h1 class="panel-title" data-i18n="diagnose_title">Study Diagnostics Wizard</h1>
+                    <p class="panel-subtitle" data-i18n="diagnose_subtitle">Answer an 8-step questionnaire to evaluate your study risks and generate recovery checklists.</p>
                 </header>
 
                 <!-- Screen 1: Intro -->
@@ -419,8 +427,8 @@
             <!-- PANEL 5: TROUBLESHOOTER (DECISION TREE) -->
             <div class="panel-card" id="tree-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Academic Troubleshooter</h1>
-                    <p class="panel-subtitle">Interactive decision tree guiding you to the right forms and rules for your current issues.</p>
+                    <h1 class="panel-title" data-i18n="tree_title">Academic Troubleshooter</h1>
+                    <p class="panel-subtitle" data-i18n="tree_subtitle">Interactive decision tree for common student scenarios, probation recovery, and iTnL accommodations.</p>
                 </header>
 
                 <div class="tree-container">

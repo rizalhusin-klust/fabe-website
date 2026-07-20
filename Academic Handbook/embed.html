@@ -1182,8 +1182,16 @@ body {
         <!-- Sidebar Navigation -->
         <aside class="app-sidebar">
             <div class="sidebar-header">
-                <h2>FABE Student Portal</h2>
-                <p>Academic Handbook & Advisor</p>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
+                    <div>
+                        <h2 data-i18n="portal_title">FABE Student Portal</h2>
+                        <p data-i18n="portal_subtitle">Academic Handbook & Advisor</p>
+                    </div>
+                    <button id="btn-lang-toggle" class="btn btn-secondary" style="padding: 0.3rem 0.55rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; display: flex; align-items: center; gap: 0.35rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; margin-top: 2px;" title="Switch Language / 切换语言">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                        <span id="lang-toggle-label"><strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span></span>
+                    </button>
+                </div>
             </div>
             
             <nav>
@@ -1191,43 +1199,43 @@ body {
                     <li class="nav-item">
                         <button class="active" data-tab="dashboard">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                            Advisor Dashboard
+                            <span data-i18n="nav_dashboard">Advisor Dashboard</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="search">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                            Handbook Explorer
+                            <span data-i18n="nav_search">Handbook Explorer</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="curriculum">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                            Curriculum Components
+                            <span data-i18n="nav_curriculum">Curriculum Components</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="lecturers">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                            Lecturer Directory
+                            <span data-i18n="nav_lecturers">Lecturer Directory</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="planner">
                             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                            GPA & Study Planner
+                            <span data-i18n="nav_planner">GPA & Study Planner</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="diagnose">
-                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                            Study Diagnostics
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            <span data-i18n="nav_diagnose">Study Diagnostics</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button data-tab="tree">
-                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H7.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13h.01M12 17h.01M12 10a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
-                            Troubleshooter
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span data-i18n="nav_tree">Troubleshooter</span>
                         </button>
                     </li>
                 </ul>
@@ -1245,8 +1253,8 @@ body {
             <!-- PANEL 1: DASHBOARD -->
             <div class="panel-card" id="dashboard-panel">
                 <header class="panel-header">
-                    <h1 class="panel-title">Advisor Dashboard</h1>
-                    <p class="panel-subtitle">Monitor academic standing, check study risk ratings, and view custom study advisory paths.</p>
+                    <h1 class="panel-title" data-i18n="dash_title">Advisor Dashboard</h1>
+                    <p class="panel-subtitle" data-i18n="dash_subtitle">Monitor academic standing, check study risk ratings, and view custom study advisory paths.</p>
                 </header>
 
                 <div class="dashboard-grid">
@@ -1313,8 +1321,8 @@ body {
             <!-- PANEL 2: HANDBOOK SEARCH -->
             <div class="panel-card" id="search-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Handbook Explorer</h1>
-                    <p class="panel-subtitle">Search rules on attendance limits, repeats, graduation benchmarks, and deferment guidelines.</p>
+                    <h1 class="panel-title" data-i18n="search_title">Academic Handbook Explorer</h1>
+                    <p class="panel-subtitle" data-i18n="search_subtitle">Search official academic regulations, policies, and inclusive learning support.</p>
                 </header>
 
                 <div class="search-wrapper">
@@ -1332,8 +1340,8 @@ body {
             <!-- PANEL 2.5: CURRICULUM COMPONENTS -->
             <div class="panel-card" id="curriculum-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Curriculum Structure & Components</h1>
-                    <p class="panel-subtitle">Understand the credit requirements, course classifications, and MPU categories at FABE.</p>
+                    <h1 class="panel-title" data-i18n="curriculum_title">Curriculum Components</h1>
+                    <p class="panel-subtitle" data-i18n="curriculum_subtitle">Overview of FABE program structures, credit distributions, and MPU requirement pillars.</p>
                 </header>
 
                 <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 2rem;">
@@ -1421,8 +1429,8 @@ body {
             <!-- PANEL 2.7: LECTURER DIRECTORY -->
             <div class="panel-card" id="lecturers-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Lecturer Directory</h1>
-                    <p class="panel-subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
+                    <h1 class="panel-title" data-i18n="lecturer_title">Lecturer Directory</h1>
+                    <p class="panel-subtitle" data-i18n="lecturer_subtitle">Find contact information, qualifications, and areas of specialization for FABE staff.</p>
                 </header>
 
                 <div class="lecturers-layout" style="display: flex; flex-direction: column; gap: 1.5rem;">
@@ -1451,8 +1459,8 @@ body {
             <!-- PANEL 3: GPA PLANNER -->
             <div class="panel-card" id="planner-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">GPA & Study Planner</h1>
-                    <p class="panel-subtitle">Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.</p>
+                    <h1 class="panel-title" data-i18n="planner_title">GPA & Study Planner</h1>
+                    <p class="panel-subtitle" data-i18n="planner_subtitle">Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.</p>
                 </header>
 
                 <div class="planner-layout">
@@ -1512,8 +1520,8 @@ body {
             <!-- PANEL 4: STUDY DIAGNOSTIC -->
             <div class="panel-card" id="diagnose-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Academic Study Diagnostic</h1>
-                    <p class="panel-subtitle">A self-assessment survey designed to highlight study obstacles and supply recovery tips.</p>
+                    <h1 class="panel-title" data-i18n="diagnose_title">Study Diagnostics Wizard</h1>
+                    <p class="panel-subtitle" data-i18n="diagnose_subtitle">Answer an 8-step questionnaire to evaluate your study risks and generate recovery checklists.</p>
                 </header>
 
                 <!-- Screen 1: Intro -->
@@ -1589,8 +1597,8 @@ body {
             <!-- PANEL 5: TROUBLESHOOTER (DECISION TREE) -->
             <div class="panel-card" id="tree-panel" style="display: none;">
                 <header class="panel-header">
-                    <h1 class="panel-title">Academic Troubleshooter</h1>
-                    <p class="panel-subtitle">Interactive decision tree guiding you to the right forms and rules for your current issues.</p>
+                    <h1 class="panel-title" data-i18n="tree_title">Academic Troubleshooter</h1>
+                    <p class="panel-subtitle" data-i18n="tree_subtitle">Interactive decision tree for common student scenarios, probation recovery, and iTnL accommodations.</p>
                 </header>
 
                 <div class="tree-container">
@@ -1614,6 +1622,160 @@ body {
     <!-- Scripts -->
     <script>
 const HANDBOOK_DATA = {
+    translations: {
+        "en": {
+                "portal_title": "FABE Student Portal",
+                "portal_subtitle": "Academic Handbook & Advisor",
+                "nav_dashboard": "Advisor Dashboard",
+                "nav_search": "Handbook Explorer",
+                "nav_curriculum": "Curriculum Components",
+                "nav_lecturers": "Lecturer Directory",
+                "nav_planner": "GPA & Study Planner",
+                "nav_diagnose": "Study Diagnostics",
+                "nav_tree": "Troubleshooter",
+                "dash_title": "Academic Advisor Dashboard",
+                "dash_subtitle": "Interactive operational monitoring, academic progress tracking, and student risk management.",
+                "stat_total_registered": "Total Registered Students",
+                "stat_good_standing": "Good Standing (CGPA >= 2.0)",
+                "stat_probation": "Academic Probation (CGPA < 2.0)",
+                "stat_completion": "Handbook Completion Rate",
+                "status_card_title": "Diagnostic Assessment Status",
+                "status_card_sub": "Self-assessment progress and risk profile",
+                "btn_start_assessment": "Start Assessment",
+                "btn_view_results": "View Results",
+                "btn_retake_assessment": "Retake Assessment",
+                "search_title": "Academic Handbook Explorer",
+                "search_subtitle": "Search official academic regulations, policies, and inclusive learning support.",
+                "search_placeholder": "Search rules, attendance policy, probation, fail repeats, iTnL...",
+                "filter_all_cats": "All Categories",
+                "faq_no_results": "No matching rules or FAQs found.",
+                "curriculum_title": "Curriculum Components",
+                "curriculum_subtitle": "Overview of FABE program structures, credit distributions, and MPU requirement pillars.",
+                "curriculum_pillars_title": "Syllabus Structure & Pillars",
+                "curriculum_mpu_title": "Compulsory General Studies (MPU)",
+                "curriculum_total_req": "Total Graduation Requirement",
+                "lecturer_title": "Lecturer Directory",
+                "lecturer_subtitle": "Find contact information, qualifications, and areas of specialization for FABE staff.",
+                "lecturer_search_placeholder": "Search lecturers (e.g. name, specialization, program)...",
+                "dept_all": "All Departments / Roles",
+                "dept_arch": "Architecture",
+                "dept_qs": "Quantity Surveying",
+                "dept_la": "Landscape Architecture",
+                "dept_mgmt": "Management & Others",
+                "lbl_qualification": "Qualification:",
+                "lbl_specialization": "Specialization:",
+                "lbl_office": "Office:",
+                "lbl_ext": "Ext:",
+                "lbl_email": "Email:",
+                "lecturer_no_results": "No lecturers found matching your filters.",
+                "planner_title": "GPA & Study Planner",
+                "planner_subtitle": "Import your syllabus path, log current semesters, and simulate grades to forecast CGPA.",
+                "planner_load_label": "Load Syllabus Template",
+                "planner_reset_btn": "Reset Planner",
+                "planner_print_btn": "Print Plan",
+                "planner_add_sem_btn": "+ Add Semester",
+                "planner_add_course_btn": "+ Add Course",
+                "planner_cgpa": "Cumulative CGPA",
+                "planner_earned_credits": "Earned Credits",
+                "planner_sem_gpa": "Semester GPA",
+                "planner_sem_credits": "Semester Credits",
+                "planner_col_code": "Course Code",
+                "planner_col_name": "Course Name",
+                "planner_col_credits": "Credits",
+                "planner_col_grade": "Grade",
+                "planner_col_points": "Points",
+                "planner_col_action": "Action",
+                "diagnose_title": "Study Diagnostics Wizard",
+                "diagnose_subtitle": "Answer an 8-step questionnaire to evaluate your study risks and generate recovery checklists.",
+                "diag_risk_low": "LOW RISK",
+                "diag_risk_mod": "MODERATE RISK",
+                "diag_risk_high": "HIGH RISK",
+                "diag_risk_crit": "CRITICAL RISK",
+                "diag_recommendations": "Personalized Recovery Checklist",
+                "tree_title": "Academic Troubleshooter",
+                "tree_subtitle": "Interactive decision tree for common student scenarios, probation recovery, and iTnL accommodations.",
+                "tree_select_prompt": "Select your current academic situation or concern below:",
+                "wisdom_quote": "Wisdom thrives in shared guidance.",
+                "wisdom_sub": "This handbook provides general guidance based on official regulations. For personalized support, consult your Academic Advisor or ",
+                "counselling_link": "KLUST University Counselling Services"
+        },
+        "zh": {
+                "portal_title": "FABE 学生学术门户",
+                "portal_subtitle": "学术手册与导师指南",
+                "nav_dashboard": "导师仪表板",
+                "nav_search": "手册规章探索",
+                "nav_curriculum": "课程组成结构",
+                "nav_lecturers": "讲师与教职员名录",
+                "nav_planner": "GPA 与 学习规划器",
+                "nav_diagnose": "学业诊断评估",
+                "nav_tree": "问题排查决策树",
+                "dash_title": "学术导师仪表板",
+                "dash_subtitle": "交互式日常监控、学术进度跟踪与学生风险管理。",
+                "stat_total_registered": "已注册学生总数",
+                "stat_good_standing": "成绩良好 (CGPA >= 2.0)",
+                "stat_probation": "学术警告 (CGPA < 2.0)",
+                "stat_completion": "手册阅读完成率",
+                "status_card_title": "学业诊断评估状态",
+                "status_card_sub": "自我评估进度与风险画像",
+                "btn_start_assessment": "开始诊断评估",
+                "btn_view_results": "查看诊断结果",
+                "btn_retake_assessment": "重新诊断评估",
+                "search_title": "学术手册规章探索",
+                "search_subtitle": "搜索官方学术规章、考试政策及包容性学习支持 (iTnL)。",
+                "search_placeholder": "搜索规章、考勤政策、学术警告、重修、iTnL包容性学习...",
+                "filter_all_cats": "所有分类",
+                "faq_no_results": "未找到匹配的规章或常见问题。",
+                "curriculum_title": "课程组成结构",
+                "curriculum_subtitle": "FABE 课程结构、学分分配及 MPU 通识课程四大支柱概述。",
+                "curriculum_pillars_title": "课程体系与四大支柱",
+                "curriculum_mpu_title": "必修通识课程 (MPU)",
+                "curriculum_total_req": "毕业总学分要求",
+                "lecturer_title": "讲师与教职员名录",
+                "lecturer_subtitle": "查找 FABE 讲师联系方式、学术资历及专业研究领域。",
+                "lecturer_search_placeholder": "搜索讲师（例如：姓名、专业领域、课程）...",
+                "dept_all": "所有部门 / 职位",
+                "dept_arch": "建筑学系",
+                "dept_qs": "工料测量系",
+                "dept_la": "景观建筑学系",
+                "dept_mgmt": "管理与其它",
+                "lbl_qualification": "学历资历:",
+                "lbl_specialization": "研究领域:",
+                "lbl_office": "办公室:",
+                "lbl_ext": "分机:",
+                "lbl_email": "电子邮箱:",
+                "lecturer_no_results": "未找到符合筛选条件的讲师。",
+                "planner_title": "GPA 与 学习规划器",
+                "planner_subtitle": "导入课程大纲路径，记录当前学期成绩并模拟计算累积 CGPA。",
+                "planner_load_label": "加载课程大纲模板",
+                "planner_reset_btn": "重置规划器",
+                "planner_print_btn": "打印规划方案",
+                "planner_add_sem_btn": "+ 添加学期",
+                "planner_add_course_btn": "+ 添加课程",
+                "planner_cgpa": "累积 CGPA",
+                "planner_earned_credits": "已获得学分",
+                "planner_sem_gpa": "学期 GPA",
+                "planner_sem_credits": "学期学分",
+                "planner_col_code": "课程代码",
+                "planner_col_name": "课程名称",
+                "planner_col_credits": "学分",
+                "planner_col_grade": "成绩等级",
+                "planner_col_points": "绩点",
+                "planner_col_action": "操作",
+                "diagnose_title": "学业诊断评估向导",
+                "diagnose_subtitle": "回答 8 步式评估问卷，诊断学习瓶颈并生成个人改善清单。",
+                "diag_risk_low": "低风险",
+                "diag_risk_mod": "中度风险",
+                "diag_risk_high": "高风险",
+                "diag_risk_crit": "极高风险",
+                "diag_recommendations": "个性化学业改善清单",
+                "tree_title": "学术问题排查器",
+                "tree_subtitle": "针对常见学业困难、警告恢复及 iTnL 学习调整的交互式决策树。",
+                "tree_select_prompt": "请在下方选择您当前的学术状况或疑问：",
+                "wisdom_quote": "智慧在共同指引中茁壮成长。",
+                "wisdom_sub": "本手册基于官方规章提供常规指引。如需个性化学术支持，请咨询您的学术导师或联系 ",
+                "counselling_link": "KLUST 大学心理咨询服务中心"
+        }
+},
     gradeScale: [
         { grade: 'A', points: 4.00, desc: 'Excellent' },
         { grade: 'A-', points: 3.67, desc: 'Very Good' },
@@ -3607,6 +3769,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDecisionTree();
     initCurriculumComponents();
     initLecturerDirectory();
+    initLanguageToggle();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -4943,8 +5106,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-});
 
+
+    // -------------------------------------------------------------------------
+    // Language Controller (EN / 中文 Toggle)
+    // -------------------------------------------------------------------------
+    let currentLang = SafeStorage.getItem('fabe_handbook_lang') || 'en';
+
+    function initLanguageToggle() {
+        const langBtn = document.getElementById('btn-lang-toggle');
+        
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'zh' : 'en';
+                SafeStorage.setItem('fabe_handbook_lang', currentLang);
+                applyLanguage();
+            });
+        }
+
+        applyLanguage();
+    }
+
+    function applyLanguage() {
+        const langLabel = document.getElementById('lang-toggle-label');
+        if (langLabel) {
+            if (currentLang === 'zh') {
+                langLabel.innerHTML = `<span style="opacity: 0.6;">EN</span> / <strong style="color: var(--color-blue);">中文</strong>`;
+            } else {
+                langLabel.innerHTML = `<strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span>`;
+            }
+        }
+
+        const dict = (HANDBOOK_DATA.translations && HANDBOOK_DATA.translations[currentLang]) ? HANDBOOK_DATA.translations[currentLang] : {};
+
+        // Update static data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) {
+                el.innerHTML = dict[key];
+            }
+        });
+
+        // Update static data-i18n-placeholder elements
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dict[key]) {
+                el.setAttribute('placeholder', dict[key]);
+            }
+        });
+    }
+
+});
 </script>
 </body>
 </html>
