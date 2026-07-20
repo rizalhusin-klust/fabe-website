@@ -71,6 +71,7 @@ window.applyLanguage = function() {
         window.renderTreeNode();
     }
 
+    if (typeof renderGPAPlanner === 'function') renderGPAPlanner();
     if (typeof updateDashboardMetrics === 'function') {
         updateDashboardMetrics();
     }
@@ -586,10 +587,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <table class="course-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%">Course Code</th>
-                                <th style="width: 45%">Course Name</th>
-                                <th style="width: 15%">Credits</th>
-                                <th style="width: 15%">Expected Grade</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '课程代码' : 'Course Code'}</th>
+                                <th style="width: 45%">${window.currentLang === 'zh' ? '课程名称' : 'Course Name'}</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '学分' : 'Credits'}</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '期望成绩' : 'Expected Grade'}</th>
                                 <th class="actions"></th>
                             </tr>
                         </thead>
@@ -599,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </table>
                     
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <button class="btn-add-course">+ Add Course Row</button>
+                        <button class="btn-add-course">${window.currentLang === 'zh' ? '+ 添加课程' : '+ Add Course Row'}</button>
                         ${metrics.totalCredits > HANDBOOK_DATA.handbookRules.creditLimits.normalMax ? `
                             <div class="badge badge-danger">Warning: Exceeds maximum normal workload (18 credits)</div>
                         ` : ''}

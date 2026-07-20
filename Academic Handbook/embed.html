@@ -1242,8 +1242,8 @@ body {
             </nav>
             
             <div class="sidebar-footer">
-                <div>Faculty of Architecture & Built Environment</div>
-                <div style="font-size: 0.7rem; opacity: 0.8;">Interactive Guide v1.0</div>
+                <div data-i18n="footer_faculty">Faculty of Architecture & Built Environment</div>
+                <div style="font-size: 0.7rem; opacity: 0.8;" data-i18n="footer_guide">Interactive Guide v1.0</div>
             </div>
         </aside>
 
@@ -1347,31 +1347,31 @@ body {
                 <div class="curriculum-layout" style="display: flex; flex-direction: column; gap: 2rem;">
                     <!-- Overview section -->
                     <div style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(109, 40, 217, 0.02) 100%); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
-                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">Curriculum Structure</h2>
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;" data-i18n="curr_struct_title">Curriculum Structure</h2>
                         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                            Each academic program is composed of three main categories of subjects. Students must fulfill the credit requirements for all categories to be eligible for graduation.
+                            <span data-i18n="curr_struct_intro">Each academic program is composed of three main categories of subjects. Students must fulfill the credit requirements for all categories to be eligible for graduation.</span>
                         </p>
                         
                         <div class="curriculum-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
                             <!-- Category 1 -->
                             <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
-                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-blue); font-weight: 700;">1. Core Courses</h3>
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-blue); font-weight: 700;"><span data-i18n="curr_c1_title">1. Core Courses</span></h3>
                                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-                                    These are compulsory major subjects that form the fundamental knowledge of your chosen field of study. The detailed list of core courses for each semester can be found in the <span style="font-weight: 600; color: var(--color-blue);">GPA & Study Planner</span> tab.
+                                    <span data-i18n="curr_c1_desc">These are compulsory major subjects that form the fundamental knowledge of your chosen field of study. The detailed list of core courses for each semester can be found in the GPA & Study Planner tab.</span>
                                 </p>
                             </div>
                             <!-- Category 2 -->
                             <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
-                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-emerald); font-weight: 700;">2. MPU / University Subjects</h3>
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-emerald); font-weight: 700;"><span data-i18n="curr_c2_title">2. MPU / University Subjects</span></h3>
                                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-                                    These are compulsory subjects mandated by the Ministry of Higher Education Malaysia. All students must pass these subjects. The specific requirements and subject options for Diploma and Bachelor programs are detailed below on this page.
+                                    <span data-i18n="curr_c2_desc">These are compulsory subjects mandated by the Ministry of Higher Education Malaysia. All students must pass these subjects. The specific requirements and subject options for Diploma and Bachelor programs are detailed below on this page.</span>
                                 </p>
                             </div>
                             <!-- Category 3 -->
                             <div class="stat-card" style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%; border-color: rgba(30, 64, 175, 0.1); background: var(--bg-primary);">
-                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-amber); font-weight: 700;">3. Elective Courses</h3>
+                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-amber); font-weight: 700;"><span data-i18n="curr_c3_title">3. Elective Courses</span></h3>
                                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-                                    These courses allow students to explore specific areas of interest within their broader field. Students can choose from a predefined list of subjects to meet the elective credit requirements.
+                                    <span data-i18n="curr_c3_desc">These courses allow students to explore specific areas of interest within their broader field. Students can choose from a predefined list of subjects to meet the elective credit requirements.</span>
                                 </p>
                             </div>
                         </div>
@@ -1379,9 +1379,9 @@ body {
 
                     <!-- Graduation Progress Section -->
                     <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
-                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">Tracking Graduation Progress</h2>
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;" data-i18n="curr_breakdown_title">Tracking Graduation Progress</h2>
                         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-                            To graduate, a student must successfully complete all required credits from the three subject categories. Select a program below to inspect its credit distribution.
+                            <span data-i18n="curr_breakdown_intro">To graduate, a student must successfully complete all required credits from the three subject categories. Select a program below to inspect its credit distribution.</span>
                         </p>
 
                         <!-- Program Selectors -->
@@ -1397,9 +1397,9 @@ body {
 
                     <!-- MPU Details Section -->
                     <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; background: var(--bg-secondary);">
-                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;">MPU / University Subjects Details</h2>
+                        <h2 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.4rem; font-weight: 700;" data-i18n="curr_mpu_header">MPU / University Subjects Details</h2>
                         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-                            The tables below show the required subjects and selection rules for each program level.
+                            <span data-i18n="curr_mpu_intro">The tables below show the required subjects and selection rules for each program level.</span>
                         </p>
 
                         <!-- Student Category Selectors -->
@@ -1467,18 +1467,18 @@ body {
                     <!-- Setup and Import Row -->
                     <div class="setup-card">
                         <div class="form-group">
-                            <label for="planner-program-select">Load Syllabus Template</label>
+                            <label for="planner-program-select" data-i18n="planner_load_label">Load Syllabus Template</label>
                             <select class="select-input" id="planner-program-select">
                                 <!-- Populated dynamically -->
                             </select>
                         </div>
                         <div style="margin-left: auto; display: flex; gap: 0.5rem;">
-                            <button class="btn btn-secondary" id="btn-clear-planner">Reset Planner</button>
+                            <button class="btn btn-secondary" id="btn-clear-planner"><span data-i18n="planner_btn_reset">Reset Planner</span></button>
                             <button class="btn btn-accent" id="btn-print-planner">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                                Print Plan
+                                <span data-i18n="planner_btn_print">Print Plan</span>
                             </button>
-                            <button class="btn btn-primary" id="btn-add-semester">+ Add Semester</button>
+                            <button class="btn btn-primary" id="btn-add-semester"><span data-i18n="planner_btn_add_sem">+ Add Semester</span></button>
                         </div>
                     </div>
 
@@ -1528,11 +1528,11 @@ body {
                 <div class="survey-screen" id="survey-intro">
                     <div style="text-align: center; max-width: 600px; margin: 3rem auto;">
                         <svg width="64" height="64" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-bottom: 1.5rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Study Habits & Risk Assessment</h3>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;"><span data-i18n="diag_intro_title">Study Habits & Risk Assessment</span>3>
                         <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                            Answer 7 simple questions about your class attendance, submissions, time management, and study environment. We will analyze your inputs and generate a customized action plan with recommendations from the Academic Handbook.
+                            <span data-i18n="diag_intro_body">Answer 7 simple questions about your class attendance, submissions, time management, and study environment. We will analyze your inputs and generate a customized action plan with recommendations from the Academic Handbook.</span>
                         </p>
-                        <button class="btn btn-primary" id="btn-start-survey">Begin Assessment</button>
+                        <button class="btn btn-primary" id="btn-start-survey"><span data-i18n="diag_btn_begin">Begin Assessment</span></button>
                     </div>
                 </div>
 
@@ -1551,8 +1551,8 @@ body {
                         </div>
 
                         <div class="wizard-actions">
-                            <button class="btn btn-secondary" id="btn-survey-prev" disabled>Back</button>
-                            <button class="btn btn-primary" id="btn-survey-next" disabled>Next</button>
+                            <button class="btn btn-secondary" id="btn-survey-prev" disabled><span data-i18n="diag_btn_back">Back</span></button>
+                            <button class="btn btn-primary" id="btn-survey-next" disabled><span data-i18n="diag_btn_next">Next</span></button>
                         </div>
                     </div>
                 </div>
@@ -1711,7 +1711,29 @@ const HANDBOOK_DATA = {
             "dash_btn_start": "Start Diagnostic Assessment",
             "dash_btn_view": "View Diagnostic Results",
             "dash_btn_retake": "Retake Assessment",
-            "wisdom_disclaimer": "This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href='https://klust.edu.my/current-students/klust-counselling-services/' target='_blank' style='color: var(--color-blue); font-weight: 600; text-decoration: underline;'>University Counselling Services</a>."
+            "wisdom_disclaimer": "This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href='https://klust.edu.my/current-students/klust-counselling-services/' target='_blank' style='color: var(--color-blue); font-weight: 600; text-decoration: underline;'>University Counselling Services</a>.",
+            "footer_faculty": "Faculty of Architecture & Built Environment",
+            "footer_guide": "Interactive Guide v1.0",
+            "curr_struct_title": "Curriculum Structure",
+            "curr_struct_intro": "Each academic program is composed of three main categories of subjects. Students must fulfill the credit requirements for all categories to be eligible for graduation.",
+            "curr_c1_title": "1. Core Courses",
+            "curr_c1_desc": "These are compulsory major subjects that form the fundamental knowledge of your chosen field of study. The detailed list of core courses for each semester can be found in the GPA & Study Planner tab.",
+            "curr_c2_title": "2. MPU / University Subjects",
+            "curr_c2_desc": "These are compulsory subjects mandated by the Ministry of Higher Education Malaysia. All students must pass these subjects. The specific requirements and subject options for Diploma and Bachelor programs are detailed below on this page.",
+            "curr_c3_title": "3. Elective Courses",
+            "curr_c3_desc": "These courses allow students to explore specific areas of interest within their broader field. Students can choose from a predefined list of subjects to meet the elective credit requirements.",
+            "curr_breakdown_title": "Tracking Graduation Progress",
+            "curr_breakdown_intro": "To graduate, a student must successfully complete all required credits from the three subject categories. Select a program below to inspect its credit distribution.",
+            "curr_mpu_header": "MPU / University Subjects Details",
+            "curr_mpu_intro": "The tables below show the required subjects and selection rules for each program level.",
+            "planner_btn_reset": "Reset Planner",
+            "planner_btn_print": "Print Plan",
+            "planner_btn_add_sem": "+ Add Semester",
+            "diag_intro_title": "Study Habits & Risk Assessment",
+            "diag_intro_body": "Answer 7 simple questions about your class attendance, submissions, time management, and study environment. We will analyze your inputs and generate a customized action plan with recommendations from the Academic Handbook.",
+            "diag_btn_begin": "Begin Assessment",
+            "diag_btn_back": "Back",
+            "diag_btn_next": "Next"
         },
         "zh": {
             "portal_title": "FABE 学生学术门户",
@@ -1801,7 +1823,29 @@ const HANDBOOK_DATA = {
             "dash_btn_start": "开始学业诊断评估",
             "dash_btn_view": "查看诊断评估结果",
             "dash_btn_retake": "重新诊断评估",
-            "wisdom_disclaimer": "本规划工具仅供<strong>常规参考</strong>。如需官方支持，请咨询您的<strong>学术导师</strong>或<strong>授课讲师</strong>。如果您感到压力过大，欢迎联系 <a href='https://klust.edu.my/current-students/klust-counselling-services/' target='_blank' style='color: var(--color-blue); font-weight: 600; text-decoration: underline;'>大学心理咨询服务中心</a>。"
+            "wisdom_disclaimer": "本规划工具仅供<strong>常规参考</strong>。如需官方支持，请咨询您的<strong>学术导师</strong>或<strong>授课讲师</strong>。如果您感到压力过大，欢迎联系 <a href='https://klust.edu.my/current-students/klust-counselling-services/' target='_blank' style='color: var(--color-blue); font-weight: 600; text-decoration: underline;'>大学心理咨询服务中心</a>。",
+            "footer_faculty": "建筑与内置环境学院 (FABE)",
+            "footer_guide": "交互式学术指南 v1.0",
+            "curr_struct_title": "课程结构与修读体系",
+            "curr_struct_intro": "每个学术课程由三大类科目组成。学生必须满足所有类别的学分要求方可获得毕业资格。",
+            "curr_c1_title": "1. 核心专业课程",
+            "curr_c1_desc": "这些是构成您所选专业基础知识的必修核心科目。每学期的核心课程详细列表可在 'GPA 与 学习规划器' 标签页中找到。",
+            "curr_c2_title": "2. 教育部 MPU 通识与大学科目",
+            "curr_c2_desc": "这些是马来西亚高等教育部规定的必修科目。所有学生必须通过这些科目。具体要求和选课方案见下方详细说明。",
+            "curr_c3_title": "3. 专业选修科目",
+            "curr_c3_desc": "专业选修科目允许学生根据自己的学术与职业兴趣定制学习路径。学生可从预设科目列表中选择以满足选修学分要求。",
+            "curr_breakdown_title": "各专业毕业学分分配明细",
+            "curr_breakdown_intro": "要顺利毕业，学生必须成功修满三大类科目的所有要求学分。点击下方专业名称查看其学分构成。",
+            "curr_mpu_header": "必修 MPU 通识与大学课程要求",
+            "curr_mpu_intro": "下表展示了各学历层次的必修通识科目与选课规则。",
+            "planner_btn_reset": "重置规划器",
+            "planner_btn_print": "打印规划方案",
+            "planner_btn_add_sem": "+ 添加学期",
+            "diag_intro_title": "学业习惯与学术风险自我评估",
+            "diag_intro_body": "回答 7 个关于您的出勤率、作业提交、时间管理及学习环境的简短问题。我们将分析您的回答并生成一份包含《学术手册》改善建议的定制行动计划。",
+            "diag_btn_begin": "开始诊断评估",
+            "diag_btn_back": "上一步",
+            "diag_btn_next": "下一步"
         }
     },
     "gradeScale": [
@@ -4285,6 +4329,7 @@ window.applyLanguage = function() {
         window.renderTreeNode();
     }
 
+    if (typeof renderGPAPlanner === 'function') renderGPAPlanner();
     if (typeof updateDashboardMetrics === 'function') {
         updateDashboardMetrics();
     }
@@ -4800,10 +4845,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <table class="course-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%">Course Code</th>
-                                <th style="width: 45%">Course Name</th>
-                                <th style="width: 15%">Credits</th>
-                                <th style="width: 15%">Expected Grade</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '课程代码' : 'Course Code'}</th>
+                                <th style="width: 45%">${window.currentLang === 'zh' ? '课程名称' : 'Course Name'}</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '学分' : 'Credits'}</th>
+                                <th style="width: 15%">${window.currentLang === 'zh' ? '期望成绩' : 'Expected Grade'}</th>
                                 <th class="actions"></th>
                             </tr>
                         </thead>
@@ -4813,7 +4858,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </table>
                     
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <button class="btn-add-course">+ Add Course Row</button>
+                        <button class="btn-add-course">${window.currentLang === 'zh' ? '+ 添加课程' : '+ Add Course Row'}</button>
                         ${metrics.totalCredits > HANDBOOK_DATA.handbookRules.creditLimits.normalMax ? `
                             <div class="badge badge-danger">Warning: Exceeds maximum normal workload (18 credits)</div>
                         ` : ''}
