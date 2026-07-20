@@ -91,22 +91,22 @@
                     <div class="dashboard-main">
                         <div class="info-box">
                             <div class="info-box-text">
-                                <h4>Welcome to the FABE Student Study Advisor Portal!</h4>
-                                <p>This portal acts as your interactive academic companion. Use the sidebar to plan grades, search attendance and probation policies, or run a self-diagnosis checklist to spot study problems early. **Remember, you are never alone—if you need any help, any lecturer or staff member at the university will happily guide you.**</p>
+                                <h4 data-i18n="dash_welcome_head">Welcome to the FABE Student Study Advisor Portal!</h4>
+                                <p data-i18n="dash_welcome_body">This portal acts as your interactive academic companion. Use the sidebar to plan grades, search attendance and probation policies, or run a self-diagnosis checklist to spot study problems early. **Remember, you are never alone—if you need any help, any lecturer or staff member at the university will happily guide you.**</p>
                             </div>
                             <img src="advisor_illustration.png" alt="Academic Advisor" class="info-box-img">
                         </div>
 
                         <div class="metric-row">
                             <div class="stat-card">
-                                <span class="stat-label">Projected CGPA</span>
+                                <span class="stat-label" data-i18n="dash_lbl_cgpa">Projected CGPA</span>
                                 <span class="stat-val" id="dash-cgpa-val">0.00</span>
                                 <span class="stat-desc" id="dash-standing-val">Good Standing (GS)</span>
                             </div>
                             <div class="stat-card">
-                                <span class="stat-label">Credits Earned</span>
+                                <span class="stat-label" data-i18n="dash_lbl_credits">Credits Earned</span>
                                 <span class="stat-val" id="dash-credits-val">0 / 0</span>
-                                <span class="stat-desc">Passing grade: C- (1.67) or better</span>
+                                <span class="stat-desc" data-i18n="dash_desc_pass_grade">Passing grade: C- (1.67) or better</span>
                             </div>
                         </div>
 
@@ -118,19 +118,19 @@
                     <div class="dashboard-side">
                         <div class="stat-card" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%); min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(30, 64, 175, 0.15);">
                             <div>
-                                <span class="stat-label">Academic Risk Status</span>
+                                <span class="stat-label" data-i18n="dash_lbl_risk_status">Academic Risk Status</span>
                                 <span class="stat-val" id="dash-risk-val">PENDING</span>
                                 <span class="stat-desc" id="dash-risk-desc" style="margin-top: 0.5rem; line-height: 1.4;">Take the diagnostic questionnaire to evaluate your academic safety score.</span>
                             </div>
                             <div class="dash-assessment-actions" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
                                 <button class="btn btn-primary" id="dash-start-assessment-btn" style="width: 100%; justify-content: center;">
-                                    Start Assessment
+                                    <span data-i18n="dash_btn_start">Start Assessment</span>
                                 </button>
                                 <button class="btn btn-secondary" id="dash-view-results-btn" style="width: 100%; justify-content: center; display: none;">
-                                    View Results
+                                    <span data-i18n="dash_btn_view">View Results</span>
                                 </button>
                                 <button class="btn btn-accent" id="dash-retake-assessment-btn" style="width: 100%; justify-content: center; display: none;">
-                                    Retake Assessment
+                                    <span data-i18n="dash_btn_retake">Retake Assessment</span>
                                 </button>
                             </div>
                         </div>
@@ -142,8 +142,8 @@
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     </div>
                     <div class="wisdom-content">
-                        <p class="wisdom-text">“Wisdom thrives in shared guidance.”</p>
-                        <p class="wisdom-disclaimer">This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href="https://klust.edu.my/current-students/klust-counselling-services/" target="_blank" style="color: var(--color-blue); font-weight: 600; text-decoration: underline;">University Counselling Services</a>.</p>
+                        <p class="wisdom-text" data-i18n="wisdom_quote">“Wisdom thrives in shared guidance.”</p>
+                        <p class="wisdom-disclaimer" data-i18n="wisdom_disclaimer">This planner is for <strong>general guidance</strong>. For official support, consult your <strong>Academic Advisor</strong> or <strong>Lecturers</strong>. If you feel overwhelmed, connect with the <a href="https://klust.edu.my/current-students/klust-counselling-services/" target="_blank" style="color: var(--color-blue); font-weight: 600; text-decoration: underline;">University Counselling Services</a>.</p>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                 <div class="search-wrapper">
                     <div class="search-box-container">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <input type="text" class="search-input" id="faq-search-input" placeholder="Search regulations (e.g., 'attendance', 'probation', 'repeating')...">
+                        <input type="text" class="search-input" id="faq-search-input" data-i18n-placeholder="search_placeholder" placeholder="Search regulations (e.g., 'attendance', 'probation', 'repeating')...">
                     </div>
 
                     <div class="faq-list" id="faq-list-container">

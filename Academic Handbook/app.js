@@ -70,6 +70,10 @@ window.applyLanguage = function() {
     if (typeof window.renderTreeNode === 'function') {
         window.renderTreeNode();
     }
+
+    if (typeof updateDashboardMetrics === 'function') {
+        updateDashboardMetrics();
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -210,47 +214,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateDashboardMetrics() {
-        // Calculate GPA metrics
         const calculations = calculateCGPA();
         
-        // Update basic CGPA display
         const cgpaVal = document.getElementById('dash-cgpa-val');
         const standingVal = document.getElementById('dash-standing-val');
         const creditsVal = document.getElementById('dash-credits-val');
         
-        cgpaVal.textContent = calculations.cgpa.toFixed(2);
-        creditsVal.textContent = `${calculations.earnedCredits} / ${calculations.totalAttempted}`;
+        if (cgpaVal) cgpaVal.textContent = calculations.cgpa.toFixed(2);
+        if (creditsVal) creditsVal.textContent = `${calculations.earnedCredits} / ${calculations.totalAttempted}`;
 
-        // Determine standing and colors
         let statusClass = 'success';
-        let standingText = 'Good Standing (GS)';
-        let advisorRecommendation = 'You are in good academic standing. Keep up the great work!';
+        let standingText = window.currentLang === 'zh' ? '成绩良好 (GS)' : 'Good Standing (GS)';
+        let advisorRecommendation = window.currentLang === 'zh' 
+            ? '您的学术成绩保持良好。请继续保持优异表现！' 
+            : 'You are in good academic standing. Keep up the great work!';
 
         if (calculations.cgpa < 1.50) {
             statusClass = 'danger';
-            standingText = 'Dismissal Risk (AD)';
-            advisorRecommendation = 'CRITICAL: Your CGPA is below 1.50. You must meet your Advisor immediately and prepare a letter of appeal to remain registered.';
+            standingText = window.currentLang === 'zh' ? '退学风险 (AD)' : 'Dismissal Risk (AD)';
+            advisorRecommendation = window.currentLang === 'zh' 
+                ? '紧急提醒：您的 CGPA 低于 1.50。您必须立即预约导师面谈并准备申诉信以维持学籍。' 
+                : 'CRITICAL: Your CGPA is below 1.50. You must meet your Advisor immediately and prepare a letter of appeal to remain registered.';
         } else if (calculations.cgpa < 2.00) {
             statusClass = 'warning';
-            standingText = 'Academic Probation (AP)';
-            advisorRecommendation = 'WARNING: Your CGPA has dropped below 2.00. You are capped at a maximum of 12 credits next semester. Schedule an advisory session.';
+            standingText = window.currentLang === 'zh' ? '学术警告 (AP)' : 'Academic Probation (AP)';
+            advisorRecommendation = window.currentLang === 'zh' 
+                ? '警告提示：您的 CGPA 降至 2.00 以下。下学期您的选课将被限制为最多 12 个学分，请预约导师进行学术辅导。' 
+                : 'WARNING: Your CGPA has dropped below 2.00. You are capped at a maximum of 12 credits next semester. Schedule an advisory session.';
         }
 
-        standingVal.textContent = standingText;
-        standingVal.className = `stat-desc ${statusClass}`;
+        if (standingVal) {
+            standingVal.textContent = standingText;
+            standingVal.className = `stat-desc ${statusClass}`;
+        }
         
-        // Render advisor comment in advice container
         const adviceContainer = document.getElementById('dash-advisor-advice');
-        adviceContainer.innerHTML = `
-            <div class="alert-banner ${statusClass === 'success' ? 'success' : statusClass === 'warning' ? 'warning' : 'danger'}" style="margin-top: 1rem;">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <div>
-                    <strong>Advisor Advisory Note:</strong> ${advisorRecommendation}
+        if (adviceContainer) {
+            adviceContainer.innerHTML = `
+                <div class="alert-banner ${statusClass === 'success' ? 'success' : statusClass === 'warning' ? 'warning' : 'danger'}" style="margin-top: 1rem;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 11-18 0 0118 0z"/></svg>
+                    <div>
+                        <strong>${window.currentLang === 'zh' ? '导师建议提示:' : 'Advisor Advisory Note:'}</strong> ${advisorRecommendation}
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
 
-        // Diagnostic Risk Card
         const dashRiskVal = document.getElementById('dash-risk-val');
         const dashRiskDesc = document.getElementById('dash-risk-desc');
         const savedDiagnosis = SafeStorage.getItem('fabe_survey_result');
@@ -260,38 +269,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const dashRetakeBtn = document.getElementById('dash-retake-assessment-btn');
 
         if (savedDiagnosis) {
-            try {
-                const diag = JSON.parse(savedDiagnosis);
-                dashRiskVal.textContent = diag.level.toUpperCase();
-                dashRiskDesc.textContent = `Score: ${diag.score}/${(diag.maxScore || 19.0).toFixed(1)}. Diagnosed: ${diag.date}`;
-                dashRiskVal.className = `stat-val ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
-                dashRiskDesc.className = `stat-desc ${diag.level === 'high' ? 'danger' : diag.level === 'medium' ? 'warning' : 'success'}`;
-                
-                if (dashStartBtn) dashStartBtn.style.display = 'none';
-                if (dashViewBtn) dashViewBtn.style.display = 'inline-flex';
-                if (dashRetakeBtn) dashRetakeBtn.style.display = 'inline-flex';
-            } catch(e) {
-                dashRiskVal.textContent = 'NO DATA';
-                dashRiskDesc.textContent = 'Take the Risk Assessment survey.';
-                if (dashStartBtn) dashStartBtn.style.display = 'inline-flex';
-                if (dashViewBtn) dashViewBtn.style.display = 'none';
-                if (dashRetakeBtn) dashRetakeBtn.style.display = 'none';
+            const diag = JSON.parse(savedDiagnosis);
+            if (dashRiskVal) {
+                if (diag.level === 'high') {
+                    dashRiskVal.textContent = window.currentLang === 'zh' ? '高学术风险' : 'HIGH RISK';
+                    dashRiskVal.style.color = '#ef4444';
+                    if (dashRiskDesc) dashRiskDesc.textContent = window.currentLang === 'zh' ? '警告：评估显示您存在多项显著的学习障碍，请优先参考学业改善清单。' : 'WARNING: Survey indicates significant study obstacles. Urgent action required.';
+                } else if (diag.level === 'medium') {
+                    dashRiskVal.textContent = window.currentLang === 'zh' ? '中度学术风险' : 'MODERATE RISK';
+                    dashRiskVal.style.color = '#f59e0b';
+                    if (dashRiskDesc) dashRiskDesc.textContent = window.currentLang === 'zh' ? '提示：评估显示您存在轻微学习风险，建议及时调整选课与时间分配。' : 'ALERT: Minor risk flags detected. Timely adjustments will prevent probation.';
+                } else {
+                    dashRiskVal.textContent = window.currentLang === 'zh' ? '低学术风险' : 'LOW RISK';
+                    dashRiskVal.style.color = '#10b981';
+                    if (dashRiskDesc) dashRiskDesc.textContent = window.currentLang === 'zh' ? '好消息：您的学习习惯与学业风险保持良好，请继续保持！' : 'Strong academic safety score. Keep up your attendance and study schedule!';
+                }
             }
+            if (dashStartBtn) dashStartBtn.style.display = 'none';
+            if (dashViewBtn) dashViewBtn.style.display = 'flex';
+            if (dashRetakeBtn) dashRetakeBtn.style.display = 'flex';
         } else {
-            dashRiskVal.textContent = 'PENDING';
-            dashRiskDesc.textContent = 'Take the Study Diagnostic Survey.';
-            dashRiskVal.className = 'stat-val';
-            dashRiskDesc.className = 'stat-desc';
-            
-            if (dashStartBtn) dashStartBtn.style.display = 'inline-flex';
+            if (dashRiskVal) {
+                dashRiskVal.textContent = window.currentLang === 'zh' ? '待评估' : 'PENDING';
+                dashRiskVal.style.color = 'var(--text-primary)';
+            }
+            if (dashRiskDesc) dashRiskDesc.textContent = window.currentLang === 'zh' ? '进行诊断问卷评估，获取您的学术安全评分。' : 'Take the diagnostic questionnaire to evaluate your academic safety score.';
+            if (dashStartBtn) dashStartBtn.style.display = 'flex';
             if (dashViewBtn) dashViewBtn.style.display = 'none';
             if (dashRetakeBtn) dashRetakeBtn.style.display = 'none';
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Handbook Search Explorer Controller
-    // -------------------------------------------------------------------------
     function initFAQExplorer() {
         const searchInput = document.getElementById('faq-search-input');
         const faqListContainer = document.getElementById('faq-list-container');
