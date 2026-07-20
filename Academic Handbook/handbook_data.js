@@ -74,7 +74,11 @@ const HANDBOOK_DATA = {
             "tree_select_prompt": "Select your current academic situation or concern below:",
             "wisdom_quote": "Wisdom thrives in shared guidance.",
             "wisdom_sub": "This handbook provides general guidance based on official regulations. For personalized support, consult your Academic Advisor or ",
-            "counselling_link": "KLUST University Counselling Services"
+            "counselling_link": "KLUST University Counselling Services",
+            "advice_good_title": "Academic Standing: Good Standing",
+            "advice_good_body": "Your projected CGPA is at or above 2.00. Maintain your momentum by preparing for upcoming studio reviews and tracking major credit assignments.",
+            "advice_probation_title": "Academic Warning: Academic Probation",
+            "advice_probation_body": "Your projected CGPA is below 2.00. Under university regulations, your next semester workload will be capped at 12 credits. Priority should be given to repeating failed core subjects to replace grades."
         },
         "zh": {
             "portal_title": "FABE 学生学术门户",
@@ -150,7 +154,11 @@ const HANDBOOK_DATA = {
             "tree_select_prompt": "请在下方选择您当前的学术状况或疑问：",
             "wisdom_quote": "智慧在共同指引中茁壮成长。",
             "wisdom_sub": "本手册基于官方规章提供常规指引。如需个性化学术支持，请咨询您的学术导师或联系 ",
-            "counselling_link": "KLUST 大学心理咨询服务中心"
+            "counselling_link": "KLUST 大学心理咨询服务中心",
+            "advice_good_title": "学术状态：成绩良好 (Good Standing)",
+            "advice_good_body": "您的预测 CGPA 达到 2.00 或以上。请保持良好的学习势头，积极准备即将到来的设计审查并合理安排学分。",
+            "advice_probation_title": "学术警告：处于 Probation 警告状态",
+            "advice_probation_body": "您的预测 CGPA 低于 2.00。根据大学规章，您下学期的选课学分将被限制在最多 12 个学分。请优先安排重修低分或不及格的核心科目以替换旧成绩。"
         }
     },
     "gradeScale": [
@@ -468,7 +476,8 @@ const HANDBOOK_DATA = {
                     "category": "Core Professional",
                     "semester": 9
                 }
-            ]
+            ],
+            "name_zh": "理学学士（建筑学研究）"
         },
         {
             "id": "qs-b",
@@ -734,7 +743,8 @@ const HANDBOOK_DATA = {
                     "category": "Elective",
                     "semester": 9
                 }
-            ]
+            ],
+            "name_zh": "工料测量荣誉学士"
         },
         {
             "id": "cm-b",
@@ -1014,7 +1024,8 @@ const HANDBOOK_DATA = {
                     "category": "Core Professional",
                     "semester": 9
                 }
-            ]
+            ],
+            "name_zh": "施工管理荣誉学士"
         },
         {
             "id": "arch-dip",
@@ -1210,7 +1221,8 @@ const HANDBOOK_DATA = {
                     "category": "Core Professional",
                     "semester": 8
                 }
-            ]
+            ],
+            "name_zh": "建筑学文凭"
         },
         {
             "id": "la-dip",
@@ -1413,7 +1425,8 @@ const HANDBOOK_DATA = {
                     "category": "Core Professional",
                     "semester": 8
                 }
-            ]
+            ],
+            "name_zh": "景观建筑学文凭"
         }
     ],
     "handbookRules": {
@@ -1975,7 +1988,9 @@ const HANDBOOK_DATA = {
             "core": 95,
             "mpu": 17,
             "elective": 13,
-            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307)."
+            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).",
+            "program_zh": "景观建筑学学士",
+            "detail_zh": "包含 14 个学分的 MPU 通识课程与 3 个学分的大学必修英语课程 (LANG 1307)。"
         },
         {
             "program": "Bachelor of Quantity Surveying (Hons)",
@@ -1983,7 +1998,9 @@ const HANDBOOK_DATA = {
             "core": 97,
             "mpu": 14,
             "elective": 12,
-            "detail": "Compulsory subjects mandated by the Ministry of Higher Education."
+            "detail": "Compulsory subjects mandated by the Ministry of Higher Education.",
+            "program_zh": "工料测量荣誉学士",
+            "detail_zh": "高等教育部规定的必修通识课程学分要求。"
         },
         {
             "program": "Bachelor of Science (Architectural Studies)",
@@ -1991,7 +2008,9 @@ const HANDBOOK_DATA = {
             "core": 99,
             "mpu": 17,
             "elective": 6,
-            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307)."
+            "detail": "Includes 14 credits of MPU subjects and 3 credits for a compulsory University course (LANG 1307).",
+            "program_zh": "理学学士（建筑学研究）",
+            "detail_zh": "包含 14 个学分的 MPU 通识课程与 3 个学分的大学必修英语课程 (LANG 1307)。"
         },
         {
             "program": "Diploma in Architecture",
@@ -1999,7 +2018,9 @@ const HANDBOOK_DATA = {
             "core": 77,
             "mpu": 17,
             "elective": 0,
-            "detail": "Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses."
+            "detail": "Includes 11 credits of MPU subjects and 6 credits for compulsory University English courses.",
+            "program_zh": "建筑学文凭",
+            "detail_zh": "包含 11 个学分的 MPU 通识课程与 6 个学分的大学必修英语课程。"
         },
         {
             "program": "Master of Architecture",
@@ -2007,7 +2028,9 @@ const HANDBOOK_DATA = {
             "core": 57,
             "mpu": 0,
             "elective": 3,
-            "detail": "No MPU or compulsory University subjects are required for this postgraduate program."
+            "detail": "No MPU or compulsory University subjects are required for this postgraduate program.",
+            "program_zh": "建筑学硕士",
+            "detail_zh": "研究生课程无需修读 MPU 或大学通识科目。"
         }
     ],
     "mpuRequirements": {
@@ -2080,7 +2103,8 @@ const HANDBOOK_DATA = {
                         "note": "Compulsory"
                     }
                 ]
-            }
+            },
+            "title_zh": "学士学位（国际学生）"
         },
         "bachelor_loc": {
             "title": "Bachelor (Local)",
@@ -2163,7 +2187,8 @@ const HANDBOOK_DATA = {
                         "note": "Compulsory"
                     }
                 ]
-            }
+            },
+            "title_zh": "学士学位（马来西亚本地学生）"
         },
         "diploma_int": {
             "title": "Diploma (International)",
@@ -2209,7 +2234,8 @@ const HANDBOOK_DATA = {
                         "note": "Compulsory"
                     }
                 ]
-            }
+            },
+            "title_zh": "文凭课程（国际学生）"
         },
         "diploma_loc": {
             "title": "Diploma (Local)",
@@ -2276,7 +2302,8 @@ const HANDBOOK_DATA = {
                         "note": "Compulsory"
                     }
                 ]
-            }
+            },
+            "title_zh": "文凭课程（马来西亚本地学生）"
         }
     },
     "staffProfiles": [

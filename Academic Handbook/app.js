@@ -428,11 +428,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const printPlannerBtn = document.getElementById('btn-print-planner');
 
         // Populate Programs dropdown
-        programSelect.innerHTML = '<option value="">-- Choose FABE Program (Or Start Custom) --</option>';
+        programSelect.innerHTML = window.currentLang === 'zh' ? '<option value="">-- 选择 FABE 课程专业（或自定义学期）--</option>' : '<option value="">-- Choose FABE Program (Or Start Custom) --</option>';
         HANDBOOK_DATA.programs.forEach(prog => {
             const opt = document.createElement('option');
             opt.value = prog.id;
-            opt.textContent = prog.name;
+            opt.textContent = (window.currentLang === 'zh' && prog.name_zh) ? prog.name_zh : prog.name;
             programSelect.appendChild(opt);
         });
 
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${question.options.map((opt, idx) => `
                         <li class="option-item ${surveyAnswers[question.id] === idx ? 'selected' : ''}" data-idx="${idx}">
                             <span class="option-radio"></span>
-                            <span>${opt.text}</span>
+                            <span>${(window.currentLang === 'zh' && opt.text_zh ? opt.text_zh : opt.text)}</span>
                         </li>
                     `).join('')}
                 </ul>
@@ -919,7 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalScore += selectedOpt.riskPoints;
             feedbackItems.push({
                 category: q.category,
-                question: q.text,
+                question: (window.currentLang === 'zh' && q.text_zh ? q.text_zh : q.text),
                 selected: selectedOpt.text,
                 points: selectedOpt.riskPoints,
                 feedback: selectedOpt.feedback
@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <svg width="18" height="18" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-top: 3px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 <div>
                     <strong>${rec.title}</strong>
-                    <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${rec.detail}</p>
+                    <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${re(window.currentLang === 'zh' && c.detail_zh ? c.detail_zh : c.detail)}</p>
                 </div>
             `;
             checklist.appendChild(li);
@@ -1110,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 btn.innerHTML = `
-                    <span>${opt.text}</span>
+                    <span>${(window.currentLang === 'zh' && opt.text_zh ? opt.text_zh : opt.text)}</span>
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                 `;
             }
@@ -1448,20 +1448,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: auto;">
                             <div>
-                                <strong>Qualification:</strong> 
+                                <strong>${window.currentLang === 'zh' ? '学历资历:' : 'Qualification:'}</strong> 
                                 <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.qualification}</span>
                             </div>
                             ${member.specialization ? `
                             <div>
-                                <strong>Specialization:</strong> 
+                                <strong>${window.currentLang === 'zh' ? '研究领域:' : 'Specialization:'}</strong> 
                                 <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.specialization}</span>
                             </div>` : ''}
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.15rem;">
-                                <div><strong>Office:</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
-                                <div><strong>Ext:</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
+                                <div><strong>${window.currentLang === 'zh' ? '办公室:' : 'Office:'}</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
+                                <div><strong>${window.currentLang === 'zh' ? '分机:' : 'Ext:'}</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
                             </div>
                             <div style="margin-top: 0.15rem;">
-                                <strong>Email:</strong> 
+                                <strong>${window.currentLang === 'zh' ? '电子邮箱:' : 'Email:'}</strong> 
                                 <a href="mailto:${member.email}" style="color: var(--color-blue); text-decoration: underline; font-family: monospace; display: block; margin-top: 0.1rem; font-size: 0.75rem; word-break: break-all;">${member.email}</a>
                             </div>
                         </div>
