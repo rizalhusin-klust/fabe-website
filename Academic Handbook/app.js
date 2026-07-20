@@ -1,3 +1,73 @@
+
+// -------------------------------------------------------------------------
+// Global Language Switcher Engine (Bulletproof EN / 中文 Toggle)
+// -------------------------------------------------------------------------
+window.currentLang = 'en';
+
+try {
+    const saved = localStorage.getItem('fabe_handbook_lang');
+    if (saved) window.currentLang = saved;
+} catch (e) {
+    console.warn('Storage read warning:', e);
+}
+
+window.toggleLanguage = function(e) {
+    if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+    window.currentLang = window.currentLang === 'en' ? 'zh' : 'en';
+    
+    try {
+        localStorage.setItem('fabe_handbook_lang', window.currentLang);
+    } catch (err) {
+        console.warn('Storage write warning:', err);
+    }
+
+    window.applyLanguage();
+};
+
+window.applyLanguage = function() {
+    const langLabel = document.getElementById('lang-toggle-label');
+    if (langLabel) {
+        if (window.currentLang === 'zh') {
+            langLabel.innerHTML = '<span style="opacity: 0.6;">EN</span> / <strong style="color: #1e40af;">中文</strong>';
+        } else {
+            langLabel.innerHTML = '<strong style="color: #1e40af;">EN</strong> / <span style="opacity: 0.6;">中文</span>';
+        }
+    }
+
+    const dict = (typeof HANDBOOK_DATA !== 'undefined' && HANDBOOK_DATA.translations && HANDBOOK_DATA.translations[window.currentLang]) 
+        ? HANDBOOK_DATA.translations[window.currentLang] 
+        : {};
+
+    // 1. Update text for elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.innerHTML = dict[key];
+        }
+    });
+
+    // 2. Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+            el.setAttribute('placeholder', dict[key]);
+        }
+    });
+
+    // 3. Trigger dynamic component re-renders if initialized
+    const faqSearchInput = document.getElementById('faq-search-input');
+    if (typeof window.renderFAQs === 'function' && faqSearchInput) {
+        window.renderFAQs(faqSearchInput.value || '');
+    }
+
+    if (typeof window.initLecturerDirectory === 'function') {
+        window.initLecturerDirectory();
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Safe storage wrapper to prevent crashes in sandboxed iframes (e.g. Google Sites)
     const SafeStorage = {

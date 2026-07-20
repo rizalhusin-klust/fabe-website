@@ -17,9 +17,9 @@
                         <h2 data-i18n="portal_title">FABE Student Portal</h2>
                         <p data-i18n="portal_subtitle">Academic Handbook & Advisor</p>
                     </div>
-                    <button id="btn-lang-toggle" class="btn btn-secondary" style="padding: 0.3rem 0.55rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; display: flex; align-items: center; gap: 0.35rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; margin-top: 2px;" title="Switch Language / 切换语言">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-                        <span id="lang-toggle-label"><strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span></span>
+                    <button id="btn-lang-toggle" type="button" onclick="window.toggleLanguage && window.toggleLanguage(event)" class="btn btn-secondary" style="padding: 0.3rem 0.55rem; font-size: 0.75rem; font-weight: 700; border-radius: 6px; display: flex; align-items: center; gap: 0.35rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; margin-top: 2px;" title="Switch Language / 切换语言">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="pointer-events: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                        <span id="lang-toggle-label" style="pointer-events: none;"><strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span></span>
                     </button>
                 </div>
             </div>
