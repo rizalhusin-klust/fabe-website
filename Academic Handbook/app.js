@@ -66,6 +66,10 @@ window.applyLanguage = function() {
     if (typeof window.initLecturerDirectory === 'function') {
         window.initLecturerDirectory();
     }
+
+    if (typeof window.renderTreeNode === 'function') {
+        window.renderTreeNode();
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1054,7 +1058,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <svg width="18" height="18" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-top: 3px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 <div>
                     <strong>${rec.title}</strong>
-                    <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${re(window.currentLang === 'zh' && c.detail_zh ? c.detail_zh : c.detail)}</p>
+                    <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${rec.detail}</p>
                 </div>
             `;
             checklist.appendChild(li);
@@ -1067,11 +1071,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function initDecisionTree() {
         const restartBtn = document.getElementById('btn-tree-restart');
         
-        restartBtn.addEventListener('click', () => {
-            currentTreeNode = 'start';
-            renderTreeNode();
-        });
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+                currentTreeNode = 'start';
+                renderTreeNode();
+            });
+        }
 
+        window.renderTreeNode = renderTreeNode;
         renderTreeNode();
     }
 
@@ -1082,17 +1089,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionText = document.getElementById('tree-node-text');
         const choicesContainer = document.getElementById('tree-node-choices');
 
+        const activeText = (window.currentLang === 'zh' && node.text_zh) ? node.text_zh : node.text;
+
         // Check if it is a leaf node (ends with instructions and only has 'Back' action)
         const isLeaf = node.options.length === 1 && node.options[0].next === 'start';
         
         if (isLeaf) {
             questionText.innerHTML = `
                 <div class="result-rich-text">
-                    ${formatDecisionText(node.text)}
+                    ${formatDecisionText(activeText)}
                 </div>
             `;
         } else {
-            questionText.textContent = node.text;
+            questionText.textContent = activeText;
         }
 
         choicesContainer.innerHTML = '';
@@ -1100,17 +1109,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = document.createElement('button');
             btn.className = opt.next === 'start' ? 'btn btn-secondary' : 'tree-choice-btn';
             
+            const btnText = (window.currentLang === 'zh' && opt.text_zh) ? opt.text_zh : opt.text;
+
             if (opt.next === 'start') {
                 btn.style.width = '100%';
                 btn.style.justifyContent = 'center';
                 btn.style.marginTop = '1rem';
                 btn.innerHTML = `
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    Start Over / Ask Another Question
+                    ${window.currentLang === 'zh' ? '重新开始 / 选择其他问题' : 'Start Over / Ask Another Question'}
                 `;
             } else {
                 btn.innerHTML = `
-                    <span>${(window.currentLang === 'zh' && opt.text_zh ? opt.text_zh : opt.text)}</span>
+                    <span>${btnText}</span>
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                 `;
             }
