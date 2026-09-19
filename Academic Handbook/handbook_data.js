@@ -1528,7 +1528,9 @@ const HANDBOOK_DATA = {
     "faqs": [
         {
             "category": "Academic Performance",
+            "category_zh": "学术表现与成绩",
             "question": "What is the minimum CGPA to stay in Good Standing?",
+            "question_zh": "保持良好学术成绩 (Good Standing) 的最低 CGPA 是多少？",
             "tags": [
                 "gpa",
                 "cgpa",
@@ -1537,12 +1539,13 @@ const HANDBOOK_DATA = {
                 "failing"
             ],
             "answer": "You must maintain a Cumulative Grade Point Average (**CGPA**) of **2.00** or higher to remain in Good Standing. If it falls below 2.00, you are placed on Academic Probation.",
-            "question_zh": "保持良好学术成绩的最低 CGPA 是多少？",
             "answer_zh": "您必须保持累积平均绩点 (**CGPA**) 达 **2.00** 或以上才能保持良好学术成绩。如果降至 2.00 以下，您将被列入学术警告 (Academic Probation)。"
         },
         {
             "category": "Academic Performance",
+            "category_zh": "学术表现与成绩",
             "question": "What happens if my CGPA falls below 2.00?",
+            "question_zh": "如果我的 CGPA 降至 2.00 以下会怎样？",
             "tags": [
                 "probation",
                 "ap",
@@ -1551,12 +1554,13 @@ const HANDBOOK_DATA = {
                 "advice"
             ],
             "answer": "If your CGPA falls below 2.00, you will be placed on **Academic Probation (AP)**. This means:\n1. You are restricted to a maximum of **12 credits** in the following semester to help you focus.\n2. You must consult your Academic Advisor to prepare a study plan.\n3. If you remain on probation for two consecutive semesters, or if your CGPA falls below 1.50, you face **Academic Dismissal**.",
-            "question_zh": "What happens if my CGPA falls below 2.00?",
-            "answer_zh": "If your CGPA falls below 2.00, you will be placed on **Academic Probation (AP)**. This means:\n1. You are restricted to a maximum of **12 credits** in the following semester to help you focus.\n2. You must consult your Academic Advisor to prepare a study plan.\n3. If you remain on probation for two consecutive semesters, or if your CGPA falls below 1.50, you face **Academic Dismissal**."
+            "answer_zh": "如果您的 CGPA 降至 2.00 以下，您将被置于 **学术警告 (Academic Probation)** 状态。这意味着：\n1. 您在接下来的学期中选课上限将被限制为最多 **12 个学分**，以帮助您集中精力修读。\n2. 您必须咨询您的学术导师以制定学业恢复计划。\n3. 如果您连续两个学期处于警告状态，或者 CGPA 降至 1.50 以下，您将面临 **退学处分 (Academic Dismissal)**。"
         },
         {
             "category": "Attendance Policy",
+            "category_zh": "出勤率要求政策",
             "question": "What is the attendance requirement and what happens if I miss class?",
+            "question_zh": "出勤率要求是多少？如果我缺课会怎样？",
             "tags": [
                 "attendance",
                 "barred",
@@ -1566,12 +1570,13 @@ const HANDBOOK_DATA = {
                 "mc"
             ],
             "answer": "The university enforces a strict **80% minimum attendance** policy. \n- If you miss more than 20% of classes without a valid Medical Certificate (MC) or approval letter, you will be **barred** from the final exam/portfolio review.\n- Being barred results in an automatic **Grade F (Fail)** for that course.",
-            "question_zh": "What is the attendance requirement and what happens if I miss class?",
-            "answer_zh": "The university enforces a strict **80% minimum attendance** policy. \n- If you miss more than 20% of classes without a valid Medical Certificate (MC) or approval letter, you will be **barred** from the final exam/portfolio review.\n- Being barred results in an automatic **Grade F (Fail)** for that course."
+            "answer_zh": "大学严格执行 **最低 80% 出勤率** 政策。\n- 如果您缺席超过 20% 的课程且无法提供有效的医疗证明 (MC) 或官方请假信，您将被 **取消期末考试/作品集审查资格 (Barred)**。\n- 被取消资格将导致该门课程直接获得 **F 级 (不及格)** 成绩。"
         },
         {
             "category": "Course Management",
+            "category_zh": "课程管理与重修",
             "question": "Can I repeat a course to improve my grade?",
+            "question_zh": "我可以重修课程以提高成绩吗？",
             "tags": [
                 "repeat",
                 "grade replacement",
@@ -1581,12 +1586,13 @@ const HANDBOOK_DATA = {
                 "f"
             ],
             "answer": "Yes, you can repeat courses to improve your CGPA:\n- For courses with **Grade C- or lower**, you can retake the course.\n- The **new grade** will replace the old grade in the CGPA calculation (though both remain on the transcript).\n- Repeating core design studio courses is highly recommended immediately if failed, as they are pre-requisites for subsequent semesters.",
-            "question_zh": "Can I repeat a course to improve my grade?",
-            "answer_zh": "Yes, you can repeat courses to improve your CGPA:\n- For courses with **Grade C- or lower**, you can retake the course.\n- The **new grade** will replace the old grade in the CGPA calculation (though both remain on the transcript).\n- Repeating core design studio courses is highly recommended immediately if failed, as they are pre-requisites for subsequent semesters."
+            "answer_zh": "可以，您可以重修课程以提高 CGPA：\n- 对于成绩为 **C- 或更低** 的课程，您可以选择重修该课程。\n- 在 CGPA 计算中，**新成绩** 将替代旧成绩（尽管两次成绩都会保留在成绩单上）。\n- 如果核心设计工作室 (Studio) 课程不及格，强烈建议在下一个开课学期立即重修，因为它们是后续学期的先修课程。"
         },
         {
             "category": "Deferment of Study",
+            "category_zh": "休学与延期申请",
             "question": "How do I apply for a Deferment (taking a semester break)?",
+            "question_zh": "如何申请休学/延期入学 (Deferment)？",
             "tags": [
                 "deferment",
                 "break",
@@ -1596,12 +1602,13 @@ const HANDBOOK_DATA = {
                 "form"
             ],
             "answer": "If you need to postpone your studies due to health, financial, or personal issues:\n1. You must apply for **Official Deferment** through the Faculty Office before Week 8 of the semester.\n2. Deferment due to medical reasons requires a certified hospital letter and does not count towards your maximum study duration.\n3. Unapproved absences (failing to register or attend without deferring) can lead to termination of student status.",
-            "question_zh": "How do I apply for a Deferment (taking a semester break)?",
-            "answer_zh": "If you need to postpone your studies due to health, financial, or personal issues:\n1. You must apply for **Official Deferment** through the Faculty Office before Week 8 of the semester.\n2. Deferment due to medical reasons requires a certified hospital letter and does not count towards your maximum study duration.\n3. Unapproved absences (failing to register or attend without deferring) can lead to termination of student status."
+            "answer_zh": "如果您因健康、财务或个人原因需要暂缓学业：\n1. 您必须在学期第 8 周之前通过学院办公室申请 **官方休学 (Official Deferment)**。\n2. 因医疗原因申请的休学需要附上合规的医院证明文件，且不计入您的最高修业年限。\n3. 未经批准的缺席（未注册或未办理休学即不来上课）可能导致学生学籍被清退。"
         },
         {
             "category": "Graduation Requirements",
+            "category_zh": "毕业学分与条件",
             "question": "What are the graduation requirements for FABE?",
+            "question_zh": "FABE 学院的毕业要求是什么？",
             "tags": [
                 "graduation",
                 "requirements",
@@ -1610,12 +1617,13 @@ const HANDBOOK_DATA = {
                 "muet"
             ],
             "answer": "To graduate from the Faculty of Architecture and Built Environment, you must:\n1. Complete the total credit hours required for your program (typically **120 - 125 credits**).\n2. Achieve a minimum final **CGPA of 2.00**.\n3. Pass all core modules and University compulsory courses.\n4. Fulfill the industrial training (internship) duration.\n5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits).",
-            "question_zh": "What are the graduation requirements for FABE?",
-            "answer_zh": "To graduate from the Faculty of Architecture and Built Environment, you must:\n1. Complete the total credit hours required for your program (typically **120 - 125 credits**).\n2. Achieve a minimum final **CGPA of 2.00**.\n3. Pass all core modules and University compulsory courses.\n4. Fulfill the industrial training (internship) duration.\n5. Fulfill the English language proficiency requirements (e.g. MUET/IELTS limits)."
+            "answer_zh": "要从建筑与内置环境学院毕业，您必须：\n1. 修满您所在专业要求的总学分数（通常为 **120 - 125 个学分**）。\n2. 最终 **累积 CGPA 达到 2.00** 或以上。\n3. 通过所有核心专业模块和大学必修课程。\n4. 完成规定的工业实习 (Industrial Training) 时长。\n5. 满足英语能力要求（如 MUET/雅思标准）。"
         },
         {
             "category": "Inclusive Learning & Support",
+            "category_zh": "包容性教学与学习 (iTnL)",
             "question": "What is the KLUST Inclusive Teaching, Learning, and Assessment (iTnL) Policy?",
+            "question_zh": "什么是 KLUST 包容性教学、学习与评估政策 (iTnL)？",
             "tags": [
                 "disability",
                 "dyslexia",
@@ -1630,12 +1638,13 @@ const HANDBOOK_DATA = {
                 "assessment menu"
             ],
             "answer": "KLUST operates under the **Inclusive Teaching, Learning, and Assessment (iTnL) Policy** based on the **Universal Design for Learning (UDL)** framework. Key provisions include:\n1. **Individualised Academic Plan (IAP):** A confidential, binding document drafted by the **Inclusive Education Committee (IEC) Office** specifying mandatory adjustments. These mandates are legally binding and cannot be overridden by individual lecturers.\n2. **Assessment Menu (SOP 2):** Modules are encouraged to offer a choice of formats: live presentations, pre-recorded media, private 1-on-1 discussions, or written submissions.\n3. **Assessment Objectivity:** Grades must evaluate core academic competencies. Subjective markers (e.g. eye contact, vocal affect, or physical posture) shall NOT influence grading.\n4. **Trigger Mechanism (SOP 1):** To request an IAP, submit a formal request/appeal to the **IEC Office** with relevant professional medical or educational assessments.\n\n*(Note: If you need help with any of these procedures, any lecturer or staff member at the university will happily help and guide you!)*",
-            "question_zh": "什么是包容性教学与学习 (iTnL / UDL) 支持？",
-            "answer_zh": "KLUST FABE 提供包容性学习支持（通用学习设计 UDL 和个体化学术计划 IAP）。有健康、身体或学习特殊需求的学生可申请延长考试时间、替代评估或辅助学习工具。"
+            "answer_zh": "KLUST 依据基于 **通用学习设计 (UDL)** 框架的 **包容性教学、学习与评估 (iTnL) 政策** 运营。主要条款包括：\n1. **个体化学术计划 (IAP)：** 由 **包容性教育委员会 (IEC) 办公室** 起草的保密且具备约束力的文件，明确规定强制性的学习调整。这些规定具有法律约束力，任何授课讲师均不得擅自推翻。\n2. **评估方式菜单 (SOP 2)：** 鼓励各课程模块提供多种评估形式选项：现场演示、预录制媒体、私人一对一讨论或书面报告。\n3. **评估客观性：** 评分必须严格基于核心学术能力。主观指标（如眼神交流、语音语调或身体姿势）不得影响成绩。\n4. **触发机制 (SOP 1)：** 如需申请 IAP，请向 **IEC 办公室** 提交正式申请，并附上相关的专业医疗或教育评估报告。\n\n*(注：如果您在办理上述任何程序时需要帮助，大学的任何讲师或工作人员都会乐意为您提供指引！)*"
         },
         {
             "category": "Inclusive Learning & Support",
+            "category_zh": "包容性教学与学习 (iTnL)",
             "question": "How does the UDL framework benefit students with special learning needs (IAP/IEP)?",
+            "question_zh": "UDL 框架如何使有特殊学习需求的学生 (IAP/IEP) 受益？",
             "tags": [
                 "udl",
                 "iep",
@@ -1647,191 +1656,247 @@ const HANDBOOK_DATA = {
                 "benefits"
             ],
             "answer": "The **Universal Design for Learning (UDL)** framework is built on the principle that \"one size does not fit all.\" For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:\n1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.\n2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:\n   - Pre-recorded video walkthroughs or audio presentations.\n   - Private, 1-on-1 reviews with a panel instead of public juries.\n   - Written reports or interactive portfolios instead of oral presentations.\n3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.\n\n**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best.",
-            "question_zh": "How does the UDL framework benefit students with special learning needs (IAP/IEP)?",
-            "answer_zh": "The **Universal Design for Learning (UDL)** framework is built on the principle that \"one size does not fit all.\" For students with an **Individualised Academic Plan (IAP/IEP)**, UDL provides major benefits:\n1. **Flexible Learning Formats:** You can request materials in different formats (e.g., audiobooks, lecture transcripts, visual aids, or digital slides in advance) to suit your learning style.\n2. **Alternative Assessment Formats:** Instead of standard exams or stressful public studio juries, you can request alternative assessment methods that better showcase your mastery, such as:\n   - Pre-recorded video walkthroughs or audio presentations.\n   - Private, 1-on-1 reviews with a panel instead of public juries.\n   - Written reports or interactive portfolios instead of oral presentations.\n3. **Focus on Core Competencies:** Grading is based strictly on your academic and technical knowledge, ignoring subjective factors like vocal affect, physical posture, or eye contact.\n\n**How to activate this:** If you have an approved IAP, simply submit your **Assessment Menu Declaration Form** to your lecturer **14 days** prior to the exam or presentation to select the assessment format that suits you best."
+            "answer_zh": "**通用学习设计 (UDL)** 框架建立在 '因材施教' 的原则之上。对于拥有 **个体化学术计划 (IAP/IEP)** 的学生，UDL 带来以下主要好处：\n1. **灵活的学习形式：** 您可以申请不同形式的学习资料（如音频书、讲座文本、视觉辅助工具或提前获取电子课件）以适合您的学习习惯。\n2. **替代评估形式：** 您可以申请替代评估方法来展示您的专业掌握程度，而非标准考试或高压力的公开设计答辩，例如：\n   - 预先录制的视频讲解或音频演示。\n   - 与评审小组进行私下一对一审查，而非公开评图。\n   - 提交书面报告或交互式作品集，而非口头答辩。\n3. **聚焦核心能力：** 评分严格基于您的学术与技术知识，排除语音语调、身体姿势或眼神接触等主观因素。\n\n**如何启用：** 如果您拥有已批准的 IAP，只需在考试或答辩前 **14 天** 向讲师提交 **评估菜单声明表 (Assessment Menu Declaration Form)**，选择最适合您的评估形式。"
         }
     ],
     "diagnosticQuestions": [
         {
             "id": "q_attendance",
             "category": "Attendance",
+            "category_zh": "出勤率",
             "text": "How frequently have you attended your lectures and studio sessions this semester?",
+            "text_zh": "您本学期参加讲座和设计工作室课程的频率如何？",
             "options": [
                 {
                     "text": "I have attended almost every class (95% - 100%)",
+                    "text_zh": "我参加了几乎所有课程 (95% - 100%)",
                     "riskPoints": 0,
                     "feedback": "Great attendance habits!",
-                    "text_zh": "我参加了几乎所有课程 (95% - 100%)",
                     "feedback_zh": "出勤习惯非常好！"
                 },
                 {
                     "text": "I have missed a few classes, but sit around (80% - 94%)",
+                    "text_zh": "我缺了几节课，但出勤率在 80% - 94% 左右",
                     "riskPoints": 1,
                     "feedback": "Close to the borderline. Make sure not to miss any more classes.",
-                    "text_zh": "我缺了几节课，但出勤率在 80% - 94% 左右",
                     "feedback_zh": "接近临界线，请确保不再缺课。"
                 },
                 {
                     "text": "I have missed many classes and am likely below the 80% mark",
+                    "text_zh": "我缺了很多课，出勤率可能低于 80%",
                     "riskPoints": 3,
                     "feedback": "CRITICAL: You are at risk of being barred from final exams/reviews, which means an automatic Grade F.",
-                    "text_zh": "我缺了很多课，出勤率可能低于 80%",
                     "feedback_zh": "警告：您面临被取消期末考试/审查资格的风险，这意味着直接记 F 级。"
                 }
-            ],
-            "text_zh": "您本学期参加讲座和设计工作室课程的频率如何？"
+            ]
         },
         {
             "id": "q_coursework",
             "category": "Academics",
+            "category_zh": "学术作业",
             "text": "Are you submitting your assignments, studio projects, and coursework on time?",
+            "text_zh": "您是否按时提交作业、设计项目和课程作品？",
             "options": [
                 {
                     "text": "Yes, always on time and complete",
+                    "text_zh": "是的，总是按时且完整提交",
                     "riskPoints": 0,
-                    "feedback": "Excellent submission record."
+                    "feedback": "Excellent submission record.",
+                    "feedback_zh": "极佳的作业提交记录。"
                 },
                 {
                     "text": "I sometimes submit late or miss minor assignments",
+                    "text_zh": "我有时延期提交或漏交次要作业",
                     "riskPoints": 1.5,
-                    "feedback": "Late submissions cost grade points due to penalties. Plan assignments early."
+                    "feedback": "Late submissions cost grade points due to penalties. Plan assignments early.",
+                    "feedback_zh": "延迟提交会因扣分损失绩点。请提早规划作业安排。"
                 },
                 {
                     "text": "I have missed major submissions or studio reviews",
+                    "text_zh": "我漏交了主要作业或未参加设计审查",
                     "riskPoints": 3,
-                    "feedback": "CRITICAL: Missing major assignments or reviews makes passing the course mathematically unlikely."
+                    "feedback": "CRITICAL: Missing major assignments or reviews makes passing the course mathematically unlikely.",
+                    "feedback_zh": "警告：缺少主要作业或评图会导致本门课程在数学计算上几乎无法及格。"
                 }
             ]
         },
         {
             "id": "q_study_hours",
             "category": "Study Habits",
+            "category_zh": "学习习惯",
             "text": "How many hours per week do you spend on self-study and studio work outside of classes?",
+            "text_zh": "在课堂之外，您每周花费多少小时进行自主学习和工作室设计？",
             "options": [
                 {
                     "text": "More than 15 hours per week",
+                    "text_zh": "每周超过 15 小时",
                     "riskPoints": 0,
-                    "feedback": "Good self-study schedule."
+                    "feedback": "Good self-study schedule.",
+                    "feedback_zh": "良好的自主学习时间规划。"
                 },
                 {
                     "text": "Between 5 to 14 hours per week",
+                    "text_zh": "每周 5 到 14 小时之间",
                     "riskPoints": 1,
-                    "feedback": "Adequate, but professional design/technical programs usually require more time."
+                    "feedback": "Adequate, but professional design/technical programs usually require more time.",
+                    "feedback_zh": "基本充足，但专业设计与技术课程通常需要投入更多时间。"
                 },
                 {
                     "text": "Less than 5 hours per week",
+                    "text_zh": "每周少于 5 小时",
                     "riskPoints": 2,
-                    "feedback": "Warning: Very low study time. You may fall behind in complex technical/studio modules."
+                    "feedback": "Warning: Very low study time. You may fall behind in complex technical/studio modules.",
+                    "feedback_zh": "警告：自主学习时间极低。您可能会在复杂的技术/工作室模块中掉队。"
                 }
             ]
         },
         {
             "id": "q_advisor",
             "category": "Support",
+            "category_zh": "导师支持",
             "text": "Have you met or communicated with your Academic Advisor this semester?",
+            "text_zh": "您本学期是否与您的学术导师见面或沟通过？",
             "options": [
                 {
                     "text": "Yes, we discuss my progress regularly",
+                    "text_zh": "是的，我们定期讨论我的学术进度",
                     "riskPoints": 0,
-                    "feedback": "Awesome. Active advisory relations keep you on track."
+                    "feedback": "Awesome. Active advisory relations keep you on track.",
+                    "feedback_zh": "太棒了！积极的导师沟通有助于确保学业步入正轨。"
                 },
                 {
                     "text": "No, but I know who they are",
+                    "text_zh": "没有，但我知道我的导师是谁",
                     "riskPoints": 1,
-                    "feedback": "Consider dropping in during office hours to check in."
+                    "feedback": "Consider dropping in during office hours to check in.",
+                    "feedback_zh": "建议在导师办公时间拜访沟通。"
                 },
                 {
                     "text": "No, I do not know who my Academic Advisor is",
+                    "text_zh": "没有，我不知道谁是我的学术导师",
                     "riskPoints": 2,
-                    "feedback": "Action Needed: Every student has an assigned advisor. Contact the faculty office to find yours."
+                    "feedback": "Action Needed: Every student has an assigned advisor. Contact the faculty office to find yours.",
+                    "feedback_zh": "需要采取行动：每位学生均配有指定导师。请联系学院办公室查询您的导师信息。"
                 }
             ]
         },
         {
             "id": "q_understanding",
             "category": "Academics",
+            "category_zh": "课程理解",
             "text": "Do you feel comfortable with the difficulty of your current modules?",
+            "text_zh": "您对目前课程模块的难度感觉如何？",
             "options": [
                 {
                     "text": "I understand most topics and feel confident",
+                    "text_zh": "我理解大部分内容并充满信心",
                     "riskPoints": 0,
-                    "feedback": "Excellent progress."
+                    "feedback": "Excellent progress.",
+                    "feedback_zh": "学习状态非常好。"
                 },
                 {
                     "text": "I struggle with some complex topics but manage to get by",
+                    "text_zh": "我在一些复杂知识点上比较吃力，但还能勉强应对",
                     "riskPoints": 1,
-                    "feedback": "Consider joining study groups or consulting lecturers for tricky areas."
+                    "feedback": "Consider joining study groups or consulting lecturers for tricky areas.",
+                    "feedback_zh": "建议加入学习小组或在难点上咨询讲师。"
                 },
                 {
                     "text": "I am completely lost in one or more core courses",
+                    "text_zh": "我在一门或多门核心课程中完全跟不上",
                     "riskPoints": 2.5,
-                    "feedback": "Seek immediate help! Utilize lecturer consultation hours or peer tutoring."
+                    "feedback": "Seek immediate help! Utilize lecturer consultation hours or peer tutoring.",
+                    "feedback_zh": "请立即寻求帮助！利用讲师答疑时间或同伴辅导。"
                 }
             ]
         },
         {
             "id": "q_extracurricular",
             "category": "Time Management",
+            "category_zh": "时间管理",
             "text": "Do you have heavy external commitments (part-time job, student club leadership, family duties)?",
+            "text_zh": "您是否有较重的外部事务（如兼职工作、社团干部职务、家庭照顾）？",
             "options": [
                 {
                     "text": "None or very light commitments (easy to balance)",
+                    "text_zh": "无或仅有极轻微的外部事务（容易平衡）",
                     "riskPoints": 0,
-                    "feedback": "Good balance."
+                    "feedback": "Good balance.",
+                    "feedback_zh": "良好精力分配。"
                 },
                 {
                     "text": "Moderate commitments, sometimes causing stress or late sleep",
+                    "text_zh": "有中等强度的事务，有时导致压力过大或熬夜",
                     "riskPoints": 1,
-                    "feedback": "Ensure you allocate blocked hours for study and prioritize rest."
+                    "feedback": "Ensure you allocate blocked hours for study and prioritize rest.",
+                    "feedback_zh": "请确保预留固定的学习时间并优先保证休息。"
                 },
                 {
                     "text": "Heavy commitments that regularly conflict with my classes or study time",
+                    "text_zh": "较重的事务经常与我的上课或学习时间冲突",
                     "riskPoints": 2.5,
-                    "feedback": "Risk of academic fatigue. Consider reducing part-time work hours or deferring leadership roles to save your grades."
+                    "feedback": "Risk of academic fatigue. Consider reducing part-time work hours or deferring leadership roles to save your grades.",
+                    "feedback_zh": "面临学业疲劳风险。请考虑减少兼职工作时间或暂缓社团职务以保证成绩。"
                 }
             ]
         },
         {
             "id": "q_wellbeing",
             "category": "Personal",
+            "category_zh": "个人状态",
             "text": "How would you describe your mental wellbeing, stress, or sleep levels lately?",
+            "text_zh": "您最近的心理健康、压力水平或睡眠状况如何？",
             "options": [
                 {
                     "text": "Healthy sleep and manageable stress levels",
+                    "text_zh": "睡眠健康，压力处于可控范围",
                     "riskPoints": 0,
-                    "feedback": "Keep maintaining your health."
+                    "feedback": "Keep maintaining your health.",
+                    "feedback_zh": "请继续保持健康的作息。"
                 },
                 {
                     "text": "Stressed, sleeping poorly, or feeling exhausted at times",
+                    "text_zh": "感到有压力、睡眠质量差或有时感到身心俱疲",
                     "riskPoints": 1,
-                    "feedback": "Ensure you maintain regular sleep. Good rest is essential for creative design work."
+                    "feedback": "Ensure you maintain regular sleep. Good rest is essential for creative design work.",
+                    "feedback_zh": "请确保规律睡眠。充足的休息对创意设计工作至关重要。"
                 },
                 {
                     "text": "Extremely overwhelmed, depressed, or unable to focus on studies",
+                    "text_zh": "感到极其不堪重负、焦虑抑郁或无法集中精力学习",
                     "riskPoints": 2,
-                    "feedback": "CRITICAL: Your mental health is top priority. We highly recommend visiting the University Counseling Centre."
+                    "feedback": "CRITICAL: Your mental health is top priority. We highly recommend visiting the University Counseling Centre.",
+                    "feedback_zh": "警告：您的心理健康是首要任务。我们强烈建议前往大学心理咨询中心寻求帮助。"
                 }
             ]
         },
         {
             "id": "q_itnl",
             "category": "Inclusive Support",
+            "category_zh": "包容性支持",
             "text": "Do you require special learning adjustments or alternative assessment formats (e.g. due to dyslexia, ADHD, physical or health conditions)?",
+            "text_zh": "您是否需要特殊的学习调整或替代评估形式（例如因读写障碍、ADHD、身体或健康状况）？",
             "options": [
                 {
                     "text": "No, I do not need special academic accommodations.",
+                    "text_zh": "不需要，我不需要特殊的学术调整。",
                     "riskPoints": 0,
-                    "feedback": "Understood. Standard teaching and assessment rules apply."
+                    "feedback": "Understood. Standard teaching and assessment rules apply.",
+                    "feedback_zh": "明白。适用常规教学与评估规则。"
                 },
                 {
                     "text": "Yes, I need adjustments but have not requested them yet.",
+                    "text_zh": "是的，我需要调整但尚未提出申请。",
                     "riskPoints": 1,
-                    "feedback": "Action Recommended: Review the KLUST iTnL Policy and apply for an Individualised Academic Plan (IAP) through the IEC Office."
+                    "feedback": "Action Recommended: Review the KLUST iTnL Policy and apply for an Individualised Academic Plan (IAP) through the IEC Office.",
+                    "feedback_zh": "建议行动：查看 KLUST iTnL 政策，并通过 IEC 办公室申请个体化学术计划 (IAP)。"
                 },
                 {
                     "text": "Yes, and I struggle with standard assessments like live juries or need extra exam time.",
+                    "text_zh": "是的，我在现场评图等标准评估中比较吃力或需要延长考试时间。",
                     "riskPoints": 2,
-                    "feedback": "Action Needed: Contact the IEC Office to trigger SOP 1 (IAP) and SOP 2 (Assessment Menu) so you can choose alternative presentation/exam formats."
+                    "feedback": "Action Needed: Contact the IEC Office to trigger SOP 1 (IAP) and SOP 2 (Assessment Menu) so you can choose alternative presentation/exam formats.",
+                    "feedback_zh": "需要采取行动：联系 IEC 办公室触发 SOP 1 (IAP) 和 SOP 2 (评估菜单)，以便选择替代演示/考试形式。"
                 }
             ]
         }
@@ -1839,207 +1904,248 @@ const HANDBOOK_DATA = {
     "decisionTree": {
         "start": {
             "text": "What academic issue are you facing today?",
+            "text_zh": "请选择您当前的学术状况或疑问：",
             "options": [
                 {
                     "text": "I failed a course or got a low grade",
-                    "next": "failed_course",
-                    "text_zh": "我的 CGPA 低于 2.00 (处于学术警告状态)"
+                    "text_zh": "我有一门课程不及格或成绩较低",
+                    "next": "failed_course"
                 },
                 {
                     "text": "My attendance is low and I might get barred",
-                    "next": "low_attendance",
-                    "text_zh": "我因缺课面临出勤率警告 (低于 80%)"
+                    "text_zh": "我的出勤率偏低，面临取消考试资格风险",
+                    "next": "low_attendance"
                 },
                 {
                     "text": "I am feeling extremely overwhelmed and want to postpone study",
-                    "next": "postpone_defer",
-                    "text_zh": "我有一门必修课程不及格 (记 F 级)"
+                    "text_zh": "我感到不堪重负，想要申请休学或延期",
+                    "next": "postpone_defer"
                 },
                 {
                     "text": "I have questions about Academic Probation and my credit limit",
-                    "next": "probation_rules",
-                    "text_zh": "我需要申请包容性教学与学习 (iTnL) 调整"
+                    "text_zh": "我对学术警告 (Probation) 和学分限制有疑问",
+                    "next": "probation_rules"
                 },
                 {
                     "text": "I need information on inclusive learning or special academic support",
+                    "text_zh": "我需要了解包容性学习 (iTnL) 或特殊学术支持",
                     "next": "inclusive_learning"
                 }
-            ],
-            "text_zh": "请选择您当前的学术状况或疑问："
+            ]
         },
         "failed_course": {
             "text": "Is the failed course a Core Module (like Design Studio, Building Construction, Measurement) or an Elective/General module?",
+            "text_zh": "不及格的课程是核心模块（如设计工作室 Studio、建筑施工、工程测量）还是选修/通识模块？",
             "options": [
                 {
                     "text": "It is a Core Module / Design Studio",
+                    "text_zh": "它是核心专业模块 / 设计工作室 (Studio)",
                     "next": "failed_core"
                 },
                 {
                     "text": "It is an Elective / General Education module",
+                    "text_zh": "它是选修课 / 通识教育模块",
                     "next": "failed_elective"
                 }
             ]
         },
         "failed_core": {
             "text": "Core modules are mandatory and often pre-requisites for other courses. You MUST repeat the course. How low was your grade?",
+            "text_zh": "核心模块是必修课，通常是后续课程的先修条件。您必须重修此课程。您的成绩有多低？",
             "options": [
                 {
                     "text": "F, D, or D+ (Strict Fail)",
+                    "text_zh": "F, D, 或 D+ (严格不及格)",
                     "next": "failed_core_strict"
                 },
                 {
                     "text": "C-, C, or C+ (Conditional Pass / Low Grade)",
+                    "text_zh": "C-, C, 或 C+ (条件及格 / 低分段)",
                     "next": "failed_core_pass"
                 }
             ]
         },
         "failed_core_strict": {
             "text": "Official Action: Since you failed, you cannot register for the next level module (e.g. Design Studio II requires Design Studio I). You must register to retake this course in the next semester it is offered. \n\n*Action Steps:* \n1. Do not register for the advanced sequential modules.\n2. Add the repeated course to your study schedule.\n3. Meet your advisor to check if this delays your graduation.",
+            "text_zh": "官方处理方案：由于本门课程不及格，您无法注册下一阶段的后续模块（例如 Design Studio II 需要先通过 Design Studio I）。您必须在下一个开课学期注册重修此课程。\n\n*行动步骤：*\n1. 请勿注册下一阶段的后续模块。\n2. 将重修课程添加至您的学期选课计划中。\n3. 预约您的学术导师，确认重修是否会导致延期毕业。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "failed_core_pass": {
             "text": "Official Action: You passed the course, but a low grade pulls down your CGPA. If your CGPA is above 2.00, you can proceed. If it dragged your CGPA below 2.00, repeating is highly recommended to replace the grade and recover your standing.",
+            "text_zh": "官方处理方案：您通过了该课程，但较低的成绩拉低了您的 CGPA。如果您的 CGPA 高于 2.00，您可以继续正常修读。如果该成绩将您的 CGPA 拉至 2.00 以下，强烈建议重修以替换旧成绩并恢复学术状态。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "failed_elective": {
             "text": "Official Action: For general electives, you can either: \n1. Retake the exact same course next semester to replace the grade. \n2. Register for a different elective course to fulfill credit requirements (but the original failed grade remains in your CGPA calculation).",
+            "text_zh": "官方处理方案：对于通识选修课，您可以选择：\n1. 在下学期重修同一门课程以替代旧成绩。\n2. 注册另一门不同的选修课程以满足学分要求（但原本不及格的旧成绩仍会保留在 CGPA 计算中）。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "low_attendance": {
             "text": "Do you have valid documentation (e.g. a government hospital Medical Certificate, or an official letter representing the university in a competition/sports)?",
+            "text_zh": "您是否有有效的证明文件（例如公立医院的病假单 MC，或代表大学参加比赛/体育赛事的官方证明信）？",
             "options": [
                 {
                     "text": "Yes, I have official documentation / medical certificates",
+                    "text_zh": "是的，我有官方证明文件 / 医院病假单 (MC)",
                     "next": "attendance_has_mc"
                 },
                 {
                     "text": "No, I missed class due to personal reasons/oversleeping",
+                    "text_zh": "没有，我是因个人原因或睡过头缺课",
                     "next": "attendance_no_mc"
                 }
             ]
         },
         "attendance_has_mc": {
             "text": "Official Action: You must submit your medical certificate or letter to the Faculty Office or directly to your Course Coordinator within **48 hours** of returning to class. The lecturer will excuse your absence, preventing it from counting towards the 20% barred limit.",
+            "text_zh": "官方处理方案：您必须在返回课堂后的 **48 小时内** 将病假单或证明信提交至学院办公室或直接交给课程协调老师。授课老师将批准您的缺勤，使其不计入 20% 的取消考试资格上限。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "attendance_no_mc": {
             "text": "Official Action: Unexcused absences cannot be erased. Immediately talk to your lecturer, apologize, and show commitment. Ask if you can submit make-up work to show attendance/engagement. If your attendance is strictly below 80% at Week 12, check with the Faculty if you should **Withdraw (W)** from the course before final exams to avoid an F grade.",
+            "text_zh": "官方处理方案：未经批准的缺勤无法消除。请立即与讲师沟通，表达歉意并展现学习态度。询问是否可以通过补交作业证明学习参与度。如果在第 12 周时您的出勤率严格低于 80%，请向学院咨询是否应在期末考试前申请 **退课 (Withdraw - W)**，以避免直接记 F 级。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "postpone_defer": {
             "text": "To defer (take a semester off), you must apply officially. What is the main reason for your postponement?",
+            "text_zh": "办理休学（暂缓一个学期的学业），您必须提出正式申请。您申请休学的主要原因是什么？",
             "options": [
                 {
                     "text": "Medical grounds / Health issues",
+                    "text_zh": "医疗原因 / 健康状况",
                     "next": "defer_medical"
                 },
                 {
                     "text": "Financial difficulties or personal issues",
+                    "text_zh": "财务困难或个人事务",
                     "next": "defer_personal"
                 }
             ]
         },
         "defer_medical": {
             "text": "Official Action: Apply for **Medical Deferment**. Submit a deferment form along with a certified hospital doctor's report. Medical deferments are normally approved easily and **do not count** towards your maximum allowed study semesters. Fees paid may also be deferred.",
+            "text_zh": "官方处理方案：申请 **医疗休学 (Medical Deferment)**。提交休学申请表以及由合规医院医生出具的诊断报告。医疗休学通常很容易获批，且 **不计入** 您的最高允许修业学期总数。已缴纳的学费通常也可顺延。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "defer_personal": {
             "text": "Official Action: Apply for **Academic Deferment** before Week 8 of the semester. Note that deferment for personal reasons will count towards your maximum semesters to complete the degree. Be sure to check with the finance office regarding fee refund/transfer rules.",
+            "text_zh": "官方处理方案：在学期第 8 周前申请 **常规学术休学 (Academic Deferment)**。请注意，因个人原因休学将计入您完成学位的最高学期限制。请务必与财务办公室确认学费退还/转结规则。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "probation_rules": {
             "text": "Is this your first semester on Academic Probation, or is it consecutive (second semester in a row)?",
+            "text_zh": "这是您第一个处于学术警告 (Probation) 的学期，还是连续第二个学期？",
             "options": [
                 {
                     "text": "This is my first semester on probation",
+                    "text_zh": "这是我第一个处于学术警告的学期",
                     "next": "probation_first"
                 },
                 {
                     "text": "This is my second consecutive semester on probation",
+                    "text_zh": "这是我连续第二个处于学术警告的学期",
                     "next": "probation_consecutive"
                 }
             ]
         },
         "probation_first": {
             "text": "Official Action: Do not panic, but take action. \n1. Your credit registration for next semester is capped at **12 credits** (approx. 3-4 courses).\n2. Focus on retaking failed modules to replace poor grades.\n3. Make a mandatory appointment with your academic advisor to clear your study plan.",
+            "text_zh": "官方处理方案：不必惊慌，但需要采取行动。\n1. 您下学期的选课学分上限将被限制为 **12 个学分**（约 3-4 门课程）。\n2. 重点安排重修不及格模块以替代低分。\n3. 必须预约您的学术导师清查并确认您的学习规划方案。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "probation_consecutive": {
             "text": "Official Action: CRITICAL! Staying on probation for two consecutive semesters leads to **Academic Dismissal**. If dismissed, you must submit an official **Appeal Letter** to the Dean of Faculty within 14 days of results release, outlining your extenuating circumstances and commitment to improvement. If approved, you will be given a final semester to pull your CGPA above 2.00.",
+            "text_zh": "官方处理方案：警告！连续两个学期处于学术警告状态将导致 **学术退学处分 (Academic Dismissal)**。如果收到退学通知，您必须在成绩公布后 14 天内向院长提交正式的 **申诉信 (Appeal Letter)**，说明特殊情况及改进承诺。如获批准，您将获得最后一个学期的机会将 CGPA 提升至 2.00 以上。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "inclusive_learning": {
             "text": "Do you have a medical or educational assessment report (e.g. for Dyslexia, ADHD, sensory or physical conditions) and wish to request academic accommodations?",
+            "text_zh": "您是否有医疗或教育评估报告（例如针对读写障碍、ADHD、感官或身体状况），并希望申请学术调整支持？",
             "options": [
                 {
                     "text": "Yes, I want to apply for an Individualised Academic Plan (IAP)",
+                    "text_zh": "是的，我想申请个体化学术计划 (IAP)",
                     "next": "inclusive_has_report"
                 },
                 {
                     "text": "No, but I suspect I need support or have questions about the policy",
+                    "text_zh": "没有，但我怀疑自己需要支持或对政策有疑问",
                     "next": "inclusive_no_report"
                 }
             ]
         },
         "inclusive_has_report": {
             "text": "Follow these **3 Simple Steps** to register your accommodations: \n\n*Action Steps:* \n1. **Apply for IAP (SOP 1):** Submit a formal request to the **Inclusive Education Committee (IEC) Office** for an **Individualised Academic Plan (IAP)**. Attach your professional assessment report. \n2. **Confidential IAP Issued:** The IEC will issue a confidential IAP listing your mandatory study adjustments. This document is **binding**—your lecturers must comply with it. \n3. **Submit Assessment Choice (SOP 2):** Submit an **Assessment Menu Declaration Form** to your lecturer **14 days (2 weeks)** before your exams/reviews to choose your format (e.g. pre-recorded presentations or 1-on-1 reviews). *Note: The 14-day notice is waived for sudden medical flare-ups.* \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
+            "text_zh": "请遵循以下 **3 个简单步骤** 登记您的学术调整：\n\n*行动步骤：*\n1. **申请 IAP (SOP 1)：** 向 **包容性教育委员会 (IEC) 办公室** 提交申请 **个体化学术计划 (IAP)** 的正式请求，并附上您的专业评估报告。\n2. **核发保密 IAP：** IEC 将核发一份记载您法定学习调整事项的保密 IAP。该文件具有 **约束力**——您的授课讲师必须遵守该规定。\n3. **提交评估选择 (SOP 2)：** 在考试/审查前 **14 天（2周）** 向讲师提交 **评估菜单声明表 (Assessment Menu Declaration Form)** 以选择评估形式（如预录制演示或一对一私下评图）。*注：突发急性病症可豁免 14 天预先通知的要求。*\n\n*请记住：* 如果您在办理上述任何步骤时需要帮助，请随时联系——大学的任何讲师或工作人员都会乐意为您提供支持。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
         },
         "inclusive_no_report": {
             "text": "No official report yet? Follow these **3 Simple Steps** to seek support: \n\n*Action Steps:* \n1. **Get Free Screening:** Contact the **University Counseling and Wellbeing Centre** for a free initial screening and a referral to registered psychologists. \n2. **Temporary Adjustments:** Meet with the **IEC Office** to request temporary support while you wait for your official medical assessment to be finalized. \n3. **Ask for UDL Flexibility:** Talk to your Academic Advisor or Course Coordinator. Under the **Universal Design for Learning (UDL)** policy, departments are encouraged to offer flexible learning options (like slides in advance or formatting choices) to all students. \n\n*Remember:* If you need help with any of these steps, please reach out—any lecturer or staff member of the university will happily help you.",
+            "text_zh": "目前还没有官方诊断报告？请遵循以下 **3 个简单步骤** 寻求支持：\n\n*行动步骤：*\n1. **获取免费筛查：** 联系 **大学心理咨询与福祉中心** 获得免费初筛并转介至注册心理医生。\n2. **临时调整支持：** 与 **IEC 办公室** 会面，在等待官方医疗评估最终出具期间申请临时支持。\n3. **寻求 UDL 灵活性：** 与您的学术导师或课程协调老师沟通。在 **通用学习设计 (UDL)** 政策下，鼓励各系部向所有学生提供灵活的学习选项（如提前提供课件或选择提交格式）。\n\n*请记住：* 如果您在办理上述任何步骤时需要帮助，请随时联系——大学的任何讲师或工作人员都会乐意为您提供支持。",
             "options": [
                 {
                     "text": "Back to Start",
+                    "text_zh": "返回起始页",
                     "next": "start"
                 }
             ]
@@ -2168,7 +2274,8 @@ const HANDBOOK_DATA = {
                     }
                 ]
             },
-            "title_zh": "学士学位（国际学生）"
+            "title_zh": "学士学位（国际学生）",
+            "rule_zh": "学生须在 U1 类别中修读两 (2) 门科目，并在 U2、U3 和 U4 类别中各修读一 (1) 门科目。"
         },
         "bachelor_loc": {
             "title": "Bachelor (Local)",
@@ -2252,7 +2359,8 @@ const HANDBOOK_DATA = {
                     }
                 ]
             },
-            "title_zh": "学士学位（马来西亚本地学生）"
+            "title_zh": "学士学位（马来西亚本地学生）",
+            "rule_zh": "学生须在 U1 类别中修读两 (2) 门科目，并在 U2、U3 和 U4 类别中各修读一 (1) 门科目。"
         },
         "diploma_int": {
             "title": "Diploma (International)",
@@ -2299,7 +2407,8 @@ const HANDBOOK_DATA = {
                     }
                 ]
             },
-            "title_zh": "文凭课程（国际学生）"
+            "title_zh": "文凭课程（国际学生）",
+            "rule_zh": "学生须在每个类别（U1、U2、U3 和 U4）中各修读一 (1) 门科目。"
         },
         "diploma_loc": {
             "title": "Diploma (Local)",
@@ -2367,7 +2476,8 @@ const HANDBOOK_DATA = {
                     }
                 ]
             },
-            "title_zh": "文凭课程（马来西亚本地学生）"
+            "title_zh": "文凭课程（马来西亚本地学生）",
+            "rule_zh": "学生须在每个类别（U1、U2、U3 和 U4）中各修读一 (1) 门科目。"
         }
     },
     "staffProfiles": [
@@ -2407,7 +2517,7 @@ const HANDBOOK_DATA = {
         {
             "name": "Zairila Juria Binti Zainal Abidin",
             "qualification": "M. Sc. In Urban and Regional Planning (USM), B. SC. (Hon) in Architectural Studies (IIUM)",
-            "position": "HOP DAR, Senior Lecturer",
+            "position": "Senior Lecturer",
             "room": "B114",
             "ext": "548",
             "email": "zairila@klust.edu.my",
@@ -2528,7 +2638,7 @@ const HANDBOOK_DATA = {
         {
             "name": "Nur Balqis binti Ahmad Safawi",
             "qualification": "Master in Built Environment, Bach. Science in Architecture, UIA",
-            "position": "Senior Lecturer",
+            "position": "HOP DAR, Senior Lecturer",
             "room": "B115",
             "ext": "1532",
             "email": "balqis@klust.edu.my",

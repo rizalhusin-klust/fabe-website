@@ -1,4 +1,3 @@
-
 // -------------------------------------------------------------------------
 // Global Language Switcher Engine (Bulletproof EN / 中文 Toggle)
 // -------------------------------------------------------------------------
@@ -31,9 +30,9 @@ window.applyLanguage = function() {
     const langLabel = document.getElementById('lang-toggle-label');
     if (langLabel) {
         if (window.currentLang === 'zh') {
-            langLabel.innerHTML = '<span style="opacity: 0.6;">EN</span> / <strong style="color: #1e40af;">中文</strong>';
+            langLabel.innerHTML = '<span style="opacity: 0.6;">EN</span> / <strong style="color: var(--color-blue);">中文</strong>';
         } else {
-            langLabel.innerHTML = '<strong style="color: #1e40af;">EN</strong> / <span style="opacity: 0.6;">中文</span>';
+            langLabel.innerHTML = '<strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span>';
         }
     }
 
@@ -57,7 +56,7 @@ window.applyLanguage = function() {
         }
     });
 
-    // 3. Trigger dynamic component re-renders if initialized
+    // 3. Trigger dynamic component re-renders
     const faqSearchInput = document.getElementById('faq-search-input');
     if (typeof window.renderFAQs === 'function' && faqSearchInput) {
         window.renderFAQs(faqSearchInput.value || '');
@@ -71,14 +70,25 @@ window.applyLanguage = function() {
         window.renderTreeNode();
     }
 
-    if (typeof renderGPAPlanner === 'function') renderGPAPlanner();
-    if (typeof updateDashboardMetrics === 'function') {
-        updateDashboardMetrics();
+    if (typeof window.renderGPAPlanner === 'function') {
+        window.renderGPAPlanner();
+    }
+
+    if (typeof window.updateDashboardMetrics === 'function') {
+        window.updateDashboardMetrics();
+    }
+
+    if (typeof window.renderCurriculumComponents === 'function') {
+        window.renderCurriculumComponents();
+    }
+
+    if (typeof window.refreshSurveyScreen === 'function') {
+        window.refreshSurveyScreen();
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Safe storage wrapper to prevent crashes in sandboxed iframes (e.g. Google Sites)
+    // Safe storage wrapper to prevent crashes in sandboxed iframes
     const SafeStorage = {
         getItem(key) {
             try {
@@ -120,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Diagnostic Survey State
-    let surveyAnswers = {}; // questionId: selectedOptionIndex
+    let surveyAnswers = {};
     let currentQuestionIdx = 0;
 
     // Decision Tree State
@@ -135,6 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Export functions to window for global access
+    window.renderGPAPlanner = renderGPAPlanner;
+    window.updateDashboardMetrics = updateDashboardMetrics;
+    window.renderCurriculumComponents = renderCurriculumComponents;
+    window.refreshSurveyScreen = refreshSurveyScreen;
+
     // Initialize UI
     initTabs();
     initDashboard();
@@ -145,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initCurriculumComponents();
     initLecturerDirectory();
     initLanguageToggle();
+
+    // Initial language application
+    window.applyLanguage();
 
     // -------------------------------------------------------------------------
     // Tabs Controller
@@ -158,11 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetTab = btn.getAttribute('data-tab');
                 if (!targetTab) return;
                 
-                // Update buttons
                 tabButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                // Update panels
                 panels.forEach(p => p.style.display = 'none');
                 
                 const activePanel = document.getElementById(`${targetTab}-panel`);
@@ -170,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     activePanel.style.display = 'block';
                     currentTab = targetTab;
                     
-                    // Specific tab entry actions
                     if (currentTab === 'dashboard') {
                         updateDashboardMetrics();
                     }
@@ -191,14 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dashStartBtn) {
             dashStartBtn.addEventListener('click', () => {
-                document.querySelector('button[data-tab=diagnose]').click();
+                const tab = document.querySelector('button[data-tab=diagnose]');
+                if (tab) tab.click();
                 showIntroScreen();
             });
         }
 
         if (dashViewBtn) {
             dashViewBtn.addEventListener('click', () => {
-                document.querySelector('button[data-tab=diagnose]').click();
+                const tab = document.querySelector('button[data-tab=diagnose]');
+                if (tab) tab.click();
                 const saved = SafeStorage.getItem('fabe_survey_result');
                 if (saved) {
                     showResultsScreen(JSON.parse(saved));
@@ -208,7 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dashRetakeBtn) {
             dashRetakeBtn.addEventListener('click', () => {
-                document.querySelector('button[data-tab=diagnose]').click();
+                const tab = document.querySelector('button[data-tab=diagnose]');
+                if (tab) tab.click();
                 startSurvey();
             });
         }
@@ -301,52 +320,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Handbook Explorer (FAQ) Controller
+    // -------------------------------------------------------------------------
     function initFAQExplorer() {
         const searchInput = document.getElementById('faq-search-input');
-        const faqListContainer = document.getElementById('faq-list-container');
 
-        // Initial FAQ render
-        renderFAQs(HANDBOOK_DATA.faqs);
+        window.renderFAQs = function(queryStr = '') {
+            renderFAQs(HANDBOOK_DATA.faqs, queryStr.toLowerCase().trim());
+        };
 
-        // Search action
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase().trim();
-            if (!query) {
-                renderFAQs(HANDBOOK_DATA.faqs);
-                return;
-            }
+        // Initial render
+        window.renderFAQs('');
 
-            const filtered = HANDBOOK_DATA.faqs.filter(faq => {
-                return faq.question.toLowerCase().includes(query) || 
-                       faq.answer.toLowerCase().includes(query) ||
-                       faq.category.toLowerCase().includes(query) ||
-                       faq.tags.some(tag => tag.includes(query));
+        // Search listener
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                window.renderFAQs(searchInput.value || '');
             });
-
-            renderFAQs(filtered, query);
-        });
+        }
     }
 
     function renderFAQs(faqs, highlightQuery = '') {
         const faqListContainer = document.getElementById('faq-list-container');
+        if (!faqListContainer) return;
+
         faqListContainer.innerHTML = '';
 
-        if (faqs.length === 0) {
+        const isZh = window.currentLang === 'zh';
+
+        const filtered = faqs.filter(faq => {
+            if (!highlightQuery) return true;
+            const qEn = (faq.question || '').toLowerCase();
+            const aEn = (faq.answer || '').toLowerCase();
+            const cEn = (faq.category || '').toLowerCase();
+
+            const qZh = (faq.question_zh || '').toLowerCase();
+            const aZh = (faq.answer_zh || '').toLowerCase();
+            const cZh = (faq.category_zh || '').toLowerCase();
+
+            const matchTags = faq.tags && faq.tags.some(t => t.toLowerCase().includes(highlightQuery));
+
+            return qEn.includes(highlightQuery) || aEn.includes(highlightQuery) || cEn.includes(highlightQuery) ||
+                   qZh.includes(highlightQuery) || aZh.includes(highlightQuery) || cZh.includes(highlightQuery) ||
+                   matchTags;
+        });
+
+        if (filtered.length === 0) {
             faqListContainer.innerHTML = `
                 <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
-                    <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin: 0 auto 1rem auto; opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <p>No handbook topics found matching your search. Try searching for "attendance", "probation", or "repeat".</p>
+                    <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin: 0 auto 1rem auto; opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 11-18 0 0118 0z"/></svg>
+                    <p>${isZh ? '未找到符合您搜索的规章主题。请尝试搜索 “出勤”、“警告” 或 “重修”。' : 'No handbook topics found matching your search. Try searching for "attendance", "probation", or "repeat".'}</p>
                 </div>
             `;
             return;
         }
 
-        faqs.forEach(faq => {
+        filtered.forEach(faq => {
             const item = document.createElement('div');
             item.className = 'faq-item';
 
-            let questionText = faq.question;
-            let answerText = formatMarkdown(faq.answer);
+            let questionText = (isZh && faq.question_zh) ? faq.question_zh : faq.question;
+            let answerRaw = (isZh && faq.answer_zh) ? faq.answer_zh : faq.answer;
+            let categoryText = (isZh && faq.category_zh) ? faq.category_zh : faq.category;
+
+            let answerText = formatMarkdown(answerRaw);
 
             if (highlightQuery) {
                 const regex = new RegExp(`(${escapeRegExp(highlightQuery)})`, 'gi');
@@ -357,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="faq-question">
                     <span>
                         ${questionText}
-                        <span class="faq-category-badge">${faq.category}</span>
+                        <span class="faq-category-badge">${categoryText}</span>
                     </span>
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
@@ -366,7 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Toggle logic
             const btn = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
 
@@ -390,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatMarkdown(text) {
-        // Simple client-side Markdown formatter (Bold, numbered lists, unordered lists)
+        if (!text) return '';
         let formatted = text
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>');
@@ -401,25 +438,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let listHtml = [];
 
         lines.forEach(line => {
-            if (line.trim().startsWith('- ')) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('- ')) {
                 if (!inList) {
                     if (inNumList) { listHtml.push('</ol>'); inNumList = false; }
                     listHtml.push('<ul>');
                     inList = true;
                 }
-                listHtml.push(`<li>${line.trim().substring(2)}</li>`);
-            } else if (/^\d+\.\s/.test(line.trim())) {
+                listHtml.push(`<li>${trimmed.substring(2)}</li>`);
+            } else if (/^\d+\.\s/.test(trimmed)) {
                 if (!inNumList) {
                     if (inList) { listHtml.push('</ul>'); inList = false; }
                     listHtml.push('<ol>');
                     inNumList = true;
                 }
-                const content = line.trim().replace(/^\d+\.\s/, '');
+                const content = trimmed.replace(/^\d+\.\s/, '');
                 listHtml.push(`<li>${content}</li>`);
             } else {
                 if (inList) { listHtml.push('</ul>'); inList = false; }
                 if (inNumList) { listHtml.push('</ol>'); inNumList = false; }
-                if (line.trim()) {
+                if (trimmed) {
                     listHtml.push(`<p>${line}</p>`);
                 }
             }
@@ -440,67 +478,73 @@ document.addEventListener('DOMContentLoaded', () => {
         const clearPlannerBtn = document.getElementById('btn-clear-planner');
         const printPlannerBtn = document.getElementById('btn-print-planner');
 
-        // Populate Programs dropdown
-        programSelect.innerHTML = window.currentLang === 'zh' ? '<option value="">-- 选择 FABE 课程专业（或自定义学期）--</option>' : '<option value="">-- Choose FABE Program (Or Start Custom) --</option>';
-        HANDBOOK_DATA.programs.forEach(prog => {
-            const opt = document.createElement('option');
-            opt.value = prog.id;
-            opt.textContent = (window.currentLang === 'zh' && prog.name_zh) ? prog.name_zh : prog.name;
-            programSelect.appendChild(opt);
-        });
-
-        // Set selected value in dropdown
-        programSelect.value = plannerState.programId || '';
-
-        // Handlers
-        programSelect.addEventListener('change', () => {
-            const progId = programSelect.value;
-            if (progId) {
-                if (confirm('Importing a program template will overwrite your current schedule. Proceed?')) {
-                    loadProgramTemplate(progId);
-                } else {
-                    programSelect.value = plannerState.programId || '';
+        if (programSelect) {
+            programSelect.addEventListener('change', () => {
+                const progId = programSelect.value;
+                if (progId) {
+                    const confirmMsg = window.currentLang === 'zh' 
+                        ? '导入课程模板将覆盖当前选课计划，是否继续？' 
+                        : 'Importing a program template will overwrite your current schedule. Proceed?';
+                    if (confirm(confirmMsg)) {
+                        loadProgramTemplate(progId);
+                    } else {
+                        programSelect.value = plannerState.programId || '';
+                    }
                 }
-            }
-        });
-
-        addSemBtn.addEventListener('click', () => {
-            const newSemId = plannerState.semesters.length > 0 ? 
-                             Math.max(...plannerState.semesters.map(s => s.id)) + 1 : 1;
-            
-            plannerState.semesters.push({
-                id: newSemId,
-                name: `Semester ${newSemId}`,
-                courses: [{ code: '', name: 'New Course', credits: 3, grade: '--' }]
             });
-            savePlannerState();
-            renderGPAPlanner();
-        });
+        }
 
-        clearPlannerBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to reset your study planner?')) {
-                plannerState = {
-                    programId: '',
-                    semesters: [
-                        {
-                            id: 1,
-                            name: 'Semester 1',
-                            courses: [
-                                { code: '', name: 'Sample Course 1', credits: 3, grade: 'B' },
-                                { code: '', name: 'Sample Course 2', credits: 4, grade: 'A-' }
-                            ]
-                        }
-                    ]
-                };
-                programSelect.value = '';
+        if (addSemBtn) {
+            addSemBtn.addEventListener('click', () => {
+                const newSemId = plannerState.semesters.length > 0 ? 
+                                 Math.max(...plannerState.semesters.map(s => s.id)) + 1 : 1;
+                const semName = window.currentLang === 'zh' ? `第 ${newSemId} 学期` : `Semester ${newSemId}`;
+                const courseName = window.currentLang === 'zh' ? '新课程' : 'New Course';
+                
+                plannerState.semesters.push({
+                    id: newSemId,
+                    name: semName,
+                    courses: [{ code: '', name: courseName, credits: 3, grade: '--' }]
+                });
                 savePlannerState();
                 renderGPAPlanner();
-            }
-        });
+            });
+        }
 
-        printPlannerBtn.addEventListener('click', () => {
-            window.print();
-        });
+        if (clearPlannerBtn) {
+            clearPlannerBtn.addEventListener('click', () => {
+                const resetMsg = window.currentLang === 'zh' 
+                    ? '您确定要重置学习规划器吗？' 
+                    : 'Are you sure you want to reset your study planner?';
+                if (confirm(resetMsg)) {
+                    const semName = window.currentLang === 'zh' ? '第 1 学期' : 'Semester 1';
+                    const c1 = window.currentLang === 'zh' ? '示例课程 1' : 'Sample Course 1';
+                    const c2 = window.currentLang === 'zh' ? '示例课程 2' : 'Sample Course 2';
+                    plannerState = {
+                        programId: '',
+                        semesters: [
+                            {
+                                id: 1,
+                                name: semName,
+                                courses: [
+                                    { code: '', name: c1, credits: 3, grade: 'B' },
+                                    { code: '', name: c2, credits: 4, grade: 'A-' }
+                                ]
+                            }
+                        ]
+                    };
+                    if (programSelect) programSelect.value = '';
+                    savePlannerState();
+                    renderGPAPlanner();
+                }
+            });
+        }
+
+        if (printPlannerBtn) {
+            printPlannerBtn.addEventListener('click', () => {
+                window.print();
+            });
+        }
 
         renderGPAPlanner();
     }
@@ -509,7 +553,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const program = HANDBOOK_DATA.programs.find(p => p.id === progId);
         if (!program) return;
 
-        // Group courses by their designated recommended semester from the academic roadmap
         const semMap = {};
         
         program.courses.forEach(course => {
@@ -521,15 +564,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 code: course.code,
                 name: course.name,
                 credits: course.credits,
-                grade: '--' // In progress/unplanned
+                grade: '--'
             });
         });
 
         const newSemesters = [];
         Object.keys(semMap).sort((a, b) => a - b).forEach(semNum => {
+            const semTitle = window.currentLang === 'zh' 
+                ? `第 ${semNum} 学期 (大纲推荐路径)` 
+                : `Semester ${semNum} (Academic Roadmap)`;
             newSemesters.push({
                 id: parseInt(semNum),
-                name: `Semester ${semNum} (Academic Roadmap)`,
+                name: semTitle,
                 courses: semMap[semNum]
             });
         });
@@ -550,12 +596,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderGPAPlanner() {
         const container = document.getElementById('semesters-container');
+        const programSelect = document.getElementById('planner-program-select');
+        
+        if (programSelect) {
+            programSelect.innerHTML = window.currentLang === 'zh' 
+                ? '<option value="">-- 选择 FABE 课程专业（或自定义学期）--</option>' 
+                : '<option value="">-- Choose FABE Program (Or Start Custom) --</option>';
+            HANDBOOK_DATA.programs.forEach(prog => {
+                const opt = document.createElement('option');
+                opt.value = prog.id;
+                opt.textContent = (window.currentLang === 'zh' && prog.name_zh) ? prog.name_zh : prog.name;
+                programSelect.appendChild(opt);
+            });
+            programSelect.value = plannerState.programId || '';
+        }
+
+        if (!container) return;
         container.innerHTML = '';
+
+        const isZh = window.currentLang === 'zh';
 
         if (plannerState.semesters.length === 0) {
             container.innerHTML = `
                 <div style="text-align: center; padding: 2rem; color: var(--text-muted); border: 1px dashed var(--border-color); border-radius: 8px;">
-                    No semesters added. Click "+ Add Semester" below to begin planning.
+                    ${isZh ? '未添加任何学期。点击下方 “+ 添加学期” 开始规划。' : 'No semesters added. Click "+ Add Semester" below to begin planning.'}
                 </div>
             `;
             return;
@@ -566,7 +630,6 @@ document.addEventListener('DOMContentLoaded', () => {
             semBlock.className = 'semester-block';
             semBlock.setAttribute('data-id', sem.id);
 
-            // Calculate semester metrics
             const metrics = calculateSemesterGPA(sem);
 
             semBlock.innerHTML = `
@@ -576,9 +639,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span>${sem.name}</span>
                     </div>
                     <div class="semester-summary">
-                        <span>Credits: <strong>${metrics.totalCredits}</strong></span> | 
+                        <span>${isZh ? '学分' : 'Credits'}: <strong>${metrics.totalCredits}</strong></span> | 
                         <span>GPA: <strong style="color: var(--color-blue);">${metrics.gpa.toFixed(2)}</strong></span>
-                        <button class="btn-icon delete-sem-btn" style="margin-left: 1rem;" title="Delete Semester">
+                        <button class="btn-icon delete-sem-btn" style="margin-left: 1rem;" title="${isZh ? '删除学期' : 'Delete Semester'}">
                             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                         </button>
                     </div>
@@ -587,22 +650,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     <table class="course-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%">${window.currentLang === 'zh' ? '课程代码' : 'Course Code'}</th>
-                                <th style="width: 45%">${window.currentLang === 'zh' ? '课程名称' : 'Course Name'}</th>
-                                <th style="width: 15%">${window.currentLang === 'zh' ? '学分' : 'Credits'}</th>
-                                <th style="width: 15%">${window.currentLang === 'zh' ? '期望成绩' : 'Expected Grade'}</th>
+                                <th style="width: 15%">${isZh ? '课程代码' : 'Course Code'}</th>
+                                <th style="width: 45%">${isZh ? '课程名称' : 'Course Name'}</th>
+                                <th style="width: 15%">${isZh ? '学分' : 'Credits'}</th>
+                                <th style="width: 15%">${isZh ? '期望成绩' : 'Expected Grade'}</th>
                                 <th class="actions"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Populated dynamically -->
                         </tbody>
                     </table>
                     
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <button class="btn-add-course">${window.currentLang === 'zh' ? '+ 添加课程' : '+ Add Course Row'}</button>
+                        <button class="btn-add-course">${isZh ? '+ 添加课程行' : '+ Add Course Row'}</button>
                         ${metrics.totalCredits > HANDBOOK_DATA.handbookRules.creditLimits.normalMax ? `
-                            <div class="badge badge-danger">Warning: Exceeds maximum normal workload (18 credits)</div>
+                            <div class="badge badge-danger">${isZh ? '警告：超过单学期正常最高学分限制 (18 学分)' : 'Warning: Exceeds maximum normal workload (18 credits)'}</div>
                         ` : ''}
                     </div>
                 </div>
@@ -610,7 +672,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const tbody = semBlock.querySelector('tbody');
             
-            // Render course rows
             sem.courses.forEach((course, courseIdx) => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -619,18 +680,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td><input type="number" class="course-credits-input" min="1" max="10" value="${course.credits}"></td>
                     <td>
                         <select class="course-grade-select">
-                            <option value="--">-- (In Progress)</option>
+                            <option value="--">${isZh ? '-- (进行中)' : '-- (In Progress)'}</option>
                             ${HANDBOOK_DATA.gradeScale.map(g => `<option value="${g.grade}" ${g.grade === course.grade ? 'selected' : ''}>${g.grade} (${g.desc})</option>`).join('')}
                         </select>
                     </td>
                     <td class="actions">
-                        <button class="btn-icon delete-row-btn" title="Delete Course Row">
+                        <button class="btn-icon delete-row-btn" title="${isZh ? '删除课程行' : 'Delete Course Row'}">
                             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                         </button>
                     </td>
                 `;
 
-                // Add input listeners to sync state
                 tr.querySelector('.course-code-input').addEventListener('input', (e) => {
                     plannerState.semesters[semIdx].courses[courseIdx].code = e.target.value;
                     savePlannerState();
@@ -666,16 +726,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 tbody.appendChild(tr);
             });
 
-            // Semester Add course row click
             semBlock.querySelector('.btn-add-course').addEventListener('click', () => {
-                plannerState.semesters[semIdx].courses.push({ code: '', name: 'New Course', credits: 3, grade: '--' });
+                const courseName = isZh ? '新课程' : 'New Course';
+                plannerState.semesters[semIdx].courses.push({ code: '', name: courseName, credits: 3, grade: '--' });
                 savePlannerState();
                 renderGPAPlanner();
             });
 
-            // Semester delete click
             semBlock.querySelector('.delete-sem-btn').addEventListener('click', () => {
-                if (confirm(`Are you sure you want to delete ${sem.name}?`)) {
+                const delMsg = isZh ? `确定要删除 ${sem.name} 吗？` : `Are you sure you want to delete ${sem.name}?`;
+                if (confirm(delMsg)) {
                     plannerState.semesters.splice(semIdx, 1);
                     savePlannerState();
                     renderGPAPlanner();
@@ -691,21 +751,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSemesterTotals(semBlock, semIdx) {
         const sem = plannerState.semesters[semIdx];
         const metrics = calculateSemesterGPA(sem);
+        const isZh = window.currentLang === 'zh';
         
-        // Update header values without complete rerender
         const summarySpan = semBlock.querySelector('.semester-summary');
         if (summarySpan) {
             summarySpan.innerHTML = `
-                <span>Credits: <strong>${metrics.totalCredits}</strong></span> | 
+                <span>${isZh ? '学分' : 'Credits'}: <strong>${metrics.totalCredits}</strong></span> | 
                 <span>GPA: <strong style="color: var(--color-blue);">${metrics.gpa.toFixed(2)}</strong></span>
-                <button class="btn-icon delete-sem-btn" style="margin-left: 1rem;" title="Delete Semester">
+                <button class="btn-icon delete-sem-btn" style="margin-left: 1rem;" title="${isZh ? '删除学期' : 'Delete Semester'}">
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                 </button>
             `;
             
-            // Re-bind click event to delete sem button
             summarySpan.querySelector('.delete-sem-btn').addEventListener('click', () => {
-                if (confirm(`Are you sure you want to delete ${sem.name}?`)) {
+                const delMsg = isZh ? `确定要删除 ${sem.name} 吗？` : `Are you sure you want to delete ${sem.name}?`;
+                if (confirm(delMsg)) {
                     plannerState.semesters.splice(semIdx, 1);
                     savePlannerState();
                     renderGPAPlanner();
@@ -717,41 +777,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSummaryMetrics() {
         const calculations = calculateCGPA();
+        const isZh = window.currentLang === 'zh';
         
-        // Update planner overview details
         const summaryCGPA = document.getElementById('planner-cgpa-val');
         const summaryCredits = document.getElementById('planner-credits-val');
         const summaryAlerts = document.getElementById('planner-alerts-container');
 
-        summaryCGPA.textContent = calculations.cgpa.toFixed(2);
-        summaryCredits.textContent = calculations.earnedCredits;
+        if (summaryCGPA) summaryCGPA.textContent = calculations.cgpa.toFixed(2);
+        if (summaryCredits) summaryCredits.textContent = calculations.earnedCredits;
 
+        if (!summaryAlerts) return;
         summaryAlerts.innerHTML = '';
         
-        // Check for academic probation warnings
         if (calculations.cgpa < 2.00 && calculations.totalAttempted > 0) {
             const isDismissal = calculations.cgpa < 1.50;
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert-banner ${isDismissal ? 'danger' : 'warning'}`;
+
+            const alertTitle = isZh ? '学术预警提示：' : 'Academic Alert:';
+            const alertMsg = isZh 
+                ? (isDismissal 
+                    ? `您的预测 CGPA 为 **${calculations.cgpa.toFixed(2)}**，已低于 **1.50** 的警告线，面临退学风险。` 
+                    : `您的预测 CGPA 为 **${calculations.cgpa.toFixed(2)}**，已触发 **学术警告 (Probation)**。下学期您的选课将被限制为最多 **12 个学分**。`)
+                : (isDismissal
+                    ? `Your projected CGPA is **${calculations.cgpa.toFixed(2)}**. This falls below the **1.50** threshold and puts you at risk of Academic Dismissal.`
+                    : `Your projected CGPA is **${calculations.cgpa.toFixed(2)}**. This triggers **Academic Probation**. In your next semester, you will be restricted to a maximum of **12 credits**.`);
+
             alertDiv.innerHTML = `
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 <div>
-                    <strong>Academic Alert:</strong> 
-                    Your projected CGPA is **${calculations.cgpa.toFixed(2)}**. 
-                    ${isDismissal ? 
-                      'This falls below the **1.50** threshold and puts you at risk of Academic Dismissal.' : 
-                      'This triggers **Academic Probation**. In your next semester, you will be restricted to a maximum of **12 credits**.'
-                    }
+                    <strong>${alertTitle}</strong> ${alertMsg}
                 </div>
             `;
             summaryAlerts.appendChild(alertDiv);
         } else if (calculations.totalAttempted > 0) {
             const alertDiv = document.createElement('div');
             alertDiv.className = 'alert-banner success';
+            const normTitle = isZh ? '学术状态良好：' : 'Normal Standing:';
+            const normMsg = isZh 
+                ? `您的预测 CGPA 保持良好！下学期您可以正常注册 12 - 18 个学分的课程。`
+                : `Your projected CGPA is in good standing! You can register for 12 - 18 credits next semester.`;
+
             alertDiv.innerHTML = `
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 11-18 0 0118 0z"/></svg>
                 <div>
-                    <strong>Normal Standing:</strong> Your projected CGPA is in good standing! You can register for 12 - 18 credits next semester.
+                    <strong>${normTitle}</strong> ${normMsg}
                 </div>
             `;
             summaryAlerts.appendChild(alertDiv);
@@ -795,8 +865,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         qualityPoints += gradeObj.points * cred;
                         totalAttempted += cred;
                         
-                        // Fail grades (D+, D, F) do not earn credits
-                        if (gradeObj.points >= 1.67) { // C- is 1.67, which is a pass
+                        if (gradeObj.points >= 1.67) {
                             earnedCredits += cred;
                         }
                     }
@@ -817,12 +886,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = document.getElementById('btn-survey-next');
         const restartBtn = document.getElementById('btn-survey-restart');
 
-        startBtn.addEventListener('click', startSurvey);
-        prevBtn.addEventListener('click', goPrevQuestion);
-        nextBtn.addEventListener('click', goNextQuestion);
-        restartBtn.addEventListener('click', startSurvey);
+        if (startBtn) startBtn.addEventListener('click', startSurvey);
+        if (prevBtn) prevBtn.addEventListener('click', goPrevQuestion);
+        if (nextBtn) nextBtn.addEventListener('click', goNextQuestion);
+        if (restartBtn) restartBtn.addEventListener('click', startSurvey);
 
-        // Check if there is an existing result, hide/show accordingly
+        refreshSurveyScreen();
+    }
+
+    function refreshSurveyScreen() {
         const savedDiagnosis = SafeStorage.getItem('fabe_survey_result');
         if (savedDiagnosis) {
             showResultsScreen(JSON.parse(savedDiagnosis));
@@ -832,18 +904,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showIntroScreen() {
-        document.getElementById('survey-intro').style.display = 'block';
-        document.getElementById('survey-wizard').style.display = 'none';
-        document.getElementById('survey-results').style.display = 'none';
+        const intro = document.getElementById('survey-intro');
+        const wizard = document.getElementById('survey-wizard');
+        const results = document.getElementById('survey-results');
+        if (intro) intro.style.display = 'block';
+        if (wizard) wizard.style.display = 'none';
+        if (results) results.style.display = 'none';
     }
 
     function startSurvey() {
         surveyAnswers = {};
         currentQuestionIdx = 0;
         
-        document.getElementById('survey-intro').style.display = 'none';
-        document.getElementById('survey-wizard').style.display = 'block';
-        document.getElementById('survey-results').style.display = 'none';
+        const intro = document.getElementById('survey-intro');
+        const wizard = document.getElementById('survey-wizard');
+        const results = document.getElementById('survey-results');
+        if (intro) intro.style.display = 'none';
+        if (wizard) wizard.style.display = 'block';
+        if (results) results.style.display = 'none';
         
         renderQuestion();
     }
@@ -851,55 +929,69 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderQuestion() {
         const question = HANDBOOK_DATA.diagnosticQuestions[currentQuestionIdx];
         const wizardBody = document.getElementById('wizard-body');
+        if (!question || !wizardBody) return;
         
-        // Progress update
+        const isZh = window.currentLang === 'zh';
+
         const progressPct = ((currentQuestionIdx) / HANDBOOK_DATA.diagnosticQuestions.length) * 100;
-        document.getElementById('survey-progress-bar').style.width = `${progressPct}%`;
-        document.getElementById('survey-progress-text').textContent = `Question ${currentQuestionIdx + 1} of ${HANDBOOK_DATA.diagnosticQuestions.length}`;
+        const pBar = document.getElementById('survey-progress-bar');
+        const pText = document.getElementById('survey-progress-text');
+        
+        if (pBar) pBar.style.width = `${progressPct}%`;
+        if (pText) pText.textContent = isZh 
+            ? `问题 ${currentQuestionIdx + 1} / ${HANDBOOK_DATA.diagnosticQuestions.length}` 
+            : `Question ${currentQuestionIdx + 1} of ${HANDBOOK_DATA.diagnosticQuestions.length}`;
+
+        const categoryDisp = (isZh && question.category_zh) ? question.category_zh : question.category;
+        const textDisp = (isZh && question.text_zh) ? question.text_zh : question.text;
 
         wizardBody.innerHTML = `
             <div class="question-card">
-                <span class="question-category">${question.category}</span>
-                <h4 class="question-text">${question.text}</h4>
+                <span class="question-category">${categoryDisp}</span>
+                <h4 class="question-text">${textDisp}</h4>
                 <ul class="options-list">
                     ${question.options.map((opt, idx) => `
                         <li class="option-item ${surveyAnswers[question.id] === idx ? 'selected' : ''}" data-idx="${idx}">
                             <span class="option-radio"></span>
-                            <span>${(window.currentLang === 'zh' && opt.text_zh ? opt.text_zh : opt.text)}</span>
+                            <span>${(isZh && opt.text_zh ? opt.text_zh : opt.text)}</span>
                         </li>
                     `).join('')}
                 </ul>
             </div>
         `;
 
-        // Bind clicks
         const optionItems = wizardBody.querySelectorAll('.option-item');
         optionItems.forEach(item => {
             item.addEventListener('click', () => {
                 const idx = parseInt(item.getAttribute('data-idx'));
                 surveyAnswers[question.id] = idx;
                 
-                // Toggle active class
                 optionItems.forEach(oi => oi.classList.remove('selected'));
                 item.classList.add('selected');
 
-                // Enable next button
-                document.getElementById('btn-survey-next').disabled = false;
+                const nBtn = document.getElementById('btn-survey-next');
+                if (nBtn) nBtn.disabled = false;
                 
-                // Auto advance shortly after selection for slick experience
                 setTimeout(() => {
                     goNextQuestion();
                 }, 300);
             });
         });
 
-        // Set action buttons
         const prevBtn = document.getElementById('btn-survey-prev');
         const nextBtn = document.getElementById('btn-survey-next');
 
-        prevBtn.disabled = currentQuestionIdx === 0;
-        nextBtn.disabled = surveyAnswers[question.id] === undefined;
-        nextBtn.textContent = currentQuestionIdx === HANDBOOK_DATA.diagnosticQuestions.length - 1 ? 'Finish' : 'Next';
+        if (prevBtn) {
+            prevBtn.disabled = currentQuestionIdx === 0;
+            prevBtn.textContent = isZh ? '上一步' : 'Back';
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = surveyAnswers[question.id] === undefined;
+            nextBtn.textContent = currentQuestionIdx === HANDBOOK_DATA.diagnosticQuestions.length - 1 
+                ? (isZh ? '完成' : 'Finish') 
+                : (isZh ? '下一步' : 'Next');
+        }
     }
 
     function goPrevQuestion() {
@@ -911,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function goNextQuestion() {
         const question = HANDBOOK_DATA.diagnosticQuestions[currentQuestionIdx];
-        if (surveyAnswers[question.id] === undefined) return; // Answer required
+        if (surveyAnswers[question.id] === undefined) return;
 
         if (currentQuestionIdx < HANDBOOK_DATA.diagnosticQuestions.length - 1) {
             currentQuestionIdx++;
@@ -925,71 +1017,70 @@ document.addEventListener('DOMContentLoaded', () => {
         let totalScore = 0;
         const feedbackItems = [];
         const recommendations = [];
+        const isZh = window.currentLang === 'zh';
 
         HANDBOOK_DATA.diagnosticQuestions.forEach(q => {
             const answerIdx = surveyAnswers[q.id];
             const selectedOpt = q.options[answerIdx];
             totalScore += selectedOpt.riskPoints;
             feedbackItems.push({
-                category: q.category,
-                question: (window.currentLang === 'zh' && q.text_zh ? q.text_zh : q.text),
-                selected: selectedOpt.text,
+                category: (isZh && q.category_zh ? q.category_zh : q.category),
+                question: (isZh && q.text_zh ? q.text_zh : q.text),
+                selected: (isZh && selectedOpt.text_zh ? selectedOpt.text_zh : selectedOpt.text),
                 points: selectedOpt.riskPoints,
-                feedback: selectedOpt.feedback
+                feedback: (isZh && selectedOpt.feedback_zh ? selectedOpt.feedback_zh : selectedOpt.feedback)
             });
 
-            // Generate specific action items based on poor answers
             if (q.id === 'q_attendance' && answerIdx > 0) {
                 recommendations.push({
-                    title: 'Check your current class attendance percentage',
-                    detail: 'Go to the Academic portal. If below 80% in any course, meet the coordinator immediately to see if you can submit a late Medical Certificate (MC) or if you must apply to **Withdraw (W)** to avoid an automatic Grade F.'
+                    title: isZh ? '检查您目前的课程出勤率百分比' : 'Check your current class attendance percentage',
+                    detail: isZh ? '登录学术门户网站。如果任何课程出勤率低于 80%，请立即联系课程协调老师，确认是否可以补交医疗证明 (MC)，或申请退课 (Withdraw - W) 以避免记 F 级。' : 'Go to the Academic portal. If below 80% in any course, meet the coordinator immediately to see if you can submit a late Medical Certificate (MC) or if you must apply to **Withdraw (W)** to avoid an automatic Grade F.'
                 });
             }
             if (q.id === 'q_coursework' && answerIdx > 0) {
                 recommendations.push({
-                    title: 'Schedule a catch-up review for pending assignments',
-                    detail: 'Make a list of all delayed studio deliverables and ask your lecturer if they will accept late submissions for partial credits.'
+                    title: isZh ? '为未完成的作业安排补交复习时间' : 'Schedule a catch-up review for pending assignments',
+                    detail: isZh ? '列出所有延迟的工作室设计作业，并询问讲师是否接受延迟提交以获取部分学分。' : 'Make a list of all delayed studio deliverables and ask your lecturer if they will accept late submissions for partial credits.'
                 });
             }
             if (q.id === 'q_study_hours' && answerIdx === 2) {
                 recommendations.push({
-                    title: 'Allocate fixed self-study/studio blocks in your schedule',
-                    detail: 'Architecture and built environment degrees require a minimum of **2-3 self-study hours per credit hour** each week. Create a weekly planner blocking study times.'
+                    title: isZh ? '在日程表中预留固定的自学/工作室设计时间' : 'Allocate fixed self-study/studio blocks in your schedule',
+                    detail: isZh ? '建筑与 Built Environment 专业要求每周每个学分至少安排 **2-3 小时自学时间**。请制定包含固定学习时段的每周计划。' : 'Architecture and built environment degrees require a minimum of **2-3 self-study hours per credit hour** each week. Create a weekly planner blocking study times.'
                 });
             }
             if (q.id === 'q_advisor' && answerIdx === 2) {
                 recommendations.push({
-                    title: 'Identify and contact your designated Academic Advisor',
-                    detail: 'Email or visit the FABE faculty administration office to obtain the name and email of your advisor. They are essential to clear registration blocks.'
+                    title: isZh ? '查找并联系您指定的学术导师' : 'Identify and contact your designated Academic Advisor',
+                    detail: isZh ? '向 FABE 学院行政办公室发送电子邮件或前往办公室以获取导师的姓名和邮箱。导师对于解锁选课限制至关重要。' : 'Email or visit the FABE faculty administration office to obtain the name and email of your advisor. They are essential to clear registration blocks.'
                 });
             }
             if (q.id === 'q_understanding' && answerIdx === 2) {
                 recommendations.push({
-                    title: 'Request a consultation meeting with your lecturers',
-                    detail: 'Lecturers are required to hold weekly consultation hours. Book a slot to clear doubts on difficult concepts.'
+                    title: isZh ? '预约授课讲师的答疑咨询时间' : 'Request a consultation meeting with your lecturers',
+                    detail: isZh ? '讲师每周均留有答疑咨询时间。请预约名额以厘清复杂概念。' : 'Lecturers are required to hold weekly consultation hours. Book a slot to clear doubts on difficult concepts.'
                 });
             }
             if (q.id === 'q_extracurricular' && answerIdx === 2) {
                 recommendations.push({
-                    title: 'Evaluate external workload limitations',
-                    detail: 'Capping your part-time employment to a maximum of **10-12 hours per week** is vital. If academic probation is imminent, you must prioritize coursework.'
+                    title: isZh ? '评估并限制外部工作负荷' : 'Evaluate external workload limitations',
+                    detail: isZh ? '将兼职工作限制在每周最多 **10-12 小时** 非常重要。如果面临学术警告风险，必须优先保证课程学习。' : 'Capping your part-time employment to a maximum of **10-12 hours per week** is vital. If academic probation is imminent, you must prioritize coursework.'
                 });
             }
             if (q.id === 'q_wellbeing' && answerIdx === 2) {
                 recommendations.push({
-                    title: 'Visit the University Student Counseling Centre',
-                    detail: 'Academic stress is highly manageable when discussed with certified counselor support. Drop by block A or schedule an appointment.'
+                    title: isZh ? '前往大学学生心理咨询中心寻求支持' : 'Visit the University Student Counseling Centre',
+                    detail: isZh ? '在专业心理咨询师的帮助下，学术压力是完全可以有效化解的。欢迎前往咨询中心或预约会面。' : 'Academic stress is highly manageable when discussed with certified counselor support. Drop by block A or schedule an appointment.'
                 });
             }
             if (q.id === 'q_itnl' && answerIdx > 0) {
                 recommendations.push({
-                    title: 'Apply for KLUST iTnL Academic Adjustments',
-                    detail: 'Since you indicated a documented learning difficulty, sensory/physical need, or struggle with standard assessments, you are highly encouraged to submit an official request to the Inclusive Education Committee (IEC) Office to establish your Individualised Academic Plan (IAP).'
+                    title: isZh ? '申请 KLUST iTnL 包容性学术调整' : 'Apply for KLUST iTnL Academic Adjustments',
+                    detail: isZh ? '如果您存在学习困难、感官/身体需求或在标准评估中遇到障碍，强烈建议向包容性教育委员会 (IEC) 办公室提交正式申请以确立您的个体化学术计划 (IAP)。' : 'Since you indicated a documented learning difficulty, sensory/physical need, or struggle with standard assessments, you are highly encouraged to submit an official request to the Inclusive Education Committee (IEC) Office to establish your Individualised Academic Plan (IAP).'
                 });
             }
         });
 
-        // Determine risk level
         let level = 'low';
         if (totalScore > 8) {
             level = 'high';
@@ -997,17 +1088,15 @@ document.addEventListener('DOMContentLoaded', () => {
             level = 'medium';
         }
 
-        // Add default general recommendation if score is clean
         if (recommendations.length === 0) {
             recommendations.push({
-                title: 'Maintain your healthy academic habits',
-                detail: 'You are performing strongly. Keep preparing early for studio presentations and reviews.'
+                title: isZh ? '保持良好的学习习惯' : 'Maintain your healthy academic habits',
+                detail: isZh ? '您的学业表现非常优异。请继续提前为工作室答辩与审查做好充分准备。' : 'You are performing strongly. Keep preparing early for studio presentations and reviews.'
             });
         }
 
         const maxScore = HANDBOOK_DATA.diagnosticQuestions.reduce((sum, q) => sum + Math.max(...q.options.map(o => o.riskPoints)), 0);
-
-        const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        const dateStr = new Date().toLocaleDateString(isZh ? 'zh-CN' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         
         const result = {
             score: totalScore,
@@ -1024,58 +1113,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showResultsScreen(result) {
-        document.getElementById('survey-intro').style.display = 'none';
-        document.getElementById('survey-wizard').style.display = 'none';
-        
+        const intro = document.getElementById('survey-intro');
+        const wizard = document.getElementById('survey-wizard');
         const resultsDiv = document.getElementById('survey-results');
+        
+        if (intro) intro.style.display = 'none';
+        if (wizard) wizard.style.display = 'none';
+        if (!resultsDiv) return;
+        
         resultsDiv.style.display = 'block';
 
         const badge = resultsDiv.querySelector('.result-header-badge');
         const desc = resultsDiv.querySelector('#result-standing-text');
         const checklist = resultsDiv.querySelector('#result-checklist');
+        const isZh = window.currentLang === 'zh';
 
-        // Clear classes
-        badge.className = 'result-header-badge';
-        badge.classList.add(result.level);
+        if (badge) {
+            badge.className = 'result-header-badge';
+            badge.classList.add(result.level);
 
-        let riskLabel = 'LOW RISK';
-        let riskDesc = 'You demonstrate strong study habits and are at low risk of academic probation. Maintain your attendance and submission consistency!';
-        
-        if (result.level === 'high') {
-            riskLabel = 'HIGH ACADEMIC RISK';
-            riskDesc = 'WARNING: Several indicators suggest you are experiencing significant study barriers (low attendance, delayed assignments, or stress). You face a high risk of failure or probation. Review the urgent checklist below.';
-        } else if (result.level === 'medium') {
-            riskLabel = 'MODERATE ACADEMIC RISK';
-            riskDesc = 'ALERT: You have minor risk flags in your study plan. Implementing adjustments now will prevent you from sliding into academic probation.';
+            let riskLabel = isZh ? '低学术风险' : 'LOW RISK';
+            if (result.level === 'high') {
+                riskLabel = isZh ? '高学术风险' : 'HIGH ACADEMIC RISK';
+            } else if (result.level === 'medium') {
+                riskLabel = isZh ? '中度学术风险' : 'MODERATE ACADEMIC RISK';
+            }
+
+            badge.innerHTML = `
+                <span class="result-title">${riskLabel}</span>
+                <span class="result-score">${isZh ? '累积风险评估分值' : 'Cumulative Risk Score'}: <strong>${result.score.toFixed(1)} / ${(result.maxScore || 19.0).toFixed(1)}</strong></span>
+            `;
         }
 
-        badge.innerHTML = `
-            <span class="result-title">${riskLabel}</span>
-            <span class="result-score">Cumulative Risk Score: <strong>${result.score.toFixed(1)} / ${(result.maxScore || 19.0).toFixed(1)}</strong></span>
-        `;
+        if (desc) {
+            let riskDesc = isZh 
+                ? '您展现出良好的学习习惯，处于极低学术警告风险中。请继续保持良好的出勤与作业提交！' 
+                : 'You demonstrate strong study habits and are at low risk of academic probation. Maintain your attendance and submission consistency!';
+            
+            if (result.level === 'high') {
+                riskDesc = isZh 
+                    ? '警告：评估指标显示您正在经历显著的学习障碍（出勤率低、作业延期或心理压力大）。您面临较高的不及格或警告风险，请优先参考下方的紧急改善清单。' 
+                    : 'WARNING: Several indicators suggest you are experiencing significant study barriers (low attendance, delayed assignments, or stress). You face a high risk of failure or probation. Review the urgent checklist below.';
+            } else if (result.level === 'medium') {
+                riskDesc = isZh 
+                    ? '提示：您的学习计划中存在轻微风险预警。现在进行适当调整可防止滑入学术警告状态。' 
+                    : 'ALERT: You have minor risk flags in your study plan. Implementing adjustments now will prevent you from sliding into academic probation.';
+            }
 
-        desc.innerHTML = `
-            <p style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 500;">Assessment Date: ${result.date}</p>
-            <p>${riskDesc}</p>
-        `;
-
-        // Render checklist
-        checklist.innerHTML = '';
-        result.recommendations.forEach(rec => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <svg width="18" height="18" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-top: 3px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <div>
-                    <strong>${rec.title}</strong>
-                    <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${rec.detail}</p>
-                </div>
+            desc.innerHTML = `
+                <p style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 500;">${isZh ? '评估日期' : 'Assessment Date'}: ${result.date}</p>
+                <p>${riskDesc}</p>
             `;
-            checklist.appendChild(li);
-        });
+        }
+
+        if (checklist) {
+            checklist.innerHTML = '';
+            result.recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <svg width="18" height="18" fill="none" stroke="var(--color-blue)" viewBox="0 0 24 24" style="margin-top: 3px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 11-18 0 0118 0z"/></svg>
+                    <div>
+                        <strong>${rec.title}</strong>
+                        <p style="margin-top: 0.15rem; font-size: 0.8rem; color: var(--text-muted);">${rec.detail}</p>
+                    </div>
+                `;
+                checklist.appendChild(li);
+            });
+        }
     }
 
     // -------------------------------------------------------------------------
-    // Decision Tree Controller
+    // Decision Tree Controller (Troubleshooter)
     // -------------------------------------------------------------------------
     function initDecisionTree() {
         const restartBtn = document.getElementById('btn-tree-restart');
@@ -1097,10 +1205,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const questionText = document.getElementById('tree-node-text');
         const choicesContainer = document.getElementById('tree-node-choices');
+        if (!questionText || !choicesContainer) return;
 
-        const activeText = (window.currentLang === 'zh' && node.text_zh) ? node.text_zh : node.text;
+        const isZh = window.currentLang === 'zh';
+        const activeText = (isZh && node.text_zh) ? node.text_zh : node.text;
 
-        // Check if it is a leaf node (ends with instructions and only has 'Back' action)
         const isLeaf = node.options.length === 1 && node.options[0].next === 'start';
         
         if (isLeaf) {
@@ -1118,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = document.createElement('button');
             btn.className = opt.next === 'start' ? 'btn btn-secondary' : 'tree-choice-btn';
             
-            const btnText = (window.currentLang === 'zh' && opt.text_zh) ? opt.text_zh : opt.text;
+            const btnText = (isZh && opt.text_zh) ? opt.text_zh : opt.text;
 
             if (opt.next === 'start') {
                 btn.style.width = '100%';
@@ -1126,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.marginTop = '1rem';
                 btn.innerHTML = `
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    ${window.currentLang === 'zh' ? '重新开始 / 选择其他问题' : 'Start Over / Ask Another Question'}
+                    ${isZh ? '重新开始 / 选择其他问题' : 'Start Over / Ask Another Question'}
                 `;
             } else {
                 btn.innerHTML = `
@@ -1145,15 +1254,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatDecisionText(text) {
-        // Formats the action item results with bold headers, bullet items, and warnings
         let html = text
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             .replace(/\n\n/g, '<br><br>');
             
-        // Wrap Action Steps block in alert divs
         if (html.includes('Action Steps:')) {
             html = html.replace('Action Steps:', '<br><strong style="color: var(--color-blue); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em;">Action Steps:</strong>');
+        } else if (html.includes('行动步骤：')) {
+            html = html.replace('行动步骤：', '<br><strong style="color: var(--color-blue); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em;">行动步骤：</strong>');
         }
 
         return html;
@@ -1170,50 +1279,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!progContainer || !creditContainer || !mpuContainer || !mpuTablesContainer) return;
 
-        // 1. Render Graduation Credits selectors & details
-        const creditsData = HANDBOOK_DATA.curriculumCredits || [];
-        progContainer.innerHTML = '';
-        
-        creditsData.forEach((prog, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'curr-tab-btn';
-            if (index === 2) btn.classList.add('active'); // B.Sc. Arch active by default
-            btn.textContent = prog.program.replace('Bachelor of ', 'B. ').replace('Diploma in ', 'Dip. ').replace('Master of ', 'M. ');
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#curr-program-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderProgramCredits(prog);
-            });
-            progContainer.appendChild(btn);
-        });
+        window.renderCurriculumComponents = function() {
+            renderCurriculumComponentsUI();
+        };
 
-        // Initial render for graduation credits
-        if (creditsData.length > 2) {
-            renderProgramCredits(creditsData[2]);
-        } else if (creditsData.length > 0) {
-            renderProgramCredits(creditsData[0]);
+        renderCurriculumComponentsUI();
+
+        function renderCurriculumComponentsUI() {
+            const isZh = window.currentLang === 'zh';
+            const creditsData = HANDBOOK_DATA.curriculumCredits || [];
+
+            let activeProgIndex = 2;
+            const currentActiveBtn = progContainer.querySelector('.curr-tab-btn.active');
+            if (currentActiveBtn) {
+                const idxAttr = currentActiveBtn.getAttribute('data-idx');
+                if (idxAttr !== null) activeProgIndex = parseInt(idxAttr);
+            }
+
+            progContainer.innerHTML = '';
+            creditsData.forEach((prog, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'curr-tab-btn';
+                btn.setAttribute('data-idx', index);
+                if (index === activeProgIndex) btn.classList.add('active');
+                
+                const rawName = (isZh && prog.program_zh) ? prog.program_zh : prog.program;
+                btn.textContent = rawName;
+                
+                btn.addEventListener('click', () => {
+                    progContainer.querySelectorAll('.curr-tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderProgramCredits(prog);
+                });
+                progContainer.appendChild(btn);
+            });
+
+            if (creditsData[activeProgIndex]) {
+                renderProgramCredits(creditsData[activeProgIndex]);
+            } else if (creditsData.length > 0) {
+                renderProgramCredits(creditsData[0]);
+            }
+
+            // MPU selectors
+            const mpuData = HANDBOOK_DATA.mpuRequirements || {};
+            let activeMpuKey = 'bachelor_loc';
+            const currentActiveMpuBtn = mpuContainer.querySelector('.curr-tab-btn.active');
+            if (currentActiveMpuBtn) {
+                const keyAttr = currentActiveMpuBtn.getAttribute('data-key');
+                if (keyAttr) activeMpuKey = keyAttr;
+            }
+
+            mpuContainer.innerHTML = '';
+            Object.entries(mpuData).forEach(([key, value]) => {
+                const btn = document.createElement('button');
+                btn.className = 'curr-tab-btn';
+                btn.setAttribute('data-key', key);
+                if (key === activeMpuKey) btn.classList.add('active');
+                
+                btn.textContent = (isZh && value.title_zh) ? value.title_zh : value.title;
+                btn.addEventListener('click', () => {
+                    mpuContainer.querySelectorAll('.curr-tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderMpuRequirements(value);
+                });
+                mpuContainer.appendChild(btn);
+            });
+
+            if (mpuData[activeMpuKey]) {
+                renderMpuRequirements(mpuData[activeMpuKey]);
+            }
         }
 
         function renderProgramCredits(prog) {
+            const isZh = window.currentLang === 'zh';
             const corePct = Math.round((prog.core / prog.total) * 100);
             const mpuPct = Math.round((prog.mpu / prog.total) * 100);
             const elecPct = Math.round((prog.elective / prog.total) * 100);
+
+            const progTitle = (isZh && prog.program_zh) ? prog.program_zh : prog.program;
+            const progDetail = (isZh && prog.detail_zh) ? prog.detail_zh : prog.detail;
 
             let electiveRow = '';
             if (prog.elective > 0) {
                 electiveRow = `
                     <tr class="hover-row">
-                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="padding: 0.75rem 1rem;"><strong>${isZh ? '专业选修课程' : 'Elective Courses'}</strong></td>
                         <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.elective}</strong></td>
-                        <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Courses chosen from a predefined list to explore specialized areas. Refer to the Programs page for available electives.</td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">${isZh ? '从预设课程列表中选择以探索专业领域的课程。' : 'Courses chosen from a predefined list to explore specialized areas.'}</td>
                     </tr>
                 `;
             } else {
                 electiveRow = `
                     <tr class="hover-row">
-                        <td style="padding: 0.75rem 1rem;"><strong>Elective Courses</strong></td>
+                        <td style="padding: 0.75rem 1rem;"><strong>${isZh ? '专业选修课程' : 'Elective Courses'}</strong></td>
                         <td style="text-align: center; padding: 0.75rem 1rem;"><strong>0</strong></td>
-                        <td style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic; padding: 0.75rem 1rem;">No elective courses are required for this program.</td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic; padding: 0.75rem 1rem;">${isZh ? '本课程专业无需修读选修课程。' : 'No elective courses are required for this program.'}</td>
                     </tr>
                 `;
             }
@@ -1221,39 +1381,35 @@ document.addEventListener('DOMContentLoaded', () => {
             creditContainer.innerHTML = `
                 <div class="stat-card" style="border-color: rgba(30, 64, 175, 0.15); background: var(--bg-primary); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; border-radius: 10px;">
                     <div>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin-bottom: 0.35rem; margin-top: 0;">${prog.program}</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">${prog.detail}</p>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-primary); font-weight: 700; margin-bottom: 0.35rem; margin-top: 0;">${progTitle}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">${progDetail}</p>
                     </div>
 
-                    <!-- Progress bars component -->
                     <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <!-- Core Bar -->
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
-                                <span style="font-weight: 600; color: var(--text-primary);">Core Courses</span>
-                                <span style="font-weight: 600; color: var(--color-blue);">${prog.core} / ${prog.total} Credits (${corePct}%)</span>
+                                <span style="font-weight: 600; color: var(--text-primary);">${isZh ? '核心专业课程' : 'Core Courses'}</span>
+                                <span style="font-weight: 600; color: var(--color-blue);">${prog.core} / ${prog.total} ${isZh ? '学分' : 'Credits'} (${corePct}%)</span>
                             </div>
                             <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
                                 <div style="width: ${corePct}%; height: 100%; background: var(--color-blue); border-radius: 4px;"></div>
                             </div>
                         </div>
 
-                        <!-- MPU Bar -->
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
-                                <span style="font-weight: 600; color: var(--text-primary);">MPU / University Subjects</span>
-                                <span style="font-weight: 600; color: var(--color-emerald);">${prog.mpu} / ${prog.total} Credits (${mpuPct}%)</span>
+                                <span style="font-weight: 600; color: var(--text-primary);">${isZh ? 'MPU / 大学通识科目' : 'MPU / University Subjects'}</span>
+                                <span style="font-weight: 600; color: var(--color-emerald);">${prog.mpu} / ${prog.total} ${isZh ? '学分' : 'Credits'} (${mpuPct}%)</span>
                             </div>
                             <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
                                 <div style="width: ${mpuPct}%; height: 100%; background: var(--color-emerald); border-radius: 4px;"></div>
                             </div>
                         </div>
 
-                        <!-- Elective Bar -->
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem;">
-                                <span style="font-weight: 600; color: var(--text-primary);">Elective Courses</span>
-                                <span style="font-weight: 600; color: var(--color-amber);">${prog.elective} / ${prog.total} Credits (${elecPct}%)</span>
+                                <span style="font-weight: 600; color: var(--text-primary);">${isZh ? '专业选修课程' : 'Elective Courses'}</span>
+                                <span style="font-weight: 600; color: var(--color-amber);">${prog.elective} / ${prog.total} ${isZh ? '学分' : 'Credits'} (${elecPct}%)</span>
                             </div>
                             <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden;">
                                 <div style="width: ${elecPct}%; height: 100%; background: var(--color-amber); border-radius: 4px;"></div>
@@ -1261,32 +1417,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
 
-                    <!-- Custom Table -->
                     <div style="overflow-x: auto;">
                         <table class="checklist-table" style="width: 100%; border-collapse: collapse; min-width: 500px; margin: 0;">
                             <thead>
                                 <tr style="border-bottom: 2px solid var(--border-color); background: rgba(0,0,0,0.02);">
-                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 30%; font-weight: 600; color: var(--text-primary);">Subject Category</th>
-                                    <th style="text-align: center; padding: 0.75rem 1rem; width: 20%; font-weight: 600; color: var(--text-primary);">Required Credits</th>
-                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 50%; font-weight: 600; color: var(--text-primary);">Description</th>
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 30%; font-weight: 600; color: var(--text-primary);">${isZh ? '科目类别' : 'Subject Category'}</th>
+                                    <th style="text-align: center; padding: 0.75rem 1rem; width: 20%; font-weight: 600; color: var(--text-primary);">${isZh ? '要求学分' : 'Required Credits'}</th>
+                                    <th style="text-align: left; padding: 0.75rem 1rem; width: 50%; font-weight: 600; color: var(--text-primary);">${isZh ? '课程说明' : 'Description'}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="hover-row">
-                                    <td style="padding: 0.75rem 1rem;"><strong>Core Courses</strong></td>
+                                    <td style="padding: 0.75rem 1rem;"><strong>${isZh ? '核心专业课程' : 'Core Courses'}</strong></td>
                                     <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.core}</strong></td>
-                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory major subjects that provide foundational knowledge. Refer to the GPA & Study Planner tab for a semester-by-semester breakdown.</td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">${isZh ? '构成专业知识基础的必修核心科目。可在GPA与学习规划器中查看逐学期的明细。' : 'Compulsory major subjects that provide foundational knowledge.'}</td>
                                 </tr>
                                 <tr class="hover-row">
-                                    <td style="padding: 0.75rem 1rem;"><strong>MPU / University Subjects</strong></td>
+                                    <td style="padding: 0.75rem 1rem;"><strong>${isZh ? 'MPU / 大学通识科目' : 'MPU / University Subjects'}</strong></td>
                                     <td style="text-align: center; padding: 0.75rem 1rem;"><strong>${prog.mpu}</strong></td>
-                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">Compulsory subjects mandated by the Ministry of Higher Education. See details below.</td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.75rem 1rem;">${isZh ? '教育部规定的必修通识科目。详见下方表格。' : 'Compulsory subjects mandated by the Ministry of Higher Education.'}</td>
                                 </tr>
                                 ${electiveRow}
                                 <tr style="background: rgba(30, 64, 175, 0.04); border-top: 2px solid var(--border-color);">
-                                    <td style="padding: 0.75rem 1rem;"><strong style="color: var(--color-blue);">Total for Graduation</strong></td>
+                                    <td style="padding: 0.75rem 1rem;"><strong style="color: var(--color-blue);">${isZh ? '毕业要求总学分' : 'Total for Graduation'}</strong></td>
                                     <td style="text-align: center; padding: 0.75rem 1rem;"><strong style="color: var(--color-blue); font-size: 1.1rem;">${prog.total}</strong></td>
-                                    <td style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); padding: 0.75rem 1rem;">A student's progress is checked against this total.</td>
+                                    <td style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); padding: 0.75rem 1rem;">${isZh ? '学生的修业进度将对照此总学分进行审核。' : "A student's progress is checked against this total."}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1295,30 +1450,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // 2. Render MPU selectors & details
-        const mpuData = HANDBOOK_DATA.mpuRequirements || {};
-        mpuContainer.innerHTML = '';
-
-        Object.entries(mpuData).forEach(([key, value], index) => {
-            const btn = document.createElement('button');
-            btn.className = 'curr-tab-btn';
-            if (key === 'bachelor_loc') btn.classList.add('active'); // Bachelor Local active by default
-            btn.textContent = value.title;
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#curr-mpu-selectors .curr-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderMpuRequirements(value);
-            });
-            mpuContainer.appendChild(btn);
-        });
-
-        // Initial render for MPU requirements
-        if (mpuData['bachelor_loc']) {
-            renderMpuRequirements(mpuData['bachelor_loc']);
-        }
-
         function renderMpuRequirements(req) {
+            const isZh = window.currentLang === 'zh';
             let categoriesHtml = '';
+            const ruleText = (isZh && req.rule_zh) ? req.rule_zh : req.rule;
 
             for (const [catName, subjects] of Object.entries(req.categories)) {
                 let rows = '';
@@ -1339,16 +1474,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 categoriesHtml += `
                     <div class="stat-card" style="background: var(--bg-primary); border-color: var(--border-color); padding: 1.25rem; border-radius: 8px;">
                         <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--color-blue); font-weight: 700; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; margin-top: 0;">
-                            Group ${catName}
-                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 0.15rem 0.4rem; border-radius: 4px;">${subjects.length} Subjects</span>
+                            ${isZh ? '组别 ' + catName : 'Group ' + catName}
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-secondary); padding: 0.15rem 0.4rem; border-radius: 4px;">${subjects.length} ${isZh ? '门科目' : 'Subjects'}</span>
                         </h4>
                         <div style="overflow-x: auto;">
                             <table style="width: 100%; border-collapse: collapse; margin: 0;">
                                 <thead>
                                     <tr style="border-bottom: 2px solid var(--border-color); font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">
-                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Code</th>
-                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">Subject Name</th>
-                                        <th style="text-align: center; padding-bottom: 0.5rem; padding-right: 0.75rem;">CR</th>
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">${isZh ? '课程代码' : 'Code'}</th>
+                                        <th style="text-align: left; padding-bottom: 0.5rem; padding-left: 0.75rem;">${isZh ? '科目名称' : 'Subject Name'}</th>
+                                        <th style="text-align: center; padding-bottom: 0.5rem; padding-right: 0.75rem;">${isZh ? '学分' : 'CR'}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1362,9 +1497,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mpuTablesContainer.innerHTML = `
                 <div style="background: rgba(228, 0, 43, 0.03); border-left: 4px solid #E4002B; border-radius: 4px 8px 8px 4px; padding: 1rem; margin-bottom: 0.5rem;">
-                    <strong style="color: #E4002B; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 0.25rem; text-transform: uppercase;">Selection Rules:</strong>
+                    <strong style="color: #E4002B; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 0.25rem; text-transform: uppercase;">${isZh ? '选课规则说明：' : 'Selection Rules:'}</strong>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
-                        ${req.rule}
+                        ${ruleText}
                     </p>
                 </div>
 
@@ -1385,14 +1520,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gridContainer) return;
 
+        const isZh = window.currentLang === 'zh';
+
+        if (deptFilter) {
+            const selectedVal = deptFilter.value || 'all';
+            deptFilter.innerHTML = `
+                <option value="all">${isZh ? '所有部门 / 职位' : 'All Departments / Roles'}</option>
+                <option value="architecture">${isZh ? '建筑学系' : 'Architecture'}</option>
+                <option value="quantity-surveying">${isZh ? '工料测量系' : 'Quantity Surveying'}</option>
+                <option value="landscape-architecture">${isZh ? '景观建筑学系' : 'Landscape Architecture'}</option>
+                <option value="management">${isZh ? '管理与其它' : 'Management & Others'}</option>
+            `;
+            deptFilter.value = selectedVal;
+        }
+
         const staff = HANDBOOK_DATA.staffProfiles || [];
 
-        // Attach listeners
-        if (searchInput) searchInput.addEventListener('input', updateFilters);
-        if (deptFilter) deptFilter.addEventListener('change', updateFilters);
+        if (searchInput) {
+            searchInput.removeEventListener('input', updateFilters);
+            searchInput.addEventListener('input', updateFilters);
+        }
+        if (deptFilter) {
+            deptFilter.removeEventListener('change', updateFilters);
+            deptFilter.addEventListener('change', updateFilters);
+        }
 
-        // Initial render
-        renderDirectory(staff);
+        updateFilters();
 
         function updateFilters() {
             const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
@@ -1413,7 +1566,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function getInitialsAvatar(name) {
-            // Strip titles to get clean name parts
             const cleanName = name.replace(/^(Ts|Ar|Sr|Dr\.|Assoc\.\s*Prof\s*)\s+/i, '').trim();
             const parts = cleanName.split(' ');
             let initials = '';
@@ -1421,7 +1573,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (parts.length > 1 && parts[1]) initials += parts[1][0];
             initials = initials.toUpperCase();
 
-            // Hash code for unique gradient background
             let hash = 0;
             for (let i = 0; i < cleanName.length; i++) {
                 hash = cleanName.charCodeAt(i) + ((hash << 5) - hash);
@@ -1440,12 +1591,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderDirectory(list) {
             gridContainer.innerHTML = '';
+            const isZhNow = window.currentLang === 'zh';
 
             if (list.length === 0) {
                 gridContainer.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
                         <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin: 0 auto 1rem auto; opacity: 0.5;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.109A11.978 11.978 0 0112.25 18c-.896-.083-1.78-.21-2.65-.378M12 18.25c-.896-.083-1.78-.21-2.65-.378m-2.65-.378a9.33 9.33 0 01-2.625-.372 9.337 9.337 0 01-4.121-.952 4.125 4.125 0 017.533-2.493M16.5 10.5a3 3 0 11-6 0 3 3 0 016 0zM6.75 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM4.5 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"/></svg>
-                        <p style="margin: 0; font-size: 0.95rem; font-weight: 500;">No lecturers found matching your filters.</p>
+                        <p style="margin: 0; font-size: 0.95rem; font-weight: 500;">${isZhNow ? '未找到符合筛选条件的讲师。' : 'No lecturers found matching your filters.'}</p>
                     </div>
                 `;
                 return;
@@ -1468,20 +1620,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: auto;">
                             <div>
-                                <strong>${window.currentLang === 'zh' ? '学历资历:' : 'Qualification:'}</strong> 
+                                <strong>${isZhNow ? '学历资历:' : 'Qualification:'}</strong> 
                                 <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.qualification}</span>
                             </div>
                             ${member.specialization ? `
                             <div>
-                                <strong>${window.currentLang === 'zh' ? '研究领域:' : 'Specialization:'}</strong> 
+                                <strong>${isZhNow ? '研究领域:' : 'Specialization:'}</strong> 
                                 <span style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.1rem; line-height: 1.35;">${member.specialization}</span>
                             </div>` : ''}
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.15rem;">
-                                <div><strong>${window.currentLang === 'zh' ? '办公室:' : 'Office:'}</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
-                                <div><strong>${window.currentLang === 'zh' ? '分机:' : 'Ext:'}</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
+                                <div><strong>${isZhNow ? '办公室:' : 'Office:'}</strong> <span style="color: var(--text-muted);">${member.room}</span></div>
+                                <div><strong>${isZhNow ? '分机:' : 'Ext:'}</strong> <span style="color: var(--text-muted);">${member.ext}</span></div>
                             </div>
                             <div style="margin-top: 0.15rem;">
-                                <strong>${window.currentLang === 'zh' ? '电子邮箱:' : 'Email:'}</strong> 
+                                <strong>${isZhNow ? '电子邮箱:' : 'Email:'}</strong> 
                                 <a href="mailto:${member.email}" style="color: var(--color-blue); text-decoration: underline; font-family: monospace; display: block; margin-top: 0.1rem; font-size: 0.75rem; word-break: break-all;">${member.email}</a>
                             </div>
                         </div>
@@ -1493,68 +1645,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     // -------------------------------------------------------------------------
     // Language Controller (EN / 中文 Toggle)
     // -------------------------------------------------------------------------
-    let currentLang = SafeStorage.getItem('fabe_handbook_lang') || 'en';
-
     function initLanguageToggle() {
-        // Delegate click event to capture clicks on button, icon, or text spans
         document.addEventListener('click', (e) => {
             const btn = e.target.closest('#btn-lang-toggle');
             if (btn) {
                 e.preventDefault();
                 e.stopPropagation();
-                currentLang = currentLang === 'en' ? 'zh' : 'en';
-                SafeStorage.setItem('fabe_handbook_lang', currentLang);
-                applyLanguage();
+                window.toggleLanguage(e);
             }
         });
-
-        applyLanguage();
-    }
-
-    function applyLanguage() {
-        const langLabel = document.getElementById('lang-toggle-label');
-        if (langLabel) {
-            if (currentLang === 'zh') {
-                langLabel.innerHTML = `<span style="opacity: 0.6;">EN</span> / <strong style="color: var(--color-blue);">中文</strong>`;
-            } else {
-                langLabel.innerHTML = `<strong style="color: var(--color-blue);">EN</strong> / <span style="opacity: 0.6;">中文</span>`;
-            }
-        }
-
-        const dict = (HANDBOOK_DATA.translations && HANDBOOK_DATA.translations[currentLang]) ? HANDBOOK_DATA.translations[currentLang] : {};
-
-        // Update static data-i18n elements
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (dict[key]) {
-                el.innerHTML = dict[key];
-            }
-        });
-
-        // Update static data-i18n-placeholder elements
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (dict[key]) {
-                el.setAttribute('placeholder', dict[key]);
-            }
-        });
-
-        // Re-render all active panels dynamically
-        const searchInput = document.getElementById('faq-search-input');
-        if (typeof renderFAQs === 'function' && searchInput) {
-            renderFAQs(searchInput.value || '');
-        }
-
-        if (typeof initLecturerDirectory === 'function') {
-            initLecturerDirectory();
-        }
-
-        if (typeof renderDashboardAdvice === 'function') {
-            renderDashboardAdvice();
-        }
     }
 });
