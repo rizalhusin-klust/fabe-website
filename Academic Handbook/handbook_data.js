@@ -2733,6 +2733,17 @@ const HANDBOOK_DATA = {
             "staffId": "IEN 01295",
             "specialization": "Measurement, Construction Contract",
             "department": "quantity-surveying"
+        },
+        {
+            "name": "Nor Rasyila Rosley",
+            "qualification": "MSc in Urban Development and Management; Postgraduate Diploma Advance Architectural Studies; Bachelor of Science (Hons) Architecture",
+            "position": "Lecturer",
+            "room": "Level 3, Block 5",
+            "ext": "Nil",
+            "email": "nurrasyila@klust.edu.my",
+            "staffId": "",
+            "specialization": "Urban Management, Planning Framework, Design Theory",
+            "department": "architecture"
         }
     ]
 };
