@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export functions to window for global access
     window.renderGPAPlanner = renderGPAPlanner;
     window.updateDashboardMetrics = updateDashboardMetrics;
-    window.renderCurriculumComponents = renderCurriculumComponents;
     window.refreshSurveyScreen = refreshSurveyScreen;
+    window.initLecturerDirectory = initLecturerDirectory;
 
     // Initialize UI
     initTabs();
@@ -1649,13 +1649,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Language Controller (EN / 中文 Toggle)
     // -------------------------------------------------------------------------
     function initLanguageToggle() {
-        document.addEventListener('click', (e) => {
-            const btn = e.target.closest('#btn-lang-toggle');
-            if (btn) {
-                e.preventDefault();
-                e.stopPropagation();
+        const btn = document.getElementById('btn-lang-toggle');
+        if (btn) {
+            btn.onclick = function(e) {
+                if (e) {
+                    if (typeof e.preventDefault === 'function') e.preventDefault();
+                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+                }
                 window.toggleLanguage(e);
-            }
-        });
+            };
+        }
     }
 });
